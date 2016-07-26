@@ -1,30 +1,31 @@
 /*
- * docs-taglib - Reusable Java taglib for documentation management.
+ * ao-web-page-taglib - Java API for modeling web page content and relationships in a JSP environment.
  * Copyright (C) 2013, 2014, 2015, 2016  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
  *
- * This file is part of docs-taglib.
+ * This file is part of ao-web-page-taglib.
  *
- * docs-taglib is free software: you can redistribute it and/or modify
+ * ao-web-page-taglib is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * docs-taglib is distributed in the hope that it will be useful,
+ * ao-web-page-taglib is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with docs-taglib.  If not, see <http://www.gnu.org/licenses/>.
+ * along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
  */
 package com.aoindustries.web.page.taglib;
 
 import com.aoindustries.io.FileUtils;
 import com.aoindustries.lang.ProcessResult;
 import com.aoindustries.web.page.DiaExport;
+import com.aoindustries.web.page.servlet.OpenFile;
 import com.aoindustries.web.page.servlet.PageRefResolver;
 import java.io.File;
 import java.io.IOException;
@@ -35,7 +36,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.JspException;
@@ -47,26 +47,6 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 public class OpenFileTag extends SimpleTagSupport {
 
 	private static final Logger logger = Logger.getLogger(OpenFileTag.class.getName());
-
-	private static final String ENABLE_INIT_PARAM = OpenFileTag.class.getName() + ".enabled";
-
-	/**
-	 * Checks if the given host address is allowed to open files on the server.
-	 */
-	private static boolean isAllowedAddr(String addr) {
-		return "127.0.0.1".equals(addr);
-	}
-
-	/**
-	 * Checks if the given request is allowed to open files on the server.
-	 * The servlet init param must have it enabled, as well as be from an allowed IP.
-	 */
-	public static boolean isAllowed(ServletContext servletContext, ServletRequest request) {
-		return
-			Boolean.parseBoolean(servletContext.getInitParameter(ENABLE_INIT_PARAM))
-			&& isAllowedAddr(request.getRemoteAddr())
-		;
-	}
 
 	private static String getJdkPath() {
 		try {
@@ -98,7 +78,7 @@ public class OpenFileTag extends SimpleTagSupport {
 		final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 		final HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
 		// Only allow from localhost and when open enabled
-		if(!isAllowed(servletContext, request)) {
+		if(!OpenFile.isAllowed(servletContext, request)) {
 			response.sendError(HttpServletResponse.SC_FORBIDDEN);
 			throw new SkipPageException();
 		} else {

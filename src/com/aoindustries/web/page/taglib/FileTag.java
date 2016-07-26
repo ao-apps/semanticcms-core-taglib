@@ -22,22 +22,13 @@
  */
 package com.aoindustries.web.page.taglib;
 
-import static com.aoindustries.encoding.JavaScriptInXhtmlAttributeEncoder.encodeJavaScriptInXhtmlAttribute;
-import com.aoindustries.encoding.NewEncodingUtils;
-import static com.aoindustries.encoding.TextInXhtmlAttributeEncoder.encodeTextInXhtmlAttribute;
-import static com.aoindustries.encoding.TextInXhtmlEncoder.encodeTextInXhtml;
 import com.aoindustries.io.NullWriter;
-import com.aoindustries.net.UrlUtils;
-import com.aoindustries.servlet.http.LastModifiedServlet;
-import com.aoindustries.util.StringUtility;
 import com.aoindustries.web.page.Node;
 import com.aoindustries.web.page.PageRef;
 import com.aoindustries.web.page.servlet.CaptureLevel;
 import com.aoindustries.web.page.servlet.CurrentNode;
-import com.aoindustries.web.page.servlet.Headers;
-import com.aoindustries.web.page.servlet.LinkImpl;
+import com.aoindustries.web.page.servlet.FileImpl;
 import com.aoindustries.web.page.servlet.PageRefResolver;
-import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -45,7 +36,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspTagException;
-import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.JspFragment;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
@@ -88,12 +78,20 @@ public class FileTag extends SimpleTagSupport {
 
 			if(captureLevel == CaptureLevel.BODY) {
 				// Write a link to the file
-				writeFileLink(
+				JspFragment body = getJspBody();
+				FileImpl.writeFileLink(
 					servletContext,
 					request,
 					(HttpServletResponse)pageContext.getResponse(),
 					pageContext.getOut(),
-					getJspBody(),
+					body==null
+					? null
+					: new FileImpl.FileBody<JspException>() {
+						@Override
+						public void doBody() throws JspException, IOException {
+							body.invoke(null);
+						}
+					},
 					file
 				);
 			} else {
@@ -101,105 +99,6 @@ public class FileTag extends SimpleTagSupport {
 				JspFragment body = getJspBody();
 				if(body != null) body.invoke(NullWriter.getInstance());
 			}
-		}
-	}
-
-	static void writeFileLink(
-		ServletContext servletContext,
-		HttpServletRequest request,
-		HttpServletResponse response,
-		JspWriter out,
-		JspFragment body,
-		PageRef file
-	) throws JspException, IOException {
-		// Determine if local file opening is allowed
-		final boolean isAllowed = OpenFileTag.isAllowed(servletContext, request);
-		final boolean isExporting = Headers.EXPORTING_HEADER_VALUE.equalsIgnoreCase(request.getHeader(Headers.EXPORTING_HEADER));
-
-		// Find the local file, assuming relative to CVSWORK directory
-		File resourceFile = file.getResourceFile(false, true);
-		boolean isDirectory;
-		if(resourceFile == null) {
-			// In other book and not available, assume directory when ends in path separator
-			isDirectory = file.getPath().endsWith("/");
-		} else {
-			// In accessible book, use attributes
-			isDirectory = resourceFile.isDirectory();
-		}
-		out.write("<a");
-		if(body == null) {
-			out.write(" class=\"");
-			out.write(isDirectory ? "directoryLink" : "fileLink");
-			out.write('"');
-		}
-		out.write(" href=\"");
-		if(
-			isAllowed
-			&& resourceFile != null
-			&& !isExporting
-		) {
-			encodeTextInXhtmlAttribute(resourceFile.toURI().toString(), out);
-		} else {
-			final String urlPath;
-			if(
-				resourceFile != null
-				&& !isDirectory
-				// Check for header disabling auto last modified
-				&& !"false".equalsIgnoreCase(request.getHeader(LastModifiedServlet.LAST_MODIFIED_HEADER_NAME))
-			) {
-				// Include last modified on file
-				urlPath = request.getContextPath()
-					+ file.getBookPrefix()
-					+ file.getPath()
-					+ "?" + LastModifiedServlet.LAST_MODIFIED_PARAMETER_NAME
-					+ "=" + LastModifiedServlet.encodeLastModified(resourceFile.lastModified())
-				;
-			} else {
-				urlPath = request.getContextPath()
-					+ file.getBookPrefix()
-					+ file.getPath()
-				;
-			}
-			encodeTextInXhtmlAttribute(
-				response.encodeURL(
-					UrlUtils.encodeUrlPath(
-						urlPath,
-						response.getCharacterEncoding()
-					)
-				),
-				out
-			);
-		}
-		out.write('"');
-		if(
-			isAllowed
-			&& resourceFile != null
-			&& !isExporting
-		) {
-			out.write(" onclick=\"");
-			encodeJavaScriptInXhtmlAttribute("docs.openFile(\"", out);
-			NewEncodingUtils.encodeTextInJavaScriptInXhtmlAttribute(file.getBook().getName(), out);
-			encodeJavaScriptInXhtmlAttribute("\", \"", out);
-			NewEncodingUtils.encodeTextInJavaScriptInXhtmlAttribute(file.getPath(), out);
-			encodeJavaScriptInXhtmlAttribute("\"); return false;", out);
-			out.write('"');
-		}
-		out.write('>');
-		if(body == null) {
-			if(resourceFile == null) {
-				LinkImpl.writeBrokenPathInXhtml(file, out);
-			} else {
-				encodeTextInXhtml(resourceFile.getName(), out);
-				if(isDirectory) encodeTextInXhtml('/', out);
-			}
-		} else {
-			body.invoke(null);
-		}
-		out.write("</a>");
-		if(body == null && resourceFile != null && !isDirectory) {
-			out.write(" (");
-			encodeTextInXhtml(StringUtility.getApproximateSize(resourceFile.length()), out);
-			out.write(')');
 		}
 	}
 }

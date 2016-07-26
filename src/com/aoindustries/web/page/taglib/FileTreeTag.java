@@ -35,6 +35,7 @@ import com.aoindustries.web.page.PageRef;
 import com.aoindustries.web.page.servlet.CaptureLevel;
 import com.aoindustries.web.page.servlet.CapturePage;
 import com.aoindustries.web.page.servlet.CurrentNode;
+import com.aoindustries.web.page.servlet.FileImpl;
 import com.aoindustries.web.page.servlet.PageIndex;
 import java.io.IOException;
 import java.util.HashSet;
@@ -232,7 +233,7 @@ public class FileTreeTag extends SimpleTagSupport {
 			}
 			for(PageRef file : files) {
 				out.write("\n<div>");
-				FileTag.writeFileLink(
+				FileImpl.writeFileLink(
 					servletContext,
 					request,
 					response,
