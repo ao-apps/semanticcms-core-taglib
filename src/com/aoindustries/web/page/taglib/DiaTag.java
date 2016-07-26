@@ -60,11 +60,10 @@ public class DiaTag extends SimpleTagSupport {
     public void doTag() throws IOException, JspTagException {
 		try {
 			final PageContext pageContext = (PageContext)getJspContext();
-			final HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
-			DiaImpl.writeDia(
+			DiaImpl.writeDiaImpl(
 				pageContext.getServletContext(),
 				(HttpServletRequest)pageContext.getRequest(),
-				response,
+				(HttpServletResponse)pageContext.getResponse(),
 				pageContext.getOut(),
 				book,
 				path,

@@ -37,9 +37,9 @@ import com.aoindustries.web.page.servlet.CapturePage;
 import com.aoindustries.web.page.servlet.CurrentNode;
 import com.aoindustries.web.page.servlet.PageIndex;
 import com.aoindustries.web.page.servlet.PageRefResolver;
+import com.aoindustries.web.page.servlet.impl.NavigationTreeImpl;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -150,45 +150,6 @@ public class NavigationTreeTag extends SimpleTagSupport {
 		return hasChildLink;
 	}
 
-	public static <T> List<T> filterChildren(List<T> children, Set<T> pagesToInclude) {
-		int size = children.size();
-		if(size == 0) return children;
-		List<T> filtered = new ArrayList<>(size);
-		for(T child : children) {
-			if(pagesToInclude.contains(child)) {
-				filtered.add(child);
-			}
-		}
-		return filtered;
-	}
-
-	public static List<Node> getChildNodes(
-		ServletContext servletContext,
-		HttpServletRequest request,
-		HttpServletResponse response,
-		boolean includeElements,
-		boolean metaCapture,
-		Node node
-	) throws ServletException, IOException {
-		// Both elements and pages are child nodes
-		List<Element> childElements = includeElements ? node.getChildElements() : null;
-		List<PageRef> childPages = (node instanceof Page) ? ((Page)node).getChildPages() : null;
-		List<Node> childNodes = new ArrayList<>(
-			(childElements==null ? 0 : childElements.size())
-			+ (childPages==null ? 0 : childPages.size())
-		);
-		if(includeElements) {
-			childNodes.addAll(childElements);
-		}
-		if(childPages != null) {
-			for(PageRef childRef : childPages) {
-				Page childPage = CapturePage.capturePage(servletContext, request, response, childRef, includeElements || metaCapture ? CaptureLevel.META : CaptureLevel.PAGE);
-				childNodes.add(childPage);
-			}
-		}
-		return childNodes;
-	}
-
 	/**
 	 * Creates the nested &lt;ul&gt; and &lt;li&gt; tags used by TreeView.
 	 * The first level is expanded.
@@ -234,9 +195,9 @@ public class NavigationTreeTag extends SimpleTagSupport {
 				PageIndex pageIndex = PageIndex.getCurrentPageIndex(request);
 				final JspWriter out = captureLevel == CaptureLevel.BODY ? pageContext.getOut() : null;
 				if(skipRoot) {
-					List<Node> childNodes = getChildNodes(servletContext, request, response, includeElements, false, root);
+					List<Node> childNodes = NavigationTreeImpl.getChildNodes(servletContext, request, response, includeElements, false, root);
 					if(nodesWithChildLinks != null) {
-						childNodes = filterChildren(childNodes, nodesWithChildLinks);
+						childNodes = NavigationTreeImpl.filterChildren(childNodes, nodesWithChildLinks);
 					}
 					if(!childNodes.isEmpty()) {
 						if(out != null) out.write("<ul>\n");
@@ -412,9 +373,9 @@ public class NavigationTreeTag extends SimpleTagSupport {
 			out.write("</a>");
 		}
 		if(maxDepth==0 || level < maxDepth) {
-			List<Node> childNodes = getChildNodes(servletContext, request, response, includeElements, false, node);
+			List<Node> childNodes = NavigationTreeImpl.getChildNodes(servletContext, request, response, includeElements, false, node);
 			if(nodesWithChildLinks!=null) {
-				childNodes = filterChildren(childNodes, nodesWithChildLinks);
+				childNodes = NavigationTreeImpl.filterChildren(childNodes, nodesWithChildLinks);
 			}
 			if(!childNodes.isEmpty()) {
 				if(out != null) {

@@ -56,7 +56,7 @@ public class FileTag extends SimpleTagSupport {
 		try {
 			final PageContext pageContext = (PageContext)getJspContext();
 			JspFragment body = getJspBody();
-			FileImpl.writeFile(
+			FileImpl.writeFileImpl(
 				pageContext.getServletContext(),
 				(HttpServletRequest)pageContext.getRequest(),
 				(HttpServletResponse)pageContext.getResponse(),
@@ -66,7 +66,8 @@ public class FileTag extends SimpleTagSupport {
 				hidden,
 				body==null
 					? null
-					// Lambda version not handling generic exception: discard -> body.invoke(discard ? NullWriter.getInstance() : null)
+					// Lambda version not handling generic exception:
+					// discard -> body.invoke(discard ? NullWriter.getInstance() : null)
 					: new FileImpl.FileImplBody<JspException>() {
 						@Override
 						public void doBody(boolean discard) throws JspException, IOException {
