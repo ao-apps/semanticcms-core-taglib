@@ -89,6 +89,7 @@ public class FileTag extends SimpleTagSupport {
 			if(captureLevel == CaptureLevel.BODY) {
 				// Write a link to the file
 				writeFileLink(
+					servletContext,
 					request,
 					(HttpServletResponse)pageContext.getResponse(),
 					pageContext.getOut(),
@@ -104,6 +105,7 @@ public class FileTag extends SimpleTagSupport {
 	}
 
 	static void writeFileLink(
+		ServletContext servletContext,
 		HttpServletRequest request,
 		HttpServletResponse response,
 		JspWriter out,
@@ -111,7 +113,7 @@ public class FileTag extends SimpleTagSupport {
 		PageRef file
 	) throws JspException, IOException {
 		// Determine if local file opening is allowed
-		final boolean isAllowed = OpenFileTag.isAllowed(request);
+		final boolean isAllowed = OpenFileTag.isAllowed(servletContext, request);
 		final boolean isExporting = Headers.EXPORTING_HEADER_VALUE.equalsIgnoreCase(request.getHeader(Headers.EXPORTING_HEADER));
 
 		// Find the local file, assuming relative to CVSWORK directory

@@ -48,6 +48,8 @@ public class OpenFileTag extends SimpleTagSupport {
 
 	private static final Logger logger = Logger.getLogger(OpenFileTag.class.getName());
 
+	private static final String ENABLE_INIT_PARAM = OpenFileTag.class.getName() + ".enabled";
+
 	/**
 	 * Checks if the given host address is allowed to open files on the server.
 	 */
@@ -57,9 +59,13 @@ public class OpenFileTag extends SimpleTagSupport {
 
 	/**
 	 * Checks if the given request is allowed to open files on the server.
+	 * The servlet init param must have it enabled, as well as be from an allowed IP.
 	 */
-	public static boolean isAllowed(ServletRequest request) {
-		return isAllowedAddr(request.getRemoteAddr());
+	public static boolean isAllowed(ServletContext servletContext, ServletRequest request) {
+		return
+			Boolean.parseBoolean(servletContext.getInitParameter(ENABLE_INIT_PARAM))
+			&& isAllowedAddr(request.getRemoteAddr())
+		;
 	}
 
 	private static String getJdkPath() {
@@ -88,14 +94,14 @@ public class OpenFileTag extends SimpleTagSupport {
 	@Override
     public void doTag() throws JspException, IOException {
 		final PageContext pageContext = (PageContext)getJspContext();
+		final ServletContext servletContext = pageContext.getServletContext();
 		final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 		final HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
-		// Only allow from localhost
-		if(!isAllowed(request)) {
+		// Only allow from localhost and when open enabled
+		if(!isAllowed(servletContext, request)) {
 			response.sendError(HttpServletResponse.SC_FORBIDDEN);
 			throw new SkipPageException();
 		} else {
-			final ServletContext servletContext = pageContext.getServletContext();
 			String[] command;
 			File resourceFile;
 			try {

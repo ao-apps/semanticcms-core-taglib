@@ -233,6 +233,7 @@ public class FileTreeTag extends SimpleTagSupport {
 			for(PageRef file : files) {
 				out.write("\n<div>");
 				FileTag.writeFileLink(
+					servletContext,
 					request,
 					response,
 					out,
