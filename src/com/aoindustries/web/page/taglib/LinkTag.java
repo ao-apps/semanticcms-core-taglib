@@ -170,7 +170,7 @@ public class LinkTag
 			PageRef targetPageRef;
 			if(page == null) {
 				if(this.book != null) throw new JspTagException("page must be provided when book is provided.");
-				if(currentPage == null) throw new JspTagException("<d:link> must be nested in <d:page> when page attribute not set.");
+				if(currentPage == null) throw new JspTagException("<p:link> must be nested in <p:page> when page attribute not set.");
 				targetPageRef = currentPage.getPageRef();
 			} else {
 				try {

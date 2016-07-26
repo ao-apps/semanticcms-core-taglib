@@ -1,0 +1,912 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ao-web-page-taglib - Java API for modeling web page content and relationships in a JSP environment.
+Copyright (C) 2013, 2014, 2015, 2016  AO Industries, Inc.
+    support@aoindustries.com
+    7262 Bull Pen Cir
+    Mobile, AL 36695
+
+This file is part of ao-web-page-taglib.
+
+ao-web-page-taglib is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+ao-web-page-taglib is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<taglib version="2.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
+	<description>Java API for modeling web page content and relationships in a JSP environment.</description>
+	<display-name>ao-web-page-taglib</display-name>
+	<tlib-version>1.0</tlib-version>
+	<short-name>ao-web-page-taglib</short-name>
+	<uri>http://aoindustries.com/ao-web-page-taglib</uri>
+	<tag>
+		<description><![CDATA[
+			<p>
+				The body of this tag represents one page of content.
+				The page title is automatically added as a &lt;h1&gt; before any content.
+				There should be only one page tag per JSP file because the path to
+				the page is determined by the servlet requestPath (or most recent ao:include).
+			</p>
+			<p>
+				When this page is directly accessed, the HTML page is rendered with the
+				page content coming from the body of this tag.  The page is forwarded
+				to /lib/docs/page.inc.jsp to generate the full HTML page.
+			</p>
+		]]></description>
+		<name>page</name>
+		<tag-class>com.aoindustries.web.page.taglib.PageTag</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<description><![CDATA[
+				The title of the page.
+			]]></description>
+			<name>title</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				Includes a table of contents at the top of the page.
+				Possible values are:
+				<ul>
+					<li><code>true</code> - Always show</li>
+					<li><code>false</code> - Always hide</li>
+					<li><code>auto</code> - Automatically selected</li>
+				</li>
+				Defaults to <code>auto</code>.
+			]]></description>
+			<name>toc</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The number of levels to display in the table of contents.
+				Must be between 1 and 5.
+				Defaults to 3.
+			]]></description>
+			<name>tocLevels</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>int</type>
+		</attribute>
+	</tag>
+	<tag>
+		<description><![CDATA[
+			<p>
+				Adds the given page as a subpage of the current page.
+				This tag only represents the relationship, so body content is not allowed.
+			</p>
+			<p>
+				To build the relationship between pages and subpages, the page
+				should include &lt;p:child tags for each child page within
+				the body of the &lt;p:page&gt; tag.  Due to optimizations during
+				page-only capturing, the child pages must be added directly in
+				the page body, not from within other nested tags.
+			</p>
+		]]></description>
+		<name>child</name>
+		<tag-class>com.aoindustries.web.page.taglib.ChildTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description><![CDATA[
+				The book containing the child page.
+				Defaults to the book of the current JSP file.
+			]]></description>
+			<name>book</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The page-relative path to the child page.
+			]]></description>
+			<name>page</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+	<tag>
+		<description><![CDATA[
+			<p>
+				Creates &lt;h2&gt;, &lt;h3&gt;, ..., &lt;h6&gt; tags based on nesting levels.
+				The page title is always added as the &lt;h1&gt;
+			</p>
+			<p>
+				Must be nested inside a &lt;p:page&gt; page to provide page structure
+				information for table of contents generation.
+			</p>
+		]]></description>
+		<name>h</name>
+		<tag-class>com.aoindustries.web.page.taglib.HeadingTag</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<description><![CDATA[
+				The id used in URL anchors.
+				If not provided, is generated from the label.
+				Must be unique per page.
+				Ids generated from labels will be unique, but may change as page structure changes.
+			]]></description>
+			<name>id</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The label displayed.
+				This value is also used in table of contents entries.
+			]]></description>
+			<name>label</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+	<tag>
+		<description><![CDATA[
+			<p>
+				Writes a link to a page and optionally an element.
+				If element not provided, then page is required.
+				If page is not provided, links to element within this page.
+			</p>
+			<p>
+				Any attribute that has no namespace and begins with "param." is added to the href as a URL parameter.
+				The parameter name is the part of the attribute name following "param.".
+			</p>
+			<p>
+				When a parameter value is null it is not added.
+				If the value is an Iterable, Iterator, Enumeration, or array, then each non-null element is coerced to
+				string as a separate parameter in iteration order.  Otherwise, the value itself is
+				coerced to string for the parameter value.
+			</p>
+			<p>
+				Nested &lt;p:param&gt; or &lt;p:params&gt; tags will add parameters after any provided as attributes.
+			</p>
+			<p>
+				If there is no body, will write the page title or element label.
+			</p>
+		]]></description>
+		<name>link</name>
+		<tag-class>com.aoindustries.web.page.taglib.LinkTag</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<description><![CDATA[
+				<p>
+					The CSS class for the link.
+					Defaults to a target-specific value, if any defined for the target element.
+				</p>
+				<p>
+					To avoid the default, pass an empty class: &lt;p:link class="" ... /&gt;
+				</p>
+			]]></description>
+			<name>class</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The book containing the page.
+				Defaults to the book of the current JSP file.
+			]]></description>
+			<name>book</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The page-relative path to the page.
+				If not provided, must be nested in a &lt;p:page&gt; tag and assumes the current page.
+			]]></description>
+			<name>page</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The page-unique id of the element to link to.
+			]]></description>
+			<name>element</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The view mode to use in the link target.  Although view is site defined, some common
+				values might include:
+				<ul>
+					<li>"" (the default and always supported) - Links to the page content</li>
+					<li>what-links-here</li>
+					<li>tree</li>
+					<li>all</li>
+					<li>files</li>
+				</ul>
+			]]></description>
+			<name>view</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<dynamic-attributes>true</dynamic-attributes>
+	</tag>
+	<tag>
+		<description>Adds a parameter to its ParamsAttribute parent tag.</description>
+		<name>param</name>
+		<tag-class>com.aoindustries.taglib.ParamTag</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<description><![CDATA[
+				The name of parameter tag.
+			]]></description>
+		  <name>name</name>
+		  <required>true</required>
+		  <rtexprvalue>true</rtexprvalue>
+		  <type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The value of the parameter.
+				If not provided, the output of the body is used with whitespace trimmed.
+			]]></description>
+		  <name>value</name>
+		  <required>false</required>
+		  <rtexprvalue>true</rtexprvalue>
+		  <type>java.lang.Object</type>
+		</attribute>
+		<example />
+	</tag>
+	<tag>
+		<description><![CDATA[
+			Adds multiple parameters to its ParamsAttribute parent tag.
+		]]></description>
+		<name>params</name>
+		<tag-class>com.aoindustries.taglib.ParamsTag</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<description><![CDATA[
+				<p>
+					The name of parameter to add.
+				</p>
+				<p>
+					When provided, the values may not contain a Map or HttpParameters.
+					When provided, the exclude attribute may not be provided.
+				</p>
+			]]></description>
+		  <name>name</name>
+		  <required>false</required>
+		  <rtexprvalue>true</rtexprvalue>
+		  <type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				<p>
+					Optionally excludes all elements of a Map or HttpParameters that
+					match any of the comma-separated patterns.
+					May not be used in conjunction with the name attribute.
+				</p>
+				<p>
+					Each pattern in the comma-separated list may in the following format:
+					<ul>
+					   <li>exact_name  matches the name exactly</li>
+					   <li>*           matches all (clears all parameters)</li>
+					   <li>*suffix     matches the name with "endsWith"</li>
+					   <li>prefix*     matches the name with "beginsWith"</li>
+					</ul>
+				</p>
+				<p>
+					Defaults to none excluded.
+				</p>
+			]]></description>
+			<name>exclude</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				<p>
+					The values of the parameters.
+				</p>
+				<p>
+					When name is provided, supports <code>java.lang.Iterable</code>,
+					<code>java.util.Iterator</code>, <code>java.util.Enumeration</code>, or array values.
+				</p>
+				<p>
+					When name is not provided, requires <code>java.util.Map</code> or <code>com.aoindustries.net.HttpParameters</code>, where
+					the parameter name is the map key coerced to string and the value
+					(or set of values) is the map value.  Each of the entry values may
+					be <code>java.lang.Iterable</code>, <code>java.util.Iterator</code>,
+					<code>java.util.Enumeration</code>, array, or single value.
+				</p>
+				<p>
+					When obtaining values from a <code>java.util.Map</code> or <code>com.aoindustries.net.HttpParameters</code>,
+					parameters may be excluded with the "exclude" attribute.
+				</p>
+				<p>
+					Parameters are never added with <code>null</code> values.
+				</p>
+			]]></description>
+		  <name>values</name>
+		  <required>true</required>
+		  <rtexprvalue>true</rtexprvalue>
+		  <type>java.lang.Object</type>
+		</attribute>
+		<example />
+	</tag>
+	<tag>
+		<description><![CDATA[
+			<p>
+				Writes a link to a file.
+			</p>
+			<p>
+				If OpenFileTag is snabled, the connection is from localhost, and not exporting,
+				creates a file:/// URL to the file so that it may be opened locally by the browser.
+				Will open from the server-side when JavaScript enabled.
+			</p>
+			<p>
+				If there is no body, will write the filename followed by the file size.
+			</p>
+			<p>
+				The onclick Ajax file opening is disabled when the documents are exporting,
+				as set by the "X-com-aoindustries-web-page-exporting: true" header.
+			</p>
+		]]></description>
+		<name>file</name>
+		<tag-class>com.aoindustries.web.page.taglib.FileTag</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<description><![CDATA[
+				The book containing the file.
+				Defaults to the book of the current JSP file.
+			]]></description>
+			<name>book</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The page-relative path to the file.
+			]]></description>
+			<name>path</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				When "true", the file is displayed on the page but not added to the list of files on the page.
+				Defaults to "false".
+			]]></description>
+			<name>hidden</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>boolean</type>
+		</attribute>
+	</tag>
+	<tag>
+		<description><![CDATA[
+			Opens a file from the servlet container.
+			This opens the file from the server-side so that the proper application
+			may be launched with the local file, allowing direct editing and saving.
+			This feature must be explicitely enabled in the OpenFileTag context init parameter.
+			This may only be called from localhost.
+		]]></description>
+		<name>openFile</name>
+		<tag-class>com.aoindustries.web.page.taglib.OpenFileTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description><![CDATA[
+				The book containing the file.
+				Defaults to the book of the current JSP file.
+			]]></description>
+			<name>book</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The context-relative path to the file.
+			]]></description>
+			<name>path</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+	<tag>
+		<description><![CDATA[
+			<p>
+				Gets the thumbnail of a Dia diagram as an &lt;img&gt; tag.
+			</p>
+		]]></description>
+		<name>dia</name>
+		<tag-class>com.aoindustries.web.page.taglib.DiaTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description><![CDATA[
+				The book containing the file.
+				Defaults to the book of the current JSP file.
+			]]></description>
+			<name>book</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The page-relative path to the file.
+			]]></description>
+			<name>path</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The width of the diagram thumbnail in pixels.
+				When neither width nor height are provided, defaults to 200.
+			]]></description>
+			<name>width</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>int</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The height of the diagram thumbnail in pixels.
+				When neither width nor height are provided, defaults to a value in proportion to the width.
+			]]></description>
+			<name>height</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>int</type>
+		</attribute>
+	</tag>
+	<tag>
+		<description><![CDATA[
+			Writes the tree data for use by TreeView as &lt;ul&gt; and &lt;li&gt; tags.
+		]]></description>
+		<name>navigationTree</name>
+		<tag-class>com.aoindustries.web.page.taglib.NavigationTreeTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description><![CDATA[
+				The root page of the tree.
+			]]></description>
+			<name>root</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>com.aoindustries.web.page.Page</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				May optionally skip the root page, displaying it's children only.
+				Defaults to "false".
+			]]></description>
+			<name>skipRoot</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>boolean</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				May optionally add yuiConfig data.
+				Defaults to "false".
+			]]></description>
+			<name>yuiConfig</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>boolean</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				May optionally include tree nodes for elements within pages.
+				Defaults to "false".
+			]]></description>
+			<name>includeElements</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>boolean</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				An optional target for links.
+			]]></description>
+			<name>target</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The book for thisPage.
+				Defaults to the book of the current JSP file.
+			]]></description>
+			<name>thisBook</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				May optionally mark a specific page (by context-relative path).
+				All page matches are marked with class "tree-this-page".
+				Only the first match is marked with id "tree-this-page".
+			]]></description>
+			<name>thisPage</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The book for linksToPage.
+				Defaults to the book of the current JSP file.
+			]]></description>
+			<name>linksToBook</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				May optionally filter for pages that link to the given page (by context-relative path).
+				The parent pages of any page that has a link will also be included.
+				The pages that actually have a link will be marked with class "links-to-page"
+			]]></description>
+			<name>linksToPage</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				May optionally limit the depth of the navigation tree.
+				A skipped root does not count as one for the depth.
+				0, the default, means unlimited depth.
+			]]></description>
+			<name>maxDepth</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>int</type>
+		</attribute>
+	</tag>
+	<tag>
+		<description><![CDATA[
+			Writes a file tree as &lt;ul&gt; and &lt;li&gt; tags.
+			Filters for only pages that have at least one file.
+			The parent pages of any page that has a file will also be included.
+		]]></description>
+		<name>fileTree</name>
+		<tag-class>com.aoindustries.web.page.taglib.FileTreeTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description><![CDATA[
+				The root page of the tree.
+			]]></description>
+			<name>root</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>com.aoindustries.web.page.Page</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				May optionally include tree nodes for elements within pages.
+				Defaults to "false".
+			]]></description>
+			<name>includeElements</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>boolean</type>
+		</attribute>
+	</tag>
+	<tag>
+		<description><![CDATA[
+			Writes the body of the given node, recursively replacing any nested
+			element markers.
+		]]></description>
+		<name>writeNodeBody</name>
+		<tag-class>com.aoindustries.web.page.taglib.WriteNodeBodyTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description><![CDATA[
+				The node to write.
+			]]></description>
+			<name>node</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>com.aoindustries.web.page.Node</type>
+		</attribute>
+	</tag>
+	<function>
+		<description><![CDATA[
+			<p>
+				Captures a &lt;p:page&gt; in a provided book.
+			</p>
+			<p>
+				Parameter "book": The name of the book containing the page.
+			</p>
+			<p>
+				Parameter "page": The book-relative path to the JSP file to include for the page to capture,
+				must begin with a slash (/).
+			</p>
+			<p>
+				Parameter "level": Controls the level of detail to capture.  May be one of:
+				<ol>
+					<li>"page" - Fastest: captures page meta data only (includes child pages).</li>
+					<li>"meta" - Captures page and content meta data, but no HTML content.</li>
+					<li>"body" - Captures page and content meta data as well as all HTML body content.</li>
+				</ol>
+			</p>
+			<p>
+				Level may need to be set to "page" when two pages capture each other (either directly
+				or indirectly).  This may occur when these two pages capture each other for meta data,
+				such as automatic page title added to links.
+			</p>
+		]]></description>
+		<name>capturePageInBook</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>com.aoindustries.web.page.Page capturePageInBook(java.lang.String,java.lang.String,java.lang.String)</function-signature>
+		<example>${p:capturePageInBook(book, page, level)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			<p>
+				Captures a &lt;p:page&gt;.
+			</p>
+			<p>
+				Parameter "page": The page-relative path to the JSP file to include for the page to capture.
+			</p>
+			<p>
+				Parameter "level": Controls the level of detail to capture.  May be one of:
+				<ol>
+					<li>"page" - Fastest: captures page meta data only (includes child pages).</li>
+					<li>"meta" - Captures page and content meta data, but no HTML content.</li>
+					<li>"body" - Captures page and content meta data as well as all HTML body content.</li>
+				</ol>
+			</p>
+			<p>
+				Level may need to be set to "page" when two pages capture each other (either directly
+				or indirectly).  This may occur when these two pages capture each other for meta data,
+				such as automatic page title added to links.
+			</p>
+		]]></description>
+		<name>capturePage</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>com.aoindustries.web.page.Page capturePage(java.lang.String,java.lang.String)</function-signature>
+		<example>${p:capturePage(page, level)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Captures the content root &lt;p:page&gt; with unlimited depth and the given capture level.
+		]]></description>
+		<name>captureContentRoot</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>com.aoindustries.web.page.Page captureContentRoot(java.lang.String)</function-signature>
+		<example>${p:captureContentRoot(level)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			<p>
+				Gets the current capture level.  Will be one of:
+				<ol>
+					<li>null - No capture in progress</li>
+					<li>"page" - Fastest: capturing page meta data only.</li>
+					<li>"meta" - Capturing page and content meta data, but no HTML content.</li>
+					<li>"body" - Capturing page and content meta data as well as all HTML body content.</li>
+				</ol>
+			</p>
+		]]></description>
+		<name>getCaptureLevel</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>java.lang.String getCaptureLevel()</function-signature>
+		<example>${p:getCaptureLevel()}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Get the page index for the given page reference.
+		]]></description>
+		<name>getPageIndex</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>com.aoindustries.docs.taglib.PageIndex getPageIndex(com.aoindustries.web.page.PageRef)</function-signature>
+		<example>${p:getPageIndex(pageRef)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			<p>
+				Flattens a page directed acyclic graph (DAG).  The page DAG starts as a single page with any
+				number of children.  Each of the child pages may, in turn, have children.
+				The result of this transformation is a list of pages in depth-first traversal
+				order.
+			</p>
+			<p>
+				A page may actually be linked into multiple places in the DAG, so strictly
+				speaking this is a Directed Acyclic Graph (DAG).
+			</p>
+			<p>
+				Only the first occurance of each page will be in the resulting list.
+			</p>
+			<p>
+				Parameter "level": Controls the level of detail to capture.  May be one of:
+				<ol>
+					<li>"page" - Fastest: captures page meta data only (includes child pages).</li>
+					<li>"meta" - Captures page and content meta data, but no HTML content.</li>
+					<li>"body" - Captures page and content meta data as well as all HTML body content.</li>
+				</ol>
+			</p>
+		]]></description>
+		<name>convertPageDagToList</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>java.util.List convertPageDagToList(com.aoindustries.web.page.Page,java.lang.String)</function-signature>
+		<example>${p:convertPageDagToList(rootPage, level)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Gets the local file for a book and book-relative path.
+		]]></description>
+		<name>getFileInBook</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>java.io.File getFileInBook(java.lang.String,java.lang.String,boolean)</function-signature>
+		<example>${p:getFileInBook(book, path, requireFile)</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Gets the local file for a page-relative path.
+		]]></description>
+		<name>getFile</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>java.io.File getFile(java.lang.String,boolean)</function-signature>
+		<example>${p:getFile(path, requireFile)</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Gets the local file for a book and book-relative path while making sure it is
+			set executable.
+		]]></description>
+		<name>getExeFileInBook</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>java.io.File getExeFileInBook(java.lang.String,java.lang.String)</function-signature>
+		<example>${p:getExeFileInBook(book, path)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Gets the local file for a page-relative path while making sure it is
+			set executable.
+		]]></description>
+		<name>getExeFile</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>java.io.File getExeFile(java.lang.String)</function-signature>
+		<example>${p:getExeFile(path)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Encodes value for use in a URL parameter in the current response encoding.
+		]]></description>
+		<name>encodeUrlParam</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>java.lang.String encodeUrlParam(java.lang.String)</function-signature>
+		<example>${p:encodeUrlParam(value)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Gets an id for use in the current page.  If the page is part of a page index,
+			as in a combined view, will be "page#-id".  Otherwise, the id is unchanged.
+		]]></description>
+		<name>getRefId</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>java.lang.String getRefId(java.lang.String)</function-signature>
+		<example>${p:getRefId(id)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Gets an id for use in referencing the given page.  If the page is part of a page index,
+			as in a combined view, will be "page#-id".  Otherwise, the id is unchanged.
+		]]></description>
+		<name>getRefIdInPage</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>java.lang.String getRefIdInPage(com.aoindustries.web.page.Page,java.lang.String)</function-signature>
+		<example>${p:getRefIdInPage(page, id)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Calls Math.ceil, returns null when argument is null.
+		]]></description>
+		<name>ceil</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>java.lang.Double ceil(java.lang.Double)</function-signature>
+		<example>${p:ceil(a)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Calls Math.floor, returns null when argument is null.
+		]]></description>
+		<name>floor</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>java.lang.Double floor(java.lang.Double)</function-signature>
+		<example>${p:floor(a)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Parses the provided request query string, maintaining the original parameter order.
+			Uses the request encoding or ISO-8859-1 if none set.
+		]]></description>
+		<name>parseQueryString</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>java.util.Map parseQueryString(java.lang.String)</function-signature>
+		<example>${p:parseQueryString(pageContext.request.queryString)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Repeats a string the given number of times.
+		]]></description>
+		<name>repeat</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>java.lang.String repeat(java.lang.String,int)</function-signature>
+		<example>${p:repeat(value, count)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Gets the book for the provided page path.
+		]]></description>
+		<name>getBook</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>com.aoindustries.web.page.Book getBook(java.lang.String)</function-signature>
+		<example>${p:getBook(pagePath)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Encodes arbitrary data into a UTF-8 encoded, then hex-encoded string.
+		]]></description>
+		<name>encodeHexData</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>java.lang.String encodeHexData(java.lang.String)</function-signature>
+		<example>${p:encodeHexData(data)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Checks if the given page, or optionally any of its child pages, has at least
+			one of the element type given.
+		]]></description>
+		<name>hasElement</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>boolean hasElement(com.aoindustries.web.page.Page,java.lang.String,boolean)</function-signature>
+		<example>${p:hasElement(page, classname, recursive)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Checks if the given page, or optionally any of its child pages, has at least
+			one File.
+		]]></description>
+		<name>hasFile</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>boolean hasFile(com.aoindustries.web.page.Page,boolean)</function-signature>
+		<example>${p:hasFile(page, recursive)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Gets all the headings in the given page.
+		]]></description>
+		<name>getHeadings</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>java.util.List getHeadings(com.aoindustries.web.page.Page)</function-signature>
+		<example>${p:getHeadings(page)}</example>
+	</function>
+</taglib>
