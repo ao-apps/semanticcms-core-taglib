@@ -846,6 +846,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<function>
 		<description><![CDATA[
 			Parses the provided request query string, maintaining the original parameter order.
+			Only uses the first of each value per parameter name, multiple values not supported.
 			Uses the request encoding or ISO-8859-1 if none set.
 		]]></description>
 		<name>parseQueryString</name>
