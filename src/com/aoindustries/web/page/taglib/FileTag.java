@@ -23,14 +23,9 @@
 package com.aoindustries.web.page.taglib;
 
 import com.aoindustries.io.NullWriter;
-import com.aoindustries.web.page.Node;
-import com.aoindustries.web.page.PageRef;
-import com.aoindustries.web.page.servlet.CaptureLevel;
-import com.aoindustries.web.page.servlet.CurrentNode;
+import com.aoindustries.web.page.servlet.File;
 import com.aoindustries.web.page.servlet.FileImpl;
-import com.aoindustries.web.page.servlet.PageRefResolver;
 import java.io.IOException;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -59,46 +54,28 @@ public class FileTag extends SimpleTagSupport {
 
 	@Override
     public void doTag() throws JspException, IOException {
-		final PageContext pageContext = (PageContext)getJspContext();
-		final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
-
-		// Get the current capture state
-		final CaptureLevel captureLevel = CaptureLevel.getCaptureLevel(request);
-		if(captureLevel.compareTo(CaptureLevel.META) >= 0) {
-			final ServletContext servletContext = pageContext.getServletContext();
-			PageRef file;
-			try {
-				file = PageRefResolver.getPageRef(servletContext, request, this.book, this.path);
-			} catch(ServletException e) {
-				throw new JspTagException(e);
-			}
-			// If we have a parent node, associate this file with the node
-			final Node currentNode = CurrentNode.getCurrentNode(request);
-			if(currentNode != null && !hidden) currentNode.addFile(file);
-
-			if(captureLevel == CaptureLevel.BODY) {
-				// Write a link to the file
-				JspFragment body = getJspBody();
-				FileImpl.writeFileLink(
-					servletContext,
-					request,
-					(HttpServletResponse)pageContext.getResponse(),
-					pageContext.getOut(),
-					body==null
+		try {
+			final PageContext pageContext = (PageContext)getJspContext();
+			JspFragment body = getJspBody();
+			File.writeFile(
+				pageContext.getServletContext(),
+				(HttpServletRequest)pageContext.getRequest(),
+				(HttpServletResponse)pageContext.getResponse(),
+				pageContext.getOut(),
+				book,
+				path,
+				hidden,
+				body==null
 					? null
 					: new FileImpl.FileBody<JspException>() {
 						@Override
-						public void doBody() throws JspException, IOException {
-							body.invoke(null);
+						public void doBody(boolean allowNullWriter) throws JspException, IOException {
+							body.invoke(allowNullWriter ? NullWriter.getInstance() : null);
 						}
-					},
-					file
-				);
-			} else {
-				// Invoke body for any meta data, but discard any output
-				JspFragment body = getJspBody();
-				if(body != null) body.invoke(NullWriter.getInstance());
-			}
+					}
+			);
+		} catch(ServletException e) {
+			throw new JspTagException(e);
 		}
 	}
 }
