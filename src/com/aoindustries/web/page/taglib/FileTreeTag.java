@@ -187,7 +187,7 @@ public class FileTreeTag extends SimpleTagSupport {
 		if(out != null) {
 			out.write("<li");
 			String listItemCssClass = node.getListItemCssClass();
-			if(listItemCssClass == null) listItemCssClass = "list-item-none";
+			if(listItemCssClass == null) listItemCssClass = "ao-web-page-list-item-none";
 			out.write(" class=\"");
 			encodeTextInXhtmlAttribute(listItemCssClass, out);
 			out.write("\"><a href=\"");

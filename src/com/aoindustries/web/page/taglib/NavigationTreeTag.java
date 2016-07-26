@@ -346,7 +346,7 @@ public class NavigationTreeTag extends SimpleTagSupport {
 				out.write("\"}'");
 			}
 			String listItemCssClass = node.getListItemCssClass();
-			if(listItemCssClass == null) listItemCssClass = "list-item-none";
+			if(listItemCssClass == null) listItemCssClass = "ao-web-page-list-item-none";
 			out.write(" class=\"");
 			encodeTextInXhtmlAttribute(listItemCssClass, out);
 			if(level==1) out.write(" expanded");
