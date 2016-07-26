@@ -548,8 +548,8 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				May optionally mark a specific page (by context-relative path).
-				All page matches are marked with class "tree-this-page".
-				Only the first match is marked with id "tree-this-page".
+				All page matches are marked with class "ao-web-page-tree-this-page".
+				Only the first match is marked with id "ao-web-page-tree-this-page".
 			]]></description>
 			<name>thisPage</name>
 			<required>false</required>
@@ -570,7 +570,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<description><![CDATA[
 				May optionally filter for pages that link to the given page (by context-relative path).
 				The parent pages of any page that has a link will also be included.
-				The pages that actually have a link will be marked with class "links-to-page"
+				The pages that actually have a link will be marked with class "ao-web-page-links-to-page"
 			]]></description>
 			<name>linksToPage</name>
 			<required>false</required>
@@ -877,7 +877,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			Encodes arbitrary data into a UTF-8 encoded, then hex-encoded string.
 		]]></description>
 		<name>encodeHexData</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.aoindustries.web.page.servlet.impl.NavigationTreeImpl</function-class>
 		<function-signature>java.lang.String encodeHexData(java.lang.String)</function-signature>
 		<example>${p:encodeHexData(data)}</example>
 	</function>

@@ -44,7 +44,6 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -216,11 +215,6 @@ final public class Functions {
 		Book book = BooksContextListener.getBook(getServletContext(), pagePath);
 		if(book==null) throw new IllegalArgumentException("Book not found: " + pagePath);
 		return book;
-	}
-
-	public static String encodeHexData(String data) {
-		// Note: This is always UTF-8 encoded and does not depend on response encoding
-		return StringUtility.convertToHex(data.getBytes(StandardCharsets.UTF_8));
 	}
 
 	public static boolean hasElement(Page page, String classname, boolean recursive) throws ServletException, IOException, ClassNotFoundException {
