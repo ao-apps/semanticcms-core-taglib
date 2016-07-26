@@ -23,8 +23,7 @@
 package com.aoindustries.web.page.taglib;
 
 import com.aoindustries.io.NullWriter;
-import com.aoindustries.web.page.servlet.File;
-import com.aoindustries.web.page.servlet.FileImpl;
+import com.aoindustries.web.page.servlet.impl.FileImpl;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -57,7 +56,7 @@ public class FileTag extends SimpleTagSupport {
 		try {
 			final PageContext pageContext = (PageContext)getJspContext();
 			JspFragment body = getJspBody();
-			File.writeFile(
+			FileImpl.writeFile(
 				pageContext.getServletContext(),
 				(HttpServletRequest)pageContext.getRequest(),
 				(HttpServletResponse)pageContext.getResponse(),
@@ -67,10 +66,11 @@ public class FileTag extends SimpleTagSupport {
 				hidden,
 				body==null
 					? null
-					: new FileImpl.FileBody<JspException>() {
+					// Lambda version not handling generic exception: discard -> body.invoke(discard ? NullWriter.getInstance() : null)
+					: new FileImpl.FileImplBody<JspException>() {
 						@Override
-						public void doBody(boolean allowNullWriter) throws JspException, IOException {
-							body.invoke(allowNullWriter ? NullWriter.getInstance() : null);
+						public void doBody(boolean discard) throws JspException, IOException {
+							body.invoke(discard ? NullWriter.getInstance() : null);
 						}
 					}
 			);

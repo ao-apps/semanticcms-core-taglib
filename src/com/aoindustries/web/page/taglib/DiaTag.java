@@ -22,7 +22,7 @@
  */
 package com.aoindustries.web.page.taglib;
 
-import com.aoindustries.web.page.servlet.Dia;
+import com.aoindustries.web.page.servlet.impl.DiaImpl;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -61,7 +61,7 @@ public class DiaTag extends SimpleTagSupport {
 		try {
 			final PageContext pageContext = (PageContext)getJspContext();
 			final HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
-			Dia.writeDia(
+			DiaImpl.writeDia(
 				pageContext.getServletContext(),
 				(HttpServletRequest)pageContext.getRequest(),
 				response,
