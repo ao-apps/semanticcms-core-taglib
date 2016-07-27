@@ -27,7 +27,7 @@
 	<ao:script src="/ao-web-page-servlet/scripts.js" />
 	<c:if test="${!header['X-com-aoindustries-web-page-exporting']}">
 		<ao:script>
-			ao_web_page_servlet.openFileUrl = <ao:out value="${ao:encodeURL(pageContext.request.contextPath.concat('/ao-web-page-taglib/ajax/open-file.jsp'))}" />;
+			ao_web_page_servlet.openFileUrl = <ao:out value="${ao:encodeURL(pageContext.request.contextPath.concat('/ao-web-page-servlet/ajax/open-file'))}" />;
 		</ao:script>
 	</c:if>
 </c:if>
