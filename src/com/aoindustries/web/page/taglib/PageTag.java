@@ -34,7 +34,6 @@ import com.aoindustries.web.page.servlet.CapturePage;
 import com.aoindustries.web.page.servlet.CurrentNode;
 import com.aoindustries.web.page.servlet.CurrentPage;
 import com.aoindustries.web.page.servlet.PageRefResolver;
-import com.aoindustries.web.page.servlet.PageServlet;
 import java.io.IOException;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -131,19 +130,19 @@ public class PageTag extends SimpleTagSupport {
 			} else {
 				// Display page directly
 				// Forward to PAGE_TEMPLATE_JSP_PATH, passing PAGE_REQUEST_ATTRIBUTE request attribute
-				Object oldValue = request.getAttribute(PageServlet.PAGE_REQUEST_ATTRIBUTE);
+				Object oldValue = request.getAttribute(com.aoindustries.web.page.servlet.Page.PAGE_REQUEST_ATTRIBUTE);
 				try {
 					// Pass PAGE_REQUEST_ATTRIBUTE attribute
-					request.setAttribute(PageServlet.PAGE_REQUEST_ATTRIBUTE, page);
+					request.setAttribute(com.aoindustries.web.page.servlet.Page.PAGE_REQUEST_ATTRIBUTE, page);
 					Dispatcher.forward(
 						servletContext,
-						PageServlet.PAGE_TEMPLATE_JSP_PATH,
+						com.aoindustries.web.page.servlet.Page.PAGE_TEMPLATE_JSP_PATH,
 						request,
 						(HttpServletResponse)pageContext.getResponse()
 					);
 				} finally {
 					// Restore old value of PAGE_REQUEST_ATTRIBUTE attribute
-					request.setAttribute(PageServlet.PAGE_REQUEST_ATTRIBUTE, oldValue);
+					request.setAttribute(com.aoindustries.web.page.servlet.Page.PAGE_REQUEST_ATTRIBUTE, oldValue);
 				}
 				throw new SkipPageException();
 			}
