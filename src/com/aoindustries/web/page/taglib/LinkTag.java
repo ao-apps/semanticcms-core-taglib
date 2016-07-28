@@ -23,12 +23,15 @@
 package com.aoindustries.web.page.taglib;
 
 import com.aoindustries.io.NullWriter;
+import com.aoindustries.io.buffer.AutoTempFileWriter;
 import com.aoindustries.io.buffer.BufferResult;
+import com.aoindustries.io.buffer.BufferWriter;
 import com.aoindustries.io.buffer.SegmentedWriter;
 import com.aoindustries.net.EmptyParameters;
 import com.aoindustries.net.HttpParameters;
 import com.aoindustries.net.HttpParametersMap;
 import com.aoindustries.net.MutableHttpParameters;
+import com.aoindustries.servlet.filter.TempFileContext;
 import com.aoindustries.servlet.jsp.LocalizedJspTagException;
 import static com.aoindustries.taglib.ApplicationResources.accessor;
 import com.aoindustries.taglib.ParamUtils;
@@ -128,8 +131,10 @@ public class LinkTag
 				if(captureLevel == CaptureLevel.BODY) {
 					JspFragment body = getJspBody();
 					if(body != null) {
-						SegmentedWriter captureOut = new SegmentedWriter();
+						BufferWriter captureOut = new SegmentedWriter();
 						try {
+							// Enable temp files if temp file context active
+							captureOut = TempFileContext.wrapTempFileList(captureOut, request, AutoTempFileWriter::new);
 							body.invoke(captureOut);
 						} finally {
 							captureOut.close();

@@ -23,8 +23,10 @@
 package com.aoindustries.web.page.taglib;
 
 import com.aoindustries.io.NullWriter;
+import com.aoindustries.io.buffer.AutoTempFileWriter;
 import com.aoindustries.io.buffer.BufferWriter;
 import com.aoindustries.io.buffer.SegmentedWriter;
+import com.aoindustries.servlet.filter.TempFileContext;
 import com.aoindustries.web.page.Element;
 import com.aoindustries.web.page.ElementWriter;
 import com.aoindustries.web.page.Node;
@@ -114,9 +116,11 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 		if(body != null) {
 			if(captureLevel == CaptureLevel.BODY) {
 				// Invoke tag body, capturing output
-				// TODO: Auto temp file here and other places
 				BufferWriter capturedOut = new SegmentedWriter();
 				try {
+					final PageContext pageContext = (PageContext)getJspContext();
+					// Enable temp files if temp file context active
+					capturedOut = TempFileContext.wrapTempFileList(capturedOut, pageContext.getRequest(), AutoTempFileWriter::new);
 					body.invoke(capturedOut);
 				} finally {
 					capturedOut.close();

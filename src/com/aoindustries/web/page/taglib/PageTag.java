@@ -23,10 +23,12 @@
 package com.aoindustries.web.page.taglib;
 
 import com.aoindustries.io.NullWriter;
+import com.aoindustries.io.buffer.AutoTempFileWriter;
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
 import com.aoindustries.io.buffer.EmptyResult;
 import com.aoindustries.io.buffer.SegmentedWriter;
+import com.aoindustries.servlet.filter.TempFileContext;
 import com.aoindustries.web.page.Page;
 import com.aoindustries.web.page.servlet.impl.PageImpl;
 import java.io.IOException;
@@ -87,6 +89,8 @@ public class PageTag extends SimpleTagSupport {
 							} else {
 								BufferWriter capturedOut = new SegmentedWriter();
 								try {
+									// Enable temp files if temp file context active
+									capturedOut = TempFileContext.wrapTempFileList(capturedOut, request, AutoTempFileWriter::new);
 									body.invoke(capturedOut);
 								} finally {
 									capturedOut.close();
