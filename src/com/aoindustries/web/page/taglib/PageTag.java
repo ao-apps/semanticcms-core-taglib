@@ -23,17 +23,12 @@
 package com.aoindustries.web.page.taglib;
 
 import com.aoindustries.io.NullWriter;
+import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
+import com.aoindustries.io.buffer.EmptyResult;
 import com.aoindustries.io.buffer.SegmentedWriter;
-import com.aoindustries.servlet.http.Dispatcher;
-import com.aoindustries.web.page.Node;
 import com.aoindustries.web.page.Page;
-import com.aoindustries.web.page.PageRef;
-import com.aoindustries.web.page.servlet.CaptureLevel;
-import com.aoindustries.web.page.servlet.CapturePage;
-import com.aoindustries.web.page.servlet.CurrentNode;
-import com.aoindustries.web.page.servlet.CurrentPage;
-import com.aoindustries.web.page.servlet.PageRefResolver;
+import com.aoindustries.web.page.servlet.impl.PageImpl;
 import java.io.IOException;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -48,104 +43,59 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 public class PageTag extends SimpleTagSupport {
 
-	private final Page page = new Page();
-
+	private String title;
 	public void setTitle(String title) {
-		page.setTitle(title);
+		this.title = title;
     }
 
+	private Boolean toc;
 	public void setToc(String toc) {
-		page.setToc(
-			"auto".equalsIgnoreCase(toc)
-			? null
-			: Boolean.valueOf(toc)
-		);
+		this.toc = "auto".equalsIgnoreCase(toc) ? null : Boolean.valueOf(toc);
 	}
 
+	private int tocLevels = Page.DEFAULT_TOC_LEVELS;
 	public void setTocLevels(int tocLevels) {
-		page.setTocLevels(tocLevels);
+		this.tocLevels = tocLevels;
 	}
 
 	@Override
     public void doTag() throws JspException, IOException {
 		try {
 			final PageContext pageContext = (PageContext)getJspContext();
-			final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 			final ServletContext servletContext = pageContext.getServletContext();
+			final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
+			final HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
 
-			// Find the path to this page
-			PageRef pageRef = PageRefResolver.getCurrentPageRef(servletContext, request);
-			page.setPageRef(pageRef);
-			page.setSrc(pageRef);
-
-			{
-				// Pages may not be nested within any kind of node
-				Node parentNode = CurrentNode.getCurrentNode(request);
-				if(parentNode != null) throw new JspTagException("Pages may not be nested within other nodes: " + page.getPageRef() + " not allowed inside of " + parentNode);
-				assert CurrentPage.getCurrentPage(request) == null : "When no parent node, cannot have a parent page";
-			}
-
-			// Set currentNode
-			CurrentNode.setCurrentNode(request, page);
-			try {
-				// Set currentPage
-				CurrentPage.setCurrentPage(request, page);
-				try {
-					// Freeze page once body done
-					try {
-						// Unlike elements, the page body is still invoked on captureLevel=PAGE, this
-						// is done to catch childen.
-						JspFragment body = getJspBody();
-						if(body != null) {
-							final CaptureLevel captureLevel = CaptureLevel.getCaptureLevel(request);
-							if(captureLevel == CaptureLevel.BODY) {
-								// Invoke page body, capturing output
+			JspFragment body = getJspBody();
+			PageImpl.doPageImpl(
+				pageContext.getServletContext(),
+				request,
+				response,
+				title,
+				toc,
+				tocLevels,
+				body == null
+					? null
+					: new PageImpl.PageImplBody<JspException>() {
+						@Override
+						public BufferResult doBody(boolean discard, Page page) throws JspException, IOException, SkipPageException {
+							// JSP pages are their own source
+							page.setSrc(page.getPageRef());
+							if(discard) {
+								body.invoke(NullWriter.getInstance());
+								return EmptyResult.getInstance();
+							} else {
 								BufferWriter capturedOut = new SegmentedWriter();
 								try {
 									body.invoke(capturedOut);
 								} finally {
 									capturedOut.close();
 								}
-								page.setBody(capturedOut.getResult().trim());
-							} else {
-								// Invoke page body, discarding output
-								body.invoke(NullWriter.getInstance());
+								return capturedOut.getResult();
 							}
 						}
-					} finally {
-						page.freeze();
 					}
-				} finally {
-					// Restore previous currentPage
-					CurrentPage.setCurrentPage(request, null);
-				}
-			} finally {
-				// Restore previous currentNode
-				CurrentNode.setCurrentNode(request, null);
-			}
-			CapturePage capture = CapturePage.getCaptureContext(request);
-			if(capture != null) {
-				// Capturing, add to capture
-				capture.setCapturedPage(page);
-			} else {
-				// Display page directly
-				// Forward to PAGE_TEMPLATE_JSP_PATH, passing PAGE_REQUEST_ATTRIBUTE request attribute
-				Object oldValue = request.getAttribute(com.aoindustries.web.page.servlet.Page.PAGE_REQUEST_ATTRIBUTE);
-				try {
-					// Pass PAGE_REQUEST_ATTRIBUTE attribute
-					request.setAttribute(com.aoindustries.web.page.servlet.Page.PAGE_REQUEST_ATTRIBUTE, page);
-					Dispatcher.forward(
-						servletContext,
-						com.aoindustries.web.page.servlet.Page.PAGE_TEMPLATE_JSP_PATH,
-						request,
-						(HttpServletResponse)pageContext.getResponse()
-					);
-				} finally {
-					// Restore old value of PAGE_REQUEST_ATTRIBUTE attribute
-					request.setAttribute(com.aoindustries.web.page.servlet.Page.PAGE_REQUEST_ATTRIBUTE, oldValue);
-				}
-				throw new SkipPageException();
-			}
+			);
 		} catch(ServletException e) {
 			throw new JspTagException(e);
 		}
