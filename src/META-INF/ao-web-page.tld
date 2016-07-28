@@ -640,6 +640,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<description><![CDATA[
 			<p>
 				Captures a &lt;p:page&gt; in a provided book.
+				The capture is always done with a request method of "GET", even when the enclosing request is a different method.
 			</p>
 			<p>
 				Parameter "book": The name of the book containing the page.
