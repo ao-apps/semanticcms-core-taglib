@@ -38,12 +38,16 @@ public class WriteNodeBodyTag extends SimpleTagSupport {
 
 	@Override
     public void doTag() throws JspTagException, IOException {
+		PageContext pageContext = (PageContext)getJspContext();
+		// Buffering made it slower, only about half throughput:
+		// BufferedWriter out = new BufferedWriter(pageContext.getOut());
 		node.getBody().writeTo(
 			new NodeBodyWriter(
 				node,
-				getJspContext().getOut(),
-				new PageElementContext((PageContext)getJspContext())
+				pageContext.getOut(),
+				new PageElementContext(pageContext)
 			)
 		);
+		//out.flush();
 	}
 }
