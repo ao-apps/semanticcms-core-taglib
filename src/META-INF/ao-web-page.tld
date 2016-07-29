@@ -80,6 +80,90 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<rtexprvalue>true</rtexprvalue>
 			<type>int</type>
 		</attribute>
+		<attribute>
+			<description><![CDATA[
+				<p>
+					When "true", it is acceptable for the parents to not list this page
+					as a child.  In other words, this page may claim a parent that does
+					not also claim this as a child.
+				</p>
+				<p>
+					Defaults to "false" meaning strict parent-child relationship verification.
+				</p>
+			]]></description>
+			<name>allowParentMismatch</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>boolean</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				<p>
+					When "true", it is acceptable for the children to not list this page
+					as a parent.  In other words, this page may claim a child that does
+					not also claim this as a parent.
+				</p>
+				<p>
+					Defaults to "false" meaning strict child-parent relationship verification.
+				</p>
+			]]></description>
+			<name>allowChildMismatch</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>boolean</type>
+		</attribute>
+	</tag>
+	<tag>
+		<description><![CDATA[
+			<p>
+				Adds the given page as a parent of the current page.
+				This tag only represents the relationship, so body content is not allowed.
+			</p>
+			<p>
+				To build the relationship between pages and parents, the page
+				should include &lt;p:parent tags for each parent page within
+				the body of the &lt;p:page&gt; tag.  Due to optimizations during
+				page-only capturing, the parent pages must be added directly in
+				the page body, not from within other nested tags.
+			</p>
+			<p>
+				This may not be set on the "content.root" of any of the books.
+			</p>
+			<p>
+				If no parents are added, an automatic parent is computed as follows:
+			</p>
+			<ol>
+				<li>If this page is the "content.root" of a book, include all parents configured when book imported.</li>
+				<li>If this page URL ends in "/" or "/index.jsp", look for page at "../index.jsp" then "../", error if neither found.</li>
+				<li>Look for page at "./index.jsp" then "./", error if neither found.</li>
+			</ol>
+			<p>
+				Unless "allowParentMismatch" is enabled on the page, the parent
+				must also consider this page as a child.
+			</p>
+		]]></description>
+		<name>parent</name>
+		<tag-class>com.aoindustries.web.page.taglib.ParentTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description><![CDATA[
+				The book containing the parent page.
+				Defaults to the book of the current JSP file.
+			]]></description>
+			<name>book</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The page-relative path to the parent page.
+			]]></description>
+			<name>page</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
 	</tag>
 	<tag>
 		<description><![CDATA[
@@ -93,6 +177,10 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				the body of the &lt;p:page&gt; tag.  Due to optimizations during
 				page-only capturing, the child pages must be added directly in
 				the page body, not from within other nested tags.
+			</p>
+			<p>
+				Unless "allowChildMismatch" is enabled on the page, the child
+				must also consider this page as a parent.
 			</p>
 		]]></description>
 		<name>child</name>
@@ -652,7 +740,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<p>
 				Parameter "level": Controls the level of detail to capture.  May be one of:
 				<ol>
-					<li>"page" - Fastest: captures page meta data only (includes child pages).</li>
+					<li>"page" - Fastest: captures page meta data only (including parent and child pages).</li>
 					<li>"meta" - Captures page and content meta data, but no HTML content.</li>
 					<li>"body" - Captures page and content meta data as well as all HTML body content.</li>
 				</ol>
@@ -679,7 +767,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<p>
 				Parameter "level": Controls the level of detail to capture.  May be one of:
 				<ol>
-					<li>"page" - Fastest: captures page meta data only (includes child pages).</li>
+					<li>"page" - Fastest: captures page meta data only (including parent and child pages).</li>
 					<li>"meta" - Captures page and content meta data, but no HTML content.</li>
 					<li>"body" - Captures page and content meta data as well as all HTML body content.</li>
 				</ol>
@@ -748,7 +836,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<p>
 				Parameter "level": Controls the level of detail to capture.  May be one of:
 				<ol>
-					<li>"page" - Fastest: captures page meta data only (includes child pages).</li>
+					<li>"page" - Fastest: captures page meta data only (including parent and child pages).</li>
 					<li>"meta" - Captures page and content meta data, but no HTML content.</li>
 					<li>"body" - Captures page and content meta data as well as all HTML body content.</li>
 				</ol>

@@ -35,7 +35,6 @@ import com.aoindustries.web.page.PageRef;
 import com.aoindustries.web.page.servlet.BooksContextListener;
 import com.aoindustries.web.page.servlet.CaptureLevel;
 import com.aoindustries.web.page.servlet.CapturePage;
-import com.aoindustries.web.page.servlet.ContentRoot;
 import com.aoindustries.web.page.servlet.PageDags;
 import com.aoindustries.web.page.servlet.PageIndex;
 import com.aoindustries.web.page.servlet.PageRefResolver;
@@ -85,7 +84,7 @@ final public class Functions {
 			servletContext,
 			getRequest(),
 			getResponse(),
-			ContentRoot.getContentRoot(servletContext),
+			BooksContextListener.getRootBook(servletContext).getContentRoot(),
 			CaptureLevel.valueOf(level.toUpperCase(Locale.ENGLISH))
 		);
 	}
