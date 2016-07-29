@@ -90,6 +90,11 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				<p>
 					Defaults to "false" meaning strict parent-child relationship verification.
 				</p>
+				<p>
+					Use of this can result in this page being orphaned, where this page
+					and its child pages are not included in site traversals, such as for
+					tree views or searches.
+				</p>
 			]]></description>
 			<name>allowParentMismatch</name>
 			<required>false</required>
@@ -105,6 +110,10 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				</p>
 				<p>
 					Defaults to "false" meaning strict child-parent relationship verification.
+				</p>
+				<p>
+					Use of this can result in incomplete determination of the
+					children page's location(s) within the overall site.
 				</p>
 			]]></description>
 			<name>allowChildMismatch</name>
@@ -127,7 +136,11 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				the page body, not from within other nested tags.
 			</p>
 			<p>
-				This may not be set on the "content.root" of any of the books.
+				This may not be set on the "content.root" of any of the books, as the
+				parent(s) of a book varies based on where the book is placed.  The
+				parent(s) of a book are configured in the web.xml file.  All books
+				require at least one parent except the "rootBook" which does not allow
+				any parent.  These rules ensure a single root Directed Acyclic Graph (DAG).
 			</p>
 			<p>
 				If no parents are added, an automatic parent is computed as follows:
@@ -828,7 +841,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			</p>
 			<p>
 				A page may actually be linked into multiple places in the DAG, so strictly
-				speaking this is a Directed Acyclic Graph (DAG).
+				speaking this is a single root Directed Acyclic Graph (DAG).
 			</p>
 			<p>
 				Only the first occurance of each page will be in the resulting list.
