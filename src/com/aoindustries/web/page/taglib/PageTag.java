@@ -32,7 +32,6 @@ import com.aoindustries.servlet.filter.TempFileContext;
 import com.aoindustries.web.page.Page;
 import com.aoindustries.web.page.servlet.impl.PageImpl;
 import java.io.IOException;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -60,22 +59,31 @@ public class PageTag extends SimpleTagSupport {
 		this.tocLevels = tocLevels;
 	}
 
+	private boolean allowParentMismatch;
+	public void setAllowParentMismatch(boolean allowParentMismatch) {
+		this.allowParentMismatch = allowParentMismatch;
+	}
+
+	private boolean allowChildMismatch;
+	public void setAllowChildMismatch(boolean allowChildMismatch) {
+		this.allowChildMismatch = allowChildMismatch;
+	}
+
 	@Override
     public void doTag() throws JspException, IOException {
 		try {
 			final PageContext pageContext = (PageContext)getJspContext();
-			final ServletContext servletContext = pageContext.getServletContext();
 			final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
-			final HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
 
 			JspFragment body = getJspBody();
-			PageImpl.doPageImpl(
-				pageContext.getServletContext(),
+			PageImpl.doPageImpl(pageContext.getServletContext(),
 				request,
-				response,
+				(HttpServletResponse)pageContext.getResponse(),
 				title,
 				toc,
 				tocLevels,
+				allowParentMismatch,
+				allowChildMismatch,
 				body == null
 					? null
 					: new PageImpl.PageImplBody<JspException>() {

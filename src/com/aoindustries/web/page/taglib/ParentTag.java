@@ -1,6 +1,6 @@
 /*
  * ao-web-page-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2015, 2016  AO Industries, Inc.
+ * Copyright (C) 2016  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -33,7 +33,7 @@ import javax.servlet.jsp.JspTagException;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
-public class ChildTag extends SimpleTagSupport {
+public class ParentTag extends SimpleTagSupport {
 
 	private String book;
 	public void setBook(String book) {
@@ -51,11 +51,11 @@ public class ChildTag extends SimpleTagSupport {
 		final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 
 		final Node currentNode = CurrentNode.getCurrentNode(request);
-		if(!(currentNode instanceof Page)) throw new JspTagException("<p:child> tag must be nested directly inside a <p:page> tag.");
+		if(!(currentNode instanceof Page)) throw new JspTagException("<p:parent> tag must be nested directly inside a <p:page> tag.");
 		final Page currentPage = (Page)currentNode;
 
 		try {
-			currentPage.addChildPage(
+			currentPage.addParentPage(
 				PageRefResolver.getPageRef(
 					pageContext.getServletContext(),
 					request,
