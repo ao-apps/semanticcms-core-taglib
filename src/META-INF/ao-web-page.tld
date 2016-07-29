@@ -138,8 +138,8 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<p>
 				This may not be set on the "content.root" of any of the books, as the
 				parent(s) of a book varies based on where the book is placed.  The
-				parent(s) of a book are configured in the web.xml file.  All books
-				require at least one parent except the "rootBook" which does not allow
+				parent(s) of a book are configured in the /WEB-INF/books.properties file.
+				All books require at least one parent except the "rootBook" which does not allow
 				any parent.  These rules ensure a single root Directed Acyclic Graph (DAG).
 			</p>
 			<p>
