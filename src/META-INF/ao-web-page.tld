@@ -154,8 +154,8 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			</p>
 			<ol>
 				<li>If this page is the "content.root" of a book, include all parents configured when book imported.</li>
-				<li>If this page URL ends in "/" or "/index.jsp", look for page at "../index.jsp" then "../", error if neither found.</li>
-				<li>Look for page at "./index.jsp" then "./", error if neither found.</li>
+				<li>If this page URL ends in "/" or "/index.jsp", look for JSP page at "../index.jsp" then asssume "../", error if outside book.</li>
+				<li>Look for page at "./index.jsp" then assume "./".</li>
 			</ol>
 			<p>
 				Unless "allowParentMismatch" is enabled on the page, the parent
