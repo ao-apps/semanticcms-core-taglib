@@ -245,7 +245,12 @@ final public class Functions {
 		if(recursive) {
 			seenPages.add(page.getPageRef());
 			for(PageRef childRef : page.getChildPages()) {
-				if(!seenPages.contains(childRef)) {
+				if(
+					// Child not in missing book
+					childRef.getBook() != null
+					// Not already seen
+					&& !seenPages.contains(childRef)
+				) {
 					if(
 						hasElementRecursive(
 							servletContext,
@@ -297,7 +302,12 @@ final public class Functions {
 		if(recursive) {
 			seenPages.add(page.getPageRef());
 			for(PageRef childRef : page.getChildPages()) {
-				if(!seenPages.contains(childRef)) {
+				if(
+					// Child not in missing book
+					childRef.getBook() != null
+					// Not already seen
+					&& !seenPages.contains(childRef)
+				) {
 					if(
 						hasFileRecursive(
 							servletContext,

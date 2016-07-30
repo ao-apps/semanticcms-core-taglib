@@ -88,6 +88,9 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 					not also claim this as a child.
 				</p>
 				<p>
+					Parent-child relationships are never verified to parents from missing books.
+				</p>
+				<p>
 					Defaults to "false" meaning strict parent-child relationship verification.
 				</p>
 				<p>
@@ -109,6 +112,9 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 					not also claim this as a parent.
 				</p>
 				<p>
+					Child-parent relationships are never verified to children from missing books.
+				</p>
+				<p>
 					Defaults to "false" meaning strict child-parent relationship verification.
 				</p>
 				<p>
@@ -127,6 +133,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<p>
 				Adds the given page as a parent of the current page.
 				This tag only represents the relationship, so body content is not allowed.
+				It is permissible to have a parent in a missing book.
 			</p>
 			<p>
 				To build the relationship between pages and parents, the page
@@ -183,6 +190,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<p>
 				Adds the given page as a subpage of the current page.
 				This tag only represents the relationship, so body content is not allowed.
+				It is permissible to have a child in a missing book.
 			</p>
 			<p>
 				To build the relationship between pages and subpages, the page
