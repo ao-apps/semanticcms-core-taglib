@@ -993,6 +993,16 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<description><![CDATA[
+			Checks if the given page has at least one accessible child page
+			(ignores child pages in missing books).
+		]]></description>
+		<name>hasChild</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>boolean hasChild(com.aoindustries.web.page.Page)</function-signature>
+		<example>${p:hasChild(page)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
 			Checks if the given page, or optionally any of its child pages, has at least
 			one of the element type given.
 		]]></description>

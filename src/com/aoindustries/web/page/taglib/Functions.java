@@ -216,6 +216,13 @@ final public class Functions {
 		return book;
 	}
 
+	public static boolean hasChild(Page page) {
+		for(PageRef childRef : page.getChildPages()) {
+			if(childRef.getBook() != null) return true;
+		}
+		return false;
+	}
+
 	public static boolean hasElement(Page page, String classname, boolean recursive) throws ServletException, IOException, ClassNotFoundException {
 		return hasElementRecursive(
 			getServletContext(),
