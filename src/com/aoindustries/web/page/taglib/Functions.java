@@ -71,7 +71,7 @@ final public class Functions {
 			getRequest(),
 			getResponse(),
 			pageRef,
-			CaptureLevel.valueOf(level.toUpperCase(Locale.ENGLISH))
+			CaptureLevel.valueOf(level.toUpperCase(Locale.ROOT))
 		);
 	}
 
@@ -86,7 +86,7 @@ final public class Functions {
 			getRequest(),
 			getResponse(),
 			BooksContextListener.getRootBook(servletContext).getContentRoot(),
-			CaptureLevel.valueOf(level.toUpperCase(Locale.ENGLISH))
+			CaptureLevel.valueOf(level.toUpperCase(Locale.ROOT))
 		);
 	}
 
@@ -105,7 +105,7 @@ final public class Functions {
 			getRequest(),
 			getResponse(),
 			rootPage,
-			CaptureLevel.valueOf(level.toUpperCase(Locale.ENGLISH))
+			CaptureLevel.valueOf(level.toUpperCase(Locale.ROOT))
 		);
 	}
 
@@ -119,7 +119,7 @@ final public class Functions {
 		final HttpServletRequest request = getRequest();
 		final CapturePage capture = CapturePage.getCaptureContext(request);
 		if(capture == null) return null;
-		return CaptureLevel.getCaptureLevel(request).name().toLowerCase(Locale.ENGLISH);
+		return CaptureLevel.getCaptureLevel(request).name().toLowerCase(Locale.ROOT);
 	}
 
 	public static File getFileInBook(String book, String path, boolean requireFile) throws ServletException, IOException {
