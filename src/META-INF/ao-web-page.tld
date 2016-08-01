@@ -542,55 +542,6 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<description><![CDATA[
-			<p>
-				Gets the thumbnail of a Dia diagram as an &lt;img&gt; tag.
-			</p>
-		]]></description>
-		<name>dia</name>
-		<tag-class>com.aoindustries.web.page.taglib.DiaTag</tag-class>
-		<body-content>empty</body-content>
-		<attribute>
-			<description><![CDATA[
-				The book containing the file.
-				Defaults to the book of the current JSP file.
-			]]></description>
-			<name>book</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				The page-relative path to the file.
-			]]></description>
-			<name>path</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				The width of the diagram thumbnail in pixels.
-				When neither width nor height are provided, defaults to 200.
-			]]></description>
-			<name>width</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>int</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				The height of the diagram thumbnail in pixels.
-				When neither width nor height are provided, defaults to a value in proportion to the width.
-			]]></description>
-			<name>height</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>int</type>
-		</attribute>
-	</tag>
-	<tag>
-		<description><![CDATA[
 			Writes the tree data for use by TreeView as &lt;ul&gt; and &lt;li&gt; tags.
 		]]></description>
 		<name>navigationTree</name>
