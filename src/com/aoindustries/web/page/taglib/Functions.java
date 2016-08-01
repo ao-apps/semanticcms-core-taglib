@@ -35,6 +35,7 @@ import com.aoindustries.web.page.PageRef;
 import com.aoindustries.web.page.servlet.BooksContextListener;
 import com.aoindustries.web.page.servlet.CaptureLevel;
 import com.aoindustries.web.page.servlet.CapturePage;
+import com.aoindustries.web.page.servlet.Headers;
 import com.aoindustries.web.page.servlet.PageDags;
 import com.aoindustries.web.page.servlet.PageIndex;
 import com.aoindustries.web.page.servlet.PageRefResolver;
@@ -214,6 +215,10 @@ final public class Functions {
 		Book book = BooksContextListener.getBook(getServletContext(), pagePath);
 		if(book==null) throw new IllegalArgumentException("Book not found: " + pagePath);
 		return book;
+	}
+
+	public static boolean isExporting() {
+		return Headers.isExporting(getRequest());
 	}
 
 	public static boolean hasChild(Page page) {

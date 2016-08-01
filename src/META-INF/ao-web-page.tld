@@ -993,6 +993,15 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<description><![CDATA[
+			Checks if the current request is for an export.
+		]]></description>
+		<name>isExporting</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>boolean isExporting()</function-signature>
+		<example>${p:isExporting()}</example>
+	</function>
+	<function>
+		<description><![CDATA[
 			Checks if the given page has at least one accessible child page
 			(ignores child pages in missing books).
 		]]></description>
