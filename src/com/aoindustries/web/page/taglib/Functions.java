@@ -33,6 +33,7 @@ import com.aoindustries.web.page.Element;
 import com.aoindustries.web.page.Heading;
 import com.aoindustries.web.page.Page;
 import com.aoindustries.web.page.PageRef;
+import com.aoindustries.web.page.servlet.AuthorUtils;
 import com.aoindustries.web.page.servlet.BooksContextListener;
 import com.aoindustries.web.page.servlet.CaptureLevel;
 import com.aoindustries.web.page.servlet.CapturePage;
@@ -40,7 +41,6 @@ import com.aoindustries.web.page.servlet.Headers;
 import com.aoindustries.web.page.servlet.PageDags;
 import com.aoindustries.web.page.servlet.PageIndex;
 import com.aoindustries.web.page.servlet.PageRefResolver;
-import com.aoindustries.web.page.servlet.PageUtils;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -224,7 +224,7 @@ final public class Functions {
 	}
 
 	public static Set<Author> findAuthors(Page page) throws ServletException, IOException {
-		return PageUtils.findAuthors(
+		return AuthorUtils.findAuthors(
 			getServletContext(),
 			getRequest(),
 			getResponse(),
