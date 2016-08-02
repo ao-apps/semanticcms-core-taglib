@@ -1019,6 +1019,17 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<description><![CDATA[
+			Finds the author(s) for the given page.  Inheriting authors from the
+			parent page(s) within the same book, or using the book authors if none
+			set on the page or its parent(s).
+		]]></description>
+		<name>findAuthors</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>java.util.Set findAuthors(com.aoindustries.web.page.Page)</function-signature>
+		<example>${p:findAuthors(page)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
 			Checks if the given page has at least one accessible child page
 			(ignores child pages in missing books).
 		]]></description>

@@ -27,6 +27,7 @@ import static com.aoindustries.servlet.filter.FunctionContext.getResponse;
 import static com.aoindustries.servlet.filter.FunctionContext.getServletContext;
 import com.aoindustries.servlet.http.ServletUtil;
 import com.aoindustries.util.StringUtility;
+import com.aoindustries.web.page.Author;
 import com.aoindustries.web.page.Book;
 import com.aoindustries.web.page.Element;
 import com.aoindustries.web.page.Heading;
@@ -39,6 +40,7 @@ import com.aoindustries.web.page.servlet.Headers;
 import com.aoindustries.web.page.servlet.PageDags;
 import com.aoindustries.web.page.servlet.PageIndex;
 import com.aoindustries.web.page.servlet.PageRefResolver;
+import com.aoindustries.web.page.servlet.PageUtils;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -219,6 +221,15 @@ final public class Functions {
 
 	public static boolean isExporting() {
 		return Headers.isExporting(getRequest());
+	}
+
+	public static Set<Author> findAuthors(Page page) throws ServletException, IOException {
+		return PageUtils.findAuthors(
+			getServletContext(),
+			getRequest(),
+			getResponse(),
+			page
+		);
 	}
 
 	public static boolean hasChild(Page page) {
