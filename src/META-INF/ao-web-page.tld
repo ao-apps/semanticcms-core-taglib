@@ -55,6 +55,17 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
+				The optional short title of the page.
+				A short title is used when the context of a page is well established, such as when
+				showing a path to the current location in the site.  The short title defaults to <code>title</code>.
+			]]></description>
+			<name>shortTitle</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
 				The optional description of the page.
 			]]></description>
 			<name>description</name>

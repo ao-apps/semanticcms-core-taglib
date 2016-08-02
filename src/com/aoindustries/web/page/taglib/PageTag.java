@@ -49,6 +49,11 @@ public class PageTag extends SimpleTagSupport {
 		this.title = title;
     }
 
+	private String shortTitle;
+	public void setShortTitle(String shortTitle) {
+		this.shortTitle = shortTitle;
+    }
+
 	private String description;
 	public void setDescription(String description) {
 		this.description = description;
@@ -90,6 +95,7 @@ public class PageTag extends SimpleTagSupport {
 				request,
 				(HttpServletResponse)pageContext.getResponse(),
 				title,
+				shortTitle,
 				description,
 				keywords,
 				toc,
