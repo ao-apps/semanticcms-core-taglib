@@ -49,6 +49,16 @@ public class PageTag extends SimpleTagSupport {
 		this.title = title;
     }
 
+	private String description;
+	public void setDescription(String description) {
+		this.description = description;
+    }
+
+	private String keywords;
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
+    }
+
 	private Boolean toc;
 	public void setToc(String toc) {
 		this.toc = "auto".equalsIgnoreCase(toc) ? null : Boolean.valueOf(toc);
@@ -80,6 +90,8 @@ public class PageTag extends SimpleTagSupport {
 				request,
 				(HttpServletResponse)pageContext.getResponse(),
 				title,
+				description,
+				keywords,
 				toc,
 				tocLevels,
 				allowParentMismatch,
