@@ -131,6 +131,72 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<tag>
 		<description><![CDATA[
 			<p>
+				Adds an author to the current page.
+				It is permissible to have an author in a missing book.
+			</p>
+			<p>
+				When no authors provided, will use the author(s) of any parent
+				page that is within the same book.  If there are no parent pages
+				in this same book, uses the book's authors.
+			</p>
+			<p>
+				When inheriting authorship from multiple parent pages, the authors must
+				be in exact agreement.  This means exactly the same order and all
+				values matching precisely.  Any mismatch in authors will result in
+				an exception.
+			</p>
+		]]></description>
+		<name>author</name>
+		<tag-class>com.aoindustries.web.page.taglib.AuthorTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description><![CDATA[
+				The name of the author, to be used in &lt;meta name="author" content="..." /&gt;.
+				Required when neither href nor page are provided.
+				Also required when page provided and the page is in a different book.
+			]]></description>
+			<name>name</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The href of the author, to be used in &lt;link rel="author" href="..." /&gt;
+				Required when neither name nor page are provided.
+				May not be used when page provided.
+			]]></description>
+			<name>href</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The book containing the author page.
+				Defaults to the book of the current JSP file.
+				Not allowed when page not provided.
+			]]></description>
+			<name>book</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The page-relative path to the author page, to be used in &lt;link rel="author" href="..." /&gt;
+				Required when neither name nor href are provided.
+				May not be used when href provided.
+			]]></description>
+			<name>page</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+	<tag>
+		<description><![CDATA[
+			<p>
 				Adds the given page as a parent of the current page.
 				This tag only represents the relationship, so body content is not allowed.
 				It is permissible to have a parent in a missing book.
