@@ -1106,7 +1106,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>findCopyright</name>
 		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
-		<function-signature>com.aoindustries.web.page.Copyright findCopright(com.aoindustries.web.page.Page)</function-signature>
+		<function-signature>com.aoindustries.web.page.Copyright findCopyright(com.aoindustries.web.page.Page)</function-signature>
 		<example>${p:findCopyright(page)}</example>
 	</function>
 	<function>
