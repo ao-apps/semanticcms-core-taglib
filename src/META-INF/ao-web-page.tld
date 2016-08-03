@@ -163,7 +163,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				Sets the copyright for the current page.
 			</p>
 			<p>
-				At least one field must be set to a non-null and non-empty value.
+				At least one field must be set to a non-null value.
 			</p>
 			<p>
 				Any field not set (or set to null) will be inherited from the parent(s) in the same book.
