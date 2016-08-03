@@ -29,6 +29,7 @@ import com.aoindustries.servlet.http.ServletUtil;
 import com.aoindustries.util.StringUtility;
 import com.aoindustries.web.page.Author;
 import com.aoindustries.web.page.Book;
+import com.aoindustries.web.page.Copyright;
 import com.aoindustries.web.page.Element;
 import com.aoindustries.web.page.Heading;
 import com.aoindustries.web.page.Page;
@@ -37,6 +38,7 @@ import com.aoindustries.web.page.servlet.AuthorUtils;
 import com.aoindustries.web.page.servlet.BooksContextListener;
 import com.aoindustries.web.page.servlet.CaptureLevel;
 import com.aoindustries.web.page.servlet.CapturePage;
+import com.aoindustries.web.page.servlet.CopyrightUtils;
 import com.aoindustries.web.page.servlet.Headers;
 import com.aoindustries.web.page.servlet.PageDags;
 import com.aoindustries.web.page.servlet.PageIndex;
@@ -221,6 +223,15 @@ final public class Functions {
 
 	public static boolean isExporting() {
 		return Headers.isExporting(getRequest());
+	}
+
+	public static Copyright findCopyright(Page page) throws ServletException, IOException {
+		return CopyrightUtils.findCopyright(
+			getServletContext(),
+			getRequest(),
+			getResponse(),
+			page
+		);
 	}
 
 	public static Set<Author> findAuthors(Page page) throws ServletException, IOException {

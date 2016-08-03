@@ -160,6 +160,58 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<tag>
 		<description><![CDATA[
 			<p>
+				Sets the copyright for the current page.
+			</p>
+			<p>
+				At least one field must be set to a non-null and non-empty value.
+			</p>
+			<p>
+				Any field not set (or set to null) will be inherited from the parent(s) in the same book.
+				Any field set to "" will have no value and not inherit from parents.
+			</p>
+			<p>
+				If there are no parent pages in this same book, uses the fields from the book's copyright.
+			</p>
+			<p>
+				When inheriting a field from multiple parent pages, the field must
+				have exactly the same value in all parents.  Any mismatch in value
+				will result in an exception.
+			</p>
+		]]></description>
+		<name>copyright</name>
+		<tag-class>com.aoindustries.web.page.taglib.CopyrightTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description><![CDATA[
+				The rights holder, "" means none and null will inherit.
+			]]></description>
+			<name>rightsHolder</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The rights, "" means none and null will inherit.
+			]]></description>
+			<name>rights</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The date copyrighted, "" means none and null will inherit.
+			]]></description>
+			<name>dateCopyrighted</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+	<tag>
+		<description><![CDATA[
+			<p>
 				Adds an author to the current page.
 				It is permissible to have an author in a missing book.
 			</p>
@@ -1045,6 +1097,17 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
 		<function-signature>boolean isExporting()</function-signature>
 		<example>${p:isExporting()}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Finds the copyright for the given page or null if none set.  Inheriting fields from the
+			parent page(s) within the same book, or using fields from the book copyright if none
+			set on the page or its parent(s).
+		]]></description>
+		<name>findCopyright</name>
+		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-signature>com.aoindustries.web.page.Copyright findCopright(com.aoindustries.web.page.Page)</function-signature>
+		<example>${p:findCopyright(page)}</example>
 	</function>
 	<function>
 		<description><![CDATA[
