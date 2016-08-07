@@ -27,7 +27,7 @@
 %><%--@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"
 --%><%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"
 %><%-- AO Taglib
---%><%@ taglib prefix="ao" uri="http://aoindustries.com/aocode-public-taglib"
+--%><%@ taglib prefix="ao" uri="http://aoindustries.com/ao-taglib"
 %><%-- AO Web Page
 --%><%@ taglib prefix="p" uri="http://aoindustries.com/ao-web-page-taglib"
 %>
