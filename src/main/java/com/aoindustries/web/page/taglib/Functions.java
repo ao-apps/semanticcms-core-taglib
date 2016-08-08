@@ -189,7 +189,7 @@ final public class Functions {
 		if(queryString==null) return null;
 		String requestEncoding = ServletUtil.getRequestEncoding(getRequest());
 		List<String> pairs = StringUtility.splitString(queryString, '&');
-		Map<String,String> params = new LinkedHashMap<>(pairs.size() * 4/3 + 1);
+		Map<String,String> params = new LinkedHashMap<String,String>(pairs.size() * 4/3 + 1);
 		for(String pair : pairs) {
 			int equalPos = pair.indexOf('=');
 			String name, value;
@@ -258,7 +258,7 @@ final public class Functions {
 			page,
 			Class.forName(classname),
 			recursive,
-			recursive ? new HashSet<>() : null
+			recursive ? new HashSet<PageRef>() : null
 		);
 	}
 
@@ -311,7 +311,7 @@ final public class Functions {
 			getResponse(),
 			page,
 			recursive,
-			recursive ? new HashSet<>() : null
+			recursive ? new HashSet<PageRef>() : null
 		);
 	}
 

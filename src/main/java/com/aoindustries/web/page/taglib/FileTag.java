@@ -55,7 +55,7 @@ public class FileTag extends SimpleTagSupport {
     public void doTag() throws JspException, IOException {
 		try {
 			final PageContext pageContext = (PageContext)getJspContext();
-			JspFragment body = getJspBody();
+			final JspFragment body = getJspBody();
 			FileImpl.writeFileImpl(
 				pageContext.getServletContext(),
 				(HttpServletRequest)pageContext.getRequest(),

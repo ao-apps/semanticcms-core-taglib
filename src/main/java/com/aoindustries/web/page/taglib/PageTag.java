@@ -23,6 +23,7 @@
 package com.aoindustries.web.page.taglib;
 
 import com.aoindustries.io.NullWriter;
+import com.aoindustries.io.TempFileList;
 import com.aoindustries.io.buffer.AutoTempFileWriter;
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
@@ -90,7 +91,7 @@ public class PageTag extends SimpleTagSupport {
 			final PageContext pageContext = (PageContext)getJspContext();
 			final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 
-			JspFragment body = getJspBody();
+			final JspFragment body = getJspBody();
 			PageImpl.doPageImpl(pageContext.getServletContext(),
 				request,
 				(HttpServletResponse)pageContext.getResponse(),
@@ -116,7 +117,17 @@ public class PageTag extends SimpleTagSupport {
 								BufferWriter capturedOut = new SegmentedWriter();
 								try {
 									// Enable temp files if temp file context active
-									capturedOut = TempFileContext.wrapTempFileList(capturedOut, request, AutoTempFileWriter::new);
+									capturedOut = TempFileContext.wrapTempFileList(
+										capturedOut,
+										request,
+										// Java 1.8: AutoTempFileWriter::new
+										new TempFileContext.Wrapper<BufferWriter>() {
+											@Override
+											public BufferWriter call(BufferWriter original, TempFileList tempFileList) {
+												return new AutoTempFileWriter(original, tempFileList);
+											}
+										}
+									);
 									body.invoke(capturedOut);
 								} finally {
 									capturedOut.close();

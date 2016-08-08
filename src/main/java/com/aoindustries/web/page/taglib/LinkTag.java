@@ -23,6 +23,7 @@
 package com.aoindustries.web.page.taglib;
 
 import com.aoindustries.io.NullWriter;
+import com.aoindustries.io.TempFileList;
 import com.aoindustries.io.buffer.AutoTempFileWriter;
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
@@ -127,14 +128,24 @@ public class LinkTag
 			final CaptureLevel captureLevel = CaptureLevel.getCaptureLevel(request);
 			if(captureLevel.compareTo(CaptureLevel.META) >= 0) {
 				// Capture the body first for any nested parameter tags
-				BufferResult capturedBody;
+				final BufferResult capturedBody;
 				if(captureLevel == CaptureLevel.BODY) {
 					JspFragment body = getJspBody();
 					if(body != null) {
 						BufferWriter captureOut = new SegmentedWriter();
 						try {
 							// Enable temp files if temp file context active
-							captureOut = TempFileContext.wrapTempFileList(captureOut, request, AutoTempFileWriter::new);
+							captureOut = TempFileContext.wrapTempFileList(
+								captureOut,
+								request,
+								// Java 1.8: AutoTempFileWriter::new
+								new TempFileContext.Wrapper<BufferWriter>() {
+									@Override
+									public BufferWriter call(BufferWriter original, TempFileList tempFileList) {
+										return new AutoTempFileWriter(original, tempFileList);
+									}
+								}
+							);
 							body.invoke(captureOut);
 						} finally {
 							captureOut.close();
@@ -149,7 +160,7 @@ public class LinkTag
 					if(body != null) body.invoke(NullWriter.getInstance());
 					capturedBody = null;
 				}
-				JspWriter out = pageContext.getOut();
+				final JspWriter out = pageContext.getOut();
 				LinkImpl.writeLinkImpl(
 					pageContext.getServletContext(),
 					request,
