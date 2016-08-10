@@ -701,7 +701,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<name>root</name>
 			<required>true</required>
 			<rtexprvalue>true</rtexprvalue>
-			<type>com.aoindustries.web.page.Page</type>
+			<type>com.semanticcms.core.model.Page</type>
 		</attribute>
 		<attribute>
 			<description><![CDATA[
@@ -812,7 +812,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<name>root</name>
 			<required>true</required>
 			<rtexprvalue>true</rtexprvalue>
-			<type>com.aoindustries.web.page.Page</type>
+			<type>com.semanticcms.core.model.Page</type>
 		</attribute>
 		<attribute>
 			<description><![CDATA[
@@ -840,7 +840,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<name>node</name>
 			<required>true</required>
 			<rtexprvalue>true</rtexprvalue>
-			<type>com.aoindustries.web.page.Node</type>
+			<type>com.semanticcms.core.model.Node</type>
 		</attribute>
 	</tag>
 	<function>
@@ -872,7 +872,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>capturePageInBook</name>
 		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
-		<function-signature>com.aoindustries.web.page.Page capturePageInBook(java.lang.String,java.lang.String,java.lang.String)</function-signature>
+		<function-signature>com.semanticcms.core.model.Page capturePageInBook(java.lang.String,java.lang.String,java.lang.String)</function-signature>
 		<example>${p:capturePageInBook(book, page, level)}</example>
 	</function>
 	<function>
@@ -899,7 +899,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>capturePage</name>
 		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
-		<function-signature>com.aoindustries.web.page.Page capturePage(java.lang.String,java.lang.String)</function-signature>
+		<function-signature>com.semanticcms.core.model.Page capturePage(java.lang.String,java.lang.String)</function-signature>
 		<example>${p:capturePage(page, level)}</example>
 	</function>
 	<function>
@@ -908,7 +908,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>captureContentRoot</name>
 		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
-		<function-signature>com.aoindustries.web.page.Page captureContentRoot(java.lang.String)</function-signature>
+		<function-signature>com.semanticcms.core.model.Page captureContentRoot(java.lang.String)</function-signature>
 		<example>${p:captureContentRoot(level)}</example>
 	</function>
 	<function>
@@ -934,7 +934,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>getPageIndex</name>
 		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
-		<function-signature>com.aoindustries.docs.taglib.PageIndex getPageIndex(com.aoindustries.web.page.PageRef)</function-signature>
+		<function-signature>com.aoindustries.docs.taglib.PageIndex getPageIndex(com.semanticcms.core.model.PageRef)</function-signature>
 		<example>${p:getPageIndex(pageRef)}</example>
 	</function>
 	<function>
@@ -963,7 +963,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>convertPageDagToList</name>
 		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
-		<function-signature>java.util.List convertPageDagToList(com.aoindustries.web.page.Page,java.lang.String)</function-signature>
+		<function-signature>java.util.List convertPageDagToList(com.semanticcms.core.model.Page,java.lang.String)</function-signature>
 		<example>${p:convertPageDagToList(rootPage, level)}</example>
 	</function>
 	<function>
@@ -1030,7 +1030,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>getRefIdInPage</name>
 		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
-		<function-signature>java.lang.String getRefIdInPage(com.aoindustries.web.page.Page,java.lang.String)</function-signature>
+		<function-signature>java.lang.String getRefIdInPage(com.semanticcms.core.model.Page,java.lang.String)</function-signature>
 		<example>${p:getRefIdInPage(page, id)}</example>
 	</function>
 	<function>
@@ -1077,7 +1077,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>getBook</name>
 		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
-		<function-signature>com.aoindustries.web.page.Book getBook(java.lang.String)</function-signature>
+		<function-signature>com.semanticcms.core.model.Book getBook(java.lang.String)</function-signature>
 		<example>${p:getBook(pagePath)}</example>
 	</function>
 	<function>
@@ -1106,7 +1106,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>findCopyright</name>
 		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
-		<function-signature>com.aoindustries.web.page.Copyright findCopyright(com.aoindustries.web.page.Page)</function-signature>
+		<function-signature>com.semanticcms.core.model.Copyright findCopyright(com.semanticcms.core.model.Page)</function-signature>
 		<example>${p:findCopyright(page)}</example>
 	</function>
 	<function>
@@ -1117,7 +1117,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>findAuthors</name>
 		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
-		<function-signature>java.util.Set findAuthors(com.aoindustries.web.page.Page)</function-signature>
+		<function-signature>java.util.Set findAuthors(com.semanticcms.core.model.Page)</function-signature>
 		<example>${p:findAuthors(page)}</example>
 	</function>
 	<function>
@@ -1127,7 +1127,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>hasChild</name>
 		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
-		<function-signature>boolean hasChild(com.aoindustries.web.page.Page)</function-signature>
+		<function-signature>boolean hasChild(com.semanticcms.core.model.Page)</function-signature>
 		<example>${p:hasChild(page)}</example>
 	</function>
 	<function>
@@ -1137,7 +1137,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>hasElement</name>
 		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
-		<function-signature>boolean hasElement(com.aoindustries.web.page.Page,java.lang.String,boolean)</function-signature>
+		<function-signature>boolean hasElement(com.semanticcms.core.model.Page,java.lang.String,boolean)</function-signature>
 		<example>${p:hasElement(page, classname, recursive)}</example>
 	</function>
 	<function>
@@ -1147,7 +1147,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>hasFile</name>
 		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
-		<function-signature>boolean hasFile(com.aoindustries.web.page.Page,boolean)</function-signature>
+		<function-signature>boolean hasFile(com.semanticcms.core.model.Page,boolean)</function-signature>
 		<example>${p:hasFile(page, recursive)}</example>
 	</function>
 	<function>
@@ -1156,7 +1156,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>getHeadings</name>
 		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
-		<function-signature>java.util.List getHeadings(com.aoindustries.web.page.Page)</function-signature>
+		<function-signature>java.util.List getHeadings(com.semanticcms.core.model.Page)</function-signature>
 		<example>${p:getHeadings(page)}</example>
 	</function>
 </taglib>

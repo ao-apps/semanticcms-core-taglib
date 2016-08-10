@@ -22,8 +22,8 @@
  */
 package com.aoindustries.web.page.taglib;
 
-import com.aoindustries.web.page.Page;
 import com.aoindustries.web.page.servlet.impl.NavigationTreeImpl;
+import com.semanticcms.core.model.Page;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
