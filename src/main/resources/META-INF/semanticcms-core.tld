@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-ao-web-page-taglib - Java API for modeling web page content and relationships in a JSP environment.
+semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
 Copyright (C) 2013, 2014, 2015, 2016  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
 
-This file is part of ao-web-page-taglib.
+This file is part of semanticcms-core-taglib.
 
-ao-web-page-taglib is free software: you can redistribute it and/or modify
+semanticcms-core-taglib is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
-ao-web-page-taglib is distributed in the hope that it will be useful,
+semanticcms-core-taglib is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Lesser General Public License for more details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
+along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <taglib version="2.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
 	<description>Java API for modeling web page content and relationships in a JSP environment.</description>
-	<display-name>ao-web-page-taglib</display-name>
+	<display-name>semanticcms-core-taglib</display-name>
 	<tlib-version>1.0</tlib-version>
-	<short-name>ao-web-page-taglib</short-name>
-	<uri>http://aoindustries.com/ao-web-page-taglib</uri>
+	<short-name>semanticcms-core-taglib</short-name>
+	<uri>https://semanticcms.com/semanticcms-core-taglib</uri>
 	<tag>
 		<description><![CDATA[
 			<p>
@@ -42,7 +42,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			</p>
 		]]></description>
 		<name>page</name>
-		<tag-class>com.aoindustries.web.page.taglib.PageTag</tag-class>
+		<tag-class>com.semanticcms.core.taglib.PageTag</tag-class>
 		<body-content>scriptless</body-content>
 		<attribute>
 			<description><![CDATA[
@@ -179,7 +179,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			</p>
 		]]></description>
 		<name>copyright</name>
-		<tag-class>com.aoindustries.web.page.taglib.CopyrightTag</tag-class>
+		<tag-class>com.semanticcms.core.taglib.CopyrightTag</tag-class>
 		<body-content>empty</body-content>
 		<attribute>
 			<description><![CDATA[
@@ -228,7 +228,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			</p>
 		]]></description>
 		<name>author</name>
-		<tag-class>com.aoindustries.web.page.taglib.AuthorTag</tag-class>
+		<tag-class>com.semanticcms.core.taglib.AuthorTag</tag-class>
 		<body-content>empty</body-content>
 		<attribute>
 			<description><![CDATA[
@@ -310,7 +310,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			</p>
 		]]></description>
 		<name>parent</name>
-		<tag-class>com.aoindustries.web.page.taglib.ParentTag</tag-class>
+		<tag-class>com.semanticcms.core.taglib.ParentTag</tag-class>
 		<body-content>empty</body-content>
 		<attribute>
 			<description><![CDATA[
@@ -352,7 +352,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			</p>
 		]]></description>
 		<name>child</name>
-		<tag-class>com.aoindustries.web.page.taglib.ChildTag</tag-class>
+		<tag-class>com.semanticcms.core.taglib.ChildTag</tag-class>
 		<body-content>empty</body-content>
 		<attribute>
 			<description><![CDATA[
@@ -386,7 +386,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			</p>
 		]]></description>
 		<name>h</name>
-		<tag-class>com.aoindustries.web.page.taglib.HeadingTag</tag-class>
+		<tag-class>com.semanticcms.core.taglib.HeadingTag</tag-class>
 		<body-content>scriptless</body-content>
 		<attribute>
 			<description><![CDATA[
@@ -436,7 +436,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			</p>
 		]]></description>
 		<name>link</name>
-		<tag-class>com.aoindustries.web.page.taglib.LinkTag</tag-class>
+		<tag-class>com.semanticcms.core.taglib.LinkTag</tag-class>
 		<body-content>scriptless</body-content>
 		<attribute>
 			<description><![CDATA[
@@ -624,7 +624,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			</p>
 		]]></description>
 		<name>file</name>
-		<tag-class>com.aoindustries.web.page.taglib.FileTag</tag-class>
+		<tag-class>com.semanticcms.core.taglib.FileTag</tag-class>
 		<body-content>scriptless</body-content>
 		<attribute>
 			<description><![CDATA[
@@ -665,7 +665,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			This may only be called from localhost.
 		]]></description>
 		<name>openFile</name>
-		<tag-class>com.aoindustries.web.page.taglib.OpenFileTag</tag-class>
+		<tag-class>com.semanticcms.core.taglib.OpenFileTag</tag-class>
 		<body-content>empty</body-content>
 		<attribute>
 			<description><![CDATA[
@@ -692,7 +692,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			Writes the tree data for use by TreeView as &lt;ul&gt; and &lt;li&gt; tags.
 		]]></description>
 		<name>navigationTree</name>
-		<tag-class>com.aoindustries.web.page.taglib.NavigationTreeTag</tag-class>
+		<tag-class>com.semanticcms.core.taglib.NavigationTreeTag</tag-class>
 		<body-content>empty</body-content>
 		<attribute>
 			<description><![CDATA[
@@ -755,8 +755,8 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				May optionally mark a specific page (by context-relative path).
-				All page matches are marked with class "ao-web-page-tree-this-page".
-				Only the first match is marked with id "ao-web-page-tree-this-page".
+				All page matches are marked with class "semanticcms-core-tree-this-page".
+				Only the first match is marked with id "semanticcms-core-tree-this-page".
 			]]></description>
 			<name>thisPage</name>
 			<required>false</required>
@@ -777,7 +777,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<description><![CDATA[
 				May optionally filter for pages that link to the given page (by context-relative path).
 				The parent pages of any page that has a link will also be included.
-				The pages that actually have a link will be marked with class "ao-web-page-links-to-page"
+				The pages that actually have a link will be marked with class "semanticcms-core-links-to-page"
 			]]></description>
 			<name>linksToPage</name>
 			<required>false</required>
@@ -803,7 +803,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			The parent pages of any page that has a file will also be included.
 		]]></description>
 		<name>fileTree</name>
-		<tag-class>com.aoindustries.web.page.taglib.FileTreeTag</tag-class>
+		<tag-class>com.semanticcms.core.taglib.FileTreeTag</tag-class>
 		<body-content>empty</body-content>
 		<attribute>
 			<description><![CDATA[
@@ -831,7 +831,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			element markers.
 		]]></description>
 		<name>writeNodeBody</name>
-		<tag-class>com.aoindustries.web.page.taglib.WriteNodeBodyTag</tag-class>
+		<tag-class>com.semanticcms.core.taglib.WriteNodeBodyTag</tag-class>
 		<body-content>empty</body-content>
 		<attribute>
 			<description><![CDATA[
@@ -871,7 +871,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			</p>
 		]]></description>
 		<name>capturePageInBook</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>com.semanticcms.core.model.Page capturePageInBook(java.lang.String,java.lang.String,java.lang.String)</function-signature>
 		<example>${p:capturePageInBook(book, page, level)}</example>
 	</function>
@@ -898,7 +898,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			</p>
 		]]></description>
 		<name>capturePage</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>com.semanticcms.core.model.Page capturePage(java.lang.String,java.lang.String)</function-signature>
 		<example>${p:capturePage(page, level)}</example>
 	</function>
@@ -907,7 +907,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			Captures the content root &lt;p:page&gt; with unlimited depth and the given capture level.
 		]]></description>
 		<name>captureContentRoot</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>com.semanticcms.core.model.Page captureContentRoot(java.lang.String)</function-signature>
 		<example>${p:captureContentRoot(level)}</example>
 	</function>
@@ -924,7 +924,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			</p>
 		]]></description>
 		<name>getCaptureLevel</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.lang.String getCaptureLevel()</function-signature>
 		<example>${p:getCaptureLevel()}</example>
 	</function>
@@ -933,7 +933,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			Get the page index for the given page reference.
 		]]></description>
 		<name>getPageIndex</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>com.aoindustries.docs.taglib.PageIndex getPageIndex(com.semanticcms.core.model.PageRef)</function-signature>
 		<example>${p:getPageIndex(pageRef)}</example>
 	</function>
@@ -962,7 +962,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			</p>
 		]]></description>
 		<name>convertPageDagToList</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.util.List convertPageDagToList(com.semanticcms.core.model.Page,java.lang.String)</function-signature>
 		<example>${p:convertPageDagToList(rootPage, level)}</example>
 	</function>
@@ -971,7 +971,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			Gets the local file for a book and book-relative path.
 		]]></description>
 		<name>getFileInBook</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.io.File getFileInBook(java.lang.String,java.lang.String,boolean)</function-signature>
 		<example>${p:getFileInBook(book, path, requireFile)</example>
 	</function>
@@ -980,7 +980,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			Gets the local file for a page-relative path.
 		]]></description>
 		<name>getFile</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.io.File getFile(java.lang.String,boolean)</function-signature>
 		<example>${p:getFile(path, requireFile)</example>
 	</function>
@@ -990,7 +990,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			set executable.
 		]]></description>
 		<name>getExeFileInBook</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.io.File getExeFileInBook(java.lang.String,java.lang.String)</function-signature>
 		<example>${p:getExeFileInBook(book, path)}</example>
 	</function>
@@ -1000,7 +1000,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			set executable.
 		]]></description>
 		<name>getExeFile</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.io.File getExeFile(java.lang.String)</function-signature>
 		<example>${p:getExeFile(path)}</example>
 	</function>
@@ -1009,7 +1009,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			Encodes value for use in a URL parameter in the current response encoding.
 		]]></description>
 		<name>encodeUrlParam</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.lang.String encodeUrlParam(java.lang.String)</function-signature>
 		<example>${p:encodeUrlParam(value)}</example>
 	</function>
@@ -1019,7 +1019,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			as in a combined view, will be "page#-id".  Otherwise, the id is unchanged.
 		]]></description>
 		<name>getRefId</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.lang.String getRefId(java.lang.String)</function-signature>
 		<example>${p:getRefId(id)}</example>
 	</function>
@@ -1029,7 +1029,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			as in a combined view, will be "page#-id".  Otherwise, the id is unchanged.
 		]]></description>
 		<name>getRefIdInPage</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.lang.String getRefIdInPage(com.semanticcms.core.model.Page,java.lang.String)</function-signature>
 		<example>${p:getRefIdInPage(page, id)}</example>
 	</function>
@@ -1038,7 +1038,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			Calls Math.ceil, returns null when argument is null.
 		]]></description>
 		<name>ceil</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.lang.Double ceil(java.lang.Double)</function-signature>
 		<example>${p:ceil(a)}</example>
 	</function>
@@ -1047,7 +1047,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			Calls Math.floor, returns null when argument is null.
 		]]></description>
 		<name>floor</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.lang.Double floor(java.lang.Double)</function-signature>
 		<example>${p:floor(a)}</example>
 	</function>
@@ -1058,7 +1058,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			Uses the request encoding or ISO-8859-1 if none set.
 		]]></description>
 		<name>parseQueryString</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.util.Map parseQueryString(java.lang.String)</function-signature>
 		<example>${p:parseQueryString(pageContext.request.queryString)}</example>
 	</function>
@@ -1067,7 +1067,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			Repeats a string the given number of times.
 		]]></description>
 		<name>repeat</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.lang.String repeat(java.lang.String,int)</function-signature>
 		<example>${p:repeat(value, count)}</example>
 	</function>
@@ -1076,7 +1076,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			Gets the book for the provided page path.
 		]]></description>
 		<name>getBook</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>com.semanticcms.core.model.Book getBook(java.lang.String)</function-signature>
 		<example>${p:getBook(pagePath)}</example>
 	</function>
@@ -1094,7 +1094,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			Checks if the current request is for an export.
 		]]></description>
 		<name>isExporting</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>boolean isExporting()</function-signature>
 		<example>${p:isExporting()}</example>
 	</function>
@@ -1105,7 +1105,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			set on the page or its parent(s).
 		]]></description>
 		<name>findCopyright</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>com.semanticcms.core.model.Copyright findCopyright(com.semanticcms.core.model.Page)</function-signature>
 		<example>${p:findCopyright(page)}</example>
 	</function>
@@ -1116,7 +1116,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			set on the page or its parent(s).
 		]]></description>
 		<name>findAuthors</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.util.Set findAuthors(com.semanticcms.core.model.Page)</function-signature>
 		<example>${p:findAuthors(page)}</example>
 	</function>
@@ -1126,7 +1126,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			(ignores child pages in missing books).
 		]]></description>
 		<name>hasChild</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>boolean hasChild(com.semanticcms.core.model.Page)</function-signature>
 		<example>${p:hasChild(page)}</example>
 	</function>
@@ -1136,7 +1136,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			one of the element type given.
 		]]></description>
 		<name>hasElement</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>boolean hasElement(com.semanticcms.core.model.Page,java.lang.String,boolean)</function-signature>
 		<example>${p:hasElement(page, classname, recursive)}</example>
 	</function>
@@ -1146,7 +1146,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			one File.
 		]]></description>
 		<name>hasFile</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>boolean hasFile(com.semanticcms.core.model.Page,boolean)</function-signature>
 		<example>${p:hasFile(page, recursive)}</example>
 	</function>
@@ -1155,7 +1155,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			Gets all the headings in the given page.
 		]]></description>
 		<name>getHeadings</name>
-		<function-class>com.aoindustries.web.page.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.util.List getHeadings(com.semanticcms.core.model.Page)</function-signature>
 		<example>${p:getHeadings(page)}</example>
 	</function>
