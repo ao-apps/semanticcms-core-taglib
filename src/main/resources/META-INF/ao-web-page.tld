@@ -1085,7 +1085,7 @@ along with ao-web-page-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			Encodes arbitrary data into a UTF-8 encoded, then hex-encoded string.
 		]]></description>
 		<name>encodeHexData</name>
-		<function-class>com.aoindustries.web.page.servlet.impl.NavigationTreeImpl</function-class>
+		<function-class>com.semanticcms.core.servlet.impl.NavigationTreeImpl</function-class>
 		<function-signature>java.lang.String encodeHexData(java.lang.String)</function-signature>
 		<example>${p:encodeHexData(data)}</example>
 	</function>
