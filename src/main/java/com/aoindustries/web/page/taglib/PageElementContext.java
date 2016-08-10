@@ -22,7 +22,7 @@
  */
 package com.aoindustries.web.page.taglib;
 
-import com.aoindustries.web.page.servlet.ServletElementContext;
+import com.semanticcms.core.servlet.ServletElementContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.PageContext;

@@ -24,10 +24,10 @@
 <%@include file="taglibs.inc.jsp" %>
 <c:if test="${!requestScope['/ao-web-page-taglib/head.inc.jsp/included']}">
 	<c:set scope="request" var="/ao-web-page-taglib/head.inc.jsp/included" value="true" />
-	<ao:script src="/ao-web-page-servlet/scripts.js" />
+	<ao:script src="/semanticcms-core-servlet/scripts.js" />
 	<c:if test="${!header['X-com-aoindustries-web-page-exporting']}">
 		<ao:script>
-			ao_web_page_servlet.openFileUrl = <ao:out value="${ao:encodeURL(pageContext.request.contextPath.concat('/ao-web-page-servlet/ajax/open-file'))}" />;
+			semanticcms_core_servlet.openFileUrl = <ao:out value="${ao:encodeURL(pageContext.request.contextPath.concat('/semanticcms-core-servlet/ajax/open-file'))}" />;
 		</ao:script>
 	</c:if>
 </c:if>
