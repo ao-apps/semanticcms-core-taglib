@@ -88,10 +88,8 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 				try {
 					doBody(captureLevel);
 				} finally {
-					// Note: Page freezes all of its elements after setting missing ids
-					if(currentPage == null || element.getId() != null) {
-						element.freeze();
-					}
+					// Note: Page freezes all of its elements
+					if(currentPage == null) element.freeze();
 				}
 				JspWriter out = pageContext.getOut();
 				if(elementKey == null) {
