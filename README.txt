@@ -10,5 +10,5 @@ For questions or support, please contact:
     Phone: (251)607-9556
 
 The latest released version is always available:
-    Binary-only: https://www.aoindustries.com/lib/ao-web-page-taglib.jar
-    With Source: https://www.aoindustries.com/src/ao-web-page-taglib.src.jar
+    Binary-only: https://www.aoindustries.com/lib/semanticcms-core-taglib.jar
+    With Source: https://www.aoindustries.com/src/semanticcms-core-taglib.src.jar
