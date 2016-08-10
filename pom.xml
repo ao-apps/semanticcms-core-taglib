@@ -26,7 +26,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 
 	<groupId>com.semanticcms</groupId>
 	<artifactId>semanticcms-core-taglib</artifactId>
-	<version>1.1-SNAPSHOT</version>
+	<version>1.1</version>
 	<packaging>jar</packaging>
 
 	<name>SemanticCMS Core Taglib</name>
@@ -53,7 +53,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<connection>scm:git:git://github.com/aoindustries/semanticcms-core-taglib.git</connection>
 		<developerConnection>scm:git:git@github.com:aoindustries/semanticcms-core-taglib.git</developerConnection>
 		<url>http://github.com/aoindustries/semanticcms-core-taglib</url>
-		<tag>HEAD</tag>
+		<tag>semanticcms-core-taglib-1.1</tag>
 	</scm>
 
 	<repositories>
