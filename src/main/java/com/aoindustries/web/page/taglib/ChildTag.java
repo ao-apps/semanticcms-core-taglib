@@ -22,10 +22,10 @@
  */
 package com.aoindustries.web.page.taglib;
 
-import com.aoindustries.web.page.servlet.CurrentNode;
-import com.aoindustries.web.page.servlet.PageRefResolver;
 import com.semanticcms.core.model.Node;
 import com.semanticcms.core.model.Page;
+import com.semanticcms.core.servlet.CurrentNode;
+import com.semanticcms.core.servlet.PageRefResolver;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

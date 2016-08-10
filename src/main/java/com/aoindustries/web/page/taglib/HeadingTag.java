@@ -22,11 +22,11 @@
  */
 package com.aoindustries.web.page.taglib;
 
-import com.aoindustries.web.page.servlet.CaptureLevel;
-import com.aoindustries.web.page.servlet.PageIndex;
-import com.aoindustries.web.page.servlet.impl.HeadingImpl;
 import com.semanticcms.core.model.ElementContext;
 import com.semanticcms.core.model.Heading;
+import com.semanticcms.core.servlet.CaptureLevel;
+import com.semanticcms.core.servlet.PageIndex;
+import com.semanticcms.core.servlet.impl.HeadingImpl;
 import java.io.IOException;
 import java.io.Writer;
 import javax.servlet.jsp.JspException;
