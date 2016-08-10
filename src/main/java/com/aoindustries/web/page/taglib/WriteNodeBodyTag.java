@@ -22,8 +22,8 @@
  */
 package com.aoindustries.web.page.taglib;
 
-import com.aoindustries.web.page.Node;
-import com.aoindustries.web.page.NodeBodyWriter;
+import com.semanticcms.core.model.Node;
+import com.semanticcms.core.model.NodeBodyWriter;
 import java.io.IOException;
 import javax.servlet.jsp.JspTagException;
 import javax.servlet.jsp.PageContext;
