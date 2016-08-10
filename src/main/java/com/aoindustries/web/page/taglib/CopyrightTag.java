@@ -22,10 +22,10 @@
  */
 package com.aoindustries.web.page.taglib;
 
-import com.aoindustries.web.page.servlet.CurrentNode;
 import com.semanticcms.core.model.Copyright;
 import com.semanticcms.core.model.Node;
 import com.semanticcms.core.model.Page;
+import com.semanticcms.core.servlet.CurrentNode;
 import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspTagException;

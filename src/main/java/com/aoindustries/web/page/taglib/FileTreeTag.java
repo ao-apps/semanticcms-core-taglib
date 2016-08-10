@@ -22,8 +22,8 @@
  */
 package com.aoindustries.web.page.taglib;
 
-import com.aoindustries.web.page.servlet.impl.FileTreeImpl;
 import com.semanticcms.core.model.Page;
+import com.semanticcms.core.servlet.impl.FileTreeImpl;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

@@ -22,7 +22,7 @@
  */
 package com.aoindustries.web.page.taglib;
 
-import com.aoindustries.web.page.servlet.OpenFile;
+import com.semanticcms.core.servlet.OpenFile;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

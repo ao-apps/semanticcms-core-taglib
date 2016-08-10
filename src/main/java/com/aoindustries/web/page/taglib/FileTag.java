@@ -23,7 +23,7 @@
 package com.aoindustries.web.page.taglib;
 
 import com.aoindustries.io.NullWriter;
-import com.aoindustries.web.page.servlet.impl.FileImpl;
+import com.semanticcms.core.servlet.impl.FileImpl;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
