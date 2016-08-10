@@ -476,6 +476,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				The page-unique id of the element to link to.
+				To avoid broken links, may not link to generated ids; set explicit ids on target elements.
 			]]></description>
 			<name>element</name>
 			<required>false</required>
