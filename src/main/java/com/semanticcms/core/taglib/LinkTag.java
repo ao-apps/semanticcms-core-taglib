@@ -59,7 +59,7 @@ public class LinkTag
 		ParamsAttribute
 {
 
-    private MutableHttpParameters params;
+	private MutableHttpParameters params;
 	private String clazz;
 	private String book;
 	private String page;
@@ -67,16 +67,16 @@ public class LinkTag
 	private boolean allowGeneratedElement;
 	private String view;
 
-    @Override
-    public HttpParameters getParams() {
-        return params==null ? EmptyParameters.getInstance() : params;
-    }
+	@Override
+	public HttpParameters getParams() {
+		return params==null ? EmptyParameters.getInstance() : params;
+	}
 
-    @Override
-    public void addParam(String name, String value) {
-        if(params==null) params = new HttpParametersMap();
-        params.addParameter(name, value);
-    }
+	@Override
+	public void addParam(String name, String value) {
+		if(params==null) params = new HttpParametersMap();
+		params.addParameter(name, value);
+	}
 
 	public String getClazz() {
 		return clazz;
@@ -84,15 +84,15 @@ public class LinkTag
 
 	public void setClazz(String clazz) {
 		this.clazz = clazz;
-    }
+	}
 
 	public void setBook(String book) {
 		this.book = book;
-    }
+	}
 
 	public void setPage(String page) {
 		this.page = page;
-    }
+	}
 
 	public void setElement(String element) {
 		this.element = element;

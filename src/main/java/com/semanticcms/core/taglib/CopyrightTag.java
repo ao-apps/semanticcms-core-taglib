@@ -37,20 +37,20 @@ public class CopyrightTag extends SimpleTagSupport {
 	private String rightsHolder;
 	public void setRightsHolder(String rightsHolder) {
 		this.rightsHolder = rightsHolder;
-    }
+	}
 
 	private String rights;
 	public void setRights(String rights) {
 		this.rights = rights;
-    }
+	}
 
 	private String dateCopyrighted;
 	public void setDateCopyrighted(String dateCopyrighted) {
 		this.dateCopyrighted = dateCopyrighted;
-    }
+	}
 
 	@Override
-    public void doTag() throws JspTagException, IOException {
+	public void doTag() throws JspTagException, IOException {
 		final PageContext pageContext = (PageContext)getJspContext();
 		final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 

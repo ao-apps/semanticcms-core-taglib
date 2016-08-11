@@ -58,7 +58,7 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 
 	public void setId(String id) throws JspTagException {
 		element.setId(id);
-    }
+	}
 
 	/**
 	 * Adds this element to the current page, if part of a page.
@@ -66,7 +66,7 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 	 * Then, if not capturing or capturing META or higher, calls {@link #doBody}
 	 */
 	@Override
-    public void doTag() throws JspException, IOException {
+	public void doTag() throws JspException, IOException {
 		final PageContext pageContext = (PageContext)getJspContext();
 		final ServletRequest request = pageContext.getRequest();
 
