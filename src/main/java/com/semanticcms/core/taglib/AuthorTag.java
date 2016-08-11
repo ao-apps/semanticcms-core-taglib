@@ -37,25 +37,25 @@ public class AuthorTag extends SimpleTagSupport {
 	private String name;
 	public void setName(String name) {
 		this.name = name;
-    }
+	}
 
 	private String href;
 	public void setHref(String href) {
 		this.href = href;
-    }
+	}
 
 	private String book;
 	public void setBook(String book) {
 		this.book = book;
-    }
+	}
 
 	private String page;
 	public void setPage(String page) {
 		this.page = page;
-    }
+	}
 
 	@Override
-    public void doTag() throws JspTagException, IOException {
+	public void doTag() throws JspTagException, IOException {
 		final PageContext pageContext = (PageContext)getJspContext();
 		final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 

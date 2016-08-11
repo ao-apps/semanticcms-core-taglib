@@ -38,7 +38,7 @@ public class HeadingTag extends ElementTag<Heading> {
 		super(new Heading());
 	}
 
-    public void setLabel(String label) {
+	public void setLabel(String label) {
 		element.setLabel(label);
 	}
 

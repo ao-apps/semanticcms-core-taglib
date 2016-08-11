@@ -48,22 +48,22 @@ public class PageTag extends SimpleTagSupport {
 	private String title;
 	public void setTitle(String title) {
 		this.title = title;
-    }
+	}
 
 	private String shortTitle;
 	public void setShortTitle(String shortTitle) {
 		this.shortTitle = shortTitle;
-    }
+	}
 
 	private String description;
 	public void setDescription(String description) {
 		this.description = description;
-    }
+	}
 
 	private String keywords;
 	public void setKeywords(String keywords) {
 		this.keywords = keywords;
-    }
+	}
 
 	private Boolean toc;
 	public void setToc(String toc) {
@@ -86,7 +86,7 @@ public class PageTag extends SimpleTagSupport {
 	}
 
 	@Override
-    public void doTag() throws JspException, IOException {
+	public void doTag() throws JspException, IOException {
 		try {
 			final PageContext pageContext = (PageContext)getJspContext();
 			final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();

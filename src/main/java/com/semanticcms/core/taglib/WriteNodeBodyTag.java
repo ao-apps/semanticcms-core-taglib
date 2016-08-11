@@ -32,12 +32,12 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 public class WriteNodeBodyTag extends SimpleTagSupport {
 
 	private Node node;
-    public void setNode(Node node) {
+	public void setNode(Node node) {
 		this.node = node;
-    }
+	}
 
 	@Override
-    public void doTag() throws JspTagException, IOException {
+	public void doTag() throws JspTagException, IOException {
 		PageContext pageContext = (PageContext)getJspContext();
 		// Buffering made it slower, only about half throughput:
 		// BufferedWriter out = new BufferedWriter(pageContext.getOut());

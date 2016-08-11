@@ -42,10 +42,10 @@ public class OpenFileTag extends SimpleTagSupport {
 	private String path;
 	public void setPath(String path) {
 		this.path = path;
-    }
+	}
 
 	@Override
-    public void doTag() throws JspException, IOException {
+	public void doTag() throws JspException, IOException {
 		try {
 			final PageContext pageContext = (PageContext)getJspContext();
 			OpenFile.openFile(

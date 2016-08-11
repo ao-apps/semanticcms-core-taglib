@@ -44,7 +44,7 @@ public class FileTag extends SimpleTagSupport {
 	private String path;
 	public void setPath(String path) {
 		this.path = path;
-    }
+	}
 
 	private boolean hidden;
 	public void setHidden(boolean hidden) {
@@ -52,7 +52,7 @@ public class FileTag extends SimpleTagSupport {
 	}
 
 	@Override
-    public void doTag() throws JspException, IOException {
+	public void doTag() throws JspException, IOException {
 		try {
 			final PageContext pageContext = (PageContext)getJspContext();
 			final JspFragment body = getJspBody();
