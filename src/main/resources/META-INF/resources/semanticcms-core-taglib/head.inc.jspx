@@ -23,7 +23,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 <jsp:root
 	xmlns:jsp="http://java.sun.com/JSP/Page"
 	version="2.1"
-	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:ao="http://aoindustries.com/ao-taglib"
 >
