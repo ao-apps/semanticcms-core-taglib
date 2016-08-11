@@ -301,8 +301,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			</p>
 			<ol>
 				<li>If this page is the "content.root" of a book, include all parents configured when book imported.</li>
-				<li>If this page URL ends in "/" or "/index.jsp", look for JSP page at "../index.jsp" then asssume "../", error if outside book.</li>
-				<li>Look for page at "./index.jsp" then assume "./".</li>
+				<li>If this page URL ends in "/", "/index.jspx" or "/index.jsp", look for JSP page at "../index.jspx" or "../index.jsp" then asssume "../", error if outside book.</li>
+				<li>Look for page at "./index.jspx" or "./index.jsp" then assume "./".</li>
 			</ol>
 			<p>
 				Unless "allowParentMismatch" is enabled on the page, the parent
