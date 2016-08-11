@@ -64,6 +64,7 @@ public class LinkTag
 	private String book;
 	private String page;
 	private String element;
+	private boolean allowGeneratedElement;
 	private String view;
 
     @Override
@@ -95,6 +96,10 @@ public class LinkTag
 
 	public void setElement(String element) {
 		this.element = element;
+	}
+
+	public void setAllowGeneratedElement(boolean allowGeneratedElement) {
+		this.allowGeneratedElement = allowGeneratedElement;
 	}
 
 	public void setView(String view) {
@@ -169,6 +174,7 @@ public class LinkTag
 					book,
 					page,
 					element,
+					allowGeneratedElement,
 					view,
 					params,
 					clazz,
