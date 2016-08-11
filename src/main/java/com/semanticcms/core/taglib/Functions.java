@@ -35,7 +35,6 @@ import com.semanticcms.core.model.Heading;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.model.PageRef;
 import com.semanticcms.core.servlet.AuthorUtils;
-import com.semanticcms.core.servlet.BooksContextListener;
 import com.semanticcms.core.servlet.CaptureLevel;
 import com.semanticcms.core.servlet.CapturePage;
 import com.semanticcms.core.servlet.CopyrightUtils;
@@ -43,6 +42,7 @@ import com.semanticcms.core.servlet.Headers;
 import com.semanticcms.core.servlet.PageDags;
 import com.semanticcms.core.servlet.PageIndex;
 import com.semanticcms.core.servlet.PageRefResolver;
+import com.semanticcms.core.servlet.SemanticCMS;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -89,7 +89,7 @@ final public class Functions {
 			servletContext,
 			getRequest(),
 			getResponse(),
-			BooksContextListener.getRootBook(servletContext).getContentRoot(),
+			SemanticCMS.getInstance(servletContext).getRootBook().getContentRoot(),
 			CaptureLevel.valueOf(level.toUpperCase(Locale.ROOT))
 		);
 	}
@@ -216,7 +216,7 @@ final public class Functions {
 
 	public static Book getBook(String pagePath) {
 		if(pagePath==null) return null;
-		Book book = BooksContextListener.getBook(getServletContext(), pagePath);
+		Book book = SemanticCMS.getInstance(getServletContext()).getBook(pagePath);
 		if(book==null) throw new IllegalArgumentException("Book not found: " + pagePath);
 		return book;
 	}
