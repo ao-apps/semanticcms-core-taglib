@@ -60,7 +60,6 @@ public class DoViewTag extends SimpleTagSupport {
 					// TODO: Just pass writer to avoid all this craziness
 				}
 			};
-			if(pw.checkError()) throw new IOException("Check 0");
 			view.doView(
 				pageContext.getServletContext(),
 				(HttpServletRequest)pageContext.getRequest(),
