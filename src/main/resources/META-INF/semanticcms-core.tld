@@ -854,6 +854,32 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<type>com.semanticcms.core.model.Node</type>
 		</attribute>
 	</tag>
+	<tag>
+		<description><![CDATA[
+			Calls the view for the given page.
+		]]></description>
+		<name>doView</name>
+		<tag-class>com.semanticcms.core.taglib.DoViewTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description><![CDATA[
+				The view to call.
+			]]></description>
+			<name>view</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>com.semanticcms.core.servlet.View</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The page to provide to the view.
+			]]></description>
+			<name>page</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>com.semanticcms.core.model.Page</type>
+		</attribute>
+	</tag>
 	<function>
 		<description><![CDATA[
 			<p>
