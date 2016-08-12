@@ -56,8 +56,7 @@ public class DoViewTag extends SimpleTagSupport {
 			final PrintWriter pw = new PrintWriter(pageContext.getOut()) {
 				@Override
 				public void flush() {
-					// Avoid Illegal to flush within a custom tag from BodyContentImpl
-					// TODO: Just pass writer to avoid all this craziness
+					// Avoid "Illegal to flush within a custom tag" from BodyContentImpl
 				}
 			};
 			view.doView(
