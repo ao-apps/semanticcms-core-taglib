@@ -38,7 +38,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<p>
 				When this page is directly accessed, the HTML page is rendered with the
 				page content coming from the body of this tag.  The page is forwarded
-				to /lib/docs/page.inc.jsp to generate the full HTML page.
+				to /lib/docs/page.inc.jspx to generate the full HTML page.
 			</p>
 		]]></description>
 		<name>page</name>
