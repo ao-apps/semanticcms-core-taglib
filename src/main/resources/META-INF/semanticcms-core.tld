@@ -1170,4 +1170,22 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<function-signature>java.util.List getHeadings(com.semanticcms.core.model.Page)</function-signature>
 		<example>${p:getHeadings(page)}</example>
 	</function>
+	<function>
+		<description><![CDATA[
+			Gets the copyright for the given view and page.
+		]]></description>
+		<name>getViewCopyright</name>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
+		<function-signature>java.lang.String getViewCopyright(com.semanticcms.core.servlet.View,com.semanticcms.core.model.Page)</function-signature>
+		<example>${p:getViewCopyright(view, page)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Gets the authors for the given view and page.
+		]]></description>
+		<name>getViewAuthors</name>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
+		<function-signature>java.util.Set getViewAuthors(com.semanticcms.core.servlet.View,com.semanticcms.core.model.Page)</function-signature>
+		<example>${p:getViewAuthors(view, page)}</example>
+	</function>
 </taglib>
