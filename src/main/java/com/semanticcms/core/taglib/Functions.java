@@ -43,6 +43,7 @@ import com.semanticcms.core.servlet.PageDags;
 import com.semanticcms.core.servlet.PageIndex;
 import com.semanticcms.core.servlet.PageRefResolver;
 import com.semanticcms.core.servlet.SemanticCMS;
+import com.semanticcms.core.servlet.View;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -378,6 +379,24 @@ final public class Functions {
 	// </editor-fold>
 
 	// </editor-fold>
+
+	public static Copyright getViewCopyright(View view, Page page) throws ServletException, IOException {
+		return view.getCopyright(
+			getServletContext(),
+			getRequest(),
+			getResponse(),
+			page
+		);
+	}
+
+	public static Set<Author> getViewAuthors(View view, Page page) throws ServletException, IOException {
+		return view.getAuthors(
+			getServletContext(),
+			getRequest(),
+			getResponse(),
+			page
+		);
+	}
 
 	/**
 	 * Make no instances.
