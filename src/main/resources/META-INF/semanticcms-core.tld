@@ -377,43 +377,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<tag>
 		<description><![CDATA[
 			<p>
-				Creates &lt;h2&gt;, &lt;h3&gt;, ..., &lt;h6&gt; tags based on nesting levels.
-				The page title is always added as the &lt;h1&gt;
-			</p>
-			<p>
-				Must be nested inside a &lt;p:page&gt; page to provide page structure
-				information for table of contents generation.
-			</p>
-		]]></description>
-		<name>h</name>
-		<tag-class>com.semanticcms.core.taglib.HeadingTag</tag-class>
-		<body-content>scriptless</body-content>
-		<attribute>
-			<description><![CDATA[
-				The id used in URL anchors.
-				If not provided, is generated from the label.
-				Must be unique per page.
-				Ids generated from labels will be unique, but may change as page structure changes.
-			]]></description>
-			<name>id</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				The label displayed.
-				This value is also used in table of contents entries.
-			]]></description>
-			<name>label</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-	</tag>
-	<tag>
-		<description><![CDATA[
-			<p>
 				Writes a link to a page and optionally an element.
 				If element not provided, then page is required.
 				If page is not provided, links to element within this page.
@@ -1175,7 +1138,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>hasElement</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>boolean hasElement(com.semanticcms.core.model.Page,java.lang.String,boolean)</function-signature>
-		<example>${p:hasElement(page, classname, recursive)}</example>
+		<example>${p:hasElement(page, elementType, recursive)}</example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1189,12 +1152,29 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<description><![CDATA[
-			Gets all the headings in the given page.
+			<p>
+				Looks for the nearest nested elements of the given class.  These elements
+				may be direct descendents or descendents further down the tree, but only
+				the top-most descendents are returned.
+			</p>
+			<p>
+				If the node is a page, its elements are checked, but the elements of its child pages are not.
+			</p>
 		]]></description>
-		<name>getHeadings</name>
+		<name>findTopLevelElements</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.util.List getHeadings(com.semanticcms.core.model.Page)</function-signature>
-		<example>${p:getHeadings(page)}</example>
+		<function-signature>java.util.List findTopLevelElements(com.semanticcms.core.model.Node,java.lang.String)</function-signature>
+		<example>${p:findTopLevelElements(node, elementType)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Gets all elements in the page (including all child elements) that are of the
+			given type, in the order they were declared in the page.
+		]]></description>
+		<name>filterElements</name>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
+		<function-signature>java.util.List filterElements(com.semanticcms.core.model.Page,java.lang.String)</function-signature>
+		<example>${p:filterElements(page, elementType)}</example>
 	</function>
 	<function>
 		<description><![CDATA[
