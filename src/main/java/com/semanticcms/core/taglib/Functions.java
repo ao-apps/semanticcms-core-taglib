@@ -31,7 +31,7 @@ import com.semanticcms.core.model.Author;
 import com.semanticcms.core.model.Book;
 import com.semanticcms.core.model.Copyright;
 import com.semanticcms.core.model.Element;
-import com.semanticcms.core.model.Heading;
+import com.semanticcms.core.model.Node;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.model.PageRef;
 import com.semanticcms.core.servlet.AuthorUtils;
@@ -251,13 +251,13 @@ final public class Functions {
 		return false;
 	}
 
-	public static boolean hasElement(Page page, String classname, boolean recursive) throws ServletException, IOException, ClassNotFoundException {
+	public static boolean hasElement(Page page, String elementType, boolean recursive) throws ServletException, IOException, ClassNotFoundException {
 		return hasElementRecursive(
 			getServletContext(),
 			getRequest(),
 			getResponse(),
 			page,
-			Class.forName(classname),
+			Class.forName(elementType).asSubclass(Element.class),
 			recursive,
 			recursive ? new HashSet<PageRef>() : null
 		);
@@ -268,7 +268,7 @@ final public class Functions {
 		HttpServletRequest request,
 		HttpServletResponse response,
 		Page page,
-		Class<?> clazz,
+		Class<? extends Element> clazz,
 		boolean recursive,
 		Set<PageRef> seenPages
 	) throws ServletException, IOException {
@@ -316,6 +316,18 @@ final public class Functions {
 		);
 	}
 
+	public static List<? extends Element> findTopLevelElements(Node node, String elementType) throws ClassNotFoundException {
+		return node.findTopLevelElements(
+			Class.forName(elementType).asSubclass(Element.class)
+		);
+	}
+
+	public List<? extends Element> filterElements(Page page, String elementType) throws ClassNotFoundException {
+		return page.filterElements(
+			Class.forName(elementType).asSubclass(Element.class)
+		);
+	}
+
 	private static boolean hasFileRecursive(
 		ServletContext servletContext,
 		HttpServletRequest request,
@@ -360,25 +372,6 @@ final public class Functions {
 		}
 		return false;
 	}
-
-	// <editor-fold desc="Accessing all elements by type">
-
-	// <editor-fold defaultstate="collapsed" desc="Headings">
-	/**
-	 * Gets the list of all headings within the page in the order declared in the page.
-	 */
-	public static List<Heading> getHeadings(Page page) {
-		return page.filterElements(Heading.class);
-	}
-//	private Map<String,Heading> headingsById;
-//	public Map<String,Heading> getHeadingsById() {
-//		if(elementsById == null) return Collections.emptyMap();
-//		if(headingsById == null) headingsById = PragmaticMaps.filter(elementsById, Heading.class);
-//		return headingsById;
-//	}
-	// </editor-fold>
-
-	// </editor-fold>
 
 	public static Copyright getViewCopyright(View view, Page page) throws ServletException, IOException {
 		return view.getCopyright(
