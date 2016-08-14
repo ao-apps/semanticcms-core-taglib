@@ -322,7 +322,7 @@ final public class Functions {
 		);
 	}
 
-	public List<? extends Element> filterElements(Page page, String elementType) throws ClassNotFoundException {
+	public static List<? extends Element> filterElements(Page page, String elementType) throws ClassNotFoundException {
 		return page.filterElements(
 			Class.forName(elementType).asSubclass(Element.class)
 		);
