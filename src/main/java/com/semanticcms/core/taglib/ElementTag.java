@@ -94,7 +94,17 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 				JspWriter out = pageContext.getOut();
 				if(elementKey == null) {
 					// Write now
-					writeTo(out, new PageElementContext(pageContext));
+					try {
+						writeTo(out, new PageElementContext(pageContext));
+					} catch(JspException e) {
+						throw e;
+					} catch(IOException e) {
+						throw e;
+					} catch(RuntimeException e) {
+						throw e;
+					} catch(Exception e) {
+						throw new JspTagException(e);
+					}
 				} else {
 					// Write an element marker instead
 					// TODO: Do not write element marker for empty elements, such as passwordTable at http://localhost:8080/docs/ao/infrastructure/ao/regions/mobile-al/workstations/francis.aoindustries.com/
