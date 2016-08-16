@@ -391,6 +391,15 @@ final public class Functions {
 		);
 	}
 
+	public static String getViewTitle(View view, Page page) throws ServletException, IOException {
+		return view.getTitle(
+			getServletContext(),
+			getRequest(),
+			getResponse(),
+			page
+		);
+	}
+
 	/**
 	 * Make no instances.
 	 */
