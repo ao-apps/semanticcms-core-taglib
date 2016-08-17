@@ -114,20 +114,19 @@ public class PageTag extends SimpleTagSupport {
 								body.invoke(NullWriter.getInstance());
 								return EmptyResult.getInstance();
 							} else {
-								BufferWriter capturedOut = new SegmentedWriter();
-								try {
-									// Enable temp files if temp file context active
-									capturedOut = TempFileContext.wrapTempFileList(
-										capturedOut,
-										request,
-										// Java 1.8: AutoTempFileWriter::new
-										new TempFileContext.Wrapper<BufferWriter>() {
-											@Override
-											public BufferWriter call(BufferWriter original, TempFileList tempFileList) {
-												return new AutoTempFileWriter(original, tempFileList);
-											}
+								// Enable temp files if temp file context active
+								BufferWriter capturedOut = TempFileContext.wrapTempFileList(
+									new SegmentedWriter(),
+									request,
+									// Java 1.8: AutoTempFileWriter::new
+									new TempFileContext.Wrapper<BufferWriter>() {
+										@Override
+										public BufferWriter call(BufferWriter original, TempFileList tempFileList) {
+											return new AutoTempFileWriter(original, tempFileList);
 										}
-									);
+									}
+								);
+								try {
 									body.invoke(capturedOut);
 								} finally {
 									capturedOut.close();

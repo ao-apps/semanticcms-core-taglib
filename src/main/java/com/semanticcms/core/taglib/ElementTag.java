@@ -124,22 +124,21 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 		JspFragment body = getJspBody();
 		if(body != null) {
 			if(captureLevel == CaptureLevel.BODY) {
+				final PageContext pageContext = (PageContext)getJspContext();
 				// Invoke tag body, capturing output
-				BufferWriter capturedOut = new SegmentedWriter();
-				try {
-					final PageContext pageContext = (PageContext)getJspContext();
-					// Enable temp files if temp file context active
-					capturedOut = TempFileContext.wrapTempFileList(
-						capturedOut,
-						pageContext.getRequest(),
-						// Java 1.8: AutoTempFileWriter::new
-						new TempFileContext.Wrapper<BufferWriter>() {
-							@Override
-							public BufferWriter call(BufferWriter original, TempFileList tempFileList) {
-								return new AutoTempFileWriter(original, tempFileList);
-							}
+				// Enable temp files if temp file context active
+				BufferWriter capturedOut = TempFileContext.wrapTempFileList(
+					new SegmentedWriter(),
+					pageContext.getRequest(),
+					// Java 1.8: AutoTempFileWriter::new
+					new TempFileContext.Wrapper<BufferWriter>() {
+						@Override
+						public BufferWriter call(BufferWriter original, TempFileList tempFileList) {
+							return new AutoTempFileWriter(original, tempFileList);
 						}
-					);
+					}
+				);
+				try {
 					body.invoke(capturedOut);
 				} finally {
 					capturedOut.close();
