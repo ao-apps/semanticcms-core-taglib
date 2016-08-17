@@ -137,20 +137,19 @@ public class LinkTag
 				if(captureLevel == CaptureLevel.BODY) {
 					JspFragment body = getJspBody();
 					if(body != null) {
-						BufferWriter captureOut = new SegmentedWriter();
-						try {
-							// Enable temp files if temp file context active
-							captureOut = TempFileContext.wrapTempFileList(
-								captureOut,
-								request,
-								// Java 1.8: AutoTempFileWriter::new
-								new TempFileContext.Wrapper<BufferWriter>() {
-									@Override
-									public BufferWriter call(BufferWriter original, TempFileList tempFileList) {
-										return new AutoTempFileWriter(original, tempFileList);
-									}
+						// Enable temp files if temp file context active
+						BufferWriter captureOut = TempFileContext.wrapTempFileList(
+							new SegmentedWriter(),
+							request,
+							// Java 1.8: AutoTempFileWriter::new
+							new TempFileContext.Wrapper<BufferWriter>() {
+								@Override
+								public BufferWriter call(BufferWriter original, TempFileList tempFileList) {
+									return new AutoTempFileWriter(original, tempFileList);
 								}
-							);
+							}
+						);
+						try {
 							body.invoke(captureOut);
 						} finally {
 							captureOut.close();
