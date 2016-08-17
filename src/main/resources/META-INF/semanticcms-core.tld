@@ -581,57 +581,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<description><![CDATA[
-			<p>
-				Writes a link to a file.
-			</p>
-			<p>
-				If OpenFileTag is snabled, the connection is from localhost, and not exporting,
-				creates a file:/// URL to the file so that it may be opened locally by the browser.
-				Will open from the server-side when JavaScript enabled.
-			</p>
-			<p>
-				If there is no body, will write the filename followed by the file size.
-			</p>
-			<p>
-				The onclick Ajax file opening is disabled when the documents are exporting,
-				as set by the "X-com-aoindustries-web-page-exporting: true" header.
-			</p>
-		]]></description>
-		<name>file</name>
-		<tag-class>com.semanticcms.core.taglib.FileTag</tag-class>
-		<body-content>scriptless</body-content>
-		<attribute>
-			<description><![CDATA[
-				The book containing the file.
-				Defaults to the book of the current JSP file.
-			]]></description>
-			<name>book</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				The page-relative path to the file.
-			]]></description>
-			<name>path</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				When "true", the file is displayed on the page but not added to the list of files on the page.
-				Defaults to "false".
-			]]></description>
-			<name>hidden</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>boolean</type>
-		</attribute>
-	</tag>
-	<tag>
-		<description><![CDATA[
 			Opens a file from the servlet container.
 			This opens the file from the server-side so that the proper application
 			may be launched with the local file, allowing direct editing and saving.
@@ -768,35 +717,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<type>int</type>
-		</attribute>
-	</tag>
-	<tag>
-		<description><![CDATA[
-			Writes a file tree as &lt;ul&gt; and &lt;li&gt; tags.
-			Filters for only pages that have at least one file.
-			The parent pages of any page that has a file will also be included.
-		]]></description>
-		<name>fileTree</name>
-		<tag-class>com.semanticcms.core.taglib.FileTreeTag</tag-class>
-		<body-content>empty</body-content>
-		<attribute>
-			<description><![CDATA[
-				The root page of the tree.
-			]]></description>
-			<name>root</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>com.semanticcms.core.model.Page</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				May optionally include tree nodes for elements within pages.
-				Defaults to "false".
-			]]></description>
-			<name>includeElements</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>boolean</type>
 		</attribute>
 	</tag>
 	<tag>
@@ -1139,16 +1059,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>boolean hasElement(com.semanticcms.core.model.Page,java.lang.String,boolean)</function-signature>
 		<example>${p:hasElement(page, elementType, recursive)}</example>
-	</function>
-	<function>
-		<description><![CDATA[
-			Checks if the given page, or optionally any of its child pages, has at least
-			one File.
-		]]></description>
-		<name>hasFile</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>boolean hasFile(com.semanticcms.core.model.Page,boolean)</function-signature>
-		<example>${p:hasFile(page, recursive)}</example>
 	</function>
 	<function>
 		<description><![CDATA[
