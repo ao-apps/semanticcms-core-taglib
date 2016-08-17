@@ -305,17 +305,6 @@ final public class Functions {
 		return false;
 	}
 
-	public static boolean hasFile(Page page, boolean recursive) throws ServletException, IOException {
-		return hasFileRecursive(
-			getServletContext(),
-			getRequest(),
-			getResponse(),
-			page,
-			recursive,
-			recursive ? new HashSet<PageRef>() : null
-		);
-	}
-
 	public static List<? extends Element> findTopLevelElements(Node node, String elementType) throws ClassNotFoundException {
 		return node.findTopLevelElements(
 			Class.forName(elementType).asSubclass(Element.class)
@@ -326,51 +315,6 @@ final public class Functions {
 		return page.filterElements(
 			Class.forName(elementType).asSubclass(Element.class)
 		);
-	}
-
-	private static boolean hasFileRecursive(
-		ServletContext servletContext,
-		HttpServletRequest request,
-		HttpServletResponse response,
-		Page page,
-		boolean recursive,
-		Set<PageRef> seenPages
-	) throws ServletException, IOException {
-		// Direct on page
-		if(!page.getFiles().isEmpty()) {
-			return true;
-		}
-		// In an element
-		for(Element e : page.getElements()) {
-			if(!e.getFiles().isEmpty()) {
-				return true;
-			}
-		}
-		if(recursive) {
-			seenPages.add(page.getPageRef());
-			for(PageRef childRef : page.getChildPages()) {
-				if(
-					// Child not in missing book
-					childRef.getBook() != null
-					// Not already seen
-					&& !seenPages.contains(childRef)
-				) {
-					if(
-						hasFileRecursive(
-							servletContext,
-							request,
-							response,
-							CapturePage.capturePage(servletContext, request, response, childRef, CaptureLevel.META),
-							recursive,
-							seenPages
-						)
-					) {
-						return true;
-					}
-				}
-			}
-		}
-		return false;
 	}
 
 	public static Copyright getViewCopyright(View view, Page page) throws ServletException, IOException {
