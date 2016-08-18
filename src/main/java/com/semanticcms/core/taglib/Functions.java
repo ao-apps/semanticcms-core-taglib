@@ -42,6 +42,7 @@ import com.semanticcms.core.servlet.Headers;
 import com.semanticcms.core.servlet.PageDags;
 import com.semanticcms.core.servlet.PageIndex;
 import com.semanticcms.core.servlet.PageRefResolver;
+import com.semanticcms.core.servlet.PageUtils;
 import com.semanticcms.core.servlet.SemanticCMS;
 import com.semanticcms.core.servlet.View;
 import java.io.File;
@@ -49,7 +50,6 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
@@ -58,7 +58,6 @@ import java.util.Set;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.JspTagException;
 
 final public class Functions {
@@ -244,65 +243,15 @@ final public class Functions {
 		);
 	}
 
-	public static boolean hasChild(Page page) {
-		for(PageRef childRef : page.getChildPages()) {
-			if(childRef.getBook() != null) return true;
-		}
-		return false;
-	}
-
 	public static boolean hasElement(Page page, String elementType, boolean recursive) throws ServletException, IOException, ClassNotFoundException {
-		return hasElementRecursive(
+		return PageUtils.hasElement(
 			getServletContext(),
 			getRequest(),
 			getResponse(),
 			page,
 			Class.forName(elementType).asSubclass(Element.class),
-			recursive,
-			recursive ? new HashSet<PageRef>() : null
+			recursive
 		);
-	}
-
-	private static boolean hasElementRecursive(
-		ServletContext servletContext,
-		HttpServletRequest request,
-		HttpServletResponse response,
-		Page page,
-		Class<? extends Element> clazz,
-		boolean recursive,
-		Set<PageRef> seenPages
-	) throws ServletException, IOException {
-		for(Element element : page.getElements()) {
-			if(clazz.isAssignableFrom(element.getClass())) {
-				return true;
-			}
-		}
-		if(recursive) {
-			seenPages.add(page.getPageRef());
-			for(PageRef childRef : page.getChildPages()) {
-				if(
-					// Child not in missing book
-					childRef.getBook() != null
-					// Not already seen
-					&& !seenPages.contains(childRef)
-				) {
-					if(
-						hasElementRecursive(
-							servletContext,
-							request,
-							response,
-							CapturePage.capturePage(servletContext, request, response, childRef, CaptureLevel.META),
-							clazz,
-							recursive,
-							seenPages
-						)
-					) {
-						return true;
-					}
-				}
-			}
-		}
-		return false;
 	}
 
 	public static List<? extends Element> findTopLevelElements(Node node, String elementType) throws ClassNotFoundException {
@@ -314,6 +263,15 @@ final public class Functions {
 	public static List<? extends Element> filterElements(Page page, String elementType) throws ClassNotFoundException {
 		return page.filterElements(
 			Class.forName(elementType).asSubclass(Element.class)
+		);
+	}
+
+	public static boolean isViewApplicable(View view, Page page) throws ServletException, IOException {
+		return view.isApplicable(
+			getServletContext(),
+			getRequest(),
+			getResponse(),
+			page
 		);
 	}
 

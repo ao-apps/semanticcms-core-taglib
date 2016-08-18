@@ -1046,7 +1046,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			(ignores child pages in missing books).
 		]]></description>
 		<name>hasChild</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
+		<function-class>com.semanticcms.core.servlet.PageUtils</function-class>
 		<function-signature>boolean hasChild(com.semanticcms.core.model.Page)</function-signature>
 		<example>${p:hasChild(page)}</example>
 	</function>
@@ -1085,6 +1085,15 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.util.List filterElements(com.semanticcms.core.model.Page,java.lang.String)</function-signature>
 		<example>${p:filterElements(page, elementType)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Checks if a view is applicable the given page.
+		]]></description>
+		<name>isViewApplicable</name>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
+		<function-signature>boolean isViewApplicable(com.semanticcms.core.servlet.View,com.semanticcms.core.model.Page)</function-signature>
+		<example>${p:isViewApplicable(view, page)}</example>
 	</function>
 	<function>
 		<description><![CDATA[
