@@ -581,37 +581,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<description><![CDATA[
-			Opens a file from the servlet container.
-			This opens the file from the server-side so that the proper application
-			may be launched with the local file, allowing direct editing and saving.
-			This feature must be explicitely enabled in the OpenFileTag context init parameter.
-			This may only be called from localhost.
-		]]></description>
-		<name>openFile</name>
-		<tag-class>com.semanticcms.core.taglib.OpenFileTag</tag-class>
-		<body-content>empty</body-content>
-		<attribute>
-			<description><![CDATA[
-				The book containing the file.
-				Defaults to the book of the current JSP file.
-			]]></description>
-			<name>book</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				The context-relative path to the file.
-			]]></description>
-			<name>path</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-	</tag>
-	<tag>
-		<description><![CDATA[
 			Writes the tree data for use by TreeView as &lt;ul&gt; and &lt;li&gt; tags.
 		]]></description>
 		<name>navigationTree</name>
