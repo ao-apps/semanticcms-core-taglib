@@ -473,6 +473,24 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<rtexprvalue>true</rtexprvalue>
 			<type>java.lang.String</type>
 		</attribute>
+		<attribute>
+			<description><![CDATA[
+				<p>
+					When true, the default, will generate a &lt;a&gt; tag to the target.
+					Otherwise, will generate a &lt;span&gt; instead, but still allowing
+					automatic CSS class determination and target label substitution into body.
+				</p>
+				<p>
+					In either case, this still counts as a link to the target, but sometimes
+					you do not want an actual link for usability, such as a piece of information
+					intended for quick copy/paste by the user.
+				</p>
+			]]></description>
+			<name>hyperlink</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>boolean</type>
+		</attribute>
 		<dynamic-attributes>true</dynamic-attributes>
 	</tag>
 	<tag>
