@@ -47,7 +47,7 @@ public class LinkTagBeanInfo extends SimpleBeanInfo {
 						new PropertyDescriptor("element", LinkTag.class, null, "setElement"),
 						new PropertyDescriptor("allowGeneratedElement", LinkTag.class, null, "setAllowGeneratedElement"),
 						new PropertyDescriptor("view", LinkTag.class, null, "setView"),
-						new PropertyDescriptor("hyperlink", LinkTag.class, null, "setHyperlink")
+						new PropertyDescriptor("small", LinkTag.class, null, "setSmall")
 					};
 					properties = props;
 				}
