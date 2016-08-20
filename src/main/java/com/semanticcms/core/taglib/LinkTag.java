@@ -66,6 +66,7 @@ public class LinkTag
 	private String element;
 	private boolean allowGeneratedElement;
 	private String view;
+	private boolean hyperlink = true;
 
 	@Override
 	public HttpParameters getParams() {
@@ -104,6 +105,10 @@ public class LinkTag
 
 	public void setView(String view) {
 		this.view = view==null || view.isEmpty() ? null : view;
+	}
+
+	public void setHyperlink(boolean hyperlink) {
+		this.hyperlink = hyperlink;
 	}
 
 	@Override
@@ -175,6 +180,7 @@ public class LinkTag
 					element,
 					allowGeneratedElement,
 					view,
+					hyperlink,
 					params,
 					clazz,
 					capturedBody == null || capturedBody.getLength() == 0
