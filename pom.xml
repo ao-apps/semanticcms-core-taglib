@@ -28,6 +28,12 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<maven>3.0.4</maven>
 	</prerequisites>
 
+	<parent>
+		<groupId>com.semanticcms</groupId>
+		<artifactId>semanticcms</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
 	<groupId>com.semanticcms</groupId>
 	<artifactId>semanticcms-core-taglib</artifactId>
 	<version>1.3-SNAPSHOT</version>
