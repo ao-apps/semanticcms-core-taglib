@@ -302,6 +302,10 @@ final public class Functions {
 		);
 	}
 
+	public static String getLinkCssClass(Element element) {
+		return SemanticCMS.getInstance(getServletContext()).getLinkCssClass(element);
+	}
+
 	/**
 	 * Make no instances.
 	 */
