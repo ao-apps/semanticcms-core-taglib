@@ -46,10 +46,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<tag>HEAD</tag>
 	</scm>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-
 	<build>
 		<plugins>
 			<plugin>
