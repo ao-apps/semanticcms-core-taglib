@@ -1108,4 +1108,14 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<function-signature>java.lang.String getViewTitle(com.semanticcms.core.servlet.View,com.semanticcms.core.model.Page)</function-signature>
 		<example>${p:getViewTitle(view, page)}</example>
 	</function>
+	<function>
+		<description><![CDATA[
+			Gets the CSS class that is to be used to link to the given element or <code>null</code>
+			if none registered.
+		]]></description>
+		<name>getLinkCssClass</name>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
+		<function-signature>java.lang.String getLinkCssClass(com.semanticcms.core.model.Element)</function-signature>
+		<example>${p:getLinkCssClass(element)}</example>
+	</function>
 </taglib>
