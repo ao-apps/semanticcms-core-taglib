@@ -30,11 +30,11 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<name>semanticcms-core-taglib</name>
     <display-name>SemanticCMS Core Taglib</display-name>
 	<description>Java API for modeling web page content and relationships in a JSP environment.</description>
-	<!-- The function context filter must be last, declare all other fragments before this one -->
+	<!-- The function context filter must be last, declare this after all other fragments -->
 	<ordering>
-		<before>
+		<after>
 			<others />
-		</before>
+		</after>
 	</ordering>
 	<!-- Filter to block direct access to *.inc.jspx, *.inc.jsp and *.jspf files -->
 	<filter>
