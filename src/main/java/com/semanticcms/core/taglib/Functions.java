@@ -50,6 +50,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
@@ -312,6 +313,43 @@ final public class Functions {
 
 	public static String getLinkCssClass(Element element) {
 		return SemanticCMS.getInstance(getServletContext()).getLinkCssClass(element);
+	}
+
+	public static Map<String,String> mergeGlobalAndViewScripts(View view) {
+		Map<String,String> globalScripts = SemanticCMS.getInstance(getServletContext()).getScripts();
+		Map<String,String> viewScripts = view.getScripts();
+
+		// Shortcut for when no view scripts
+		if(viewScripts.isEmpty()) return globalScripts;
+
+		Map<String,String> merged = new LinkedHashMap<String,String>((globalScripts.size() + viewScripts.size())*4/3+1);
+
+		// Add all global scripts
+		merged.putAll(globalScripts);
+
+		// Merge per-view scripts
+		for(Map.Entry<String,String> entry : viewScripts.entrySet()) {
+			String name = entry.getKey();
+			String src = entry.getValue();
+			String existingSrc = merged.get(name);
+			if(existingSrc != null) {
+				assert merged.containsKey(name);
+				if(!src.equals(existingSrc)) {
+					throw new IllegalStateException(
+						"Script already registered but with a different src:"
+						+ " name=" + name
+						+ " src=" + src
+						+ " existingSrc=" + existingSrc
+					);
+				}
+			} else {
+				if(merged.values().contains(src)) {
+					throw new IllegalStateException("Non-unique view script src: " + src);
+				}
+				if(merged.put(name, src) != null) throw new AssertionError();
+			}
+		}
+		return Collections.unmodifiableMap(merged);
 	}
 
 	/**
