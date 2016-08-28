@@ -275,6 +275,14 @@ final public class Functions {
 		);
 	}
 
+	public static String getViewLinkCssClass(View view) throws ServletException, IOException {
+		return view.getLinkCssClass(
+			getServletContext(),
+			getRequest(),
+			getResponse()
+		);
+	}
+
 	public static Copyright getViewCopyright(View view, Page page) throws ServletException, IOException {
 		return view.getCopyright(
 			getServletContext(),
