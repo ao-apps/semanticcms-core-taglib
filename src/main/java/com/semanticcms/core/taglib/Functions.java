@@ -284,6 +284,15 @@ final public class Functions {
 		);
 	}
 
+	public static Map<String,List<String>> getViewLinkParams(View view, Page page) throws ServletException, IOException {
+		return view.getLinkParams(
+			getServletContext(),
+			getRequest(),
+			getResponse(),
+			page
+		);
+	}
+
 	public static Copyright getViewCopyright(View view, Page page) throws ServletException, IOException {
 		return view.getCopyright(
 			getServletContext(),
