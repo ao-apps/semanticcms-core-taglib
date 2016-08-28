@@ -1092,6 +1092,15 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<description><![CDATA[
+			Gets the optional additional parameter to a view link.
+		]]></description>
+		<name>getViewLinkParams</name>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
+		<function-signature>java.util.Map getViewLinkParams(com.semanticcms.core.servlet.View,com.semanticcms.core.model.Page)</function-signature>
+		<example>${p:getViewLinkParams(view, page)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
 			Gets the copyright for the given view and page.
 		]]></description>
 		<name>getViewCopyright</name>
