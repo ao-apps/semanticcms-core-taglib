@@ -244,6 +244,15 @@ final public class Functions {
 		);
 	}
 
+	public static boolean findAllowRobots(Page page) throws ServletException, IOException {
+		return PageUtils.findAllowRobots(
+			getServletContext(),
+			getRequest(),
+			getResponse(),
+			page
+		);
+	}
+
 	public static boolean hasElement(Page page, String elementType, boolean recursive) throws ServletException, IOException, ClassNotFoundException {
 		return PageUtils.hasElement(
 			getServletContext(),
@@ -313,6 +322,15 @@ final public class Functions {
 
 	public static String getViewTitle(View view, Page page) throws ServletException, IOException {
 		return view.getTitle(
+			getServletContext(),
+			getRequest(),
+			getResponse(),
+			page
+		);
+	}
+
+	public static boolean getViewAllowRobots(View view, Page page) throws ServletException, IOException {
+		return view.getAllowRobots(
 			getServletContext(),
 			getRequest(),
 			getResponse(),
