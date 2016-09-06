@@ -25,6 +25,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<description>Java API for modeling web page content and relationships in a JSP environment.</description>
 	<display-name>semanticcms-core-taglib</display-name>
 	<tlib-version>1.0</tlib-version>
+	<!-- TODO: Set all *.tld short-names to be the typical namespace we use on taglib import,
+	           and find something more appropriate then "p:" for this taglib. -->
 	<short-name>semanticcms-core-taglib</short-name>
 	<uri>https://semanticcms.com/semanticcms-core-taglib</uri>
 	<tag>
@@ -84,12 +86,35 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
+				<p>
+					Controls whether robots will be allowed to access this page.  When not allowed
+					a page will (TODO: have robots="noindex,nofollow" added to meta), (TODO: will be excluded from
+					sitemaps), (TODO: and be explicitely listed in robots.txt as not allowed if
+					page accessible in an anonymous context).
+				</p>
+				<p>
+					Possible values are:
+				</p>
+				<ul>
+					<li><code>auto</code> - Inherit from parent(s) within book or book settings if have no parents within the book.</li>
+					<li><code>true</code> - Robots allowed</li>
+					<li><code>false</code> - Robots not allowed</li>
+				</li>
+				Defaults to <code>auto</code>.
+			]]></description>
+			<name>allowRobots</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
 				Includes a table of contents at the top of the page.
 				Possible values are:
 				<ul>
+					<li><code>auto</code> - Automatically selected</li>
 					<li><code>true</code> - Always show</li>
 					<li><code>false</code> - Always hide</li>
-					<li><code>auto</code> - Automatically selected</li>
 				</li>
 				Defaults to <code>auto</code>.
 			]]></description>
@@ -461,7 +486,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				The view mode to use in the link target.  Although view is site defined, some common
 				values might include:
 				<ul>
-					<li>"" (the default and always supported) - Links to the page content</li>
+					<li>null, "", or "content" (the default and always supported) - Links to the page content</li>
 					<li>what-links-here</li>
 					<li>tree</li>
 					<li>all</li>
@@ -1028,6 +1053,17 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<description><![CDATA[
+			Finds the allowRobots setting for the given page.  Inheriting setting from the
+			parent page(s) within the same book, or using the book allowRobots if none
+			set on the page or its parent(s).
+		]]></description>
+		<name>findAllowRobots</name>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
+		<function-signature>boolean findAllowRobots(com.semanticcms.core.model.Page)</function-signature>
+		<example>${p:findAllowRobots(page)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
 			Checks if the given page has at least one accessible child page
 			(ignores child pages in missing books).
 		]]></description>
@@ -1125,6 +1161,15 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.lang.String getViewTitle(com.semanticcms.core.servlet.View,com.semanticcms.core.model.Page)</function-signature>
 		<example>${p:getViewTitle(view, page)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Gets the allowRobots for the given view and page.
+		]]></description>
+		<name>getViewAllowRobots</name>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
+		<function-signature>boolean getViewAllowRobots(com.semanticcms.core.servlet.View,com.semanticcms.core.model.Page)</function-signature>
+		<example>${p:getViewAllowRobots(view, page)}</example>
 	</function>
 	<function>
 		<description><![CDATA[

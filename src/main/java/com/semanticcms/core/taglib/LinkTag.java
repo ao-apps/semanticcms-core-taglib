@@ -38,6 +38,7 @@ import static com.aoindustries.taglib.ApplicationResources.accessor;
 import com.aoindustries.taglib.ParamUtils;
 import com.aoindustries.taglib.ParamsAttribute;
 import com.semanticcms.core.servlet.CaptureLevel;
+import com.semanticcms.core.servlet.SemanticCMS;
 import com.semanticcms.core.servlet.impl.LinkImpl;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -65,7 +66,7 @@ public class LinkTag
 	private String page;
 	private String element;
 	private boolean allowGeneratedElement;
-	private String view;
+	private String view = SemanticCMS.DEFAULT_VIEW_NAME;
 	private boolean small;
 
 	@Override
@@ -104,7 +105,7 @@ public class LinkTag
 	}
 
 	public void setView(String view) {
-		this.view = view==null || view.isEmpty() ? null : view;
+		this.view = view==null || view.isEmpty() ? SemanticCMS.DEFAULT_VIEW_NAME : view;
 	}
 
 	public void setSmall(boolean small) {
