@@ -65,9 +65,32 @@ public class PageTag extends SimpleTagSupport {
 		this.keywords = keywords;
 	}
 
+	private Boolean allowRobots;
+	public void setAllowRobots(String allowRobots) {
+		// Not using Boolean.valueOf to be more specific in parsing, "blarg" is not same as "false".
+		if("auto".equalsIgnoreCase(allowRobots)) {
+			this.allowRobots = null;
+		} else if("true".equalsIgnoreCase(allowRobots)) {
+			this.allowRobots = true;
+		} else if("false".equalsIgnoreCase(allowRobots)) {
+			this.allowRobots = false;
+		} else {
+			throw new IllegalArgumentException("Unexpected value for allowRobots, expect one of \"auto\", \"true\", or \"false\": " + allowRobots);
+		}
+	}
+
 	private Boolean toc;
 	public void setToc(String toc) {
-		this.toc = "auto".equalsIgnoreCase(toc) ? null : Boolean.valueOf(toc);
+		// Not using Boolean.valueOf to be more specific in parsing, "blarg" is not same as "false".
+		if("auto".equalsIgnoreCase(toc)) {
+			this.toc = null;
+		} else if("true".equalsIgnoreCase(toc)) {
+			this.toc = true;
+		} else if("false".equalsIgnoreCase(toc)) {
+			this.toc = false;
+		} else {
+			throw new IllegalArgumentException("Unexpected value for toc, expect one of \"auto\", \"true\", or \"false\": " + toc);
+		}
 	}
 
 	private int tocLevels = Page.DEFAULT_TOC_LEVELS;
@@ -99,6 +122,7 @@ public class PageTag extends SimpleTagSupport {
 				shortTitle,
 				description,
 				keywords,
+				allowRobots,
 				toc,
 				tocLevels,
 				allowParentMismatch,
