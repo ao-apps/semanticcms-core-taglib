@@ -89,15 +89,15 @@ public class LinkTag
 	}
 
 	public void setBook(String book) {
-		this.book = book;
+		this.book = book==null || book.isEmpty() ? null : book;
 	}
 
 	public void setPage(String page) {
-		this.page = page;
+		this.page = page==null || page.isEmpty() ? null : page;
 	}
 
 	public void setElement(String element) {
-		this.element = element;
+		this.element = element==null || element.isEmpty() ? null : element;
 	}
 
 	public void setAllowGeneratedElement(boolean allowGeneratedElement) {
