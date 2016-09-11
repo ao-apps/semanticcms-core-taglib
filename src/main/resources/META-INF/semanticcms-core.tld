@@ -88,9 +88,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<description><![CDATA[
 				<p>
 					Controls whether robots will be allowed to access this page.  When not allowed
-					a page will (TODO: have robots="noindex,nofollow" added to meta), (TODO: will be excluded from
-					sitemaps), (TODO: and be explicitely listed in robots.txt as not allowed if
-					page accessible in an anonymous context).
+					a page will have robots="noindex,nofollow" added to meta and be excluded from
+					sitemaps.
 				</p>
 				<p>
 					Possible values are:
@@ -1161,6 +1160,16 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.lang.String getViewTitle(com.semanticcms.core.servlet.View,com.semanticcms.core.model.Page)</function-signature>
 		<example>${p:getViewTitle(view, page)}</example>
+	</function>
+	<function>
+		<description><![CDATA[
+			Gets an optional set of additional links to include for this view
+			in the order they should be added.
+		]]></description>
+		<name>getViewLinks</name>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
+		<function-signature>java.util.Collection getViewLinks(com.semanticcms.core.servlet.View,com.semanticcms.core.model.Page)</function-signature>
+		<example>${p:getViewLinks(view, page)}</example>
 	</function>
 	<function>
 		<description><![CDATA[
