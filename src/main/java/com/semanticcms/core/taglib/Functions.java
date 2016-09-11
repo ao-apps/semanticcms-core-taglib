@@ -26,6 +26,7 @@ import static com.aoindustries.servlet.filter.FunctionContext.getRequest;
 import static com.aoindustries.servlet.filter.FunctionContext.getResponse;
 import static com.aoindustries.servlet.filter.FunctionContext.getServletContext;
 import com.aoindustries.servlet.http.ServletUtil;
+import com.aoindustries.taglib.Link;
 import com.aoindustries.util.StringUtility;
 import com.semanticcms.core.model.Author;
 import com.semanticcms.core.model.Book;
@@ -50,6 +51,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -322,6 +324,15 @@ final public class Functions {
 
 	public static String getViewTitle(View view, Page page) throws ServletException, IOException {
 		return view.getTitle(
+			getServletContext(),
+			getRequest(),
+			getResponse(),
+			page
+		);
+	}
+
+	public static Collection<Link> getViewLinks(View view, Page page) throws ServletException, IOException {
+		return view.getLinks(
 			getServletContext(),
 			getRequest(),
 			getResponse(),
