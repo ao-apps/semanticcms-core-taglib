@@ -46,6 +46,35 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<tag>HEAD</tag>
 	</scm>
 
+	<profiles>
+		<profile>
+			<id>release</id>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-javadoc-plugin</artifactId>
+							<configuration>
+								<links>
+									<link>http://docs.oracle.com/javaee/6/api/</link>
+									<link>https://www.aoindustries.com/docs/ao-encoding/</link>
+									<link>https://www.aoindustries.com/docs/ao-encoding-servlet/</link>
+									<link>https://www.aoindustries.com/docs/ao-io-buffer/</link>
+									<link>https://www.aoindustries.com/docs/ao-servlet-filter/</link>
+									<link>https://www.aoindustries.com/docs/ao-taglib/</link>
+									<link>https://www.aoindustries.com/docs/aocode-public/</link>
+									<link>https://semanticcms.com/core/model/apidocs/</link>
+									<link>https://semanticcms.com/core/servlet/apidocs/</link>
+								</links>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+	</profiles>
+
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
