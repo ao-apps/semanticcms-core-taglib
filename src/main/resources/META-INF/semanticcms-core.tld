@@ -25,9 +25,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<description>Java API for modeling web page content and relationships in a JSP environment.</description>
 	<display-name>semanticcms-core-taglib</display-name>
 	<tlib-version>1.0</tlib-version>
-	<!-- TODO: Set all *.tld short-names to be the typical namespace we use on taglib import,
-	           and find something more appropriate then "p:" for this taglib. -->
-	<short-name>semanticcms-core-taglib</short-name>
+	<short-name>core</short-name>
 	<uri>https://semanticcms.com/core/taglib/</uri>
 	<tag>
 		<description><![CDATA[
