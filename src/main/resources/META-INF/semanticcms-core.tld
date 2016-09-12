@@ -28,7 +28,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<!-- TODO: Set all *.tld short-names to be the typical namespace we use on taglib import,
 	           and find something more appropriate then "p:" for this taglib. -->
 	<short-name>semanticcms-core-taglib</short-name>
-	<uri>https://semanticcms.com/semanticcms-core-taglib</uri>
+	<uri>https://semanticcms.com/core/taglib/</uri>
 	<tag>
 		<description><![CDATA[
 			<p>
