@@ -38,6 +38,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 	<name>SemanticCMS Core Taglib</name>
 	<url>https://semanticcms.com/core/taglib/</url>
 	<description>Java API for modeling web page content and relationships in a JSP environment.</description>
+	<inceptionYear>2013</inceptionYear>
 
 	<scm>
 		<connection>scm:git:git://github.com/aoindustries/semanticcms-core-taglib.git</connection>
