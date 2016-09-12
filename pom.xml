@@ -27,7 +27,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 	<parent>
 		<groupId>com.semanticcms</groupId>
 		<artifactId>semanticcms-core</artifactId>
-		<version>1.3</version>
+		<version>1.4-SNAPSHOT</version>
 	</parent>
 
 	<groupId>com.semanticcms</groupId>
@@ -36,7 +36,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 	<packaging>jar</packaging>
 
 	<name>SemanticCMS Core Taglib</name>
-	<url>https://semanticcms.com/docs/semanticcms-core-taglib/</url>
+	<url>https://semanticcms.com/core/taglib/</url>
 	<description>Java API for modeling web page content and relationships in a JSP environment.</description>
 
 	<scm>
@@ -117,12 +117,12 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<dependency>
 			<groupId>com.semanticcms</groupId>
 			<artifactId>semanticcms-core-model</artifactId>
-			<version>1.6</version>
+			<version>1.7-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.semanticcms</groupId>
 			<artifactId>semanticcms-core-servlet</artifactId>
-			<version>1.7</version>
+			<version>1.8-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>
