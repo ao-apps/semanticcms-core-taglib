@@ -22,7 +22,6 @@
  */
 package com.semanticcms.core.taglib;
 
-import com.semanticcms.core.model.Page;
 import com.semanticcms.core.servlet.impl.NavigationTreeImpl;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -34,8 +33,8 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 public class NavigationTreeTag extends SimpleTagSupport {
 
-	private Page root;
-	public void setRoot(Page root) {
+	private Object root;
+	public void setRoot(Object root) {
 		this.root = root;
 	}
 
@@ -59,23 +58,23 @@ public class NavigationTreeTag extends SimpleTagSupport {
 		this.target = target;
 	}
 
-	private String thisBook;
-	public void setThisBook(String thisBook) {
+	private Object thisBook;
+	public void setThisBook(Object thisBook) {
 		this.thisBook = thisBook;
 	}
 
-	private String thisPage;
-	public void setThisPage(String thisPage) {
+	private Object thisPage;
+	public void setThisPage(Object thisPage) {
 		this.thisPage = thisPage;
 	}
 
-	private String linksToBook;
-	public void setLinksToBook(String linksToBook) {
+	private Object linksToBook;
+	public void setLinksToBook(Object linksToBook) {
 		this.linksToBook = linksToBook;
 	}
 
-	private String linksToPage;
-	public void setLinksToPage(String linksToPage) {
+	private Object linksToPage;
+	public void setLinksToPage(Object linksToPage) {
 		this.linksToPage = linksToPage;
 	}
 
@@ -96,6 +95,7 @@ public class NavigationTreeTag extends SimpleTagSupport {
 			final PageContext pageContext = (PageContext)getJspContext();
 			NavigationTreeImpl.writeNavigationTreeImpl(
 				pageContext.getServletContext(),
+				pageContext.getELContext(),
 				(HttpServletRequest)pageContext.getRequest(),
 				(HttpServletResponse)pageContext.getResponse(),
 				pageContext.getOut(),
