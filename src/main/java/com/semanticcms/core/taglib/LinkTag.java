@@ -62,11 +62,11 @@ public class LinkTag
 
 	private MutableHttpParameters params;
 	private Object clazz;
-	private String book;
-	private String page;
-	private String element;
+	private Object book;
+	private Object page;
+	private Object element;
 	private boolean allowGeneratedElement;
-	private String view = SemanticCMS.DEFAULT_VIEW_NAME;
+	private Object view = SemanticCMS.DEFAULT_VIEW_NAME;
 	private boolean small;
 
 	@Override
@@ -85,24 +85,24 @@ public class LinkTag
 		this.clazz = clazz;
 	}
 
-	public void setBook(String book) {
-		this.book = book==null || book.isEmpty() ? null : book;
+	public void setBook(Object book) {
+		this.book = book;
 	}
 
-	public void setPage(String page) {
-		this.page = page==null || page.isEmpty() ? null : page;
+	public void setPage(Object page) {
+		this.page = page;
 	}
 
-	public void setElement(String element) {
-		this.element = element==null || element.isEmpty() ? null : element;
+	public void setElement(Object element) {
+		this.element = element;
 	}
 
 	public void setAllowGeneratedElement(boolean allowGeneratedElement) {
 		this.allowGeneratedElement = allowGeneratedElement;
 	}
 
-	public void setView(String view) {
-		this.view = view==null || view.isEmpty() ? SemanticCMS.DEFAULT_VIEW_NAME : view;
+	public void setView(Object view) {
+		this.view = view;
 	}
 
 	public void setSmall(boolean small) {
