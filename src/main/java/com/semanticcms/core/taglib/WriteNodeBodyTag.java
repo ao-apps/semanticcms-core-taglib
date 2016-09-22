@@ -22,8 +22,10 @@
  */
 package com.semanticcms.core.taglib;
 
+import static com.aoindustries.taglib.AttributeUtils.resolveValue;
 import com.semanticcms.core.model.Node;
 import com.semanticcms.core.model.NodeBodyWriter;
+import com.semanticcms.core.servlet.CaptureLevel;
 import java.io.IOException;
 import javax.servlet.jsp.JspTagException;
 import javax.servlet.jsp.PageContext;
@@ -31,23 +33,29 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 public class WriteNodeBodyTag extends SimpleTagSupport {
 
-	private Node node;
-	public void setNode(Node node) {
+	private Object node;
+	public void setNode(Object node) {
 		this.node = node;
 	}
 
 	@Override
 	public void doTag() throws JspTagException, IOException {
 		PageContext pageContext = (PageContext)getJspContext();
-		// Buffering made it slower, only about half throughput:
-		// BufferedWriter out = new BufferedWriter(pageContext.getOut());
-		node.getBody().writeTo(
-			new NodeBodyWriter(
-				node,
-				pageContext.getOut(),
-				new PageElementContext(pageContext)
-			)
-		);
-		//out.flush();
+		// Get the current capture state
+		final CaptureLevel captureLevel = CaptureLevel.getCaptureLevel(pageContext.getRequest());
+		if(captureLevel == CaptureLevel.BODY) {
+			// Evaluate expressions
+			Node nodeObj = resolveValue(node, Node.class, pageContext.getELContext());
+			// Buffering made it slower, only about half throughput:
+			// BufferedWriter out = new BufferedWriter(pageContext.getOut());
+			nodeObj.getBody().writeTo(
+				new NodeBodyWriter(
+					nodeObj,
+					pageContext.getOut(),
+					new PageElementContext(pageContext)
+				)
+			);
+			//out.flush();
+		}
 	}
 }

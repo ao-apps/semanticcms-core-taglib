@@ -453,6 +453,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<type>java.lang.String</type>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
 		</attribute>
 		<attribute>
 			<description><![CDATA[
@@ -463,6 +466,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<type>java.lang.String</type>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
 		</attribute>
 		<attribute>
 			<description><![CDATA[
@@ -472,6 +478,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<type>java.lang.String</type>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
 		</attribute>
 		<attribute>
 			<description><![CDATA[
@@ -498,8 +507,11 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			]]></description>
 			<name>view</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>true</rtexprvalue>
 			<type>java.lang.String</type>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
 		</attribute>
 		<attribute>
 			<description><![CDATA[
@@ -543,6 +555,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		  <required>false</required>
 		  <rtexprvalue>true</rtexprvalue>
 		  <type>java.lang.Object</type>
+		  <!-- TODO: Deferred once supported by ao-taglib -->
 		</attribute>
 		<example />
 	</tag>
@@ -621,6 +634,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		  <required>true</required>
 		  <rtexprvalue>true</rtexprvalue>
 		  <type>java.lang.Object</type>
+		  <!-- TODO: Deferred once supported by ao-taglib -->
 		</attribute>
 		<example />
 	</tag>
@@ -639,6 +653,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<required>true</required>
 			<rtexprvalue>true</rtexprvalue>
 			<type>com.semanticcms.core.model.Page</type>
+			<deferred-value>
+				<type>com.semanticcms.core.model.Page</type>
+			</deferred-value>
 		</attribute>
 		<attribute>
 			<description><![CDATA[
@@ -688,6 +705,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<type>java.lang.String</type>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
 		</attribute>
 		<attribute>
 			<description><![CDATA[
@@ -699,6 +719,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<type>java.lang.String</type>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
 		</attribute>
 		<attribute>
 			<description><![CDATA[
@@ -709,6 +732,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<type>java.lang.String</type>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
 		</attribute>
 		<attribute>
 			<description><![CDATA[
@@ -720,6 +746,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<type>java.lang.String</type>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
 		</attribute>
 		<attribute>
 			<description><![CDATA[
@@ -736,7 +765,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<tag>
 		<description><![CDATA[
 			Writes the body of the given node, recursively replacing any nested
-			element markers.
+			element markers.  The body is not written during PAGE and META captures.
 		]]></description>
 		<name>writeNodeBody</name>
 		<tag-class>com.semanticcms.core.taglib.WriteNodeBodyTag</tag-class>
@@ -749,6 +778,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<required>true</required>
 			<rtexprvalue>true</rtexprvalue>
 			<type>com.semanticcms.core.model.Node</type>
+			<deferred-value>
+				<type>com.semanticcms.core.model.Node</type>
+			</deferred-value>
 		</attribute>
 	</tag>
 	<tag>
