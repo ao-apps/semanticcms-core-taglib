@@ -28,8 +28,6 @@ import com.aoindustries.io.buffer.AutoTempFileWriter;
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
 import com.aoindustries.io.buffer.SegmentedWriter;
-import com.aoindustries.net.EmptyParameters;
-import com.aoindustries.net.HttpParameters;
 import com.aoindustries.net.HttpParametersMap;
 import com.aoindustries.net.MutableHttpParameters;
 import com.aoindustries.servlet.filter.TempFileContext;
@@ -73,6 +71,11 @@ public class LinkTag
 	public void addParam(String name, String value) {
 		if(params==null) params = new HttpParametersMap();
 		params.addParameter(name, value);
+	}
+
+	// Required, can't use write-only property on "class"
+	public String getClazz() {
+		return clazz;
 	}
 
 	public void setClazz(String clazz) {
