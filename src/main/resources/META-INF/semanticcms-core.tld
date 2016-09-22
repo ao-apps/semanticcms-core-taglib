@@ -21,7 +21,10 @@ GNU Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public License
 along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<taglib version="2.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+	version="2.1">
 	<description>Java API for modeling web page content and relationships in a JSP environment.</description>
 	<display-name>semanticcms-core-taglib</display-name>
 	<tlib-version>1.0</tlib-version>
@@ -436,7 +439,10 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<name>class</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
+			<type>java.lang.Object</type>
+			<deferred-value>
+				<type>java.lang.Object</type>
+			</deferred-value>
 		</attribute>
 		<attribute>
 			<description><![CDATA[

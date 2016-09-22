@@ -33,6 +33,7 @@ import com.aoindustries.net.MutableHttpParameters;
 import com.aoindustries.servlet.filter.TempFileContext;
 import com.aoindustries.servlet.jsp.LocalizedJspTagException;
 import static com.aoindustries.taglib.ApplicationResources.accessor;
+import com.aoindustries.taglib.ClassAttribute;
 import com.aoindustries.taglib.ParamUtils;
 import com.aoindustries.taglib.ParamsAttribute;
 import com.semanticcms.core.servlet.CaptureLevel;
@@ -55,11 +56,12 @@ public class LinkTag
 	extends SimpleTagSupport
 	implements
 		DynamicAttributes,
+		ClassAttribute,
 		ParamsAttribute
 {
 
 	private MutableHttpParameters params;
-	private String clazz;
+	private Object clazz;
 	private String book;
 	private String page;
 	private String element;
@@ -73,12 +75,13 @@ public class LinkTag
 		params.addParameter(name, value);
 	}
 
-	// Required, can't use write-only property on "class"
-	public String getClazz() {
+	@Override
+	public Object getClazz() {
 		return clazz;
 	}
 
-	public void setClazz(String clazz) {
+	@Override
+	public void setClazz(Object clazz) {
 		this.clazz = clazz;
 	}
 
@@ -167,6 +170,7 @@ public class LinkTag
 				final JspWriter out = pageContext.getOut();
 				LinkImpl.writeLinkImpl(
 					pageContext.getServletContext(),
+					pageContext.getELContext(),
 					request,
 					(HttpServletResponse)pageContext.getResponse(),
 					out,
