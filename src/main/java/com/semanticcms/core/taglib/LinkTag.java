@@ -70,18 +70,9 @@ public class LinkTag
 	private boolean small;
 
 	@Override
-	public HttpParameters getParams() {
-		return params==null ? EmptyParameters.getInstance() : params;
-	}
-
-	@Override
 	public void addParam(String name, String value) {
 		if(params==null) params = new HttpParametersMap();
 		params.addParameter(name, value);
-	}
-
-	public String getClazz() {
-		return clazz;
 	}
 
 	public void setClazz(String clazz) {
