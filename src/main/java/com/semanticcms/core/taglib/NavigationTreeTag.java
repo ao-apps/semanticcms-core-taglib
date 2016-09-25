@@ -24,6 +24,7 @@ package com.semanticcms.core.taglib;
 
 import com.semanticcms.core.servlet.impl.NavigationTreeImpl;
 import java.io.IOException;
+import javax.el.ValueExpression;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,8 +34,8 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 public class NavigationTreeTag extends SimpleTagSupport {
 
-	private Object root;
-	public void setRoot(Object root) {
+	private ValueExpression root;
+	public void setRoot(ValueExpression root) {
 		this.root = root;
 	}
 
@@ -58,23 +59,23 @@ public class NavigationTreeTag extends SimpleTagSupport {
 		this.target = target;
 	}
 
-	private Object thisBook;
-	public void setThisBook(Object thisBook) {
+	private ValueExpression thisBook;
+	public void setThisBook(ValueExpression thisBook) {
 		this.thisBook = thisBook;
 	}
 
-	private Object thisPage;
-	public void setThisPage(Object thisPage) {
+	private ValueExpression thisPage;
+	public void setThisPage(ValueExpression thisPage) {
 		this.thisPage = thisPage;
 	}
 
-	private Object linksToBook;
-	public void setLinksToBook(Object linksToBook) {
+	private ValueExpression linksToBook;
+	public void setLinksToBook(ValueExpression linksToBook) {
 		this.linksToBook = linksToBook;
 	}
 
-	private Object linksToPage;
-	public void setLinksToPage(Object linksToPage) {
+	private ValueExpression linksToPage;
+	public void setLinksToPage(ValueExpression linksToPage) {
 		this.linksToPage = linksToPage;
 	}
 

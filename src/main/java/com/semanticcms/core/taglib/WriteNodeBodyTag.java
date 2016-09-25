@@ -27,14 +27,15 @@ import com.semanticcms.core.model.Node;
 import com.semanticcms.core.model.NodeBodyWriter;
 import com.semanticcms.core.servlet.CaptureLevel;
 import java.io.IOException;
+import javax.el.ValueExpression;
 import javax.servlet.jsp.JspTagException;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 public class WriteNodeBodyTag extends SimpleTagSupport {
 
-	private Object node;
-	public void setNode(Object node) {
+	private ValueExpression node;
+	public void setNode(ValueExpression node) {
 		this.node = node;
 	}
 
