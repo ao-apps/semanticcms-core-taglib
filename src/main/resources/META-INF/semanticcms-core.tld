@@ -438,8 +438,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			]]></description>
 			<name>class</name>
 			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.Object</type>
 			<deferred-value>
 				<type>java.lang.Object</type>
 			</deferred-value>
@@ -451,8 +449,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			]]></description>
 			<name>book</name>
 			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
 			<deferred-value>
 				<type>java.lang.String</type>
 			</deferred-value>
@@ -464,8 +460,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			]]></description>
 			<name>page</name>
 			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
 			<deferred-value>
 				<type>java.lang.String</type>
 			</deferred-value>
@@ -476,8 +470,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			]]></description>
 			<name>element</name>
 			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
 			<deferred-value>
 				<type>java.lang.String</type>
 			</deferred-value>
@@ -507,8 +499,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			]]></description>
 			<name>view</name>
 			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
 			<deferred-value>
 				<type>java.lang.String</type>
 			</deferred-value>
@@ -651,8 +641,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			]]></description>
 			<name>root</name>
 			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>com.semanticcms.core.model.Page</type>
 			<deferred-value>
 				<type>com.semanticcms.core.model.Page</type>
 			</deferred-value>
@@ -703,8 +691,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			]]></description>
 			<name>thisBook</name>
 			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
 			<deferred-value>
 				<type>java.lang.String</type>
 			</deferred-value>
@@ -717,8 +703,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			]]></description>
 			<name>thisPage</name>
 			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
 			<deferred-value>
 				<type>java.lang.String</type>
 			</deferred-value>
@@ -730,8 +714,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			]]></description>
 			<name>linksToBook</name>
 			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
 			<deferred-value>
 				<type>java.lang.String</type>
 			</deferred-value>
@@ -744,8 +726,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			]]></description>
 			<name>linksToPage</name>
 			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
 			<deferred-value>
 				<type>java.lang.String</type>
 			</deferred-value>
@@ -776,8 +756,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			]]></description>
 			<name>node</name>
 			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>com.semanticcms.core.model.Node</type>
 			<deferred-value>
 				<type>com.semanticcms.core.model.Node</type>
 			</deferred-value>

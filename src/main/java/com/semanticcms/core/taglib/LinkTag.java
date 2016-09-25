@@ -33,13 +33,12 @@ import com.aoindustries.net.MutableHttpParameters;
 import com.aoindustries.servlet.filter.TempFileContext;
 import com.aoindustries.servlet.jsp.LocalizedJspTagException;
 import static com.aoindustries.taglib.ApplicationResources.accessor;
-import com.aoindustries.taglib.ClassAttribute;
 import com.aoindustries.taglib.ParamUtils;
 import com.aoindustries.taglib.ParamsAttribute;
 import com.semanticcms.core.servlet.CaptureLevel;
-import com.semanticcms.core.servlet.SemanticCMS;
 import com.semanticcms.core.servlet.impl.LinkImpl;
 import java.io.IOException;
+import javax.el.ValueExpression;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -56,17 +55,17 @@ public class LinkTag
 	extends SimpleTagSupport
 	implements
 		DynamicAttributes,
-		ClassAttribute,
+		//ClassAttribute,
 		ParamsAttribute
 {
 
 	private MutableHttpParameters params;
-	private Object clazz;
-	private Object book;
-	private Object page;
-	private Object element;
+	private ValueExpression clazz;
+	private ValueExpression book;
+	private ValueExpression page;
+	private ValueExpression element;
 	private boolean allowGeneratedElement;
-	private Object view = SemanticCMS.DEFAULT_VIEW_NAME;
+	private ValueExpression view;
 	private boolean small;
 
 	@Override
@@ -75,25 +74,23 @@ public class LinkTag
 		params.addParameter(name, value);
 	}
 
-	@Override
-	public Object getClazz() {
+	public ValueExpression getClazz() {
 		return clazz;
 	}
 
-	@Override
-	public void setClazz(Object clazz) {
+	public void setClazz(ValueExpression clazz) {
 		this.clazz = clazz;
 	}
 
-	public void setBook(Object book) {
+	public void setBook(ValueExpression book) {
 		this.book = book;
 	}
 
-	public void setPage(Object page) {
+	public void setPage(ValueExpression page) {
 		this.page = page;
 	}
 
-	public void setElement(Object element) {
+	public void setElement(ValueExpression element) {
 		this.element = element;
 	}
 
@@ -101,7 +98,7 @@ public class LinkTag
 		this.allowGeneratedElement = allowGeneratedElement;
 	}
 
-	public void setView(Object view) {
+	public void setView(ValueExpression view) {
 		this.view = view;
 	}
 
