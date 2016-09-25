@@ -28,6 +28,8 @@ import com.aoindustries.io.buffer.AutoTempFileWriter;
 import com.aoindustries.io.buffer.BufferWriter;
 import com.aoindustries.io.buffer.SegmentedWriter;
 import com.aoindustries.servlet.filter.TempFileContext;
+import static com.aoindustries.taglib.AttributeUtils.resolveValue;
+import static com.aoindustries.util.StringUtility.nullIfEmpty;
 import com.semanticcms.core.model.Element;
 import com.semanticcms.core.model.ElementWriter;
 import com.semanticcms.core.model.Node;
@@ -37,6 +39,7 @@ import com.semanticcms.core.servlet.CaptureLevel;
 import com.semanticcms.core.servlet.CurrentNode;
 import com.semanticcms.core.servlet.CurrentPage;
 import java.io.IOException;
+import javax.el.ELContext;
 import javax.servlet.ServletRequest;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspTagException;
@@ -50,14 +53,15 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
  */
 abstract public class ElementTag<E extends Element> extends SimpleTagSupport implements ElementWriter {
 
-	protected final E element;
+	/**
+	 * Set during the beginning of doTag, but only for captureLevel >= META.
+	 * This is not available while tag attributes are set.
+	 */
+	private E element;
 
-	protected ElementTag(E element) {
-		this.element = element;
-	}
-
-	public void setId(String id) throws JspTagException {
-		element.setId(id);
+	private Object id;
+	public void setId(Object id) {
+		this.id = id;
 	}
 
 	/**
@@ -73,23 +77,27 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 		// Get the current capture state
 		CaptureLevel captureLevel = CaptureLevel.getCaptureLevel(request);
 		if(captureLevel.compareTo(CaptureLevel.META) >= 0) {
+			E elem = createElement();
+			element = elem;
+			evaluateAttributes(elem, pageContext.getELContext());
+
 			// Set currentNode
 			Node parentNode = CurrentNode.getCurrentNode(request);
-			CurrentNode.setCurrentNode(request, element);
+			CurrentNode.setCurrentNode(request, elem);
 			try {
 				// Find the optional parent page
 				Page currentPage = CurrentPage.getCurrentPage(request);
-				if(currentPage != null) currentPage.addElement(element);
+				if(currentPage != null) currentPage.addElement(elem);
 
 				Long elementKey;
-				if(parentNode != null) elementKey = parentNode.addChildElement(element, this);
+				if(parentNode != null) elementKey = parentNode.addChildElement(elem, this);
 				else elementKey = null;
 				// Freeze element once body done
 				try {
-					doBody(captureLevel);
+					doBody(elem, captureLevel);
 				} finally {
 					// Note: Page freezes all of its elements
-					if(currentPage == null) element.freeze();
+					if(currentPage == null) elem.freeze();
 				}
 				JspWriter out = pageContext.getOut();
 				if(elementKey == null) {
@@ -120,9 +128,39 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 	}
 
 	/**
-	 * Only called at capture level of META and higher.
+	 * Called to create the element from doTag.
+	 * This is only called for captureLevel >= META.
 	 */
-	protected void doBody(CaptureLevel captureLevel) throws JspException, IOException {
+	abstract protected E createElement();
+
+	/**
+	 * Gets the element, only available after created.
+	 *
+	 * @see  #createElement()
+	 *
+	 * @throws  IllegalStateException  if element not yet created
+	 */
+	protected E getElement() throws IllegalStateException {
+		if(element == null) throw new IllegalStateException();
+		return element;
+	}
+
+	/**
+	 * Resolves all attributes, setting into the created element as appropriate,
+	 * This is only called for captureLevel >= META.
+	 * Attributes are resolved before the element is added to any parent node.
+	 * Typically, deferred expressions will be evaluated here.
+	 * Overriding methods must call this implementation.
+	 */
+	protected void evaluateAttributes(E element, ELContext elContext) throws JspTagException, IOException {
+		String idStr = nullIfEmpty(resolveValue(id, String.class, elContext));
+		if(idStr != null) element.setId(idStr);
+	}
+
+	/**
+	 * This is only called for captureLevel >= META.
+	 */
+	protected void doBody(E element, CaptureLevel captureLevel) throws JspException, IOException {
 		JspFragment body = getJspBody();
 		if(body != null) {
 			if(captureLevel == CaptureLevel.BODY) {
