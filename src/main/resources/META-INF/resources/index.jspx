@@ -32,7 +32,7 @@ the site's content root.
 	statusCode="302"
 	href="${applicationScope.semanticCMS.rootBook.contentRoot.servletPath}"
 >
-	<jsp:directive.page language="java" buffer="512kb" autoFlush="true" pageEncoding="UTF-8" session="false" />
+	<jsp:directive.page language="java" pageEncoding="UTF-8" session="false" />
 	<c:forEach var="paramName" items="${pageContext.request.parameterNames}">
 		<ao:params name="${paramName}" values="${paramValues[paramName]}"/>
 	</c:forEach>
