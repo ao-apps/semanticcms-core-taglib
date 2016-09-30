@@ -26,9 +26,9 @@ import com.aoindustries.io.NullWriter;
 import com.aoindustries.io.TempFileList;
 import com.aoindustries.io.buffer.AutoTempFileWriter;
 import com.aoindustries.io.buffer.BufferWriter;
-import com.aoindustries.io.buffer.SegmentedWriter;
 import com.aoindustries.servlet.filter.TempFileContext;
 import static com.aoindustries.taglib.AttributeUtils.resolveValue;
+import com.aoindustries.taglib.AutoEncodingBufferedTag;
 import static com.aoindustries.util.StringUtility.nullIfEmpty;
 import com.semanticcms.core.model.Element;
 import com.semanticcms.core.model.ElementWriter;
@@ -169,7 +169,7 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 				// Invoke tag body, capturing output
 				// Enable temp files if temp file context active
 				BufferWriter capturedOut = TempFileContext.wrapTempFileList(
-					new SegmentedWriter(),
+					AutoEncodingBufferedTag.newBufferWriter(),
 					pageContext.getRequest(),
 					// Java 1.8: AutoTempFileWriter::new
 					new TempFileContext.Wrapper<BufferWriter>() {
