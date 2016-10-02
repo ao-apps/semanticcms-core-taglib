@@ -100,10 +100,10 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 					// Note: Page freezes all of its elements
 					if(currentPage == null) elem.freeze();
 				}
-				JspWriter out = pageContext.getOut();
-				if(elementKey == null) {
-					// Write now
-					if(captureLevel == CaptureLevel.BODY) {
+				// Write now
+				if(captureLevel == CaptureLevel.BODY) {
+					JspWriter out = pageContext.getOut();
+					if(elementKey == null) {
 						try {
 							writeTo(out, new PageElementContext(pageContext));
 						} catch(JspException e) {
@@ -115,11 +115,11 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 						} catch(Exception e) {
 							throw new JspTagException(e);
 						}
+					} else {
+						// Write an element marker instead
+						// TODO: Do not write element marker for empty elements, such as passwordTable at http://localhost:8080/docs/ao/infrastructure/ao/regions/mobile-al/workstations/francis.aoindustries.com/
+						NodeBodyWriter.writeElementMarker(elementKey, out);
 					}
-				} else {
-					// Write an element marker instead
-					// TODO: Do not write element marker for empty elements, such as passwordTable at http://localhost:8080/docs/ao/infrastructure/ao/regions/mobile-al/workstations/francis.aoindustries.com/
-					NodeBodyWriter.writeElementMarker(elementKey, out);
 				}
 			} finally {
 				// Restore previous currentNode
