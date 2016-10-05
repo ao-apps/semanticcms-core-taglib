@@ -59,8 +59,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 							<configuration>
 								<links>
 									<link>http://docs.oracle.com/javaee/6/api/</link>
-									<link>https://www.aoindustries.com/docs/ao-encoding/</link>
-									<link>https://www.aoindustries.com/docs/ao-encoding-servlet/</link>
 									<link>https://www.aoindustries.com/docs/ao-io-buffer/</link>
 									<link>https://www.aoindustries.com/docs/ao-servlet-filter/</link>
 									<link>https://www.aoindustries.com/docs/ao-taglib/</link>
