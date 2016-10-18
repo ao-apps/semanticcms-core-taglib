@@ -22,8 +22,10 @@
  */
 package com.semanticcms.core.taglib;
 
+import com.aoindustries.util.StringUtility;
 import com.semanticcms.core.model.Node;
 import com.semanticcms.core.model.Page;
+import com.semanticcms.core.model.ParentRef;
 import com.semanticcms.core.servlet.CurrentNode;
 import com.semanticcms.core.servlet.PageRefResolver;
 import java.io.IOException;
@@ -45,6 +47,11 @@ public class ParentTag extends SimpleTagSupport {
 		this.page = page;
 	}
 
+	private String shortTitle;
+	public void setShortTitle(String shortTitle) {
+		this.shortTitle = StringUtility.nullIfEmpty(shortTitle);
+	}
+
 	@Override
 	public void doTag() throws JspTagException, IOException {
 		final PageContext pageContext = (PageContext)getJspContext();
@@ -55,12 +62,15 @@ public class ParentTag extends SimpleTagSupport {
 		final Page currentPage = (Page)currentNode;
 
 		try {
-			currentPage.addParentPage(
-				PageRefResolver.getPageRef(
-					pageContext.getServletContext(),
-					request,
-					book,
-					page
+			currentPage.addParentRef(
+				new ParentRef(
+					PageRefResolver.getPageRef(
+						pageContext.getServletContext(),
+						request,
+						book,
+						page
+					),
+					shortTitle
 				)
 			);
 		} catch(ServletException e) {

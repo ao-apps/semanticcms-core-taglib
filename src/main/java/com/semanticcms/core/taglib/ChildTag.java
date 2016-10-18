@@ -22,6 +22,7 @@
  */
 package com.semanticcms.core.taglib;
 
+import com.semanticcms.core.model.ChildRef;
 import com.semanticcms.core.model.Node;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.servlet.CurrentNode;
@@ -55,12 +56,14 @@ public class ChildTag extends SimpleTagSupport {
 		final Page currentPage = (Page)currentNode;
 
 		try {
-			currentPage.addChildPage(
-				PageRefResolver.getPageRef(
-					pageContext.getServletContext(),
-					request,
-					book,
-					page
+			currentPage.addChildRef(
+				new ChildRef(
+					PageRefResolver.getPageRef(
+						pageContext.getServletContext(),
+						request,
+						book,
+						page
+					)
 				)
 			);
 		} catch(ServletException e) {
