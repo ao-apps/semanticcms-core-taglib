@@ -787,6 +787,52 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<type>com.semanticcms.core.model.Page</type>
 		</attribute>
 	</tag>
+	<tag>
+		<description><![CDATA[
+			Calls all registered components for the given view, page, position,
+			and optional order.
+		]]></description>
+		<name>doComponents</name>
+		<tag-class>com.semanticcms.core.taglib.DoComponentsTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description><![CDATA[
+				The view that is being rendered.
+			]]></description>
+			<name>view</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>com.semanticcms.core.servlet.View</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The page that is being rendered.
+			]]></description>
+			<name>page</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>com.semanticcms.core.model.Page</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The current position being handled.
+			]]></description>
+			<name>position</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>com.semanticcms.core.servlet.ComponentPosition</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				When <code>false</code>, the default, will call components in the order registered.
+				When <code>true</code>, will call the components in the reverse order.
+			]]></description>
+			<name>reverse</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>boolean</type>
+		</attribute>
+	</tag>
 	<function>
 		<description><![CDATA[
 			<p>
