@@ -834,7 +834,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
-				When <code>false</code>, the default, will call components in the order registered.
+				When <code>false</code>, the default, will call components in forward order.
 				When <code>true</code>, will call the components in the reverse order.
 			]]></description>
 			<name>reverse</name>
