@@ -49,6 +49,73 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<body-content>scriptless</body-content>
 		<attribute>
 			<description><![CDATA[
+				<p>
+					The <a href="https://schema.org/dateCreated">dateCreated</a>, in ISO 8601 format.  At least YYYY-MM-DD is required,
+					and when time not specified will default to midnight in the current system time zone.
+					A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
+					Any value accepted by Joda Time DateTime is accepted.
+				</p>
+				<p>
+					When created and published are the same date, prefer
+					published because it seems to have more use overall than created.
+				</p>
+			]]></description>
+			<name>dateCreated</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				<p>
+					The <a href="https://schema.org/datePublished">datePublished</a>, in ISO 8601 format.  At least YYYY-MM-DD is required,
+					and when time not specified will default to midnight in the current system time zone.
+					A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
+					Any value accepted by Joda Time DateTime is accepted.
+				</p>
+				<p>
+					When created and published are the same date, prefer
+					published because it seems to have more use overall than created.
+				</p>
+			]]></description>
+			<name>datePublished</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The <a href="https://schema.org/dateModified">dateModified</a>, in ISO 8601 format.  At least YYYY-MM-DD is required,
+				and when time not specified will default to midnight in the current system time zone.
+				A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
+				Any value accepted by Joda Time DateTime is accepted.
+			]]></description>
+			<name>dateModified</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				<p>
+					The dateReviewed, in ISO 8601 format.  At least YYYY-MM-DD is required,
+					and when time not specified will default to midnight in the current system time zone.
+					A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
+					Any value accepted by Joda Time DateTime is accepted.
+				</p>
+				<p>
+					This has no equivalent in <a href="https://schema.org/">https://schema.org/</a>, however
+					we feel it is important to actively review content to ensure its accuracy, even when it
+					has not been modified.
+				</p>
+			]]></description>
+			<name>dateReviewed</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
 				The title of the page.
 			]]></description>
 			<name>title</name>
