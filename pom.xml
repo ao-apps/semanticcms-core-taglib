@@ -65,6 +65,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 							<configuration>
 								<links>
 									<link>https://docs.oracle.com/javaee/6/api/</link>
+									<link>http://www.joda.org/joda-time/apidocs/</link>
 									<link>https://www.aoindustries.com/ao-io-buffer/apidocs/</link>
 									<link>https://www.aoindustries.com/ao-servlet-filter/apidocs/</link>
 									<link>https://www.aoindustries.com/ao-taglib/apidocs/</link>
@@ -123,6 +124,11 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 					<artifactId>jstl-api</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.9.4</version>
 		</dependency>
 		<dependency>
 			<groupId>com.aoindustries</groupId>

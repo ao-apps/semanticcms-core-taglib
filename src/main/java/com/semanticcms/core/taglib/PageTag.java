@@ -31,6 +31,7 @@ import com.aoindustries.io.buffer.EmptyResult;
 import com.aoindustries.servlet.filter.TempFileContext;
 import com.aoindustries.taglib.AutoEncodingBufferedTag;
 import com.semanticcms.core.model.Page;
+import com.semanticcms.core.servlet.PageUtils;
 import com.semanticcms.core.servlet.impl.PageImpl;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -44,6 +45,26 @@ import javax.servlet.jsp.tagext.JspFragment;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 public class PageTag extends SimpleTagSupport {
+
+	private Object dateCreated;
+	public void setDateCreated(Object dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+
+	private Object datePublished;
+	public void setDatePublished(Object datePublished) {
+		this.datePublished = datePublished;
+	}
+
+	private Object dateModified;
+	public void setDateModified(Object dateModified) {
+		this.dateModified = dateModified;
+	}
+
+	private Object dateReviewed;
+	public void setDateReviewed(Object dateReviewed) {
+		this.dateReviewed = dateReviewed;
+	}
 
 	private String title;
 	public void setTitle(String title) {
@@ -118,6 +139,10 @@ public class PageTag extends SimpleTagSupport {
 			PageImpl.doPageImpl(pageContext.getServletContext(),
 				request,
 				(HttpServletResponse)pageContext.getResponse(),
+				PageUtils.toDateTime(dateCreated),
+				PageUtils.toDateTime(datePublished),
+				PageUtils.toDateTime(dateModified),
+				PageUtils.toDateTime(dateReviewed),
 				title,
 				shortTitle,
 				description,
