@@ -36,6 +36,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
+		dateModified="2016-11-02T02:45:47-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT')}">
@@ -51,6 +52,11 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 					<li>Added support for dateCreated, datePublished, dateModified, and dateReviewed.</li>
 					<li>Project documentation moved to per-project book in <core:link book="/" page="/index.jspx" /> format.</li>
 					<li>Added changelog as top-level project link.</li>
+					<li>
+						Taglib tlib-version is now set automatically during build.
+						Unfortunately, we cannot include "-SNAPSHOT" on snapshot builds due to the requirement of "Dewey decimal"
+						for taglib versions.  The unambiguous full version is annotated via comment.
+					</li>
 				</ul>
 			</changelog:release>
 		</c:if>
