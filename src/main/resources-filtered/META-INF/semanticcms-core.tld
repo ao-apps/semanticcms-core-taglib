@@ -27,7 +27,10 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	version="2.1">
 	<description>Java API for modeling web page content and relationships in a JSP environment.</description>
 	<display-name>semanticcms-core-taglib</display-name>
-	<tlib-version>1.0</tlib-version>
+	<tlib-version>
+		<!-- Release: @{project.version} -->
+		@{parsedVersion.majorVersion}.@{parsedVersion.minorVersion}.@{parsedVersion.incrementalVersion}
+	</tlib-version>
 	<short-name>core</short-name>
 	<uri>https://semanticcms.com/core/taglib/</uri>
 	<tag>
