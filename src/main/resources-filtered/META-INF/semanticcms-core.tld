@@ -32,7 +32,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		@{parsedVersion.majorVersion}.@{parsedVersion.minorVersion}.@{parsedVersion.incrementalVersion}
 	</tlib-version>
 	<short-name>core</short-name>
-	<uri>${project.url}</uri>
+	<uri>@{project.url}</uri>
 	<tag>
 		<description><![CDATA[
 			<p>
