@@ -25,14 +25,14 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
 	version="2.1">
-	<description>Java API for modeling web page content and relationships in a JSP environment.</description>
-	<display-name>semanticcms-core-taglib</display-name>
+	<description>@{project.description}</description>
+	<display-name>@{project.artifactId}</display-name>
 	<tlib-version>
 		<!-- Release: @{project.version} -->
 		@{parsedVersion.majorVersion}.@{parsedVersion.minorVersion}.@{parsedVersion.incrementalVersion}
 	</tlib-version>
 	<short-name>core</short-name>
-	<uri>https://semanticcms.com/core/taglib/</uri>
+	<uri>${project.url}</uri>
 	<tag>
 		<description><![CDATA[
 			<p>
