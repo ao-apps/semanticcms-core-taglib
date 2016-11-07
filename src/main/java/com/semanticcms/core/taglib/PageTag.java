@@ -30,10 +30,14 @@ import com.aoindustries.io.buffer.BufferWriter;
 import com.aoindustries.io.buffer.EmptyResult;
 import com.aoindustries.servlet.filter.TempFileContext;
 import com.aoindustries.taglib.AutoEncodingBufferedTag;
+import static com.aoindustries.util.StringUtility.nullIfEmpty;
 import com.semanticcms.core.model.Page;
+import com.semanticcms.core.model.PageRef;
+import com.semanticcms.core.servlet.PageRefResolver;
 import com.semanticcms.core.servlet.PageUtils;
 import com.semanticcms.core.servlet.impl.PageImpl;
 import java.io.IOException;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -45,6 +49,16 @@ import javax.servlet.jsp.tagext.JspFragment;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 public class PageTag extends SimpleTagSupport {
+
+	private String book;
+	public void setBook(String book) {
+		this.book = nullIfEmpty(book);
+	}
+
+	private String path;
+	public void setPath(String path) {
+		this.path = nullIfEmpty(path);
+	}
 
 	private Object dateCreated;
 	public void setDateCreated(Object dateCreated) {
@@ -132,13 +146,25 @@ public class PageTag extends SimpleTagSupport {
 	@Override
 	public void doTag() throws JspException, IOException {
 		try {
-			final PageContext pageContext = (PageContext)getJspContext();
+			PageContext pageContext = (PageContext)getJspContext();
+			ServletContext servletContext = pageContext.getServletContext();
 			final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 
+			// Resolve pageRef, if book or path set
+			final PageRef pageRef;
+			if(path == null) {
+				if(book != null) throw new ServletException("path must be provided when book is provided.");
+				pageRef = null; // Use default
+			} else {
+				pageRef = PageRefResolver.getPageRef(servletContext, request, book, path);
+			}
+
 			final JspFragment body = getJspBody();
-			PageImpl.doPageImpl(pageContext.getServletContext(),
+			PageImpl.doPageImpl(
+				servletContext,
 				request,
 				(HttpServletResponse)pageContext.getResponse(),
+				pageRef,
 				PageUtils.toDateTime(dateCreated),
 				PageUtils.toDateTime(datePublished),
 				PageUtils.toDateTime(dateModified),
@@ -157,8 +183,8 @@ public class PageTag extends SimpleTagSupport {
 					: new PageImpl.PageImplBody<JspException>() {
 						@Override
 						public BufferResult doBody(boolean discard, Page page) throws JspException, IOException, SkipPageException {
-							// JSP pages are their own source
-							page.setSrc(page.getPageRef());
+							// JSP pages are their own source when using default pageRef
+							if(pageRef == null) page.setSrc(page.getPageRef());
 							if(discard) {
 								body.invoke(NullWriter.getInstance());
 								return EmptyResult.getInstance();
