@@ -649,7 +649,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		  <type>java.lang.Object</type>
 		  <!-- TODO: Deferred once supported by ao-taglib -->
 		</attribute>
-		<example />
 	</tag>
 	<tag>
 		<description><![CDATA[
@@ -728,7 +727,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		  <type>java.lang.Object</type>
 		  <!-- TODO: Deferred once supported by ao-taglib -->
 		</attribute>
-		<example />
 	</tag>
 	<tag>
 		<description><![CDATA[
