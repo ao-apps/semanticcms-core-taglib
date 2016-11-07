@@ -36,7 +36,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2016-11-02T02:45:47-0500"
+		dateModified="2016-11-06T22:49:12-0600"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT')}">
@@ -57,6 +57,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 						Unfortunately, we cannot include "-SNAPSHOT" on snapshot builds due to the requirement of "Dewey decimal"
 						for taglib versions.  The unambiguous full version is annotated via comment.
 					</li>
+					<li>core:parent and core:child tags now accept expressions for book and page attributes.</li>
 				</ul>
 			</changelog:release>
 		</c:if>
