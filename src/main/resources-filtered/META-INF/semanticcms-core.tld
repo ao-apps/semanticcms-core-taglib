@@ -1065,7 +1065,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>capturePageInBook</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>com.semanticcms.core.model.Page capturePageInBook(java.lang.String,java.lang.String,java.lang.String)</function-signature>
-		<example><![CDATA[<pre>${core:capturePageInBook(book, page, level)}</pre>]]></example>
+		<example><![CDATA[<code>${core:capturePageInBook(book, page, level)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1092,7 +1092,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>capturePage</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>com.semanticcms.core.model.Page capturePage(java.lang.String,java.lang.String)</function-signature>
-		<example><![CDATA[<pre>${core:capturePage(page, level)}</pre>]]></example>
+		<example><![CDATA[<code>${core:capturePage(page, level)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1103,7 +1103,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>captureContentRoot</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>com.semanticcms.core.model.Page captureContentRoot(java.lang.String)</function-signature>
-		<example><![CDATA[<pre>${core:captureContentRoot(level)}</pre>]]></example>
+		<example><![CDATA[<code>${core:captureContentRoot(level)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1120,7 +1120,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>getCaptureLevel</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.lang.String getCaptureLevel()</function-signature>
-		<example><![CDATA[<pre>${core:getCaptureLevel()}</pre>]]></example>
+		<example><![CDATA[<code>${core:getCaptureLevel()}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1131,7 +1131,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>getPageIndex</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>com.aoindustries.docs.taglib.PageIndex getPageIndex(com.semanticcms.core.model.PageRef)</function-signature>
-		<example><![CDATA[<pre>${core:getPageIndex(pageRef)}</pre>]]></example>
+		<example><![CDATA[<code>${core:getPageIndex(pageRef)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1160,7 +1160,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>convertPageDagToList</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.util.List convertPageDagToList(com.semanticcms.core.model.Page,java.lang.String)</function-signature>
-		<example><![CDATA[<pre>${core:convertPageDagToList(rootPage, level)}</pre>]]></example>
+		<example><![CDATA[<code>${core:convertPageDagToList(rootPage, level)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1169,7 +1169,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>getFileInBook</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.io.File getFileInBook(java.lang.String,java.lang.String,boolean)</function-signature>
-		<example><![CDATA[<pre>${core:getFileInBook(book, path, requireFile)</pre>]]></example>
+		<example><![CDATA[<code>${core:getFileInBook(book, path, requireFile)</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1178,7 +1178,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>getFile</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.io.File getFile(java.lang.String,boolean)</function-signature>
-		<example><![CDATA[<pre>${core:getFile(path, requireFile)</pre>]]></example>
+		<example><![CDATA[<code>${core:getFile(path, requireFile)</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1190,7 +1190,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>getExeFileInBook</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.io.File getExeFileInBook(java.lang.String,java.lang.String)</function-signature>
-		<example><![CDATA[<pre>${core:getExeFileInBook(book, path)}</pre>]]></example>
+		<example><![CDATA[<code>${core:getExeFileInBook(book, path)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1202,7 +1202,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>getExeFile</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.io.File getExeFile(java.lang.String)</function-signature>
-		<example><![CDATA[<pre>${core:getExeFile(path)}</pre>]]></example>
+		<example><![CDATA[<code>${core:getExeFile(path)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1213,7 +1213,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>encodeUrlParam</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.lang.String encodeUrlParam(java.lang.String)</function-signature>
-		<example><![CDATA[<pre>${core:encodeUrlParam(value)}</pre>]]></example>
+		<example><![CDATA[<code>${core:encodeUrlParam(value)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1225,7 +1225,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>getRefId</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.lang.String getRefId(java.lang.String)</function-signature>
-		<example><![CDATA[<pre>${core:getRefId(id)}</pre>]]></example>
+		<example><![CDATA[<code>${core:getRefId(id)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1237,7 +1237,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>getRefIdInPage</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.lang.String getRefIdInPage(com.semanticcms.core.model.Page,java.lang.String)</function-signature>
-		<example><![CDATA[<pre>${core:getRefIdInPage(page, id)}</pre>]]></example>
+		<example><![CDATA[<code>${core:getRefIdInPage(page, id)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1248,7 +1248,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>ceil</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.lang.Double ceil(java.lang.Double)</function-signature>
-		<example><![CDATA[<pre>${core:ceil(a)}</pre>]]></example>
+		<example><![CDATA[<code>${core:ceil(a)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1259,7 +1259,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>floor</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.lang.Double floor(java.lang.Double)</function-signature>
-		<example><![CDATA[<pre>${core:floor(a)}</pre>]]></example>
+		<example><![CDATA[<code>${core:floor(a)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1272,7 +1272,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>parseQueryString</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.util.Map parseQueryString(java.lang.String)</function-signature>
-		<example><![CDATA[<pre>${core:parseQueryString(pageContext.request.queryString)}</pre>]]></example>
+		<example><![CDATA[<code>${core:parseQueryString(pageContext.request.queryString)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1283,7 +1283,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>repeat</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.lang.String repeat(java.lang.String,int)</function-signature>
-		<example><![CDATA[<pre>${core:repeat(value, count)}</pre>]]></example>
+		<example><![CDATA[<code>${core:repeat(value, count)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1294,7 +1294,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>getBook</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>com.semanticcms.core.model.Book getBook(java.lang.String)</function-signature>
-		<example><![CDATA[<pre>${core:getBook(pagePath)}</pre>]]></example>
+		<example><![CDATA[<code>${core:getBook(pagePath)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1305,7 +1305,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>encodeHexData</name>
 		<function-class>com.semanticcms.core.servlet.impl.NavigationTreeImpl</function-class>
 		<function-signature>java.lang.String encodeHexData(java.lang.String)</function-signature>
-		<example><![CDATA[<pre>${core:encodeHexData(data)}</pre>]]></example>
+		<example><![CDATA[<code>${core:encodeHexData(data)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1316,7 +1316,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>isExporting</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>boolean isExporting()</function-signature>
-		<example><![CDATA[<pre>${core:isExporting()}</pre>]]></example>
+		<example><![CDATA[<code>${core:isExporting()}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1329,7 +1329,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>findCopyright</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>com.semanticcms.core.model.Copyright findCopyright(com.semanticcms.core.model.Page)</function-signature>
-		<example><![CDATA[<pre>${core:findCopyright(page)}</pre>]]></example>
+		<example><![CDATA[<code>${core:findCopyright(page)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1342,7 +1342,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>findAuthors</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.util.Set findAuthors(com.semanticcms.core.model.Page)</function-signature>
-		<example><![CDATA[<pre>${core:findAuthors(page)}</pre>]]></example>
+		<example><![CDATA[<code>${core:findAuthors(page)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1355,7 +1355,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>findAllowRobots</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>boolean findAllowRobots(com.semanticcms.core.model.Page)</function-signature>
-		<example><![CDATA[<pre>${core:findAllowRobots(page)}</pre>]]></example>
+		<example><![CDATA[<code>${core:findAllowRobots(page)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1367,7 +1367,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>hasChild</name>
 		<function-class>com.semanticcms.core.servlet.PageUtils</function-class>
 		<function-signature>boolean hasChild(com.semanticcms.core.model.Page)</function-signature>
-		<example><![CDATA[<pre>${core:hasChild(page)}</pre>]]></example>
+		<example><![CDATA[<code>${core:hasChild(page)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1379,7 +1379,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>hasElement</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>boolean hasElement(com.semanticcms.core.model.Page,java.lang.String,boolean)</function-signature>
-		<example><![CDATA[<pre>${core:hasElement(page, elementType, recursive)}</pre>]]></example>
+		<example><![CDATA[<code>${core:hasElement(page, elementType, recursive)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1395,7 +1395,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>findTopLevelElements</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.util.List findTopLevelElements(com.semanticcms.core.model.Node,java.lang.String)</function-signature>
-		<example><![CDATA[<pre>${core:findTopLevelElements(node, elementType)}</pre>]]></example>
+		<example><![CDATA[<code>${core:findTopLevelElements(node, elementType)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1407,7 +1407,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>filterElements</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.util.List filterElements(com.semanticcms.core.model.Page,java.lang.String)</function-signature>
-		<example><![CDATA[<pre>${core:filterElements(page, elementType)}</pre>]]></example>
+		<example><![CDATA[<code>${core:filterElements(page, elementType)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1418,7 +1418,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>isViewApplicable</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>boolean isViewApplicable(com.semanticcms.core.servlet.View,com.semanticcms.core.model.Page)</function-signature>
-		<example><![CDATA[<pre>${core:isViewApplicable(view, page)}</pre>]]></example>
+		<example><![CDATA[<code>${core:isViewApplicable(view, page)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1429,7 +1429,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>getViewLinkCssClass</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.lang.String getViewLinkCssClass(com.semanticcms.core.servlet.View)</function-signature>
-		<example><![CDATA[<pre>${core:getViewLinkCssClass(view)}</pre>]]></example>
+		<example><![CDATA[<code>${core:getViewLinkCssClass(view)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1440,7 +1440,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>getViewLinkParams</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.util.Map getViewLinkParams(com.semanticcms.core.servlet.View,com.semanticcms.core.model.Page)</function-signature>
-		<example><![CDATA[<pre>${core:getViewLinkParams(view, page)}</pre>]]></example>
+		<example><![CDATA[<code>${core:getViewLinkParams(view, page)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1451,7 +1451,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>getViewCopyright</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.lang.String getViewCopyright(com.semanticcms.core.servlet.View,com.semanticcms.core.model.Page)</function-signature>
-		<example><![CDATA[<pre>${core:getViewCopyright(view, page)}</pre>]]></example>
+		<example><![CDATA[<code>${core:getViewCopyright(view, page)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1462,7 +1462,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>getViewAuthors</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.util.Set getViewAuthors(com.semanticcms.core.servlet.View,com.semanticcms.core.model.Page)</function-signature>
-		<example><![CDATA[<pre>${core:getViewAuthors(view, page)}</pre>]]></example>
+		<example><![CDATA[<code>${core:getViewAuthors(view, page)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1473,7 +1473,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>getViewTitle</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.lang.String getViewTitle(com.semanticcms.core.servlet.View,com.semanticcms.core.model.Page)</function-signature>
-		<example><![CDATA[<pre>${core:getViewTitle(view, page)}</pre>]]></example>
+		<example><![CDATA[<code>${core:getViewTitle(view, page)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1485,7 +1485,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>getViewLinks</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.util.Collection getViewLinks(com.semanticcms.core.servlet.View,com.semanticcms.core.model.Page)</function-signature>
-		<example><![CDATA[<pre>${core:getViewLinks(view, page)}</pre>]]></example>
+		<example><![CDATA[<code>${core:getViewLinks(view, page)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1496,7 +1496,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>getViewAllowRobots</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>boolean getViewAllowRobots(com.semanticcms.core.servlet.View,com.semanticcms.core.model.Page)</function-signature>
-		<example><![CDATA[<pre>${core:getViewAllowRobots(view, page)}</pre>]]></example>
+		<example><![CDATA[<code>${core:getViewAllowRobots(view, page)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1508,7 +1508,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>getLinkCssClass</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.lang.String getLinkCssClass(com.semanticcms.core.model.Element)</function-signature>
-		<example><![CDATA[<pre>${core:getLinkCssClass(element)}</pre>]]></example>
+		<example><![CDATA[<code>${core:getLinkCssClass(element)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1519,7 +1519,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>mergeGlobalAndViewScripts</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.util.Map mergeGlobalAndViewScripts(com.semanticcms.core.servlet.View)</function-signature>
-		<example><![CDATA[<pre>${core:mergeGlobalAndViewScripts(view)}</pre>]]></example>
+		<example><![CDATA[<code>${core:mergeGlobalAndViewScripts(view)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
@@ -1530,6 +1530,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>getShortTitle</name>
 		<function-class>com.semanticcms.core.servlet.PageUtils</function-class>
 		<function-signature>java.lang.String getShortTitle(com.semanticcms.core.model.PageRef,com.semanticcms.core.model.Page)</function-signature>
-		<example><![CDATA[<pre>${core:getShortTitle(parentPageRef,page)}</pre>]]></example>
+		<example><![CDATA[<code>${core:getShortTitle(parentPageRef,page)}</code>]]></example>
 	</function>
 </taglib>
