@@ -1,0 +1,241 @@
+<!--
+semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
+Copyright (C) 2016  AO Industries, Inc.
+    support@aoindustries.com
+    7262 Bull Pen Cir
+    Mobile, AL 36695
+
+This file is part of semanticcms-core-taglib.
+
+semanticcms-core-taglib is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+semanticcms-core-taglib is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />.
+-->
+<jsp:root
+	xmlns:ao="https://aoindustries.com/ao-taglib/"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:changelog="https://semanticcms.com/changelog/taglib/"
+	xmlns:core="https://semanticcms.com/core/taglib/"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	version="2.1"
+>
+	<jsp:directive.page language="java" pageEncoding="UTF-8" session="false" />
+	<!-- TODO: https://schema.org/TechArticle on this page -->
+	<core:page
+		title="@{documented.name} Changelog"
+		shortTitle="Changelog"
+		tocLevels="1"
+		datePublished="2016-10-30T20:28:28-0500"
+		dateModified="2016-11-06T22:49:12-0600"
+	>
+		<!-- The current snapshot, unreleased version -->
+		<c:if test="${fn:endsWith('@{com.aoindustries:semanticcms-core-taglib:jar.version}', '-SNAPSHOT')}">
+			<changelog:release
+				projectName="@{documented.name}"
+				version="@{com.aoindustries:semanticcms-core-taglib:jar.version}"
+				groupId="@{documented.groupId}"
+				artifactId="@{documented.artifactId}"
+				scmUrl="@{documented.scm.url}"
+			>
+				<ul>
+					<li>New <ao:a href="https://aoindustries.com/ao-oss-parent/">AO OSS Parent</ao:a> POM to simplify <code>pom.xml</code> files.</li>
+					<li>Added support for dateCreated, datePublished, dateModified, and dateReviewed.</li>
+					<li>Project documentation moved to per-project book in <core:link book="/" page="/index.jspx" /> format.</li>
+					<li>Added changelog as top-level project link.</li>
+					<li>
+						Taglib tlib-version is now set automatically during build.
+						Unfortunately, we cannot include "-SNAPSHOT" on snapshot builds due to the requirement of "Dewey decimal"
+						for taglib versions.  The unambiguous full version is annotated via comment.
+					</li>
+					<li>core:parent and core:child tags now accept expressions for book and page attributes.</li>
+				</ul>
+			</changelog:release>
+		</c:if>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="1.8.0"
+			datePublished="2016-10-20T18:23:00-0500"
+			groupId="@{documented.groupId}"
+			artifactId="@{documented.artifactId}"
+			scmUrl="@{documented.scm.url}"
+		>
+			<ul>
+				<li>Improved Javadoc formatting.</li>
+				<li>Improved README formatting.</li>
+				<li>Added component registry.</li>
+				<li>shortTitle may now be specified on a per-parent basis,
+					for when the shortTitle only makes sense within the context of that specific parent.
+					This is useful for navigation items such as breadcrumbs or trees.</li>
+				<li>Ordering less specified in the API contract, but implementation will be more consistent.</li>
+			</ul>
+		</changelog:release>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="1.7.1"
+			datePublished="2016-10-11T13:58:00-0500"
+			groupId="@{documented.groupId}"
+			artifactId="@{documented.artifactId}"
+			scmUrl="@{documented.scm.url}"
+		>
+			<ul>
+				<li>display-name defined in web-fragment.xml was causing "The display name was defined in multiple fragments with different value"</li>
+				<li>Automatic content root redirect changed from 302 to stronger 301 for SEO purposes.</li>
+				<li>Using latest releases of dependencies.</li>
+			</ul>
+		</changelog:release>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="1.7.0"
+			datePublished="2016-10-04T20:55:00-0500"
+			groupId="@{documented.groupId}"
+			artifactId="@{documented.artifactId}"
+			scmUrl="@{documented.scm.url}"
+		>
+			<ul>
+				<li>Improved Javadoc formatting.</li>
+				<li>Set rtexprvalue to false where seems reasonable to do so.</li>
+				<li>Removed unnecessary and unused attribute getters.</li>
+				<li>Link class is now a deferred expression and only evaluated on body captures.</li>
+				<li>Core taglib now supports deferred expressions.</li>
+				<li>Avoiding calling writeTo when capturing.</li>
+				<li>Each lock object now a small empty class to help identify lock contention.
+					<p>
+						The lock contention profiler in NetBeans is just showing "java.lang.Object" all over, and can't seem to
+						get from the lock object id to the actual object in the heap dump using OQL (id not found).
+					</p>
+				</li>
+				<li>Trim on includes is just unnecessary filter invocation.</li>
+				<li>Only writing element marker when needed now.</li>
+			</ul>
+		</changelog:release>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="1.6"
+			datePublished="2016-09-11T15:42:00-0500"
+			groupId="@{documented.groupId}"
+			artifactId="@{documented.artifactId}"
+			scmUrl="@{documented.scm.url}"
+		>
+			<ul>
+				<li>Use dependencyManagement instead of dependency for junit.</li>
+				<li>Created parent pom for all SemanticCMS components.</li>
+				<li>Now supporting per-page allowRobots setting.</li>
+				<li>Handling expression language converting nulls to empty strings.</li>
+				<li>Views now provide general purpose links, not just specifically CSS links.</li>
+			</ul>
+		</changelog:release>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="1.5"
+			datePublished="2016-09-03T09:53:00-0500"
+			groupId="@{documented.groupId}"
+			artifactId="@{documented.artifactId}"
+			scmUrl="@{documented.scm.url}"
+		>
+			<ul>
+				<li>Improved Maven configuration for Java EE 6 dependencies.</li>
+			</ul>
+		</changelog:release>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="1.4"
+			datePublished="2016-08-28T20:36:00-0500"
+			groupId="@{documented.groupId}"
+			artifactId="@{documented.artifactId}"
+			scmUrl="@{documented.scm.url}"
+		>
+			<ul>
+				<li>Making use of web-fragment.xml to remove common configuration from per-app web.xml.</li>
+				<li>Moved automatic Git to separate packages.</li>
+				<li>More view control over links to view.</li>
+				<li>Added global and per-view script registry.</li>
+				<li>Views may now use parameters.</li>
+			</ul>
+		</changelog:release>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="1.3"
+			datePublished="2016-08-21T17:03:00-0500"
+			groupId="@{documented.groupId}"
+			artifactId="@{documented.artifactId}"
+			scmUrl="@{documented.scm.url}"
+		>
+			<ul>
+				<li>Hyperlinks now optional on links.</li>
+				<li>Allowing "small" link instead of eliminating hyperlink altogether.</li>
+				<li>Moved styles to separate package.</li>
+				<li>Created parent pom for all SemanticCMS components.</li>
+				<li>Requires latest version of aocode-public.</li>
+			</ul>
+		</changelog:release>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="1.2"
+			datePublished="2016-08-19T14:44:00-0500"
+			groupId="@{documented.groupId}"
+			artifactId="@{documented.artifactId}"
+			scmUrl="@{documented.scm.url}"
+		>
+			<ul>
+				<li>Now generating missing ids when first accesssed, not at the end of
+					the page. This fixes bug where IDs were missing from elements.</li>
+				<li>To avoid easily making broken links, may no longer link to generated element ids.</li>
+				<li>Application-scope variables combined into single "semanticCMS" variable.</li>
+				<li>Require latest ao-servlet-filter dependency.</li>
+				<li>Now supporting *.jspx files.</li>
+				<li>Defined how themes and views interact.</li>
+				<li>Headings moved to own projects and renamed to "Section".</li>
+				<li>Now passing arguments through includes.</li>
+				<li>Pulled files out of core and made files be elements.</li>
+				<li>Using auto temp file wrapper in all places.</li>
+				<li>Added default redirect to content root.</li>
+				<li>Views can now hide themselves when not relevant to a given page.</li>
+				<li>Pulled openFile out of core.</li>
+			</ul>
+		</changelog:release>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="1.1"
+			datePublished="2016-08-09T23:19:00-0500"
+			groupId="@{documented.groupId}"
+			artifactId="@{documented.artifactId}"
+			scmUrl="@{documented.scm.url}"
+		>
+			<ul>
+				<li>Renamed project from ao-web-page-taglib to semanticcms-core-taglib.</li>
+			</ul>
+		</changelog:release>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="1.0"
+			datePublished="2016-08-07T23:49:00-0500"
+			groupId="com.aoindustries"
+			artifactId="ao-web-page-taglib"
+			scmUrl="@{documented.scm.url}"
+		>
+			<ul>
+				<li>Project moved to GitHub and Maven.</li>
+			</ul>
+		</changelog:release>
+	</core:page>
+</jsp:root>
