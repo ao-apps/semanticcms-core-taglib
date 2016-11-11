@@ -65,6 +65,61 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<tag>HEAD</tag>
 	</scm>
 
+	<build>
+		<plugins>
+			<!-- Add a copy of the taglib files from dependencies -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>unpack-semanticcms-core.tld</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>com.semanticcms</groupId>
+									<artifactId>semanticcms-core-taglib</artifactId>
+									<version>1.8.1-SNAPSHOT</version>
+									<type>jar</type>
+									<includes>META-INF/semanticcms-core.tld</includes>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-semanticcms-core.tld</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<resources>
+								<resource>
+									<directory>${project.build.directory}/dependency/META-INF</directory>
+									<includes>
+										<include>semanticcms-core.tld</include>
+									</includes>
+								</resource>
+							</resources>
+							<!-- Put into META-INF/resources to be accessible as website content when jar included in WEB-INF/lib -->
+							<outputDirectory>${project.build.outputDirectory}/META-INF/resources/core/taglib</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
 	<profiles>
 		<profile>
 			<id>release</id>
@@ -81,6 +136,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 									<link>https://semanticcms.com/changelog/taglib/apidocs/</link>
 									<link>https://semanticcms.com/core/taglib/apidocs/</link>
 									<link>https://semanticcms.com/section/taglib/apidocs/</link>
+									<link>https://semanticcms.com/tag-reference/apidocs/</link>
 								</links>
 							</configuration>
 						</plugin>
@@ -147,6 +203,11 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			<groupId>com.semanticcms</groupId>
 			<artifactId>semanticcms-section-taglib</artifactId>
 			<version>1.4.2-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.semanticcms</groupId>
+			<artifactId>semanticcms-tag-reference</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>

@@ -26,7 +26,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
 	version="2.1">
 	<description><![CDATA[
-		<p>@{project.description}</p>
+		<p>@{description.html}</p>
 	]]></description>
 	<display-name>@{project.name}</display-name>
 	<tlib-version>
@@ -37,16 +37,17 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<uri>@{project.url}</uri>
 	<tag>
 		<description><![CDATA[
-			<p>
+			<p class="semanticcms-tag-reference-summary">
 				The body of this tag represents one page of content.
-				The page title is automatically added as a &lt;h1&gt; before any content.
-				There should be only one page tag per JSP file because the path to
-				the page is determined by the servlet requestPath (or most recent ao:include).
 			</p>
 			<p>
-				When this page is directly accessed, the HTML page is rendered with the
-				page content coming from the body of this tag.  The view is resolved and
-				the page is forwarded to the theme to generate the full HTML page.
+				There must be at most one &lt;core:page&gt; tag per JSP file because the path to
+				the page is determined by the servlet requestPath (or most recent <a href="https://aoindustries.com/ao-taglib/ao.tld/tag-include">&lt;ao:include&gt;</a>).
+			</p>
+			<p>
+				When this page is directly accessed, the page is rendered with the
+				page content coming from the body of this tag.  The page is captured in <code>BODY</code> mode,
+				the view is resolved, and the page and view are forwarded to the theme to generate the output.
 			</p>
 		]]></description>
 		<name>page</name>
@@ -79,15 +80,19 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
-				<p>
-					The <a href="https://schema.org/dateCreated">dateCreated</a>, in ISO 8601 format.  At least YYYY-MM-DD is required,
-					and when time not specified will default to midnight in the current system time zone.
-					A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
-					Any value accepted by Joda Time DateTime is accepted.
+				<p class="semanticcms-tag-reference-summary">
+					The <a href="https://schema.org/dateCreated">dateCreated</a> in <a href="http://www.iso.org/iso/home/standards/iso8601.htm">ISO 8601</a> format.
 				</p>
 				<p>
-					When created and published are the same date, prefer
-					published because it seems to have more use overall than created.
+					At least <code>YYYY-MM-DD</code> is required,
+					and when time not specified will default to midnight in the current system time zone.
+					A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
+					Any value accepted by Joda Time <a href="@{jodaTimeApidocs}org/joda/time/DateTime.html#DateTime-java.lang.Object-">DateTime</a>
+					is accepted.
+				</p>
+				<p>
+					When dateCreated and datePublished are the same date, prefer
+					datePublished because it seems to have more use overall than created.
 				</p>
 			]]></description>
 			<name>dateCreated</name>
@@ -97,15 +102,19 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
-				<p>
-					The <a href="https://schema.org/datePublished">datePublished</a>, in ISO 8601 format.  At least YYYY-MM-DD is required,
-					and when time not specified will default to midnight in the current system time zone.
-					A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
-					Any value accepted by Joda Time DateTime is accepted.
+				<p class="semanticcms-tag-reference-summary">
+					The <a href="https://schema.org/datePublished">datePublished</a> in <a href="http://www.iso.org/iso/home/standards/iso8601.htm">ISO 8601</a> format.
 				</p>
 				<p>
-					When created and published are the same date, prefer
-					published because it seems to have more use overall than created.
+					At least <code>YYYY-MM-DD</code> is required,
+					and when time not specified will default to midnight in the current system time zone.
+					A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
+					Any value accepted by Joda Time <a href="@{jodaTimeApidocs}org/joda/time/DateTime.html#DateTime-java.lang.Object-">DateTime</a>
+					is accepted.
+				</p>
+				<p>
+					When dateCreated and datePublished are the same date, prefer
+					datePublished because it seems to have more use overall than created.
 				</p>
 			]]></description>
 			<name>datePublished</name>
@@ -115,11 +124,15 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
+				<p class="semanticcms-tag-reference-summary">
+					The <a href="https://schema.org/dateModified">dateModified</a> in <a href="http://www.iso.org/iso/home/standards/iso8601.htm">ISO 8601</a> format.
+				</p>
 				<p>
-					The <a href="https://schema.org/dateModified">dateModified</a>, in ISO 8601 format.  At least YYYY-MM-DD is required,
+					At least <code>YYYY-MM-DD</code> is required,
 					and when time not specified will default to midnight in the current system time zone.
 					A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
-					Any value accepted by Joda Time DateTime is accepted.
+					Any value accepted by Joda Time <a href="@{jodaTimeApidocs}org/joda/time/DateTime.html#DateTime-java.lang.Object-">DateTime</a>
+					is accepted.
 				</p>
 			]]></description>
 			<name>dateModified</name>
@@ -129,11 +142,15 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
+				<p class="semanticcms-tag-reference-summary">
+					The dateReviewed in <a href="http://www.iso.org/iso/home/standards/iso8601.htm">ISO 8601</a> format.
+				</p>
 				<p>
-					The dateReviewed, in ISO 8601 format.  At least YYYY-MM-DD is required,
+					At least <code>YYYY-MM-DD</code> is required,
 					and when time not specified will default to midnight in the current system time zone.
 					A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
-					Any value accepted by Joda Time DateTime is accepted.
+					Any value accepted by Joda Time <a href="@{jodaTimeApidocs}org/joda/time/DateTime.html#DateTime-java.lang.Object-">DateTime</a>
+					is accepted.
 				</p>
 				<p>
 					This has no equivalent in <a href="https://schema.org/">https://schema.org/</a>, however
@@ -148,7 +165,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
-				<p>The title of the page.</p>
+				<p>
+					The title of the page.
+				</p>
 			]]></description>
 			<name>title</name>
 			<required>true</required>
@@ -157,10 +176,15 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
-				<p>
+				<p class="semanticcms-tag-reference-summary">
 					The optional short title of the page.
+				</p>
+				<p>
 					A short title is used when the context of a page is well established, such as when
-					showing a path to the current location in the site.  The short title defaults to <code>title</code>.
+					showing a path to the current location in the site.
+				</p>
+				<p>
+					The short title defaults to the page title.
 				</p>
 			]]></description>
 			<name>shortTitle</name>
@@ -170,7 +194,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
-				<p>The optional description of the page.</p>
+				<p>
+					The optional description of the page.
+				</p>
 			]]></description>
 			<name>description</name>
 			<required>false</required>
@@ -179,7 +205,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
-				<p>The optional keywords of the page.</p>
+				<p>
+					The optional comma-separated keywords of the page.
+				</p>
 			]]></description>
 			<name>keywords</name>
 			<required>false</required>
@@ -188,19 +216,22 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
+				<p class="semanticcms-tag-reference-summary">
+					Controls whether robots will be allowed to access this page.
+				</p>
 				<p>
-					Controls whether robots will be allowed to access this page.  When not allowed
-					a page will have robots="noindex,nofollow" added to meta and be excluded from
-					sitemaps.
+					When not allowed, a page will have <code>&lt;meta name="robots" content="noindex, nofollow" /&gt;</code>
+					added and be excluded from sitemaps.
+					Links to the page will also have <code>rel="nofollow"</code> added.
 				</p>
 				<p>
 					Possible values are:
 				</p>
 				<ul>
-					<li><code>auto</code> - Inherit from parent(s) within book or book settings if have no parents within the book.</li>
+					<li><code>auto</code> - Inherit setting from parent(s) within the book or book settings if have no parents within the book</li>
 					<li><code>true</code> - Robots allowed</li>
 					<li><code>false</code> - Robots not allowed</li>
-				</li>
+				</ul>
 				<p>
 					Defaults to <code>auto</code>.
 				</p>
@@ -212,15 +243,17 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
-				<p>
+				<p class="semanticcms-tag-reference-summary">
 					Includes a table of contents at the top of the page.
+				</p>
+				<p>
 					Possible values are:
 				</p>
 				<ul>
 					<li><code>auto</code> - Automatically selected</li>
 					<li><code>true</code> - Always show</li>
 					<li><code>false</code> - Always hide</li>
-				</li>
+				</ul>
 				<p>
 					Defaults to <code>auto</code>.
 				</p>
@@ -245,8 +278,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
-				<p>
-					When "true", it is acceptable for the parents to not list this page
+				<p class="semanticcms-tag-reference-summary">
+					When <code>true</code>, it is acceptable for the parents to not list this page
 					as a child.  In other words, this page may claim a parent that does
 					not also claim this as a child.
 				</p>
@@ -254,7 +287,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 					Parent-child relationships are never verified to parents from missing books.
 				</p>
 				<p>
-					Defaults to "false" meaning strict parent-child relationship verification.
+					Defaults to <code>false</code> meaning strict parent-child relationship verification.
 				</p>
 				<p>
 					Use of this can result in this page being orphaned, where this page
@@ -269,8 +302,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
-				<p>
-					When "true", it is acceptable for the children to not list this page
+				<p class="semanticcms-tag-reference-summary">
+					When <code>true</code>, it is acceptable for the children to not list this page
 					as a parent.  In other words, this page may claim a child that does
 					not also claim this as a parent.
 				</p>
@@ -278,7 +311,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 					Child-parent relationships are never verified to children from missing books.
 				</p>
 				<p>
-					Defaults to "false" meaning strict child-parent relationship verification.
+					Defaults to <code>false</code> meaning strict child-parent relationship verification.
 				</p>
 				<p>
 					Use of this can result in incomplete determination of the
@@ -293,15 +326,15 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<description><![CDATA[
-			<p>
+			<p class="semanticcms-tag-reference-summary">
 				Sets the copyright for the current page.
 			</p>
 			<p>
 				At least one field must be set to a non-null value.
 			</p>
 			<p>
-				Any field not set (or set to null) will be inherited from the parent(s) in the same book.
-				Any field set to "" will have no value and not inherit from parents.
+				Any field not set (or set to <code>null</code>) will be inherited from the parent(s) in the same book.
+				Any field set to <code>""</code> will have no value and not inherit from parents.
 			</p>
 			<p>
 				If there are no parent pages in this same book, uses the fields from the book's copyright.
@@ -318,7 +351,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p>
-					The rights holder, "" means none and null will inherit.
+					The rights holder.
+					<code>""</code> means none and <code>null</code> will inherit.
 				</p>
 			]]></description>
 			<name>rightsHolder</name>
@@ -329,7 +363,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p>
-					The rights, "" means none and null will inherit.
+					The rights.
+					<code>""</code> means none and <code>null</code> will inherit.
 				</p>
 			]]></description>
 			<name>rights</name>
@@ -340,7 +375,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p>
-					The date copyrighted, "" means none and null will inherit.
+					The date copyrighted.
+					<code>""</code> means none and <code>null</code> will inherit.
 				</p>
 			]]></description>
 			<name>dateCopyrighted</name>
@@ -351,7 +387,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<description><![CDATA[
-			<p>
+			<p class="semanticcms-tag-reference-summary">
 				Adds an author to the current page.
 				It is permissible to have an author in a missing book.
 			</p>
@@ -373,7 +409,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p>
-					The name of the author, to be used in &lt;meta name="author" content="..." /&gt;.
+					The name of the author, to be used in <code>&lt;meta name="author" content="…" /&gt;</code>.
 					Required when neither href nor page are provided.
 					Also required when page provided and the page is in a different book.
 				</p>
@@ -386,7 +422,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p>
-					The href of the author, to be used in &lt;link rel="author" href="..." /&gt;
+					The href of the author, to be used in <code>&lt;link rel="author" href="…" /&gt;</code>
 					Required when neither name nor page are provided.
 					May not be used when page provided.
 				</p>
@@ -401,7 +437,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				<p>
 					The book containing the author page.
 					Defaults to the book of the current JSP file.
-					Not allowed when page not provided.
+					When book provided, page attribute must also be provided.
 				</p>
 			]]></description>
 			<name>book</name>
@@ -412,7 +448,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p>
-					The page-relative path to the author page, to be used in &lt;link rel="author" href="..." /&gt;
+					The page-relative path to the author page, to be used in <code>&lt;link rel="author" href="…" /&gt;</code>.
 					Required when neither name nor href are provided.
 					May not be used when href provided.
 				</p>
@@ -425,36 +461,41 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<description><![CDATA[
-			<p>
+			<p class="semanticcms-tag-reference-summary">
 				Adds the given page as a parent of the current page.
 				This tag only represents the relationship, so body content is not allowed.
 				It is permissible to have a parent in a missing book.
 			</p>
 			<p>
 				To build the relationship between pages and parents, the page
-				should include &lt;core:parent tags for each parent page within
-				the body of the &lt;core:page&gt; tag.  Due to optimizations during
-				page-only capturing, the parent pages must be added directly in
-				the page body, not from within other nested tags.
+				should include &lt;core:parent&gt; tags for each parent page within
+				the body of the <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a> tag.
 			</p>
 			<p>
-				This may not be set on the "content.root" of any of the books, as the
+				Due to optimizations during page-only capturing, the parent pages must be added directly in
+				the page body, not from within other nested elements.
+			</p>
+			<p>
+				This may not be set on the <code>content.root</code> of any of the books, as the
 				parent(s) of a book varies based on where the book is placed.  The
-				parent(s) of a book are configured in the /WEB-INF/books.properties file.
-				All books require at least one parent except the "rootBook" which does not allow
+				parent(s) of a book are configured in the <code>/WEB-INF/books.xml</code> file.
+				All books require at least one parent except the <code>rootBook</code> which does not allow
 				any parent.  These rules ensure a single root Directed Acyclic Graph (DAG).
 			</p>
 			<p>
 				If no parents are added, an automatic parent is computed as follows:
 			</p>
 			<ol>
-				<li>If this page is the "content.root" of a book, include all parents configured when book imported.</li>
-				<li>If this page URL ends in "/", "/index.jspx" or "/index.jsp", look for JSP page at "../index.jspx" or "../index.jsp" then asssume "../", error if outside book.</li>
-				<li>Look for page at "./index.jspx" or "./index.jsp" then assume "./".</li>
+				<li>If this page is the <code>content.root</code> of a book, include all parents configured in <code>/WEB-INF/books.xml</code>.</li>
+				<li>If this page URL ends in <code>/</code>, <code>/index.jspx</code> or <code>/index.jsp</code>,
+					look for JSP page at <code>../index.jspx</code> or <code>../index.jsp</code> then asssume <code>../</code>,
+					error if outside book.
+				</li>
+				<li>Look for page at <code>./index.jspx</code> or <code>./index.jsp</code> then assume <code>./</code>.</li>
 			</ol>
 			<p>
-				Unless "allowParentMismatch" is enabled on the page, the parent
-				must also consider this page as a child.
+				Unless <code>allowParentMismatch</code> is enabled on the <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a>,
+				the parent must also consider this page as a child.
 			</p>
 		]]></description>
 		<name>parent</name>
@@ -498,21 +539,23 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<description><![CDATA[
-			<p>
+			<p class="semanticcms-tag-reference-summary">
 				Adds the given page as a subpage of the current page.
 				This tag only represents the relationship, so body content is not allowed.
 				It is permissible to have a child in a missing book.
 			</p>
 			<p>
 				To build the relationship between pages and subpages, the page
-				should include &lt;core:child tags for each child page within
-				the body of the &lt;core:page&gt; tag.  Due to optimizations during
-				page-only capturing, the child pages must be added directly in
-				the page body, not from within other nested tags.
+				should include &lt;core:child&gt; tags for each child page within
+				the body of the <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a> tag.
 			</p>
 			<p>
-				Unless "allowChildMismatch" is enabled on the page, the child
-				must also consider this page as a parent.
+				Due to optimizations during page-only capturing, the child pages must be added directly in
+				the page body, not from within other nested elements.
+			</p>
+			<p>
+				Unless <code>allowChildMismatch</code> is enabled on the <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a>,
+				the child must also consider this page as a parent.
 			</p>
 		]]></description>
 		<name>child</name>
@@ -544,26 +587,34 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<description><![CDATA[
-			<p>
+			<p class="semanticcms-tag-reference-summary">
 				Writes a link to a page and optionally an element.
 				If element not provided, then page is required.
-				If page is not provided, links to element within this page.
+				If page is not provided, links to element within the current page.
 			</p>
 			<p>
-				Any attribute that has no namespace and begins with "param." is added to the href as a URL parameter.
-				The parameter name is the part of the attribute name following "param.".
+				Any attribute that has no namespace and begins with <code>param.</code> is added to the href as a URL parameter.
+				The parameter name is the part of the attribute name following <code>param.</code>.
 			</p>
 			<p>
-				When a parameter value is null it is not added.
-				If the value is an Iterable, Iterator, Enumeration, or array, then each non-null element is coerced to
-				string as a separate parameter in iteration order.  Otherwise, the value itself is
-				coerced to string for the parameter value.
+				When a parameter value is <code>null</code> it is not added.
+				If the value is an
+				<a href="@{javac.link.javaApi}java/lang/Iterable.html">Iterable</a>,
+				<a href="@{javac.link.javaApi}java/util/Iterator.html">Iterator</a>,
+				<a href="@{javac.link.javaApi}java/util/Enumeration.html">Enumeration</a>,
+				or array, then each non-null element is coerced to
+				<a href="@{javac.link.javaApi}java/lang/String.html">String</a> as a separate
+				parameter in iteration order.  Otherwise, the value itself is
+				coerced to <a href="@{javac.link.javaApi}java/lang/String.html">String</a>
+				for the parameter value.
 			</p>
 			<p>
-				Nested &lt;core:param&gt; or &lt;core:params&gt; tags will add parameters after any provided as attributes.
+				Nested <a href="@{project.url}semanticcms-core.tld/tag-param">&lt;core:param&gt;</a> or
+				<a href="@{project.url}semanticcms-core.tld/tag-params">&lt;core:params&gt;</a> tags will
+				add parameters after any provided as attributes.
 			</p>
 			<p>
-				If there is no body, will write the page title or element label.
+				If there is no body, writes the target page title or element label.
 			</p>
 		]]></description>
 		<name>link</name>
@@ -574,9 +625,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				<p>
 					The CSS class for the link.
 					Defaults to a target-specific value, if any defined for the target element.
-				</p>
-				<p>
-					To avoid the default, pass an empty class: &lt;core:link class="" ... /&gt;
+					To avoid the default, pass an empty class: <code>&lt;core:link class="" … /&gt;</code>
 				</p>
 			]]></description>
 			<name>class</name>
@@ -602,7 +651,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<description><![CDATA[
 				<p>
 					The page-relative path to the page.
-					If not provided, must be nested in a &lt;core:page&gt; tag and assumes the current page.
+					If not provided, must be nested in a <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a>
+					tag and assumes the current page.
 					Required when book provided.
 				</p>
 			]]></description>
@@ -627,9 +677,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p>
-					When false, the default, may not link to generated ids.
+					When <code>false</code>, the default, may not link to generated ids.
 					This is to avoid broken links as it is preferred to set explicit ids on target elements.
-					Set to true to allow linking to generated element ids.
+					Set to <code>true</code> to allow linking to generated element ids.
 				</p>
 			]]></description>
 			<name>allowGeneratedElement</name>
@@ -639,16 +689,18 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
-				<ol>
-					The view mode to use in the link target.  Although view is site defined, some common
-					values might include:
-				</ol>
+				<p class="semanticcms-tag-reference-summary">
+					The view mode to use in the link target.
+				</p>
+				<p>
+					Although view is site defined, some common values might include:
+				</p>
 				<ul>
-					<li>null, "", or "content" (the default and always supported) - Links to the page content</li>
-					<li>what-links-here</li>
-					<li>tree</li>
-					<li>all</li>
-					<li>files</li>
+					<li><code>null</code>, <code>""</code>, or <code>content</code> (the default and always supported) - Links to the page content</li>
+					<li><code>what-links-here</code></li>
+					<li><code>tree</code></li>
+					<li><code>all</code></li>
+					<li><code>files</code></li>
 				</ul>
 			]]></description>
 			<name>view</name>
@@ -660,7 +712,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p>
-					When false, the default, will generate a &lt;a&gt; tag around the entire body.
+					When <code>false</code>, the default, will generate a &lt;a&gt; tag around the entire body.
 					Otherwise, will generate a &lt;span&gt; instead, with a small link added to
 					the end of the body.
 				</p>
@@ -679,7 +731,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<tag>
 		<description><![CDATA[
 			<p>
-				Adds a parameter to its ParamsAttribute parent tag.
+				Adds a parameter to its
+				<a href="https://aoindustries.com/ao-taglib/apidocs/com/aoindustries/taglib/ParamsAttribute.html">ParamsAttribute</a>
+				parent tag.
 			</p>
 		]]></description>
 		<name>param</name>
@@ -687,7 +741,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<body-content>scriptless</body-content>
 		<attribute>
 			<description><![CDATA[
-				<p>The name of parameter tag.</p>
+				<p>
+					The name of parameter tag.
+				</p>
 			]]></description>
 		  <name>name</name>
 		  <required>true</required>
@@ -711,7 +767,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<tag>
 		<description><![CDATA[
 			<p>
-				Adds multiple parameters to its ParamsAttribute parent tag.
+				Adds multiple parameters to its
+				<a href="https://aoindustries.com/ao-taglib/apidocs/com/aoindustries/taglib/ParamsAttribute.html">ParamsAttribute</a>
+				parent tag.
 			</p>
 		]]></description>
 		<name>params</name>
@@ -723,7 +781,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 					The name of parameter to add.
 				</p>
 				<p>
-					When provided, the values may not contain a Map or HttpParameters.
+					When provided, the values may not contain a
+					<a href="@{javac.link.javaApi}java/util/Map.html">Map</a>
+					or <a href="https://aoindustries.com/aocode-public/apidocs/com/aoindustries/net/HttpParameters.html">HttpParameters</a>.
 					When provided, the exclude attribute may not be provided.
 				</p>
 			]]></description>
@@ -735,19 +795,35 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p>
-					Optionally excludes all elements of a Map or HttpParameters that
-					match any of the comma-separated patterns.
+					Optionally excludes all elements of a
+					<a href="@{javac.link.javaApi}java/util/Map.html">Map</a>
+					or <a href="https://aoindustries.com/aocode-public/apidocs/com/aoindustries/net/HttpParameters.html">HttpParameters</a>
+					that match any of the comma-separated patterns.
 					May not be used in conjunction with the name attribute.
 				</p>
 				<p>
 					Each pattern in the comma-separated list may in the following format:
-					<ul>
-					   <li>exact_name  matches the name exactly</li>
-					   <li>*           matches all (clears all parameters)</li>
-					   <li>*suffix     matches the name with "endsWith"</li>
-					   <li>prefix*     matches the name with "beginsWith"</li>
-					</ul>
 				</p>
+				<table class="thinTable">
+					<tbody>
+						<tr>
+							<td>exact_name</td>
+							<td>matches the name exactly</td>
+						</tr>
+						<tr>
+							<td>*</td>
+							<td>matches all (clears all parameters)</td>
+						</tr>
+						<tr>
+							<td>*suffix</td>
+							<td>matches the name with "endsWith"</td>
+						</tr>
+						<tr>
+							<td>prefix*</td>
+							<td>matches the name with "beginsWith"</td>
+						</tr>
+					</tbody>
+				</table>
 				<p>
 					Defaults to none excluded.
 				</p>
@@ -763,18 +839,27 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 					The values of the parameters.
 				</p>
 				<p>
-					When name is provided, supports <code>java.lang.Iterable</code>,
-					<code>java.util.Iterator</code>, <code>java.util.Enumeration</code>, or array values.
+					When name is provided, supports
+					<a href="@{javac.link.javaApi}java/lang/Iterable.html">Iterable</a>,
+					<a href="@{javac.link.javaApi}java/util/Iterator.html">Iterator</a>,
+					<a href="@{javac.link.javaApi}java/util/Enumeration.html">Enumeration</a>,
+					or array values.
 				</p>
 				<p>
-					When name is not provided, requires <code>java.util.Map</code> or <code>com.aoindustries.net.HttpParameters</code>, where
-					the parameter name is the map key coerced to string and the value
-					(or set of values) is the map value.  Each of the entry values may
-					be <code>java.lang.Iterable</code>, <code>java.util.Iterator</code>,
-					<code>java.util.Enumeration</code>, array, or single value.
+					When name is not provided, requires
+					<a href="@{javac.link.javaApi}java/util/Map.html">Map</a>
+					or <a href="https://aoindustries.com/aocode-public/apidocs/com/aoindustries/net/HttpParameters.html">HttpParameters</a>,
+					where the parameter name is the map key coerced to <a href="@{javac.link.javaApi}java/lang/String.html">String</a>
+					and the value (or set of values) is the map value.  Each of the entry values may be
+					<a href="@{javac.link.javaApi}java/lang/Iterable.html">Iterable</a>,
+					<a href="@{javac.link.javaApi}java/util/Iterator.html">Iterator</a>,
+					<a href="@{javac.link.javaApi}java/util/Enumeration.html">Enumeration</a>,
+					array, or single value.
 				</p>
 				<p>
-					When obtaining values from a <code>java.util.Map</code> or <code>com.aoindustries.net.HttpParameters</code>,
+					When obtaining values from a
+					<a href="@{javac.link.javaApi}java/util/Map.html">Map</a>
+					or <a href="https://aoindustries.com/aocode-public/apidocs/com/aoindustries/net/HttpParameters.html">HttpParameters</a>,
 					parameters may be excluded with the "exclude" attribute.
 				</p>
 				<p>
@@ -791,7 +876,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<tag>
 		<description><![CDATA[
 			<p>
-				Writes the tree data for use by TreeView as &lt;ul&gt; and &lt;li&gt; tags.
+				Writes a tree of pages, and optionally elements, as &lt;ul&gt; and &lt;li&gt; tags.
 			</p>
 		]]></description>
 		<name>navigationTree</name>
@@ -812,8 +897,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p>
-					May optionally skip the root page, displaying it's children only.
-					Defaults to "false".
+					May optionally skip the root page, displaying its children only.
+					Defaults to <code>false</code>.
 				</p>
 			]]></description>
 			<name>skipRoot</name>
@@ -824,8 +909,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p>
-					May optionally add yuiConfig data.
-					Defaults to "false".
+					May optionally add <a href="https://developer.yahoo.com/yui/treeview/">yuiConfig</a> data.
+					Defaults to <code>false</code>.
 				</p>
 			]]></description>
 			<name>yuiConfig</name>
@@ -837,7 +922,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<description><![CDATA[
 				<p>
 					May optionally include tree nodes for elements within pages.
-					Defaults to "false".
+					Defaults to <code>false</code>.
 				</p>
 			]]></description>
 			<name>includeElements</name>
@@ -848,7 +933,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p>
-					An optional target for links.
+					An optional target frame for links.
 				</p>
 			]]></description>
 			<name>target</name>
@@ -873,8 +958,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<description><![CDATA[
 				<p>
 					May optionally mark a specific page (by context-relative path).
-					All page matches are marked with class "semanticcms-core-tree-this-page".
-					Only the first match is marked with id "semanticcms-core-tree-this-page".
+					All page matches are marked with class <code>semanticcms-core-tree-this-page</code>.
+					Only the first match is marked with id <code>semanticcms-core-tree-this-page</code>.
 				</p>
 			]]></description>
 			<name>thisPage</name>
@@ -901,7 +986,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				<p>
 					May optionally filter for pages that link to the given page (by context-relative path).
 					The parent pages of any page that has a link will also be included.
-					The pages that actually have a link will be marked with class "semanticcms-core-links-to-page"
+					The pages that actually have a link will be marked with class <code>semanticcms-core-links-to-page</code>.
 				</p>
 			]]></description>
 			<name>linksToPage</name>
@@ -914,7 +999,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<description><![CDATA[
 				<p>
 					May optionally limit the depth of the navigation tree.
-					A skipped root does not count as one for the depth.
+					A skipped root does not count toward the depth.
 					<code>0</code>, the default, means unlimited depth.
 				</p>
 			]]></description>
@@ -928,7 +1013,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<description><![CDATA[
 			<p>
 				Writes the body of the given node, recursively replacing any nested
-				element markers.  The body is not written during PAGE and META captures.
+				element markers.  The body is not written during <code>PAGE</code> and <code>META</code> captures.
 			</p>
 		]]></description>
 		<name>writeNodeBody</name>
@@ -1037,27 +1122,29 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<function>
 		<description><![CDATA[
+			<p class="semanticcms-tag-reference-summary">
+				Captures a <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a> in a provided book.
+			</p>
 			<p>
-				Captures a &lt;core:page&gt; in a provided book.
-				The capture is always done with a request method of "GET", even when the enclosing request is a different method.
+				The capture is always done with a request method of <code>GET</code>, even when the enclosing request is a different method.
 			</p>
 			<p>
 				Parameter "book": The name of the book containing the page.
 			</p>
 			<p>
 				Parameter "page": The book-relative path to the JSP file to include for the page to capture,
-				must begin with a slash (/).
+				must begin with a slash <code>/</code>.
 			</p>
 			<p>
 				Parameter "level": Controls the level of detail to capture.  May be one of:
-				<ol>
-					<li>"page" - Fastest: captures page meta data only (including parent and child pages).</li>
-					<li>"meta" - Captures page and content meta data, but no HTML content.</li>
-					<li>"body" - Captures page and content meta data as well as all HTML body content.</li>
-				</ol>
 			</p>
+			<ol>
+				<li><code>page</code> - Fastest: captures page meta data only (including parent and child pages).</li>
+				<li><code>meta</code> - Captures page and content meta data, but no body content.</li>
+				<li><code>body</code> - Captures page and content meta data as well as all body content.</li>
+			</ol>
 			<p>
-				Level may need to be set to "page" when two pages capture each other (either directly
+				Level may need to be set to <code>page</code> when two pages capture each other (either directly
 				or indirectly).  This may occur when these two pages capture each other for meta data,
 				such as automatic page title added to links.
 			</p>
@@ -1069,22 +1156,22 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<description><![CDATA[
-			<p>
-				Captures a &lt;core:page&gt;.
+			<p class="semanticcms-tag-reference-summary">
+				Captures a <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a>.
 			</p>
 			<p>
 				Parameter "page": The page-relative path to the JSP file to include for the page to capture.
 			</p>
 			<p>
 				Parameter "level": Controls the level of detail to capture.  May be one of:
-				<ol>
-					<li>"page" - Fastest: captures page meta data only (including parent and child pages).</li>
-					<li>"meta" - Captures page and content meta data, but no HTML content.</li>
-					<li>"body" - Captures page and content meta data as well as all HTML body content.</li>
-				</ol>
 			</p>
+			<ol>
+				<li><code>page</code> - Fastest: captures page meta data only (including parent and child pages).</li>
+				<li><code>meta</code> - Captures page and content meta data, but no body content.</li>
+				<li><code>body</code> - Captures page and content meta data as well as all body content.</li>
+			</ol>
 			<p>
-				Level may need to be set to "page" when two pages capture each other (either directly
+				Level may need to be set to <code>page</code> when two pages capture each other (either directly
 				or indirectly).  This may occur when these two pages capture each other for meta data,
 				such as automatic page title added to links.
 			</p>
@@ -1097,7 +1184,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<function>
 		<description><![CDATA[
 			<p>
-				Captures the content root &lt;core:page&gt; with unlimited depth and the given capture level.
+				Captures the content root <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a>
+				with the given capture level.
 			</p>
 		]]></description>
 		<name>captureContentRoot</name>
@@ -1107,14 +1195,17 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<description><![CDATA[
+			<p class="semanticcms-tag-reference-summary">
+				Gets the current capture level.
+			</p>
 			<p>
-				Gets the current capture level.  Will be one of:
+				Will be one of:
 			</p>
 			<ol>
-				<li>null - No capture in progress</li>
-				<li>"page" - Fastest: capturing page meta data only.</li>
-				<li>"meta" - Capturing page and content meta data, but no HTML content.</li>
-				<li>"body" - Capturing page and content meta data as well as all HTML body content.</li>
+				<li><code>null</code> - No capture in progress</li>
+				<li><code>page</code> - Fastest: capturing page meta data only.</li>
+				<li><code>meta</code> - Capturing page and content meta data, but no body content.</li>
+				<li><code>body</code> - Capturing page and content meta data as well as all body content.</li>
 			</ol>
 		]]></description>
 		<name>getCaptureLevel</name>
@@ -1130,16 +1221,19 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>getPageIndex</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>com.aoindustries.docs.taglib.PageIndex getPageIndex(com.semanticcms.core.model.PageRef)</function-signature>
+		<function-signature>com.semanticcms.core.servlet.PageIndex getPageIndex(com.semanticcms.core.model.PageRef)</function-signature>
 		<example><![CDATA[<code>${core:getPageIndex(pageRef)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
+			<p class="semanticcms-tag-reference-summary">
+				Flattens a page directed acyclic graph (DAG) into a list in depth-first traversal order.
+				Each page is only added once when first visited.
+			</p>
 			<p>
-				Flattens a page directed acyclic graph (DAG).  The page DAG starts as a single page with any
-				number of children.  Each of the child pages may, in turn, have children.
-				The result of this transformation is a list of pages in depth-first traversal
-				order.
+				The page DAG starts as a single page with any number of children.
+				Each of the child pages may, in turn, have children.  The result of
+				this transformation is a list of pages in depth-first traversal order.
 			</p>
 			<p>
 				A page may actually be linked into multiple places in the DAG, so strictly
@@ -1152,9 +1246,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				Parameter "level": Controls the level of detail to capture.  May be one of:
 			</p>
 			<ol>
-				<li>"page" - Fastest: captures page meta data only (including parent and child pages).</li>
-				<li>"meta" - Captures page and content meta data, but no HTML content.</li>
-				<li>"body" - Captures page and content meta data as well as all HTML body content.</li>
+				<li><code>page</code> - Fastest: captures page meta data only (including parent and child pages).</li>
+				<li><code>meta</code> - Captures page and content meta data, but no body content.</li>
+				<li><code>body</code> - Captures page and content meta data as well as all body content.</li>
 			</ol>
 		]]></description>
 		<name>convertPageDagToList</name>
@@ -1164,7 +1258,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<description><![CDATA[
-			<p>Gets the local file for a book and book-relative path.</p>
+			<p>
+				Gets the local file for a book and book-relative path.
+			</p>
 		]]></description>
 		<name>getFileInBook</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
@@ -1173,7 +1269,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<description><![CDATA[
-			<p>Gets the local file for a page-relative path.</p>
+			<p>
+				Gets the local file for a page-relative path.
+			</p>
 		]]></description>
 		<name>getFile</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
@@ -1207,7 +1305,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<function>
 		<description><![CDATA[
 			<p>
-				Encodes value for use in a URL parameter in the current response encoding.
+				<a href="@{javac.link.javaApi}java/net/URLEncoder.html#encode%28java.lang.String,%20java.lang.String%29">Encodes a value</a>
+				for use in a URL parameter in the current
+				<a href="@{javac.link.javaEEApi}javax/servlet/ServletResponse.html#getCharacterEncoding%28%29">response encoding</a>.
 			</p>
 		]]></description>
 		<name>encodeUrlParam</name>
@@ -1217,9 +1317,13 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<description><![CDATA[
+			<p class="semanticcms-tag-reference-summary">
+				Gets an id for use in the current page.
+			</p>
 			<p>
-				Gets an id for use in the current page.  If the page is part of a page index,
-				as in a combined view, will be "page#-id".  Otherwise, the id is unchanged.
+				If the page is part of a page index, such as in a combined view,
+				will be <code>page${pageNum}-${id}</code>.
+				Otherwise, the id is unchanged.
 			</p>
 		]]></description>
 		<name>getRefId</name>
@@ -1229,9 +1333,13 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<description><![CDATA[
+			<p class="semanticcms-tag-reference-summary">
+				Gets an id for use in referencing the given page.
+			</p>
 			<p>
-				Gets an id for use in referencing the given page.  If the page is part of a page index,
-				as in a combined view, will be "page#-id".  Otherwise, the id is unchanged.
+				If the page is part of a page index, such as in a combined view,
+				will be <code>page${pageNum}-${id}</code>.
+				Otherwise, the id is unchanged.
 			</p>
 		]]></description>
 		<name>getRefIdInPage</name>
@@ -1242,7 +1350,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<function>
 		<description><![CDATA[
 			<p>
-				Calls Math.ceil, returns null when argument is null.
+				Calls <a href="@{javac.link.javaApi}java/lang/Math.html#ceil%28double%29">java.lang.Math.ceil(double)</a>,
+				but returns <code>null</code> when argument is <code>null</code>.
 			</p>
 		]]></description>
 		<name>ceil</name>
@@ -1253,7 +1362,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<function>
 		<description><![CDATA[
 			<p>
-				Calls Math.floor, returns null when argument is null.
+				Calls <a href="@{javac.link.javaApi}java/lang/Math.html#floor%28double%29">java.lang.Math.floor(double)</a>,
+				but returns <code>null</code> when argument is <code>null</code>.
 			</p>
 		]]></description>
 		<name>floor</name>
@@ -1263,10 +1373,15 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<description><![CDATA[
+			<p class="semanticcms-tag-reference-summary">
+				Parses the provided request query string into a
+				<code>Map&lt;String,String&gt;</code>.
+			</p>
 			<p>
-				Parses the provided request query string, maintaining the original parameter order.
+				Maintains the original parameter order.
 				Only uses the first of each value per parameter name, multiple values not supported.
-				Uses the request encoding or ISO-8859-1 if none set.
+				Uses the <a href="@{javac.link.javaEEApi}javax/servlet/ServletRequest.html#getCharacterEncoding%28%29">request encoding</a>
+				or <code>ISO-8859-1</code> if none set.
 			</p>
 		]]></description>
 		<name>parseQueryString</name>
@@ -1310,7 +1425,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<function>
 		<description><![CDATA[
 			<p>
-				Checks if the current request is for an export.
+				Checks if the current request is part of a static export.
 			</p>
 		]]></description>
 		<name>isExporting</name>
@@ -1320,10 +1435,12 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<description><![CDATA[
+			<p class="semanticcms-tag-reference-summary">
+				Finds the copyright for the given page or <code>null</code> if none set.
+			</p>
 			<p>
-				Finds the copyright for the given page or null if none set.  Inheriting fields from the
-				parent page(s) within the same book, or using fields from the book copyright if none
-				set on the page or its parent(s).
+				Inherits fields from the parent page(s) within the same book, or uses
+				fields from the book copyright if none set on the page or its parent(s).
 			</p>
 		]]></description>
 		<name>findCopyright</name>
@@ -1333,10 +1450,12 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<description><![CDATA[
+			<p class="semanticcms-tag-reference-summary">
+				Finds the author(s) for the given page.
+			</p>
 			<p>
-				Finds the author(s) for the given page.  Inheriting authors from the
-				parent page(s) within the same book, or using the book authors if none
-				set on the page or its parent(s).
+				Inherits authors from the parent page(s) within the same book, or uses
+				the book authors if none set on the page or its parent(s).
 			</p>
 		]]></description>
 		<name>findAuthors</name>
@@ -1346,10 +1465,12 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<description><![CDATA[
+			<p class="semanticcms-tag-reference-summary">
+				Finds the allowRobots setting for the given page.
+			</p>
 			<p>
-				Finds the allowRobots setting for the given page.  Inheriting setting from the
-				parent page(s) within the same book, or using the book allowRobots if none
-				set on the page or its parent(s).
+				Inherits setting from the parent page(s) within the same book, or uses
+				the book allowRobots if none set on the page or its parent(s).
 			</p>
 		]]></description>
 		<name>findAllowRobots</name>
@@ -1360,8 +1481,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<function>
 		<description><![CDATA[
 			<p>
-				Checks if the given page has at least one accessible child page
-				(ignores child pages in missing books).
+				Checks if the given page has at least one accessible child page.
+				Ignores child pages in missing books.
 			</p>
 		]]></description>
 		<name>hasChild</name>
@@ -1383,10 +1504,12 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<description><![CDATA[
+			<p class="semanticcms-tag-reference-summary">
+				Looks for the nearest nested elements of the given class.
+			</p>
 			<p>
-				Looks for the nearest nested elements of the given class.  These elements
-				may be direct descendents or descendents further down the tree, but only
-				the top-most descendents are returned.
+				These elements may be direct descendents or descendents further down the tree,
+				but only the top-most descendents are returned.
 			</p>
 			<p>
 				If the node is a page, its elements are checked, but the elements of its child pages are not.
