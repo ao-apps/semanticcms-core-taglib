@@ -4,6 +4,7 @@ Java API for modeling web page content and relationships in a JSP environment.
 ## Project Links
 * [Project Home](https://semanticcms.com/core/taglib/)
 * [Changelog](https://semanticcms.com/core/taglib/changelog)
+* [Taglib Reference](https://semanticcms.com/core/taglib/semanticcms-core.tld/)
 * [API Docs](https://semanticcms.com/core/taglib/apidocs/)
 * [Maven Central Repository](https://search.maven.org/#search%7Cgav%7C1%7Cg:%22com.semanticcms%22%20AND%20a:%22semanticcms-core-taglib%22)
 * [GitHub](https://github.com/aoindustries/semanticcms-core-taglib)
