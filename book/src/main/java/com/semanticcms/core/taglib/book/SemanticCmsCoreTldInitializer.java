@@ -31,10 +31,6 @@ import java.util.Map;
  */
 public class SemanticCmsCoreTldInitializer extends TagReferenceInitializer {
 
-	private static final String TLD_BOOK = "/core/taglib";
-	private static final String TLD_PATH = "/semanticcms-core.tld";
-	static final String TLD_SERVLET_PATH = TLD_BOOK + TLD_PATH;
-
 	private static final Map<String,String> additionalApiLinks = new LinkedHashMap<String,String>();
 	static {
 		additionalApiLinks.put("com.aoindustries.taglib.", "https://aoindustries.com/ao-taglib/apidocs/");
@@ -47,8 +43,8 @@ public class SemanticCmsCoreTldInitializer extends TagReferenceInitializer {
 		super(
 			"Core Taglib Reference",
 			"Taglib Reference",
-			TLD_BOOK,
-			TLD_PATH,
+			"/core/taglib",
+			"/semanticcms-core.tld",
 			"https://docs.oracle.com/javase/6/docs/api/",
 			"https://docs.oracle.com/javaee/6/api/",
 			additionalApiLinks
