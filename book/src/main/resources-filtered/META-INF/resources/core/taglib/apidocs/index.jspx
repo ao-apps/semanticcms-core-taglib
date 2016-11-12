@@ -25,8 +25,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:core="https://semanticcms.com/core/taglib/"
 	xmlns:jsp="http://java.sun.com/JSP/Page"
-	title="@{documented.name} @{com.aoindustries:semanticcms-core-taglib:jar.version} API"
-	shortTitle="API"
+	title="@{documented.name} @{com.aoindustries:semanticcms-core-taglib:jar.version} API Docs"
+	shortTitle="API Docs"
 	datePublished="2016-09-12T13:30:00-0500"
 	dateModified="${ao:getLastModified('index.html')}"
 >
