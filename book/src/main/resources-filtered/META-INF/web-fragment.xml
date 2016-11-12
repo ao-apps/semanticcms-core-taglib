@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
+Copyright (C) 2016  AO Industries, Inc.
+    support@aoindustries.com
+    7262 Bull Pen Cir
+    Mobile, AL 36695
+
+This file is part of semanticcms-core-taglib.
+
+semanticcms-core-taglib is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+semanticcms-core-taglib is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />.
+-->
+<web-fragment xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-fragment_3_0.xsd"
+  version="3.0"
+  metadata-complete="false">
+	<name>@{project.artifactId}</name>
+	<description>@{project.description}</description>
+	<mime-mapping>
+		<extension>tld</extension>
+		<mime-type>text/xml</mime-type>
+	</mime-mapping>
+</web-fragment>
