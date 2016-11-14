@@ -26,8 +26,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 
 	<parent>
 		<groupId>com.semanticcms</groupId>
-		<artifactId>semanticcms-core</artifactId>
-		<version>1.5.1-SNAPSHOT</version>
+		<artifactId>semanticcms-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../../parent/pom.xml</relativePath>
 	</parent>
 
 	<groupId>com.semanticcms</groupId>
@@ -36,6 +37,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 	<packaging>jar</packaging>
 
 	<properties>
+		<javadoc.breadcrumbs><![CDATA[<a target="_top" href="https://semanticcms.com/">SemanticCMS</a>
+/ <a target="_top" href="https://semanticcms.com/core/">Core</a>
+/ <a target="_top" href="${project.url}">${shortTitle}</a>]]></javadoc.breadcrumbs>
 		<shortTitle>Taglib</shortTitle>
 		<javadoc.taglibReference><![CDATA[<li><a target="_top" href="${project.url}semanticcms-core.tld/">Taglib Reference</a></li>]]></javadoc.taglibReference>
 		<javac.link.javaEEApi>https://docs.oracle.com/javaee/6/api/</javac.link.javaEEApi>
