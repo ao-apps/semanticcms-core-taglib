@@ -85,7 +85,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 								<artifactItem>
 									<groupId>com.semanticcms</groupId>
 									<artifactId>semanticcms-core-taglib</artifactId>
-									<version>1.8.1-SNAPSHOT</version>
+									<version>1.8.1</version>
 									<type>jar</type>
 									<includes>META-INF/semanticcms-core.tld</includes>
 								</artifactItem>
@@ -189,33 +189,33 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<dependency>
 			<groupId>com.aoindustries</groupId>
 			<artifactId>ao-taglib</artifactId>
-			<version>2.3.0-SNAPSHOT</version>
+			<version>2.3.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.semanticcms</groupId>
 			<artifactId>semanticcms-changelog-taglib</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>1.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.semanticcms</groupId>
 			<artifactId>semanticcms-core-taglib</artifactId>
-			<version>1.8.1-SNAPSHOT</version>
+			<version>1.8.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.semanticcms</groupId>
 			<artifactId>semanticcms-section-taglib</artifactId>
-			<version>1.4.2-SNAPSHOT</version>
+			<version>1.4.2</version>
 		</dependency>
 		<dependency>
 			<groupId>com.semanticcms</groupId>
 			<artifactId>semanticcms-tag-reference</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>1.0.0</version>
 		</dependency>
 		<!-- Dependency for dependencyversion-maven-plugin only -->
 		<dependency>
 			<groupId>com.semanticcms</groupId>
 			<artifactId>semanticcms-core-taglib</artifactId>
-			<version>1.8.1-SNAPSHOT</version>
+			<version>1.8.1</version>
 			<type>pom</type>
 			<scope>provided</scope>
 			<optional>true</optional>
