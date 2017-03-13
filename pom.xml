@@ -71,8 +71,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 							<configuration>
 								<links>
 									<link>${javac.link.javaEEApi}</link>
-									<link>${jodaTimeApidocs}</link>
 									<link>https://aoindustries.com/ao-io-buffer/apidocs/</link>
+									<link>https://aoindustries.com/ao-lang/apidocs/</link>
 									<link>https://aoindustries.com/ao-servlet-filter/apidocs/</link>
 									<link>https://aoindustries.com/ao-taglib/apidocs/</link>
 									<link>https://aoindustries.com/aocode-public/apidocs/</link>
@@ -132,14 +132,14 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>2.9.6</version>
-		</dependency>
-		<dependency>
 			<groupId>com.aoindustries</groupId>
 			<artifactId>ao-io-buffer</artifactId>
 			<version>2.0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.aoindustries</groupId>
+			<artifactId>ao-lang</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.aoindustries</groupId>
@@ -154,7 +154,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<dependency>
 			<groupId>com.aoindustries</groupId>
 			<artifactId>aocode-public</artifactId>
-			<version>1.8.3</version>
+			<version>1.9.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.semanticcms</groupId>
