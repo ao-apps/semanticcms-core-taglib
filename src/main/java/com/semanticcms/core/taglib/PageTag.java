@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2013, 2014, 2015, 2016  AO Industries, Inc.
+ * Copyright (C) 2013, 2014, 2015, 2016, 2017  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -29,6 +29,7 @@ import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
 import com.aoindustries.io.buffer.EmptyResult;
 import com.aoindustries.servlet.filter.TempFileContext;
+import com.aoindustries.servlet.jsp.LocalizedJspTagException;
 import com.aoindustries.taglib.AutoEncodingBufferedTag;
 import static com.aoindustries.util.StringUtility.nullIfEmpty;
 import com.semanticcms.core.model.Page;
@@ -37,6 +38,8 @@ import com.semanticcms.core.servlet.PageRefResolver;
 import com.semanticcms.core.servlet.PageUtils;
 import com.semanticcms.core.servlet.impl.PageImpl;
 import java.io.IOException;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -45,10 +48,20 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspTagException;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.SkipPageException;
+import javax.servlet.jsp.tagext.DynamicAttributes;
 import javax.servlet.jsp.tagext.JspFragment;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
-public class PageTag extends SimpleTagSupport {
+/**
+ * TODO: Load page properties from a properties file with the same name as the jsp file, minus
+ * ".jsp" or ".jspx", but with ".properties" added.  Also block all "*.properties" from direct access
+ */
+public class PageTag extends SimpleTagSupport implements DynamicAttributes {
+
+	/**
+	 * The prefix for property attributes.
+	 */
+	public static final String PROPERTY_ATTRIBUTE_PREFIX = "property.";
 
 	private String book;
 	public void setBook(String book) {
@@ -143,6 +156,37 @@ public class PageTag extends SimpleTagSupport {
 		this.allowChildMismatch = allowChildMismatch;
 	}
 
+	private Map<String,Object> properties;
+
+	@Override
+	public void setDynamicAttribute(String uri, String localName, Object value) throws JspTagException {
+		if(
+			uri == null
+			&& localName.startsWith(PROPERTY_ATTRIBUTE_PREFIX)
+		) {
+			if(value != null) {
+				String propertyName = localName.substring(PROPERTY_ATTRIBUTE_PREFIX.length());
+				if(properties == null) {
+					properties = new LinkedHashMap<String,Object>();
+				} else if(properties.containsKey(propertyName)) {
+					throw new LocalizedJspTagException(
+						ApplicationResources.accessor,
+						"error.duplicateDynamicPageProperty",
+						localName
+					);
+				}
+				properties.put(propertyName, value);
+			}
+		} else {
+			throw new LocalizedJspTagException(
+				com.aoindustries.taglib.ApplicationResources.accessor,
+				"error.unexpectedDynamicAttribute",
+				localName,
+				PROPERTY_ATTRIBUTE_PREFIX + "*"
+			);
+		}
+	}
+
 	@Override
 	public void doTag() throws JspException, IOException {
 		try {
@@ -158,6 +202,8 @@ public class PageTag extends SimpleTagSupport {
 			} else {
 				pageRef = PageRefResolver.getPageRef(servletContext, request, book, path);
 			}
+
+			// TODO: Load properties from *.properties file, too
 
 			final JspFragment body = getJspBody();
 			PageImpl.doPageImpl(
@@ -178,6 +224,7 @@ public class PageTag extends SimpleTagSupport {
 				tocLevels,
 				allowParentMismatch,
 				allowChildMismatch,
+				properties,
 				body == null
 					? null
 					: new PageImpl.PageImplBody<JspException>() {

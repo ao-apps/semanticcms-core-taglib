@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2013, 2014, 2015, 2016  AO Industries, Inc.
+ * Copyright (C) 2013, 2014, 2015, 2016, 2017  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -27,6 +27,7 @@ import com.aoindustries.io.TempFileList;
 import com.aoindustries.io.buffer.AutoTempFileWriter;
 import com.aoindustries.io.buffer.BufferWriter;
 import com.aoindustries.servlet.filter.TempFileContext;
+import com.aoindustries.servlet.jsp.LocalizedJspTagException;
 import static com.aoindustries.taglib.AttributeUtils.resolveValue;
 import com.aoindustries.taglib.AutoEncodingBufferedTag;
 import static com.aoindustries.util.StringUtility.nullIfEmpty;
@@ -38,6 +39,7 @@ import com.semanticcms.core.model.Page;
 import com.semanticcms.core.servlet.CaptureLevel;
 import com.semanticcms.core.servlet.CurrentNode;
 import com.semanticcms.core.servlet.CurrentPage;
+import static com.semanticcms.core.taglib.PageTag.PROPERTY_ATTRIBUTE_PREFIX;
 import java.io.IOException;
 import javax.el.ELContext;
 import javax.el.ValueExpression;
@@ -46,13 +48,14 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspTagException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.PageContext;
+import javax.servlet.jsp.tagext.DynamicAttributes;
 import javax.servlet.jsp.tagext.JspFragment;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 /**
  * The base tag for capturing elements.
  */
-abstract public class ElementTag<E extends Element> extends SimpleTagSupport implements ElementWriter {
+abstract public class ElementTag<E extends Element> extends SimpleTagSupport implements DynamicAttributes, ElementWriter {
 
 	/**
 	 * Set during the beginning of doTag, but only for captureLevel >= META.
@@ -63,6 +66,32 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 	private ValueExpression id;
 	public void setId(ValueExpression id) {
 		this.id = id;
+	}
+
+	@Override
+	public void setDynamicAttribute(String uri, String localName, Object value) throws JspTagException {
+		if(
+			uri == null
+			&& localName.startsWith(PROPERTY_ATTRIBUTE_PREFIX)
+		) {
+			if(value != null) {
+				String propertyName = localName.substring(PROPERTY_ATTRIBUTE_PREFIX.length());
+				if(!element.setProperty(propertyName, value)) {
+					throw new LocalizedJspTagException(
+						ApplicationResources.accessor,
+						"error.duplicateDynamicElementProperty",
+						localName
+					);
+				}
+			}
+		} else {
+			throw new LocalizedJspTagException(
+				com.aoindustries.taglib.ApplicationResources.accessor,
+				"error.unexpectedDynamicAttribute",
+				localName,
+				PROPERTY_ATTRIBUTE_PREFIX + "*"
+			);
+		}
 	}
 
 	/**
