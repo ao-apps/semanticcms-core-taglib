@@ -36,7 +36,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2017-07-13T18:47:01-0500"
+		dateModified="2017-07-14T23:50:16-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-core-taglib:pom.version}" />
@@ -53,7 +53,14 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				scmUrl="@{documented.scm.url}"
 			>
 				<ul>
-					<li>Nodes, including both pages and elements, now have properties.</li>
+					<li>Nodes, including both pages and elements, now have properties:
+						<ol>
+							<li>Properties may be set via dynamic attributes <code>property.name="value"</code> on any page or element.</li>
+							<li>Properties are now automatically loaded from any .properties file matching the JSP or JSPX
+								filename without *.jsp or *.jspx.</li>
+							<li>Any duplicate properties will result in an exception.</li>
+						</ol>
+					</li>
 					<li>Updated dependencies.</li>
 				</ul>
 			</changelog:release>
