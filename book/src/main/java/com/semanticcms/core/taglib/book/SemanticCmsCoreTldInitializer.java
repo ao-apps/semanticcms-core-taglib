@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2016  AO Industries, Inc.
+ * Copyright (C) 2016, 2017  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -33,10 +33,12 @@ public class SemanticCmsCoreTldInitializer extends TagReferenceInitializer {
 
 	private static final Map<String,String> additionalApiLinks = new LinkedHashMap<String,String>();
 	static {
+		// Self
+		additionalApiLinks.put("com.semanticcms.core.taglib.", Maven.properties.getProperty("documented.url") + "apidocs/");
+		// Dependencies
 		additionalApiLinks.put("com.aoindustries.taglib.", "https://aoindustries.com/ao-taglib/apidocs/");
 		additionalApiLinks.put("com.semanticcms.core.model.", "https://semanticcms.com/core/model/apidocs/");
 		additionalApiLinks.put("com.semanticcms.core.servlet.", "https://semanticcms.com/core/servlet/apidocs/");
-		additionalApiLinks.put("com.semanticcms.core.taglib.", "https://semanticcms.com/core/taglib/apidocs/");
 	}
 
 	public SemanticCmsCoreTldInitializer() {
@@ -45,8 +47,8 @@ public class SemanticCmsCoreTldInitializer extends TagReferenceInitializer {
 			"Taglib Reference",
 			"/core/taglib",
 			"/semanticcms-core.tld",
-			"https://docs.oracle.com/javase/6/docs/api/",
-			"https://docs.oracle.com/javaee/6/api/",
+			Maven.properties.getProperty("javac.link.javaApi.jdk16"),
+			Maven.properties.getProperty("javac.link.javaeeApi.6"),
 			additionalApiLinks
 		);
 	}
