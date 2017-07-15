@@ -133,7 +133,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 							<artifactId>maven-javadoc-plugin</artifactId>
 							<configuration>
 								<links>
-									<link>https://docs.oracle.com/javaee/6/api/</link>
+									<link>${javac.link.javaeeApi.6}</link>
 									<link>https://aoindustries.com/ao-taglib/apidocs/</link>
 									<link>https://semanticcms.com/changelog/taglib/apidocs/</link>
 									<link>https://semanticcms.com/core/taglib/apidocs/</link>
