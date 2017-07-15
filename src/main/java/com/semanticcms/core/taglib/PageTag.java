@@ -28,6 +28,7 @@ import com.aoindustries.io.buffer.AutoTempFileWriter;
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
 import com.aoindustries.io.buffer.EmptyResult;
+import com.aoindustries.servlet.ServletContextCache;
 import com.aoindustries.servlet.filter.TempFileContext;
 import com.aoindustries.servlet.jsp.LocalizedJspTagException;
 import com.aoindustries.taglib.AutoEncodingBufferedTag;
@@ -38,8 +39,16 @@ import com.semanticcms.core.servlet.PageRefResolver;
 import com.semanticcms.core.servlet.PageUtils;
 import com.semanticcms.core.servlet.impl.PageImpl;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -52,16 +61,32 @@ import javax.servlet.jsp.tagext.DynamicAttributes;
 import javax.servlet.jsp.tagext.JspFragment;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
-/**
- * TODO: Load page properties from a properties file with the same name as the jsp file, minus
- * ".jsp" or ".jspx", but with ".properties" added.  Also block all "*.properties" from direct access
- */
 public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 
 	/**
 	 * The prefix for property attributes.
 	 */
 	public static final String PROPERTY_ATTRIBUTE_PREFIX = "property.";
+
+	/**
+	 * The application scoped attribute holding the properties cache.
+	 */
+	private static final String PROPERTIES_CACHE_APPLICATION_KEY = PageTag.class.getName() + ".propertiesCache";
+
+	/**
+	 * Cache properties files from URLs with unknown modified times for up to 10 seconds.
+	 */
+	private static final long PROPERTIES_CACHE_UNKNOWN_MODIFIED_CACHE_DURATION = 10000;
+
+	/**
+	 * The time span between URL last modified checks.
+	 */
+	private static final long PROPERTIES_CACHE_LAST_MODIFIED_RECHECK_INTERVAL = 1000;
+
+	/**
+	 * Constant debug flag for compile-time debugging.
+	 */
+	private static final boolean DEBUG = false;
 
 	private String book;
 	public void setBook(String book) {
@@ -187,6 +212,23 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 		}
 	}
 
+	private static class PropertiesCacheEntry {
+
+		private final long lastModified;
+		private final long cachedTime;
+		private final Map<String,String> properties;
+
+		private PropertiesCacheEntry(
+			long lastModified,
+			long cachedTime,
+			Map<String,String> properties
+		) {
+			this.lastModified = lastModified;
+			this.cachedTime = cachedTime;
+			this.properties = properties;
+		}
+	}
+
 	@Override
 	public void doTag() throws JspException, IOException {
 		try {
@@ -198,12 +240,179 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 			final PageRef pageRef;
 			if(path == null) {
 				if(book != null) throw new ServletException("path must be provided when book is provided.");
-				pageRef = null; // Use default
+				// Use default
+				pageRef = PageRefResolver.getCurrentPageRef(servletContext, request);
 			} else {
 				pageRef = PageRefResolver.getPageRef(servletContext, request, book, path);
 			}
 
-			// TODO: Load properties from *.properties file, too
+			//  Load properties from *.properties file, too
+			String pagePath = pageRef.getPath();
+			String propertiesPath = null;
+			if(pagePath.endsWith(".jspx")) {
+				int basePathLen = pagePath.length() - 5;
+				if(
+					basePathLen > 0
+					&& pagePath.charAt(basePathLen - 1) != '/'
+				) {
+					propertiesPath = pagePath.substring(0, basePathLen) + ".properties";
+				}
+			} else if(pagePath.endsWith(".jsp")) {
+				int basePathLen = pagePath.length() - 4;
+				if(
+					basePathLen > 0
+					&& pagePath.charAt(basePathLen - 1) != '/'
+				) {
+					propertiesPath = pagePath.substring(0, basePathLen) + ".properties";
+				}
+			}
+			if(propertiesPath != null) {
+				// TODO: Try real path first for more direct file-based I/O - benchmark if is any faster
+				URL url = ServletContextCache.getCache(servletContext).getResource(pageRef.setPath(propertiesPath).getServletPath());
+				if(url != null) {
+					// if(DEBUG) System.out.println("PageTag: doTag: Got properties URL: " + url);
+					Map<String,String> propsFromFile;
+					{
+						final ConcurrentMap<URL,PropertiesCacheEntry> propertiesCache;
+						// No locking since no harm done if we create and immediately discard a cache instance between threads
+						{
+							@SuppressWarnings("unchecked")
+							ConcurrentMap<URL,PropertiesCacheEntry> map = (ConcurrentMap)servletContext.getAttribute(PROPERTIES_CACHE_APPLICATION_KEY);
+							if(map == null) {
+								map = new ConcurrentHashMap<URL,PropertiesCacheEntry>();
+								servletContext.setAttribute(PROPERTIES_CACHE_APPLICATION_KEY, map);
+								if(DEBUG) System.out.println("PageTag: doTag: Created propertiesCache");
+							}
+							propertiesCache = map;
+						}
+						final long currentTime = System.currentTimeMillis();
+						URLConnection urlConn = null;
+						boolean urlClosed = false;
+						try {
+							long urlLastModified = 0;
+							propsFromFile = null;
+							// Check cache first
+							{
+								PropertiesCacheEntry cacheEntry = propertiesCache.get(url);
+								if(cacheEntry != null) {
+									if(cacheEntry.lastModified == 0) {
+										// Using expiration time since last modified was unknown
+										if(
+											currentTime < (cacheEntry.cachedTime + PROPERTIES_CACHE_UNKNOWN_MODIFIED_CACHE_DURATION)
+											// Time set to the past
+											&& currentTime > (cacheEntry.cachedTime - PROPERTIES_CACHE_UNKNOWN_MODIFIED_CACHE_DURATION)
+										) {
+											//if(DEBUG) System.out.println("PageTag: doTag: Still in unknown last modified");
+											propsFromFile = cacheEntry.properties;
+										} else {
+											if(DEBUG) System.out.println("PageTag: doTag: Time expired for cache entry with unknown last modified: currentTime = " + currentTime + ", cacheEntry.cachedTime = " + cacheEntry.cachedTime);
+										}
+									} else {
+										// Only check last modified from URL at defined interval
+										if(
+											currentTime < (cacheEntry.cachedTime + PROPERTIES_CACHE_LAST_MODIFIED_RECHECK_INTERVAL)
+											// Time set to the past
+											&& currentTime > (cacheEntry.cachedTime - PROPERTIES_CACHE_LAST_MODIFIED_RECHECK_INTERVAL)
+										) {
+											//if(DEBUG) System.out.println("PageTag: doTag: Still in known last modified");
+											propsFromFile = cacheEntry.properties;
+										} else {
+											if(DEBUG) System.out.println("PageTag: doTag: Time expired for cache entry with known last modified: currentTime = " + currentTime + ", cacheEntry.cachedTime = " + cacheEntry.cachedTime);
+											if(urlConn == null) {
+												urlConn = url.openConnection();
+												urlLastModified = urlConn.getLastModified();
+												if(DEBUG) System.out.println("PageTag: doTag: Got last modified 1: " + urlLastModified);
+											}
+											// Use properties when last modified matches
+											if(urlLastModified != 0 && cacheEntry.lastModified == urlLastModified) {
+												propsFromFile = cacheEntry.properties;
+												// Refresh in cache
+												propertiesCache.put(
+													url,
+													new PropertiesCacheEntry(urlLastModified, currentTime, propsFromFile)
+												);
+											}
+										}
+									}
+								} else {
+									if(DEBUG) System.out.println("PageTag: doTag: URL not found in cache: " + url);
+								}
+							}
+							if(propsFromFile == null) {
+								// Load properties
+								if(urlConn == null) {
+									urlConn = url.openConnection();
+									urlLastModified = urlConn.getLastModified();
+									if(DEBUG) System.out.println("PageTag: doTag: Got last modified 2: " + urlLastModified);
+								}
+								Properties props = new Properties();
+								{
+									if(DEBUG) System.out.println("PageTag: doTag: Loading properties from URL: " + url);
+									InputStream in = urlConn.getInputStream();
+									try {
+										props.load(in);
+									} finally {
+										in.close();
+										urlClosed = true;
+									}
+								}
+								Set<String> propertyNames = props.stringPropertyNames();
+								int size = propertyNames.size();
+								if(size == 0) {
+									if(DEBUG) System.out.println("PageTag: doTag: Got " + size + " properties, using empty map");
+									propsFromFile = Collections.emptyMap();
+								} else if(size == 1) {
+									if(DEBUG) System.out.println("PageTag: doTag: Got " + size + " property, using singleton map");
+									String propertyName = propertyNames.iterator().next();
+									propsFromFile = Collections.singletonMap(
+										propertyName,
+										props.getProperty(propertyName)
+									);
+								} else {
+									if(DEBUG) System.out.println("PageTag: doTag: Got " + size + " properties, using unmodifiable wrapped linked hash map");
+									Map<String,String> newMap = new LinkedHashMap<String,String>(size*4/3+1); // linked map for maximum iteration performance
+									for(String propertyName : propertyNames) {
+										newMap.put(
+											propertyName,
+											props.getProperty(propertyName)
+										);
+									}
+									propsFromFile = Collections.unmodifiableMap(newMap);
+								}
+								// Store in cache
+								propertiesCache.put(
+									url,
+									new PropertiesCacheEntry(urlLastModified, currentTime, propsFromFile)
+								);
+							}
+						} finally {
+							if(urlConn != null && !urlClosed) {
+								if(DEBUG) System.out.println("PageTag: doTag: Closing connection");
+								urlConn.getInputStream().close();
+							}
+						}
+					}
+					// Apply the loaded properties, not replacing any set on the page via dynamic attributes
+					int numPropsFromFile = propsFromFile.size();
+					if(numPropsFromFile > 0) {
+						if(properties == null) {
+							properties = new LinkedHashMap<String,Object>(numPropsFromFile*4/3+1);
+						}
+						for(Map.Entry<String,String> entry : propsFromFile.entrySet()) {
+							String propertyName = entry.getKey();
+							if(properties.containsKey(propertyName)) {
+								throw new LocalizedJspTagException(
+									ApplicationResources.accessor,
+									"error.duplicatePropertiesFileProperty",
+									propertyName,
+									url
+								);
+							}
+							properties.put(propertyName, entry.getValue());
+						}
+					}
+				}
+			}
 
 			final JspFragment body = getJspBody();
 			PageImpl.doPageImpl(
