@@ -42,7 +42,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 / <a target="_top" href="${project.url}">${shortTitle}</a>]]></javadoc.breadcrumbs>
 		<shortTitle>Taglib</shortTitle>
 		<javadoc.taglibReference><![CDATA[<li><a target="_top" href="${project.url}semanticcms-core.tld/">Taglib Reference</a></li>]]></javadoc.taglibReference>
-		<javac.link.javaEEApi>https://docs.oracle.com/javaee/6/api/</javac.link.javaEEApi>
 		<jodaTimeApidocs>http://www.joda.org/joda-time/apidocs/</jodaTimeApidocs>
 	</properties>
 
@@ -70,7 +69,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 							<artifactId>maven-javadoc-plugin</artifactId>
 							<configuration>
 								<links>
-									<link>${javac.link.javaEEApi}</link>
+									<link>${javac.link.javaeeApi.6}</link>
 									<link>https://aoindustries.com/ao-io-buffer/apidocs/</link>
 									<link>https://aoindustries.com/ao-lang/apidocs/</link>
 									<link>https://aoindustries.com/ao-servlet-filter/apidocs/</link>
