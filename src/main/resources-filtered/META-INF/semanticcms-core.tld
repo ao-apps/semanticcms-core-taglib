@@ -1308,7 +1308,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<p>
 				<a href="@{javac.link.javaApi}java/net/URLEncoder.html#encode%28java.lang.String,%20java.lang.String%29">Encodes a value</a>
 				for use in a URL parameter in the current
-				<a href="@{javac.link.javaEEApi}javax/servlet/ServletResponse.html#getCharacterEncoding%28%29">response encoding</a>.
+				<a href="@{javac.link.javaeeApi.6}javax/servlet/ServletResponse.html#getCharacterEncoding%28%29">response encoding</a>.
 			</p>
 		]]></description>
 		<name>encodeUrlParam</name>
@@ -1381,7 +1381,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<p>
 				Maintains the original parameter order.
 				Only uses the first of each value per parameter name, multiple values not supported.
-				Uses the <a href="@{javac.link.javaEEApi}javax/servlet/ServletRequest.html#getCharacterEncoding%28%29">request encoding</a>
+				Uses the <a href="@{javac.link.javaeeApi.6}javax/servlet/ServletRequest.html#getCharacterEncoding%28%29">request encoding</a>
 				or <code>ISO-8859-1</code> if none set.
 			</p>
 		]]></description>
