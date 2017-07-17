@@ -36,7 +36,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2017-07-14T23:50:16-0500"
+		dateModified="2017-07-17T14:06:42-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-core-taglib:pom.version}" />
@@ -62,6 +62,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 						</ol>
 					</li>
 					<li>Updated dependencies.</li>
+					<li>May now specify <code>anchor</code> to link to non-SemanticCMS-element targets.</li>
 				</ul>
 			</changelog:release>
 		</c:if>

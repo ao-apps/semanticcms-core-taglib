@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2013, 2014, 2015, 2016  AO Industries, Inc.
+ * Copyright (C) 2013, 2014, 2015, 2016, 2017  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -65,6 +65,7 @@ public class LinkTag
 	private ValueExpression page;
 	private ValueExpression element;
 	private boolean allowGeneratedElement;
+	private ValueExpression anchor;
 	private ValueExpression view;
 	private boolean small;
 
@@ -96,6 +97,10 @@ public class LinkTag
 
 	public void setAllowGeneratedElement(boolean allowGeneratedElement) {
 		this.allowGeneratedElement = allowGeneratedElement;
+	}
+
+	public void setAnchor(ValueExpression anchor) {
+		this.anchor = anchor;
 	}
 
 	public void setView(ValueExpression view) {
@@ -175,6 +180,7 @@ public class LinkTag
 					page,
 					element,
 					allowGeneratedElement,
+					anchor,
 					view,
 					small,
 					params,
