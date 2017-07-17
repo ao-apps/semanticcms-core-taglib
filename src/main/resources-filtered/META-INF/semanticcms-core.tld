@@ -665,8 +665,20 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
-				<p>
+				<p class="semanticcms-tag-reference-summary">
 					The page-unique id of the element to link to.
+				</p>
+				<p>
+					This is used to reference SemanticCMS elements within a page.
+					Conflicts with the <code>anchor</code> attribute.
+				</p>
+				<p>
+					To reference a specific non-SemanticCMS-element target, use the <code>anchor</code>
+					attribute instead.
+				</p>
+				<p>
+					The anchor is automatically prefixed in multi-page views.
+					The anchor is also URL-encoded.
 				</p>
 			]]></description>
 			<name>element</name>
@@ -687,6 +699,30 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<required>false</required>
 			<rtexprvalue>false</rtexprvalue>
 			<type>boolean</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				<p class="semanticcms-tag-reference-summary">
+					The anchor to link to on the given page.
+				</p>
+				<p>
+					This is used to reference non-SemanticCMS-element targets within a page.
+					Conflicts with the <code>element</code> attribute.
+				</p>
+				<p>
+					To reference a specific SemanticCMS element, use the <code>element</code>
+					attribute instead.
+				</p>
+				<p>
+					The anchor is automatically prefixed in multi-page views.
+					The anchor is also URL-encoded.
+				</p>
+			]]></description>
+			<name>anchor</name>
+			<required>false</required>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
 		</attribute>
 		<attribute>
 			<description><![CDATA[
