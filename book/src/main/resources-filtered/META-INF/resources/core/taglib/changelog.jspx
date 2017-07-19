@@ -62,7 +62,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 								its properties automatically loaded from the <code>index.properties</code> file.
 							</li>
 							<li>Any duplicate properties will result in an exception.</li>
-							<li>Properties may also be set with the new <ao:a href="semanticcms-core.tld/tag-property"><![CDATA[&lt;core:property&gt;]]></ao:a> tag.
+							<li>Properties may also be set with the new <ao:a href="semanticcms-core.tld/tag-property"><![CDATA[&lt;core:property&gt;]]></ao:a> tag.</li>
 						</ol>
 					</li>
 					<li>Updated dependencies.</li>
