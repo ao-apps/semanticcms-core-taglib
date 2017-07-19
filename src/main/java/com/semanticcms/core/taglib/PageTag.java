@@ -237,11 +237,12 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 			final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 
 			// Resolve pageRef, if book or path set
+			final PageRef jspSrc = PageRefResolver.getCurrentPageRef(servletContext, request);
 			final PageRef pageRef;
 			if(path == null) {
 				if(book != null) throw new ServletException("path must be provided when book is provided.");
 				// Use default
-				pageRef = PageRefResolver.getCurrentPageRef(servletContext, request);
+				pageRef = jspSrc;
 			} else {
 				pageRef = PageRefResolver.getPageRef(servletContext, request, book, path);
 			}
@@ -440,7 +441,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 						@Override
 						public BufferResult doBody(boolean discard, Page page) throws JspException, IOException, SkipPageException {
 							// JSP pages are their own source when using default pageRef
-							if(pageRef == null) page.setSrc(page.getPageRef());
+							if(jspSrc.equals(page.getPageRef())) page.setSrc(jspSrc);
 							if(discard) {
 								body.invoke(NullWriter.getInstance());
 								return EmptyResult.getInstance();
