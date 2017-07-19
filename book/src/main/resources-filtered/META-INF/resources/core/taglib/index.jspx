@@ -1,6 +1,6 @@
 <!--
 semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
-Copyright (C) 2016  AO Industries, Inc.
+Copyright (C) 2016, 2017  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -33,11 +33,21 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="@{documented.shortTitle}"
 		description="@{documented.description}"
 		datePublished="2016-10-18T18:08:00-0500"
-		dateModified="2016-11-10T20:29:14-0600"
+		dateModified="2017-07-18T20:35:30-0500"
 	>
 		<core:child page="changelog.jspx" />
 		<core:child page="semanticcms-core.tld/" />
 		<core:child page="apidocs/index.jspx" />
+		<ao:include
+			page="/ao-badges/badges.inc.jspx"
+			arg.projectStatus="${currentPage.property.projectStatus}"
+			arg.managementStatus="${currentPage.property.managementStatus}"
+			arg.packagingStatus="${currentPage.property.packagingStatus}"
+			arg.javaVersion="${currentPage.property.javaVersion}"
+			arg.javaeeVersion="${currentPage.property.javaeeVersion}"
+			arg.semanticVersioning="${currentPage.property.semanticVersioning}"
+			arg.license="${currentPage.property.license}"
+		/>
 		<p>
 			@{documented.description}
 		</p>
