@@ -782,10 +782,10 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 					The name of parameter tag.
 				</p>
 			]]></description>
-		  <name>name</name>
-		  <required>true</required>
-		  <rtexprvalue>true</rtexprvalue>
-		  <type>java.lang.Object</type>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
 		</attribute>
 		<attribute>
 			<description><![CDATA[
@@ -794,11 +794,11 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 					If not provided, the output of the body is used with whitespace trimmed.
 				</p>
 			]]></description>
-		  <name>value</name>
-		  <required>false</required>
-		  <rtexprvalue>true</rtexprvalue>
-		  <type>java.lang.Object</type>
-		  <!-- TODO: Deferred once supported by ao-taglib -->
+			<name>value</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
+			<!-- TODO: Deferred once supported by ao-taglib -->
 		</attribute>
 	</tag>
 	<tag>
@@ -824,10 +824,10 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 					When provided, the exclude attribute may not be provided.
 				</p>
 			]]></description>
-		  <name>name</name>
-		  <required>false</required>
-		  <rtexprvalue>true</rtexprvalue>
-		  <type>java.lang.Object</type>
+			<name>name</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
 		</attribute>
 		<attribute>
 			<description><![CDATA[
@@ -903,13 +903,99 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 					Parameters are never added with <code>null</code> values.
 				</p>
 			]]></description>
-		  <name>values</name>
-		  <required>true</required>
-		  <rtexprvalue>true</rtexprvalue>
-		  <type>java.lang.Object</type>
-		  <!-- TODO: Deferred once supported by ao-taglib -->
+			<name>values</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
+			<!-- TODO: Deferred once supported by ao-taglib -->
 		</attribute>
 	</tag>
+	<tag>
+		<description><![CDATA[
+			<p>
+				Sets a property of a
+				<a href="https://semanticcms.com/core/model/apidocs/com/semanticcms/core/model/Node.html">Node</a>
+				parent tag (either a <a href="https://semanticcms.com/core/model/apidocs/com/semanticcms/core/model/Page.html">Page</a>
+				or an <a href="https://semanticcms.com/core/model/apidocs/com/semanticcms/core/model/Element.html">Element</a>).
+			</p>
+			<p>
+				See <a href="https://semanticcms.com/core/model/apidocs/com/semanticcms/core/model/Node.html#setProperty-java.lang.String-java.lang.Object-">setProperty(String name, Object value)</a>.
+			</p>
+		]]></description>
+		<name>property</name>
+		<tag-class>com.semanticcms.core.taglib.PropertyTag</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<description><![CDATA[
+				<p>
+					The name of property.
+				</p>
+				<p>
+					TODO: Allow object property names?  Too confusing?
+				</p>
+			]]></description>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				<p>
+					The value of the property.
+					If not provided, the output of the body is used with whitespace trimmed.
+				</p>
+			]]></description>
+			<name>value</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				<p>
+					Target object whose property will be set.
+				</p>
+				<p>
+					If not provided, sets the property on the closest parent <a href="https://semanticcms.com/core/model/apidocs/com/semanticcms/core/model/Node.html">Node</a>
+					parent tag (either a <a href="https://semanticcms.com/core/model/apidocs/com/semanticcms/core/model/Page.html">Page</a>
+					or an <a href="https://semanticcms.com/core/model/apidocs/com/semanticcms/core/model/Element.html">Element</a>).
+				</p>
+				<p>
+					The target must not be frozen, which, in the context of JSP, means only the parent element tags
+					within the current page, and the current page itself, can reliably have properties set.
+					Trying to set properties outside this scope is not advised and will likely be unreliable at best.
+					An exception will be thrown when trying to set a property on a frozen node.
+				</p>
+				<p>
+					In the future, we may add "attributes" to nodes, which would provide for different scopes
+					(application, session, request, page?) and could be changed dynamically.
+				</p>
+			]]></description>
+			<name>target</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>com.semanticcms.core.model.Node</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				<p>
+					Optionally allows an existing property, when set to <code>true</code>.
+					When set to <code>false</code> (the default), and the property already exists,
+					an exception is thrown.
+				</p>
+				<p>
+					A property on a target may not be changed once set.  This includes when it has
+					been set to <code>null</code>.
+				</p>
+			]]></description>
+			<name>allowExisting</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>boolean</type>
+		</attribute>
+	</tag>
+	<!-- TODO: core:properties, that sets multiple properties, accepts a map (or single Map.Entry)? -->
 	<tag>
 		<description><![CDATA[
 			<p>
