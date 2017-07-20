@@ -36,7 +36,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2017-07-19T12:11:59-0500"
+		dateModified="2017-07-19T23:22:39-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-core-taglib:pom.version}" />
@@ -51,25 +51,34 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				groupId="@{documented.groupId}"
 				artifactId="@{documented.artifactId}"
 				scmUrl="@{documented.scm.url}"
-			>
-				<ul>
-					<li>Nodes, including both pages and elements, now have properties:
-						<ol>
-							<li>Properties may be set via dynamic attributes <code>property.name="value"</code> on any page or element.</li>
-							<li>
-								Properties are now automatically loaded from any .properties file matching the JSP or JSPX
-								filename without *.jsp or *.jspx.  For example, a page named <code>index.jspx</code> would have
-								its properties automatically loaded from the <code>index.properties</code> file.
-							</li>
-							<li>Any duplicate properties will result in an exception.</li>
-							<li>Properties may also be set with the new <ao:a href="semanticcms-core.tld/tag-property"><![CDATA[&lt;core:property&gt;]]></ao:a> tag.</li>
-						</ol>
-					</li>
-					<li>Updated dependencies.</li>
-					<li>May now specify <code>anchor</code> to link to non-SemanticCMS-element targets.</li>
-				</ul>
-			</changelog:release>
+			/>
 		</c:if>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="1.9.0"
+			datePublished="2017-07-19T23:22:39-0500"
+			groupId="@{documented.groupId}"
+			artifactId="@{documented.artifactId}"
+			scmUrl="@{documented.scm.url}"
+		>
+			<ul>
+				<li>Nodes, including both pages and elements, now have properties:
+					<ol>
+						<li>Properties may be set via dynamic attributes <code>property.name="value"</code> on any page or element.</li>
+						<li>
+							Properties are now automatically loaded from any .properties file matching the JSP or JSPX
+							filename without *.jsp or *.jspx.  For example, a page named <code>index.jspx</code> would have
+							its properties automatically loaded from the <code>index.properties</code> file.
+						</li>
+						<li>Any duplicate properties will result in an exception.</li>
+						<li>Properties may also be set with the new <ao:a href="semanticcms-core.tld/tag-property"><![CDATA[&lt;core:property&gt;]]></ao:a> tag.</li>
+					</ol>
+				</li>
+				<li>Updated dependencies.</li>
+				<li>May now specify <code>anchor</code> to link to non-SemanticCMS-element targets.</li>
+			</ul>
+		</changelog:release>
 
 		<changelog:release
 			projectName="@{documented.name}"
