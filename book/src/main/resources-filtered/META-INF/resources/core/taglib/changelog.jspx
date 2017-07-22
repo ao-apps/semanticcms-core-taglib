@@ -36,7 +36,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2017-07-22T16:40:50-0500"
+		dateModified="2017-07-22T17:11:12-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-core-taglib:pom.version}" />
@@ -54,7 +54,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			>
 				<ul>
 					<li>
-						Fixed bug in <code><ao:a href="semanticcms-core.tld/tag-page"><![CDATA[&lt;]]>core:page<![CDATA[&gt;]]></code>
+						Fixed bug in <code><ao:a href="semanticcms-core.tld/tag-page"><![CDATA[&lt;]]>core:page<![CDATA[&gt;]]></ao:a></code>
 						that threw <code><ao:a href="@{javac.link.javaeeApi.6}javax/servlet/ServletException.html">ServletException</ao:a></code>
 						when page not in a book, even when <code>book</code> and <code>path</code> attributes are provided.
 					</li>
