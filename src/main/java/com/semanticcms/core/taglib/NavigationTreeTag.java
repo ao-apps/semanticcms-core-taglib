@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2013, 2014, 2015, 2016  AO Industries, Inc.
+ * Copyright (C) 2013, 2014, 2015, 2016, 2017  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -88,7 +88,7 @@ public class NavigationTreeTag extends SimpleTagSupport {
 	 * Creates the nested &lt;ul&gt; and &lt;li&gt; tags used by TreeView.
 	 * The first level is expanded.
 	 *
-	 * {@link http://developer.yahoo.com/yui/treeview/#start}
+	 * <a href="http://developer.yahoo.com/yui/treeview/#start">http://developer.yahoo.com/yui/treeview/#start</a>
 	 */
 	@Override
 	public void doTag() throws JspTagException, IOException {
