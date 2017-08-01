@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2016  AO Industries, Inc.
+ * Copyright (C) 2016, 2017  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -37,6 +37,11 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 public class ParentTag extends SimpleTagSupport {
 
+	private String domain;
+	public void setDomain(String domain) {
+		this.domain = domain;
+	}
+
 	private String book;
 	public void setBook(String book) {
 		this.book = book;
@@ -58,7 +63,7 @@ public class ParentTag extends SimpleTagSupport {
 		final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 
 		final Node currentNode = CurrentNode.getCurrentNode(request);
-		if(!(currentNode instanceof Page)) throw new JspTagException("<p:parent> tag must be nested directly inside a <p:page> tag.");
+		if(!(currentNode instanceof Page)) throw new JspTagException("<core:parent> tag must be nested directly inside a <core:page> tag.");
 		final Page currentPage = (Page)currentNode;
 
 		try {
@@ -67,6 +72,7 @@ public class ParentTag extends SimpleTagSupport {
 					PageRefResolver.getPageRef(
 						pageContext.getServletContext(),
 						request,
+						domain,
 						book,
 						page
 					),

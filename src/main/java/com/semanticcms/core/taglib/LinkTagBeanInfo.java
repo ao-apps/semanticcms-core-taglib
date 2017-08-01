@@ -42,6 +42,7 @@ public class LinkTagBeanInfo extends SimpleBeanInfo {
 				if(props==null) {
 					props = new PropertyDescriptor[] {
 						new PropertyDescriptor("class", LinkTag.class, "getClazz", "setClazz"),
+						new PropertyDescriptor("domain", LinkTag.class, null, "setDomain"),
 						new PropertyDescriptor("book", LinkTag.class, null, "setBook"),
 						new PropertyDescriptor("page", LinkTag.class, null, "setPage"),
 						new PropertyDescriptor("element", LinkTag.class, null, "setElement"),

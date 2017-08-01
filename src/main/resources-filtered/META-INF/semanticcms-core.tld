@@ -56,6 +56,18 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p>
+					The domain of the book containing the page.
+					Defaults to the domain of the current JSP file.
+				</p>
+			]]></description>
+			<name>domain</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				<p>
 					The book containing the page.
 					Defaults to the book of the current JSP file.
 				</p>
@@ -436,6 +448,19 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p>
+					The domain containing the author page.
+					Defaults to the domain of the current JSP file.
+					When domain provided, both book and page attributes must also be provided.
+				</p>
+			]]></description>
+			<name>domain</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				<p>
 					The book containing the author page.
 					Defaults to the book of the current JSP file.
 					When book provided, page attribute must also be provided.
@@ -505,6 +530,18 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p>
+					The domain of the book containing the parent page.
+					Defaults to the domain of the current JSP file.
+				</p>
+			]]></description>
+			<name>domain</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				<p>
 					The book containing the parent page.
 					Defaults to the book of the current JSP file.
 				</p>
@@ -562,6 +599,18 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>child</name>
 		<tag-class>com.semanticcms.core.taglib.ChildTag</tag-class>
 		<body-content>empty</body-content>
+		<attribute>
+			<description><![CDATA[
+				<p>
+					The domain containing the child page.
+					Defaults to the domain of the current JSP file.
+				</p>
+			]]></description>
+			<name>domain</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
 		<attribute>
 			<description><![CDATA[
 				<p>
@@ -633,6 +682,19 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<required>false</required>
 			<deferred-value>
 				<type>java.lang.Object</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				<p>
+					The domain of the book containing the page.
+					Defaults to the domain of the current JSP file.
+				</p>
+			]]></description>
+			<name>domain</name>
+			<required>false</required>
+			<deferred-value>
+				<type>java.lang.String</type>
 			</deferred-value>
 		</attribute>
 		<attribute>
@@ -926,12 +988,10 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<tag-class>com.semanticcms.core.taglib.PropertyTag</tag-class>
 		<body-content>scriptless</body-content>
 		<attribute>
+			<!-- TODO: Allow object property names?  Too confusing? -->
 			<description><![CDATA[
 				<p>
 					The name of property.
-				</p>
-				<p>
-					TODO: Allow object property names?  Too confusing?
 				</p>
 			]]></description>
 			<name>name</name>
@@ -1063,6 +1123,19 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<required>false</required>
 			<rtexprvalue>false</rtexprvalue>
 			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				<p>
+					The domain of the book for thisPage.
+					Defaults to the domain of the current JSP file.
+				</p>
+			]]></description>
+			<name>thisDomain</name>
+			<required>false</required>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
 		</attribute>
 		<attribute>
 			<description><![CDATA[
@@ -1246,7 +1319,45 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<function>
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
-				Captures a <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a> in a provided book.
+				Captures a <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a> in a provided domain and book.
+			</p>
+			<p>
+				The capture is always done with a request method of <code>GET</code>, even when the enclosing request is a different method.
+			</p>
+			<p>
+				Parameter "domain": The domain of the book containing the page.
+			</p>
+			<p>
+				Parameter "book": The name of the book containing the page.
+			</p>
+			<p>
+				Parameter "page": The book-relative path to the JSP file to include for the page to capture,
+				must begin with a slash <code>/</code>.
+			</p>
+			<p>
+				Parameter "level": Controls the level of detail to capture.  May be one of:
+			</p>
+			<ol>
+				<li><code>page</code> - Fastest: captures page meta data only (including parent and child pages).</li>
+				<li><code>meta</code> - Captures page and content meta data, but no body content.</li>
+				<li><code>body</code> - Captures page and content meta data as well as all body content.</li>
+			</ol>
+			<p>
+				Level may need to be set to <code>page</code> when two pages capture each other (either directly
+				or indirectly).  This may occur when these two pages capture each other for meta data,
+				such as automatic page title added to links.
+			</p>
+		]]></description>
+		<name>capturePageInDomain</name>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
+		<function-signature>com.semanticcms.core.model.Page capturePageInDomain(java.lang.String,java.lang.String,java.lang.String,java.lang.String)</function-signature>
+		<example><![CDATA[<code>${core:capturePageInDomain(domain, book, page, level)}</code>]]></example>
+	</function>
+	<function>
+		<description><![CDATA[
+			<p class="semanticcms-tag-reference-summary">
+				Captures a <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a> in a provided book
+				within the domain of the current JSP file.
 			</p>
 			<p>
 				The capture is always done with a request method of <code>GET</code>, even when the enclosing request is a different method.
@@ -1280,7 +1391,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<function>
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
-				Captures a <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a>.
+				Captures a <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a>
+				within the book and domain of the current JSP file.
 			</p>
 			<p>
 				Parameter "page": The page-relative path to the JSP file to include for the page to capture.
@@ -1382,46 +1494,77 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<function>
 		<description><![CDATA[
 			<p>
-				Gets the local file for a book and book-relative path.
+				Gets the local file for a domain, book, and book-relative path.
+			</p>
+		]]></description>
+		<name>getFileInDomain</name>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
+		<!-- TODO: Move to semanticcms-file-taglib? -->
+		<function-signature>java.io.File getFileInDomain(java.lang.String,java.lang.String,java.lang.String,boolean)</function-signature>
+		<example><![CDATA[<code>${core:getFileInDomain(domain, book, path, requireFile)</code>]]></example>
+	</function>
+	<function>
+		<description><![CDATA[
+			<p>
+				Gets the local file for a book and book-relative path in the domain
+				of the current JSP file.
 			</p>
 		]]></description>
 		<name>getFileInBook</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
+		<!-- TODO: Move to semanticcms-file-taglib? -->
 		<function-signature>java.io.File getFileInBook(java.lang.String,java.lang.String,boolean)</function-signature>
 		<example><![CDATA[<code>${core:getFileInBook(book, path, requireFile)</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
 			<p>
-				Gets the local file for a page-relative path.
+				Gets the local file for a page-relative path in the domain and book
+				of the current JSP file.
 			</p>
 		]]></description>
 		<name>getFile</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
+		<!-- TODO: Move to semanticcms-file-taglib? -->
 		<function-signature>java.io.File getFile(java.lang.String,boolean)</function-signature>
 		<example><![CDATA[<code>${core:getFile(path, requireFile)</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
 			<p>
-				Gets the local file for a book and book-relative path while making sure it is
+				Gets the local file for a domain and book and book-relative path while making sure it is
 				set executable.
+			</p>
+		]]></description>
+		<name>getExeFileInDomain</name>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
+		<!-- TODO: Move to semanticcms-file-taglib? -->
+		<function-signature>java.io.File getExeFileInDomain(java.lang.String,java.lang.String,java.lang.String)</function-signature>
+		<example><![CDATA[<code>${core:getExeFileInDomain(domain, book, path)}</code>]]></example>
+	</function>
+	<function>
+		<description><![CDATA[
+			<p>
+				Gets the local file for a book and book-relative path in the domain
+				of the current JSP file while making sure it is set executable.
 			</p>
 		]]></description>
 		<name>getExeFileInBook</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
+		<!-- TODO: Move to semanticcms-file-taglib? -->
 		<function-signature>java.io.File getExeFileInBook(java.lang.String,java.lang.String)</function-signature>
 		<example><![CDATA[<code>${core:getExeFileInBook(book, path)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
 			<p>
-				Gets the local file for a page-relative path while making sure it is
-				set executable.
+				Gets the local file for a page-relative path in the book and domain
+				of the current JSP file while making sure it is set executable.
 			</p>
 		]]></description>
 		<name>getExeFile</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
+		<!-- TODO: Move to semanticcms-file-taglib? -->
 		<function-signature>java.io.File getExeFile(java.lang.String)</function-signature>
 		<example><![CDATA[<code>${core:getExeFile(path)}</code>]]></example>
 	</function>
@@ -1531,7 +1674,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>getBook</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>com.semanticcms.core.model.Book getBook(java.lang.String)</function-signature>
+		<function-signature>com.semanticcms.core.repository.Book getBook(java.lang.String)</function-signature>
 		<example><![CDATA[<code>${core:getBook(pagePath)}</code>]]></example>
 	</function>
 	<function>

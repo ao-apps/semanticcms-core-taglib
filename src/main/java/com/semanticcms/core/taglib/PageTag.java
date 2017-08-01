@@ -88,6 +88,11 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 	 */
 	private static final boolean DEBUG = false;
 
+	private String domain;
+	public void setDomain(String domain) {
+		this.domain = domain;
+	}
+
 	private String book;
 	public void setBook(String book) {
 		this.book = nullIfEmpty(book);
@@ -239,6 +244,9 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 			// Resolve pageRef, if book or path set
 			final PageRef jspSrc;
 			final PageRef pageRef;
+			if(domain != null && book == null) {
+				throw new ServletException("book must be provided when domain is provided.");
+			}
 			if(path == null) {
 				if(book != null) throw new ServletException("path must be provided when book is provided.");
 				// Use default
@@ -246,7 +254,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 				pageRef = jspSrc;
 			} else {
 				jspSrc = PageRefResolver.getCurrentPageRef(servletContext, request, false);
-				pageRef = PageRefResolver.getPageRef(servletContext, request, book, path);
+				pageRef = PageRefResolver.getPageRef(servletContext, request, domain, book, path);
 			}
 
 			//  Load properties from *.properties file, too

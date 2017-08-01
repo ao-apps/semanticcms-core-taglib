@@ -59,6 +59,11 @@ public class NavigationTreeTag extends SimpleTagSupport {
 		this.target = target;
 	}
 
+	private ValueExpression thisDomain;
+	public void setThisDomain(ValueExpression thisDomain) {
+		this.thisDomain = thisDomain;
+	}
+
 	private ValueExpression thisBook;
 	public void setThisBook(ValueExpression thisBook) {
 		this.thisBook = thisBook;
@@ -105,6 +110,7 @@ public class NavigationTreeTag extends SimpleTagSupport {
 				yuiConfig,
 				includeElements,
 				target,
+				thisDomain,
 				thisBook,
 				thisPage,
 				linksToBook,

@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2016  AO Industries, Inc.
+ * Copyright (C) 2016, 2017  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -25,6 +25,7 @@ package com.semanticcms.core.taglib;
 import com.semanticcms.core.model.Author;
 import com.semanticcms.core.model.Node;
 import com.semanticcms.core.model.Page;
+import com.semanticcms.core.model.PageRef;
 import com.semanticcms.core.servlet.CurrentNode;
 import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
@@ -44,6 +45,11 @@ public class AuthorTag extends SimpleTagSupport {
 		this.href = href;
 	}
 
+	private String domain;
+	public void setDomain(String domain) {
+		this.domain = domain;
+	}
+
 	private String book;
 	public void setBook(String book) {
 		this.book = book;
@@ -60,22 +66,46 @@ public class AuthorTag extends SimpleTagSupport {
 		final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 
 		final Node currentNode = CurrentNode.getCurrentNode(request);
-		if(!(currentNode instanceof Page)) throw new JspTagException("<p:author> tag must be nested directly inside a <p:page> tag.");
+		if(!(currentNode instanceof Page)) throw new JspTagException("<core:author> tag must be nested directly inside a <core:page> tag.");
 		final Page currentPage = (Page)currentNode;
 
+		PageRef currentPageRef = null;
+
+		String d = domain;
 		String bookName = book;
-		// Default to this book if nothing set
-		if(page != null && bookName == null) bookName = currentPage.getPageRef().getBookName();
+		// When domain provided, both book and page attributes must also be provided.
+		if(d != null) {
+			if(bookName == null) throw new JspTagException("When domain provided, both book and page attributes must also be provided.");
+		}
+		// When book provided, page attribute must also be provided.
+		if(bookName != null) {
+			if(page == null) throw new JspTagException("When book provided, page attribute must also be provided.");
+		}
+		if(page != null) {
+			// Default to this domain if nothing set
+			if(d == null) {
+				currentPageRef = currentPage.getPageRef();
+				d = currentPageRef.getBookRef().getDomain();
+			}
+			// Default to this book if nothing set
+			if(bookName == null) {
+				if(currentPageRef == null) currentPageRef = currentPage.getPageRef();
+				bookName = currentPageRef.getBookRef().getName();
+			}
+		}
 		// Name required when referencing an author outside this book
-		if(
-			name == null
-			&& bookName != null
-			&& !bookName.equals(currentPage.getPageRef().getBookName())
-		) {
-			throw new IllegalStateException("Author name required when author is in a different book: " + page);
+		if(name == null && bookName != null) {
+			if(currentPageRef == null) currentPageRef = currentPage.getPageRef();
+			assert d != null;
+			if(
+				!d.equals(currentPageRef.getBookRef().getDomain())
+				|| !bookName.equals(currentPageRef.getBookRef().getName())
+			) {
+				throw new IllegalStateException("Author name required when author is in a different book: " + page);
+			}
 		}
 		currentPage.addAuthor(
-			new Author(name, href, bookName, page)
+			new Author(name, href, d, bookName, page)
 		);
 	}
 }
