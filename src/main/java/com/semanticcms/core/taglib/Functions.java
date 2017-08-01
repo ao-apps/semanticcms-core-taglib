@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2013, 2014, 2015, 2016  AO Industries, Inc.
+ * Copyright (C) 2013, 2014, 2015, 2016, 2017  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -29,12 +29,13 @@ import com.aoindustries.servlet.http.ServletUtil;
 import com.aoindustries.taglib.Link;
 import com.aoindustries.util.StringUtility;
 import com.semanticcms.core.model.Author;
-import com.semanticcms.core.model.Book;
+import com.semanticcms.core.model.BookRef;
 import com.semanticcms.core.model.Copyright;
 import com.semanticcms.core.model.Element;
 import com.semanticcms.core.model.Node;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.model.PageRef;
+import com.semanticcms.core.repository.Book;
 import com.semanticcms.core.servlet.AuthorUtils;
 import com.semanticcms.core.servlet.CaptureLevel;
 import com.semanticcms.core.servlet.CapturePage;
@@ -65,14 +66,19 @@ import javax.servlet.jsp.JspTagException;
 
 final public class Functions {
 
-	public static Page capturePageInBook(String book, String page, String level) throws ServletException, IOException {
+	public static Page capturePageInDomain(String domain, String book, String page, String level) throws ServletException, IOException {
+		ServletContext servletContext = getServletContext();
 		PageRef pageRef = PageRefResolver.getPageRef(
-			getServletContext(),
+			servletContext,
 			getRequest(),
+			domain,
 			book,
 			page
 		);
-		if(pageRef.getBook()==null) throw new IllegalArgumentException("Book not found: " + pageRef.getBookName());
+		BookRef bookRef = pageRef.getBookRef();
+		if(!SemanticCMS.getInstance(servletContext).getBook(bookRef).isAccessible()) {
+			throw new IllegalArgumentException("Book is not accessible: " + bookRef);
+		}
 		return CapturePage.capturePage(
 			getServletContext(),
 			getRequest(),
@@ -82,8 +88,12 @@ final public class Functions {
 		);
 	}
 
+	public static Page capturePageInBook(String book, String page, String level) throws ServletException, IOException {
+		return capturePageInDomain(null, book, page, level);
+	}
+
 	public static Page capturePage(String page, String level) throws ServletException, IOException, JspTagException {
-		return capturePageInBook(null, page, level);
+		return capturePageInDomain(null, null, page, level);
 	}
 
 	public static Page captureContentRoot(String level) throws ServletException, IOException {
@@ -129,23 +139,33 @@ final public class Functions {
 		return CaptureLevel.getCaptureLevel(request).name().toLowerCase(Locale.ROOT);
 	}
 
-	public static File getFileInBook(String book, String path, boolean requireFile) throws ServletException, IOException {
+	public static File getFileInDomain(String domain, String book, String path, boolean requireFile) throws ServletException, IOException {
+		ServletContext servletContext = getServletContext();
 		PageRef pageRef = PageRefResolver.getPageRef(
-			getServletContext(),
+			servletContext,
 			getRequest(),
+			domain,
 			book,
 			path
 		);
-		if(pageRef.getBook()==null) throw new IllegalArgumentException("Book not found: " + pageRef.getBookName());
-		return pageRef.getResourceFile(true, requireFile);
+		BookRef bookRef = pageRef.getBookRef();
+		Book bookObj = SemanticCMS.getInstance(servletContext).getBook(bookRef);
+		if(!bookObj.isAccessible()) {
+			throw new IllegalArgumentException("Book is not accessible: " + bookRef);
+		}
+		return bookObj.getSourceFile(pageRef.getPath(), true, requireFile);
+	}
+
+	public static File getFileInBook(String book, String path, boolean requireFile) throws ServletException, IOException {
+		return getFileInDomain(null, book, path, requireFile);
 	}
 
 	public static File getFile(String path, boolean requireFile) throws ServletException, IOException {
-		return getFileInBook(null, path, requireFile);
+		return getFileInDomain(null, null, path, requireFile);
 	}
 
-	public static File getExeFileInBook(String book, String path) throws ServletException, IOException {
-		File file = getFileInBook(book, path, false);
+	public static File getExeFileInDomain(String domain, String book, String path) throws ServletException, IOException {
+		File file = getFileInDomain(domain, book, path, false);
 		if(
 			!file.canExecute()
 			&& !file.setExecutable(true)
@@ -155,8 +175,12 @@ final public class Functions {
 		return file;
 	}
 
+	public static File getExeFileInBook(String book, String path) throws ServletException, IOException {
+		return getExeFileInDomain(null, book, path);
+	}
+
 	public static File getExeFile(String path) throws ServletException, IOException {
-		return getExeFileInBook(null, path);
+		return getExeFileInDomain(null, null, path);
 	}
 
 	public static String encodeUrlParam(String value) throws UnsupportedEncodingException {
@@ -180,10 +204,14 @@ final public class Functions {
 		);
 	}
 
+	// TODO: There must be a "jdk" or "java" taglib or similar out there that exposes basic java API stuff?
+	//       If not, do we write it?
 	public static Double ceil(Double a) {
 		return a==null ? null : Math.ceil(a);
 	}
 
+	// TODO: There must be a "jdk" or "java" taglib or similar out there that exposes basic java API stuff?
+	//       If not, do we write it?
 	public static Double floor(Double a) {
 		return a==null ? null : Math.floor(a);
 	}

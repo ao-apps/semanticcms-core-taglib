@@ -61,6 +61,7 @@ public class LinkTag
 
 	private MutableHttpParameters params;
 	private ValueExpression clazz;
+	private ValueExpression domain;
 	private ValueExpression book;
 	private ValueExpression page;
 	private ValueExpression element;
@@ -81,6 +82,10 @@ public class LinkTag
 
 	public void setClazz(ValueExpression clazz) {
 		this.clazz = clazz;
+	}
+
+	public void setDomain(ValueExpression domain) {
+		this.domain = domain;
 	}
 
 	public void setBook(ValueExpression book) {
@@ -176,6 +181,7 @@ public class LinkTag
 					request,
 					(HttpServletResponse)pageContext.getResponse(),
 					out,
+					domain,
 					book,
 					page,
 					element,
