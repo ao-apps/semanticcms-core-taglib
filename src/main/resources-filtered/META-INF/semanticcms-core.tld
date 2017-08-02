@@ -1167,6 +1167,19 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p>
+					The domain for the book for linksToPage.
+					Defaults to the domain of the current JSP file.
+				</p>
+			]]></description>
+			<name>linksToDomain</name>
+			<required>false</required>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				<p>
 					The book for linksToPage.
 					Defaults to the book of the current JSP file.
 				</p>

@@ -37,7 +37,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2017-08-01T13:38:12-0500"
+		dateModified="2017-08-02T18:02:40-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-core-taglib:pom.version}" />
@@ -71,7 +71,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 								</ol>
 							</li>
 							<li>
-								New optional attribute <code>thisDomain</code> that defaults to the domain of the current page on
+								New optional attributes <code>thisDomain</code> and <code>linksToDomain</code> that default
+								to the domain of the current page on
 								<core:link page="semanticcms-core.tld/tag-navigationTree" />.
 							</li>
 							<li>New <ao:a href="https://docs.oracle.com/cd/E19226-01/820-7627/gjddd/">Expression Language</ao:a> function:
