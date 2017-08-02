@@ -74,6 +74,11 @@ public class NavigationTreeTag extends SimpleTagSupport {
 		this.thisPage = thisPage;
 	}
 
+	private ValueExpression linksToDomain;
+	public void setLinksToDomain(ValueExpression linksToDomain) {
+		this.linksToDomain = linksToDomain;
+	}
+
 	private ValueExpression linksToBook;
 	public void setLinksToBook(ValueExpression linksToBook) {
 		this.linksToBook = linksToBook;
@@ -113,6 +118,7 @@ public class NavigationTreeTag extends SimpleTagSupport {
 				thisDomain,
 				thisBook,
 				thisPage,
+				linksToDomain,
 				linksToBook,
 				linksToPage,
 				maxDepth
