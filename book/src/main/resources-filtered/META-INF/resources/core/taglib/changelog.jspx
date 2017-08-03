@@ -37,7 +37,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2017-08-02T18:02:40-0500"
+		dateModified="2017-08-02T20:27:25-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-core-taglib:pom.version}" />
@@ -81,6 +81,16 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 									<li><core:link page="semanticcms-core.tld/function-getFileInDomain" />.</li>
 									<li><core:link page="semanticcms-core.tld/function-getExeFileInDomain" />.</li>
 								</ol>
+							</li>
+						</ol>
+					</li>
+					<li>Added <core:link book="/" page="/index.jspx" /> repository support:
+						<ol>
+							<li>Removed the <core:link page="semanticcms-core.tld/function-getBook" /> function.</li>
+							<li>
+								Added the <core:link page="semanticcms-core.tld/function-getPublishedBook" /> function.
+								This function only returns published books, returns <code>null</code> instead
+								of throwing an exception when a book not found, and may return inaccessible books.
 							</li>
 						</ol>
 					</li>
