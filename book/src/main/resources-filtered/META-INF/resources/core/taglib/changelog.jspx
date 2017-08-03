@@ -37,7 +37,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2017-08-02T20:27:25-0500"
+		dateModified="2017-08-03T10:44:37-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-core-taglib:pom.version}" />
@@ -56,7 +56,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				<ul>
 					<li>
 						Fixed bug in <code><core:link page="semanticcms-core.tld/tag-page" /></code>
-						that threw <code><ao:a href="@{javac.link.javaeeApi.6}javax/servlet/ServletException.html">ServletException</ao:a></code>
+						that threw <code><ao:a rel="nofollow" href="@{javac.link.javaeeApi.6}javax/servlet/ServletException.html">ServletException</ao:a></code>
 						when page not in a book, even when <code>book</code> and <code>path</code> attributes are provided.
 					</li>
 					<li>Added <core:link book="/" page="/index.jspx" /> domain support:
@@ -75,22 +75,49 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 								to the domain of the current page on
 								<core:link page="semanticcms-core.tld/tag-navigationTree" />.
 							</li>
-							<li>New <ao:a href="https://docs.oracle.com/cd/E19226-01/820-7627/gjddd/">Expression Language</ao:a> function:
+							<li>New <ao:a rel="nofollow" href="https://docs.oracle.com/cd/E19226-01/820-7627/gjddd/">Expression Language</ao:a> function:
 								<ol type="a">
-									<li><core:link page="semanticcms-core.tld/function-capturePageInDomain" />.</li>
-									<li><core:link page="semanticcms-core.tld/function-getFileInDomain" />.</li>
-									<li><core:link page="semanticcms-core.tld/function-getExeFileInDomain" />.</li>
+									<li><core:link page="semanticcms-core.tld/function-capturePageInDomain" /></li>
+									<li><core:link page="semanticcms-core.tld/function-getFileInDomain" /></li>
+									<li><core:link page="semanticcms-core.tld/function-getExeFileInDomain" /></li>
 								</ol>
 							</li>
 						</ol>
 					</li>
 					<li>Added <core:link book="/" page="/index.jspx" /> repository support:
 						<ol>
-							<li>Removed the <core:link page="semanticcms-core.tld/function-getBook" /> function.</li>
+							<li>Removed the <code>\${core:getBook()}</code> function.</li>
 							<li>
 								Added the <core:link page="semanticcms-core.tld/function-getPublishedBook" /> function.
 								This function only returns published books, returns <code>null</code> instead
 								of throwing an exception when a book not found, and may return inaccessible books.
+							</li>
+						</ol>
+					</li>
+					<li>Added <core:link book="/core/model" page="/index.jspx" /> resource support:
+						<ol>
+							<li>
+								Moved the <code>\${core:getFileInBook()}</code> function to
+								<core:link book="/file/taglib" page="semanticcms-file.tld/function-getFileInBook" />.
+							</li>
+							<li>
+								Moved the <code>\${core:getFile()}</code> function to
+								<core:link book="/file/taglib" page="semanticcms-file.tld/function-getFile" />.
+							</li>
+							<li>
+								Moved the <code>\${core:getExeFileInBook()}</code> function to
+								<core:link book="/file/taglib" page="semanticcms-file.tld/function-getExeFileInBook" />.
+							</li>
+							<li>
+								Moved the <code>\${core:getExeFile()}</code> function to
+								<core:link book="/file/taglib" page="semanticcms-file.tld/function-getExeFile" />.
+							</li>
+							<li>New <ao:a rel="nofollow" href="https://docs.oracle.com/cd/E19226-01/820-7627/gjddd/">Expression Language</ao:a> functions:
+								<ol type="a">
+									<li><core:link page="semanticcms-core.tld/function-getResourceInDomain" /></li>
+									<li><core:link page="semanticcms-core.tld/function-getResourceInBook" /></li>
+									<li><core:link page="semanticcms-core.tld/function-getResource" /></li>
+								</ol>
 							</li>
 						</ol>
 					</li>
