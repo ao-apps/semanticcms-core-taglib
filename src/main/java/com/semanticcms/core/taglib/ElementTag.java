@@ -161,7 +161,7 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 	 * Called to create the element from doTag.
 	 * This is only called for captureLevel >= META.
 	 */
-	abstract protected E createElement();
+	abstract protected E createElement() throws JspException, IOException;
 
 	/**
 	 * Gets the element, only available after created.
