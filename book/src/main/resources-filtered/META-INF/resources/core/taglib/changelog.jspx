@@ -37,7 +37,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2017-08-03T10:44:37-0500"
+		dateModified="2017-08-03T11:35:29-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-core-taglib:pom.version}" />
@@ -59,7 +59,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 						that threw <code><ao:a rel="nofollow" href="@{javac.link.javaeeApi.6}javax/servlet/ServletException.html">ServletException</ao:a></code>
 						when page not in a book, even when <code>book</code> and <code>path</code> attributes are provided.
 					</li>
-					<li>Added <core:link book="/" page="/index.jspx" /> domain support:
+					<li>Added <core:link book="/core/model" page="/index.jspx" /> domain support:
 						<ol>
 							<li>New optional attribute <code>domain</code> that defaults to the domain of the current page on:
 								<ol type="a">
@@ -84,7 +84,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 							</li>
 						</ol>
 					</li>
-					<li>Added <core:link book="/" page="/index.jspx" /> repository support:
+					<li>Added <core:link book="/core/repository" page="/index.jspx" /> repository support:
 						<ol>
 							<li>Removed the <code>\${core:getBook()}</code> function.</li>
 							<li>
