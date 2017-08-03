@@ -245,10 +245,10 @@ final public class Functions {
 		return sb.toString();
 	}
 
-	public static Book getBook(String pagePath) {
-		if(pagePath==null) return null;
-		Book book = SemanticCMS.getInstance(getServletContext()).getBook(pagePath);
-		if(book==null) throw new IllegalArgumentException("Book not found: " + pagePath);
+	public static Book getPublishedBook(String pagePath) {
+		if(pagePath == null) return null;
+		Book book = SemanticCMS.getInstance(getServletContext()).getPublishedBook(pagePath);
+		if(book == null) throw new IllegalArgumentException("Book not found: " + pagePath);
 		return book;
 	}
 

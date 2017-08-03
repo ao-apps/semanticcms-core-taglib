@@ -1682,13 +1682,17 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<function>
 		<description><![CDATA[
 			<p>
-				Gets the book for the provided page path.
+				Gets the book published at the provided page path or <code>null</code>
+				if no book published on the path.
+			</p>
+			<p>
+				Please note that the book, although published, still might not be accessible.
 			</p>
 		]]></description>
-		<name>getBook</name>
+		<name>getPublishedBook</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>com.semanticcms.core.repository.Book getBook(java.lang.String)</function-signature>
-		<example><![CDATA[<code>${core:getBook(pagePath)}</code>]]></example>
+		<function-signature>com.semanticcms.core.repository.Book getPublishedBook(java.lang.String)</function-signature>
+		<example><![CDATA[<code>${core:getPublishedBook(pagePath)}</code>]]></example>
 	</function>
 	<function>
 		<description><![CDATA[
