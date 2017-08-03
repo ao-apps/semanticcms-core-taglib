@@ -35,6 +35,9 @@ import com.semanticcms.core.model.Element;
 import com.semanticcms.core.model.Node;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.model.PageRef;
+import com.semanticcms.core.model.Resource;
+import com.semanticcms.core.model.ResourceRef;
+import com.semanticcms.core.model.ResourceStore;
 import com.semanticcms.core.repository.Book;
 import com.semanticcms.core.servlet.AuthorUtils;
 import com.semanticcms.core.servlet.CaptureLevel;
@@ -45,9 +48,10 @@ import com.semanticcms.core.servlet.PageDags;
 import com.semanticcms.core.servlet.PageIndex;
 import com.semanticcms.core.servlet.PageRefResolver;
 import com.semanticcms.core.servlet.PageUtils;
+import com.semanticcms.core.servlet.ResourceRefResolver;
 import com.semanticcms.core.servlet.SemanticCMS;
 import com.semanticcms.core.servlet.View;
-import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -139,48 +143,45 @@ final public class Functions {
 		return CaptureLevel.getCaptureLevel(request).name().toLowerCase(Locale.ROOT);
 	}
 
-	public static File getFileInDomain(String domain, String book, String path, boolean requireFile) throws ServletException, IOException {
+	public static Resource getResourceInDomain(String domain, String book, String path, boolean require) throws ServletException, IOException {
 		ServletContext servletContext = getServletContext();
-		PageRef pageRef = PageRefResolver.getPageRef(
+		ResourceRef resourceRef = ResourceRefResolver.getResourceRef(
 			servletContext,
 			getRequest(),
 			domain,
 			book,
 			path
 		);
-		BookRef bookRef = pageRef.getBookRef();
+		BookRef bookRef = resourceRef.getBookRef();
 		Book bookObj = SemanticCMS.getInstance(servletContext).getBook(bookRef);
 		if(!bookObj.isAccessible()) {
-			throw new IllegalArgumentException("Book is not accessible: " + bookRef);
+			if(require) {
+				throw new FileNotFoundException("Book is not accessible: " + resourceRef);
+			} else {
+				return null;
+			}
 		}
-		return bookObj.getSourceFile(pageRef.getPath(), true, requireFile);
-	}
-
-	public static File getFileInBook(String book, String path, boolean requireFile) throws ServletException, IOException {
-		return getFileInDomain(null, book, path, requireFile);
-	}
-
-	public static File getFile(String path, boolean requireFile) throws ServletException, IOException {
-		return getFileInDomain(null, null, path, requireFile);
-	}
-
-	public static File getExeFileInDomain(String domain, String book, String path) throws ServletException, IOException {
-		File file = getFileInDomain(domain, book, path, false);
-		if(
-			!file.canExecute()
-			&& !file.setExecutable(true)
-		) {
-			throw new IOException("Unable to set executable flag: " + file.getPath());
+		ResourceStore resourceStore = bookObj.getResourceStore();
+		if(resourceStore == null) {
+			if(require) {
+				throw new FileNotFoundException("Restore store is not available: " + resourceRef);
+			} else {
+				return null;
+			}
 		}
-		return file;
+		Resource resource = resourceStore.getResource(resourceRef);
+		if(require && !resource.exists()) {
+			throw new FileNotFoundException("Required resource does not exist: " + resourceRef);
+		}
+		return resource;
 	}
 
-	public static File getExeFileInBook(String book, String path) throws ServletException, IOException {
-		return getExeFileInDomain(null, book, path);
+	public static Resource getResourceInBook(String book, String path, boolean require) throws ServletException, IOException {
+		return getResourceInDomain(null, book, path, require);
 	}
 
-	public static File getExeFile(String path) throws ServletException, IOException {
-		return getExeFileInDomain(null, null, path);
+	public static Resource getResource(String path, boolean require) throws ServletException, IOException {
+		return getResourceInDomain(null, null, path, require);
 	}
 
 	public static String encodeUrlParam(String value) throws UnsupportedEncodingException {
