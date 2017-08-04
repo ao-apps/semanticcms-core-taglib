@@ -169,7 +169,7 @@ final public class Functions {
 				return null;
 			}
 		}
-		Resource resource = resourceStore.getResource(resourceRef);
+		Resource resource = resourceStore.getResource(resourceRef.getPath());
 		if(require && !resource.exists()) {
 			throw new FileNotFoundException("Required resource does not exist: " + resourceRef);
 		}
