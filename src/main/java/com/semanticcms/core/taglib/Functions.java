@@ -36,7 +36,7 @@ import com.semanticcms.core.model.Node;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.model.PageRef;
 import com.semanticcms.core.model.ResourceRef;
-import com.semanticcms.core.repository.Book;
+import com.semanticcms.core.pages.Book;
 import com.semanticcms.core.resources.Resource;
 import com.semanticcms.core.resources.ResourceStore;
 import com.semanticcms.core.servlet.AuthorUtils;
