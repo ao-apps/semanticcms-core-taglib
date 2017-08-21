@@ -22,12 +22,14 @@
  */
 package com.semanticcms.core.taglib;
 
+import com.aoindustries.net.Path;
 import static com.aoindustries.servlet.filter.FunctionContext.getRequest;
 import static com.aoindustries.servlet.filter.FunctionContext.getResponse;
 import static com.aoindustries.servlet.filter.FunctionContext.getServletContext;
 import com.aoindustries.servlet.http.ServletUtil;
 import com.aoindustries.taglib.Link;
 import com.aoindustries.util.StringUtility;
+import com.aoindustries.validation.ValidationException;
 import com.semanticcms.core.model.Author;
 import com.semanticcms.core.model.BookRef;
 import com.semanticcms.core.model.Copyright;
@@ -36,13 +38,14 @@ import com.semanticcms.core.model.Node;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.model.PageRef;
 import com.semanticcms.core.model.ResourceRef;
-import com.semanticcms.core.pages.Book;
+import com.semanticcms.core.pages.CaptureLevel;
 import com.semanticcms.core.resources.Resource;
 import com.semanticcms.core.resources.ResourceStore;
 import com.semanticcms.core.servlet.AuthorUtils;
-import com.semanticcms.core.servlet.CaptureLevel;
+import com.semanticcms.core.servlet.Book;
 import com.semanticcms.core.servlet.CapturePage;
 import com.semanticcms.core.servlet.CopyrightUtils;
+import com.semanticcms.core.servlet.CurrentCaptureLevel;
 import com.semanticcms.core.servlet.Headers;
 import com.semanticcms.core.servlet.PageDags;
 import com.semanticcms.core.servlet.PageIndex;
@@ -140,7 +143,7 @@ final public class Functions {
 		final HttpServletRequest request = getRequest();
 		final CapturePage capture = CapturePage.getCaptureContext(request);
 		if(capture == null) return null;
-		return CaptureLevel.getCaptureLevel(request).name().toLowerCase(Locale.ROOT);
+		return CurrentCaptureLevel.getCaptureLevel(request).name().toLowerCase(Locale.ROOT);
 	}
 
 	public static Resource getResourceInDomain(String domain, String book, String path, boolean require) throws ServletException, IOException {
@@ -161,7 +164,7 @@ final public class Functions {
 				return null;
 			}
 		}
-		ResourceStore resourceStore = bookObj.getResourceStore();
+		ResourceStore resourceStore = bookObj.getResources();
 		if(resourceStore == null) {
 			if(require) {
 				throw new FileNotFoundException("Restore store is not available: " + resourceRef);
@@ -246,9 +249,13 @@ final public class Functions {
 		return sb.toString();
 	}
 
-	public static Book getPublishedBook(String pagePath) {
+	public static Book getPublishedBook(String pagePath) throws ValidationException {
 		if(pagePath == null) return null;
-		Book book = SemanticCMS.getInstance(getServletContext()).getPublishedBook(pagePath);
+		Book book = SemanticCMS.getInstance(
+			getServletContext()).getPublishedBook(
+				Path.valueOf(pagePath)
+			)
+		;
 		if(book == null) throw new IllegalArgumentException("Book not found: " + pagePath);
 		return book;
 	}

@@ -22,6 +22,9 @@
  */
 package com.semanticcms.core.taglib;
 
+import com.aoindustries.net.Path;
+import com.aoindustries.util.StringUtility;
+import com.aoindustries.validation.ValidationException;
 import com.semanticcms.core.model.Author;
 import com.semanticcms.core.model.Node;
 import com.semanticcms.core.model.Page;
@@ -37,75 +40,80 @@ public class AuthorTag extends SimpleTagSupport {
 
 	private String name;
 	public void setName(String name) {
-		this.name = name;
+		this.name = StringUtility.nullIfEmpty(name);
 	}
 
 	private String href;
 	public void setHref(String href) {
-		this.href = href;
+		this.href = StringUtility.nullIfEmpty(href);
 	}
 
 	private String domain;
 	public void setDomain(String domain) {
-		this.domain = domain;
+		this.domain = StringUtility.nullIfEmpty(domain);
 	}
 
 	private String book;
 	public void setBook(String book) {
-		this.book = book;
+		this.book = StringUtility.nullIfEmpty(book);
 	}
 
 	private String page;
 	public void setPage(String page) {
-		this.page = page;
+		this.page = StringUtility.nullIfEmpty(page);
 	}
 
 	@Override
 	public void doTag() throws JspTagException, IOException {
-		final PageContext pageContext = (PageContext)getJspContext();
-		final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
+		try {
+			final PageContext pageContext = (PageContext)getJspContext();
+			final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 
-		final Node currentNode = CurrentNode.getCurrentNode(request);
-		if(!(currentNode instanceof Page)) throw new JspTagException("<core:author> tag must be nested directly inside a <core:page> tag.");
-		final Page currentPage = (Page)currentNode;
+			final Node currentNode = CurrentNode.getCurrentNode(request);
+			if(!(currentNode instanceof Page)) throw new JspTagException("<core:author> tag must be nested directly inside a <core:page> tag.");
+			final Page currentPage = (Page)currentNode;
 
-		PageRef currentPageRef = null;
+			PageRef currentPageRef = null;
 
-		String d = domain;
-		String bookName = book;
-		// When domain provided, both book and page attributes must also be provided.
-		if(d != null) {
-			if(bookName == null) throw new JspTagException("When domain provided, both book and page attributes must also be provided.");
-		}
-		// When book provided, page attribute must also be provided.
-		if(bookName != null) {
-			if(page == null) throw new JspTagException("When book provided, page attribute must also be provided.");
-		}
-		if(page != null) {
-			// Default to this domain if nothing set
-			if(d == null) {
-				currentPageRef = currentPage.getPageRef();
-				d = currentPageRef.getBookRef().getDomain();
+			String d = domain;
+			Path bookPath = Path.valueOf(book);
+			Path pagePath = Path.valueOf(page);
+			// When domain provided, both book and page attributes must also be provided.
+			if(d != null) {
+				if(bookPath == null) throw new JspTagException("When domain provided, both book and page attributes must also be provided.");
 			}
-			// Default to this book if nothing set
-			if(bookName == null) {
+			// When book provided, page attribute must also be provided.
+			if(bookPath != null) {
+				if(pagePath == null) throw new JspTagException("When book provided, page attribute must also be provided.");
+			}
+			if(pagePath != null) {
+				// Default to this domain if nothing set
+				if(d == null) {
+					currentPageRef = currentPage.getPageRef();
+					d = currentPageRef.getBookRef().getDomain();
+				}
+				// Default to this book if nothing set
+				if(bookPath == null) {
+					if(currentPageRef == null) currentPageRef = currentPage.getPageRef();
+					bookPath = currentPageRef.getBookRef().getPath();
+				}
+			}
+			// Name required when referencing an author outside this book
+			if(name == null && bookPath != null) {
 				if(currentPageRef == null) currentPageRef = currentPage.getPageRef();
-				bookName = currentPageRef.getBookRef().getName();
+				assert d != null;
+				if(
+					!d.equals(currentPageRef.getBookRef().getDomain())
+					|| !bookPath.equals(currentPageRef.getBookRef().getPath())
+				) {
+					throw new IllegalStateException("Author name required when author is in a different book: " + pagePath);
+				}
 			}
+			currentPage.addAuthor(
+				new Author(name, href, d, bookPath, pagePath)
+			);
+		} catch(ValidationException e) {
+			throw new JspTagException(e);
 		}
-		// Name required when referencing an author outside this book
-		if(name == null && bookName != null) {
-			if(currentPageRef == null) currentPageRef = currentPage.getPageRef();
-			assert d != null;
-			if(
-				!d.equals(currentPageRef.getBookRef().getDomain())
-				|| !bookName.equals(currentPageRef.getBookRef().getName())
-			) {
-				throw new IllegalStateException("Author name required when author is in a different book: " + page);
-			}
-		}
-		currentPage.addAuthor(
-			new Author(name, href, d, bookName, page)
-		);
 	}
 }
