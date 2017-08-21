@@ -32,7 +32,8 @@ import static com.aoindustries.taglib.ApplicationResources.accessor;
 import com.aoindustries.taglib.AutoEncodingBufferedTag;
 import com.aoindustries.taglib.ParamUtils;
 import com.aoindustries.taglib.ParamsAttribute;
-import com.semanticcms.core.servlet.CaptureLevel;
+import com.semanticcms.core.pages.CaptureLevel;
+import com.semanticcms.core.servlet.CurrentCaptureLevel;
 import com.semanticcms.core.servlet.impl.LinkImpl;
 import java.io.IOException;
 import javax.el.ValueExpression;
@@ -137,7 +138,7 @@ public class LinkTag
 			final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 
 			// Get the current capture state
-			final CaptureLevel captureLevel = CaptureLevel.getCaptureLevel(request);
+			final CaptureLevel captureLevel = CurrentCaptureLevel.getCaptureLevel(request);
 			if(captureLevel.compareTo(CaptureLevel.META) >= 0) {
 				// Capture the body first for any nested parameter tags
 				final BufferResult capturedBody;

@@ -33,7 +33,8 @@ import com.semanticcms.core.model.ElementWriter;
 import com.semanticcms.core.model.Node;
 import com.semanticcms.core.model.NodeBodyWriter;
 import com.semanticcms.core.model.Page;
-import com.semanticcms.core.servlet.CaptureLevel;
+import com.semanticcms.core.pages.CaptureLevel;
+import com.semanticcms.core.servlet.CurrentCaptureLevel;
 import com.semanticcms.core.servlet.CurrentNode;
 import com.semanticcms.core.servlet.CurrentPage;
 import static com.semanticcms.core.taglib.PageTag.PROPERTY_ATTRIBUTE_PREFIX;
@@ -102,7 +103,7 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 		final ServletRequest request = pageContext.getRequest();
 
 		// Get the current capture state
-		CaptureLevel captureLevel = CaptureLevel.getCaptureLevel(request);
+		CaptureLevel captureLevel = CurrentCaptureLevel.getCaptureLevel(request);
 		if(captureLevel.compareTo(CaptureLevel.META) >= 0) {
 			E elem = createElement();
 			element = elem;

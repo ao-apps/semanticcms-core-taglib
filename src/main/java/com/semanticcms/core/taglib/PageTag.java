@@ -26,14 +26,17 @@ import com.aoindustries.io.NullWriter;
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
 import com.aoindustries.io.buffer.EmptyResult;
+import com.aoindustries.net.Path;
 import com.aoindustries.servlet.ServletContextCache;
 import com.aoindustries.servlet.jsp.LocalizedJspTagException;
 import com.aoindustries.taglib.AutoEncodingBufferedTag;
 import static com.aoindustries.util.StringUtility.nullIfEmpty;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.model.PageRef;
+import com.semanticcms.core.model.ResourceRef;
 import com.semanticcms.core.servlet.PageRefResolver;
 import com.semanticcms.core.servlet.PageUtils;
+import com.semanticcms.core.servlet.ResourceRefResolver;
 import com.semanticcms.core.servlet.impl.PageImpl;
 import java.io.IOException;
 import java.io.InputStream;
@@ -239,7 +242,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 			final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 
 			// Resolve pageRef, if book or path set
-			final PageRef jspSrc;
+			final ResourceRef jspSrc;
 			final PageRef pageRef;
 			if(domain != null && book == null) {
 				throw new ServletException("book must be provided when domain is provided.");
@@ -247,35 +250,30 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 			if(path == null) {
 				if(book != null) throw new ServletException("path must be provided when book is provided.");
 				// Use default
-				jspSrc = PageRefResolver.getCurrentPageRef(servletContext, request, true);
+				jspSrc = ResourceRefResolver.getCurrentPageRef(servletContext, request, true);
 				pageRef = jspSrc;
 			} else {
-				jspSrc = PageRefResolver.getCurrentPageRef(servletContext, request, false);
+				jspSrc = ResourceRefResolver.getCurrentPageRef(servletContext, request, false);
 				pageRef = PageRefResolver.getPageRef(servletContext, request, domain, book, path);
 			}
 
 			//  Load properties from *.properties file, too
-			String pagePath = pageRef.getPath();
 			String propertiesPath = null;
-			if(pagePath.endsWith(".jspx")) {
-				int basePathLen = pagePath.length() - 5;
-				if(
-					basePathLen > 0
-					&& pagePath.charAt(basePathLen - 1) != '/'
-				) {
-					propertiesPath = pagePath.substring(0, basePathLen) + ".properties";
-				}
-			} else if(pagePath.endsWith(".jsp")) {
-				int basePathLen = pagePath.length() - 4;
-				if(
-					basePathLen > 0
-					&& pagePath.charAt(basePathLen - 1) != '/'
-				) {
-					propertiesPath = pagePath.substring(0, basePathLen) + ".properties";
+			if(jspSrc != null) {
+				String pagePath = jspSrc.getPath().toString();
+				if(pagePath.endsWith(".jspx")) {
+					int basePathLen = pagePath.length() - 5;
+					if(
+						basePathLen > 0
+						&& pagePath.charAt(basePathLen - 1) != '/'
+					) {
+						propertiesPath = pagePath.substring(0, basePathLen) + ".properties";
+					}
 				}
 			}
 			if(propertiesPath != null) {
 				// TODO: Try real path first for more direct file-based I/O - benchmark if is any faster
+				// TODO: Work through Resources API
 				URL url = ServletContextCache.getCache(servletContext).getResource(
 					pageRef.getBookRef().getPrefix()
 					+ propertiesPath
