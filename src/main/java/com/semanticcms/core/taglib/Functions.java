@@ -73,13 +73,13 @@ import javax.servlet.jsp.JspTagException;
 
 final public class Functions {
 
-	public static Page capturePageInDomain(String domain, String book, String page, String level) throws ServletException, IOException {
+	public static Page capturePageInDomain(String domain, String book, String page, String level) throws ServletException, IOException, ValidationException {
 		ServletContext servletContext = getServletContext();
 		PageRef pageRef = PageRefResolver.getPageRef(
 			servletContext,
 			getRequest(),
 			domain,
-			book,
+			Path.valueOf(StringUtility.nullIfEmpty(book)),
 			page
 		);
 		BookRef bookRef = pageRef.getBookRef();
@@ -95,12 +95,16 @@ final public class Functions {
 		);
 	}
 
-	public static Page capturePageInBook(String book, String page, String level) throws ServletException, IOException {
+	public static Page capturePageInBook(String book, String page, String level) throws ServletException, IOException, ValidationException {
 		return capturePageInDomain(null, book, page, level);
 	}
 
 	public static Page capturePage(String page, String level) throws ServletException, IOException, JspTagException {
-		return capturePageInDomain(null, null, page, level);
+		try {
+			return capturePageInDomain(null, null, page, level);
+		} catch(ValidationException e) {
+			throw new ServletException(e);
+		}
 	}
 
 	public static Page captureContentRoot(String level) throws ServletException, IOException {
@@ -146,13 +150,13 @@ final public class Functions {
 		return CurrentCaptureLevel.getCaptureLevel(request).name().toLowerCase(Locale.ROOT);
 	}
 
-	public static Resource getResourceInDomain(String domain, String book, String path, boolean require) throws ServletException, IOException {
+	public static Resource getResourceInDomain(String domain, String book, String path, boolean require) throws ServletException, IOException, ValidationException {
 		ServletContext servletContext = getServletContext();
 		ResourceRef resourceRef = ResourceRefResolver.getResourceRef(
 			servletContext,
 			getRequest(),
 			domain,
-			book,
+			Path.valueOf(StringUtility.nullIfEmpty(book)),
 			path
 		);
 		BookRef bookRef = resourceRef.getBookRef();
@@ -179,12 +183,16 @@ final public class Functions {
 		return resource;
 	}
 
-	public static Resource getResourceInBook(String book, String path, boolean require) throws ServletException, IOException {
+	public static Resource getResourceInBook(String book, String path, boolean require) throws ServletException, IOException, ValidationException {
 		return getResourceInDomain(null, book, path, require);
 	}
 
 	public static Resource getResource(String path, boolean require) throws ServletException, IOException {
-		return getResourceInDomain(null, null, path, require);
+		try {
+			return getResourceInDomain(null, null, path, require);
+		} catch(ValidationException e) {
+			throw new ServletException(e);
+		}
 	}
 
 	public static String encodeUrlParam(String value) throws UnsupportedEncodingException {
@@ -249,13 +257,9 @@ final public class Functions {
 		return sb.toString();
 	}
 
-	public static Book getPublishedBook(String pagePath) throws ValidationException {
+	public static Book getPublishedBook(String pagePath) {
 		if(pagePath == null) return null;
-		Book book = SemanticCMS.getInstance(
-			getServletContext()).getPublishedBook(
-				Path.valueOf(pagePath)
-			)
-		;
+		Book book = SemanticCMS.getInstance(getServletContext()).getPublishedBook(pagePath);
 		if(book == null) throw new IllegalArgumentException("Book not found: " + pagePath);
 		return book;
 	}

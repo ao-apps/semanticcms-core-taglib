@@ -22,6 +22,9 @@
  */
 package com.semanticcms.core.taglib;
 
+import com.aoindustries.net.Path;
+import com.aoindustries.util.StringUtility;
+import com.aoindustries.validation.ValidationException;
 import com.semanticcms.core.model.ChildRef;
 import com.semanticcms.core.model.Node;
 import com.semanticcms.core.model.Page;
@@ -67,12 +70,16 @@ public class ChildTag extends SimpleTagSupport {
 						pageContext.getServletContext(),
 						request,
 						domain,
-						book,
+						Path.valueOf(
+							StringUtility.nullIfEmpty(book)
+						),
 						page
 					)
 				)
 			);
 		} catch(ServletException e) {
+			throw new JspTagException(e);
+		} catch(ValidationException e) {
 			throw new JspTagException(e);
 		}
 	}
