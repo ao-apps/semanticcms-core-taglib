@@ -22,6 +22,7 @@
  */
 package com.semanticcms.core.taglib;
 
+import com.aoindustries.net.DomainName;
 import com.aoindustries.net.Path;
 import com.aoindustries.util.StringUtility;
 import com.aoindustries.validation.ValidationException;
@@ -39,14 +40,14 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 public class ParentTag extends SimpleTagSupport {
 
-	private String domain;
-	public void setDomain(String domain) {
-		this.domain = domain;
+	private DomainName domain;
+	public void setDomain(String domain) throws ValidationException {
+		this.domain = DomainName.valueOf(StringUtility.nullIfEmpty(domain));
 	}
 
-	private String book;
-	public void setBook(String book) {
-		this.book = book;
+	private Path book;
+	public void setBook(String book) throws ValidationException {
+		this.book = Path.valueOf(StringUtility.nullIfEmpty(book));
 	}
 
 	private String page;
@@ -75,15 +76,13 @@ public class ParentTag extends SimpleTagSupport {
 						pageContext.getServletContext(),
 						request,
 						domain,
-						Path.valueOf(StringUtility.nullIfEmpty(book)),
+						book,
 						page
 					),
 					shortTitle
 				)
 			);
 		} catch(ServletException e) {
-			throw new JspTagException(e);
-		} catch(ValidationException e) {
 			throw new JspTagException(e);
 		}
 	}

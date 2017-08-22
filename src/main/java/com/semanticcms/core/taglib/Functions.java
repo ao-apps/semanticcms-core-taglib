@@ -22,6 +22,7 @@
  */
 package com.semanticcms.core.taglib;
 
+import com.aoindustries.net.DomainName;
 import com.aoindustries.net.Path;
 import static com.aoindustries.servlet.filter.FunctionContext.getRequest;
 import static com.aoindustries.servlet.filter.FunctionContext.getResponse;
@@ -78,7 +79,7 @@ final public class Functions {
 		PageRef pageRef = PageRefResolver.getPageRef(
 			servletContext,
 			getRequest(),
-			domain,
+			DomainName.valueOf(StringUtility.nullIfEmpty(domain)),
 			Path.valueOf(StringUtility.nullIfEmpty(book)),
 			page
 		);
@@ -155,7 +156,7 @@ final public class Functions {
 		ResourceRef resourceRef = ResourceRefResolver.getResourceRef(
 			servletContext,
 			getRequest(),
-			domain,
+			DomainName.valueOf(StringUtility.nullIfEmpty(domain)),
 			Path.valueOf(StringUtility.nullIfEmpty(book)),
 			path
 		);

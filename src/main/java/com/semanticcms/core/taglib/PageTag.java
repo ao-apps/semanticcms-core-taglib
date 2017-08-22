@@ -26,10 +26,13 @@ import com.aoindustries.io.NullWriter;
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
 import com.aoindustries.io.buffer.EmptyResult;
+import com.aoindustries.net.DomainName;
+import com.aoindustries.net.Path;
 import com.aoindustries.servlet.ServletContextCache;
 import com.aoindustries.servlet.jsp.LocalizedJspTagException;
 import com.aoindustries.taglib.AutoEncodingBufferedTag;
 import static com.aoindustries.util.StringUtility.nullIfEmpty;
+import com.aoindustries.validation.ValidationException;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.model.PageRef;
 import com.semanticcms.core.model.ResourceRef;
@@ -87,14 +90,14 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 	 */
 	private static final boolean DEBUG = false;
 
-	private String domain;
-	public void setDomain(String domain) {
-		this.domain = domain;
+	private DomainName domain;
+	public void setDomain(String domain) throws ValidationException {
+		this.domain = DomainName.valueOf(nullIfEmpty(domain));
 	}
 
-	private String book;
-	public void setBook(String book) {
-		this.book = nullIfEmpty(book);
+	private Path book;
+	public void setBook(String book) throws ValidationException {
+		this.book = Path.valueOf(nullIfEmpty(book));
 	}
 
 	private String path;
