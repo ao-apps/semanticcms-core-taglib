@@ -170,7 +170,7 @@ final public class Functions {
 			}
 		}
 		ResourceStore resourceStore = bookObj.getResources();
-		if(resourceStore == null) {
+		if(!resourceStore.isAvailable()) {
 			if(require) {
 				throw new FileNotFoundException("Restore store is not available: " + resourceRef);
 			} else {
