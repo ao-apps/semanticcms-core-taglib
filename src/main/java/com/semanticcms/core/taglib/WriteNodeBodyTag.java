@@ -26,7 +26,7 @@ import static com.aoindustries.taglib.AttributeUtils.resolveValue;
 import com.semanticcms.core.model.Node;
 import com.semanticcms.core.model.NodeBodyWriter;
 import com.semanticcms.core.pages.CaptureLevel;
-import com.semanticcms.core.servlet.CurrentCaptureLevel;
+import com.semanticcms.core.pages.local.CurrentCaptureLevel;
 import java.io.IOException;
 import javax.el.ValueExpression;
 import javax.servlet.jsp.JspTagException;
