@@ -104,9 +104,4 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>ERROR</dispatcher>
 	</filter-mapping>
-	<!-- Default to index.jspx then index.jsp -->
-	<welcome-file-list>
-		<welcome-file>index.jspx</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
-	</welcome-file-list>
 </web-fragment>
