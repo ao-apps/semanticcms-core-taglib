@@ -31,7 +31,7 @@ import com.aoindustries.taglib.AutoEncodingBufferedTag;
 import com.aoindustries.taglib.NameAttribute;
 import com.aoindustries.taglib.ValueAttribute;
 import com.semanticcms.core.model.Node;
-import com.semanticcms.core.servlet.CurrentNode;
+import com.semanticcms.core.pages.local.CurrentNode;
 import java.io.IOException;
 import java.io.Writer;
 import javax.servlet.jsp.JspTagException;

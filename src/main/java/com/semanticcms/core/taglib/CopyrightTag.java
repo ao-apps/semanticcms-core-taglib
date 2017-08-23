@@ -25,7 +25,7 @@ package com.semanticcms.core.taglib;
 import com.semanticcms.core.model.Copyright;
 import com.semanticcms.core.model.Node;
 import com.semanticcms.core.model.Page;
-import com.semanticcms.core.servlet.CurrentNode;
+import com.semanticcms.core.pages.local.CurrentNode;
 import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspTagException;

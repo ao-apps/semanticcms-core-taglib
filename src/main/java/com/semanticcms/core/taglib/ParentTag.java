@@ -29,7 +29,7 @@ import com.aoindustries.validation.ValidationException;
 import com.semanticcms.core.model.Node;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.model.ParentRef;
-import com.semanticcms.core.servlet.CurrentNode;
+import com.semanticcms.core.pages.local.CurrentNode;
 import com.semanticcms.core.servlet.PageRefResolver;
 import java.io.IOException;
 import javax.servlet.ServletException;
