@@ -37,7 +37,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2017-08-19T18:57:56-0500"
+		dateModified="2017-08-23T03:03:48-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-core-taglib:pom.version}" />
@@ -120,6 +120,10 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 								</ol>
 							</li>
 						</ol>
+					</li>
+					<li>
+						No longer using <code>HideJspExtensionFilter</code> because <core:link book="/" page="/" /> 2
+						references pages by abstract path instead of implementation page.
 					</li>
 				</ul>
 			</changelog:release>
