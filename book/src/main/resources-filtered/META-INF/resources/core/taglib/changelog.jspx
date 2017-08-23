@@ -59,7 +59,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 						that threw <code><ao:a rel="nofollow" href="@{javac.link.javaeeApi.6}javax/servlet/ServletException.html">ServletException</ao:a></code>
 						when page not in a book, even when <code>book</code> and <code>path</code> attributes are provided.
 					</li>
-					<li>Added <core:link book="/core/model" page="/index.jspx" /> domain support:
+					<li>Added <core:link book="/core/model" page="/" /> domain support:
 						<ol>
 							<li>New optional attribute <code>domain</code> that defaults to the domain of the current page on:
 								<ol type="a">
@@ -84,7 +84,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 							</li>
 						</ol>
 					</li>
-					<li>Added <core:link book="/core/pages" page="/index.jspx" /> support:
+					<li>Added <core:link book="/core/pages" page="/" /> support:
 						<ol>
 							<li>Removed the <code>\${core:getBook()}</code> function.</li>
 							<li>
@@ -94,7 +94,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 							</li>
 						</ol>
 					</li>
-					<li>Added <core:link book="/core/resources" page="/index.jspx" /> support:
+					<li>Added <core:link book="/core/resources" page="/" /> support:
 						<ol>
 							<li>
 								Moved the <code>\${core:getFileInBook()}</code> function to
@@ -162,7 +162,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			<ul>
 				<li>New <ao:a href="https://aoindustries.com/ao-oss-parent/">AO OSS Parent</ao:a> POM to simplify <code>pom.xml</code> files.</li>
 				<li>Added support for dateCreated, datePublished, dateModified, and dateReviewed.</li>
-				<li>Project documentation moved to per-project book in <core:link book="/" page="/index.jspx" /> format.</li>
+				<li>Project documentation moved to per-project book in <core:link book="/" page="/" /> format.</li>
 				<li>Added changelog as top-level project link.</li>
 				<li>
 					Taglib tlib-version is now set automatically during build.
