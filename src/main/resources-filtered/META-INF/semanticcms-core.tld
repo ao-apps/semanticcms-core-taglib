@@ -1410,6 +1410,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<p>
 				Parameter "page": The page-relative path to the page to capture;
 				book-relative when begins with a slash <code>/</code>.
+			</p>
 			<p>
 				Parameter "path": The page-relative path to the resource
 			</p>
