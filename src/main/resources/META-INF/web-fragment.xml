@@ -60,21 +60,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<url-pattern>*.properties</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
-	<!-- Filter to remove .jspx and .jsp file extensions -->
-	<filter>
-		<filter-name>HideJspExtensionFilter</filter-name>
-		<filter-class>com.aoindustries.servlet.filter.HideJspExtensionFilter</filter-class>
-		<init-param>
-			<param-name>noRewritePatterns</param-name>
-			<!-- Do not rewrite the *.inc.jspx or *.inc.jsp files because the rewritting would allow bypass of the forced 404 above -->
-			<param-value>*.inc.jspx, *.inc.jsp</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>HideJspExtensionFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-		<dispatcher>REQUEST</dispatcher>
-	</filter-mapping>
 	<!-- Filter unnecessary whitespace -->
 	<filter>
 		<filter-name>TrimFilter</filter-name>
