@@ -38,7 +38,6 @@ import com.semanticcms.core.model.PageRef;
 import com.semanticcms.core.model.ResourceRef;
 import com.semanticcms.core.servlet.PageRefResolver;
 import com.semanticcms.core.servlet.PageUtils;
-import com.semanticcms.core.servlet.ResourceRefResolver;
 import com.semanticcms.core.servlet.impl.PageImpl;
 import java.io.IOException;
 import java.io.InputStream;
@@ -249,13 +248,46 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 			if(domain != null && book == null) {
 				throw new ServletException("book must be provided when domain is provided.");
 			}
+			// TODO: Use pages
 			if(path == null) {
 				if(book != null) throw new ServletException("path must be provided when book is provided.");
 				// Use default
-				jspSrc = ResourceRefResolver.getCurrentPageRef(servletContext, request, true);
-				pageRef = jspSrc;
+				PageRef currentPageRef = PageRefResolver.getCurrentPageRef(servletContext, request, true);
+				jspSrc = new ResourceRef(
+					currentPageRef.getBookRef(),
+					currentPageRef.getPath()
+				);
+				final String path = currentPageRef.getPath().toString();
+				String pagePath;
+				if(path.endsWith("/index.jspx")) {
+					pagePath = path.substring(0, path.length() - "index.jspx".length());
+					assert pagePath.endsWith("/");
+				} else if(path.endsWith("/index.jsp")) {
+					pagePath = path.substring(0, path.length() - "index.jsp".length());
+					assert pagePath.endsWith("/");
+				} else if(path.endsWith(".jspx")) {
+					pagePath = path.substring(0, path.length() - ".jspx".length());
+					if(pagePath.endsWith("/")) throw new ServletException("Unexpected path for page tag: " + path);
+				} else if(path.endsWith(".jsp")) {
+					pagePath = path.substring(0, path.length() - ".jsp".length());
+					if(pagePath.endsWith("/")) throw new ServletException("Unexpected path for page tag: " + path);
+				} else {
+					throw new ServletException("Unexpected path for page tag: " + path);
+				}
+				try {
+					pageRef = new PageRef(
+						currentPageRef.getBookRef(),
+						Path.valueOf(pagePath)
+					);
+				} catch(ValidationException e) {
+					throw new ServletException(e);
+				}
 			} else {
-				jspSrc = ResourceRefResolver.getCurrentPageRef(servletContext, request, false);
+				PageRef currentPageRef = PageRefResolver.getCurrentPageRef(servletContext, request, false);
+				jspSrc = new ResourceRef(
+					currentPageRef.getBookRef(),
+					currentPageRef.getPath()
+				);
 				pageRef = PageRefResolver.getPageRef(servletContext, request, domain, book, path);
 			}
 
