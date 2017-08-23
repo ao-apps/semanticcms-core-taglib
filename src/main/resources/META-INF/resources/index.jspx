@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
-Copyright (C) 2014, 2016  AO Industries, Inc.
+Copyright (C) 2014, 2016, 2017  AO Industries, Inc.
 	support@aoindustries.com
 	7262 Bull Pen Cir
 	Mobile, AL 36695
@@ -26,12 +26,13 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 If the application does not provide its own /index.jspx, this will redirect to
 the site's content root.
 -->
+<!-- TODO: This redirect assumes the rootBook is published locally -->
 <ao:redirect
 	xmlns:ao="https://aoindustries.com/ao-taglib/"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:jsp="http://java.sun.com/JSP/Page"
 	statusCode="301"
-	href="${applicationScope.semanticCMS.rootBook.contentRoot.servletPath}"
+	href="${applicationScope.semanticCMS.rootBook.contentRoot.bookRef.prefix}${applicationScope.semanticCMS.rootBook.contentRoot.path}"
 >
 	<jsp:directive.page language="java" pageEncoding="UTF-8" session="false" />
 	<c:forEach var="paramName" items="${pageContext.request.parameterNames}">
