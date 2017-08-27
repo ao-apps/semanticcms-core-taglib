@@ -31,6 +31,15 @@ import com.aoindustries.servlet.http.ServletUtil;
 import com.aoindustries.taglib.Link;
 import com.aoindustries.util.StringUtility;
 import com.aoindustries.validation.ValidationException;
+import com.semanticcms.core.controller.AuthorUtils;
+import com.semanticcms.core.controller.Book;
+import com.semanticcms.core.controller.CapturePage;
+import com.semanticcms.core.controller.CopyrightUtils;
+import com.semanticcms.core.controller.PageDags;
+import com.semanticcms.core.controller.PageRefResolver;
+import com.semanticcms.core.controller.PageUtils;
+import com.semanticcms.core.controller.ResourceRefResolver;
+import com.semanticcms.core.controller.SemanticCMS;
 import com.semanticcms.core.model.Author;
 import com.semanticcms.core.model.BookRef;
 import com.semanticcms.core.model.Copyright;
@@ -41,20 +50,12 @@ import com.semanticcms.core.model.PageRef;
 import com.semanticcms.core.model.ResourceRef;
 import com.semanticcms.core.pages.CaptureLevel;
 import com.semanticcms.core.pages.local.CurrentCaptureLevel;
+import com.semanticcms.core.renderer.html.Headers;
+import com.semanticcms.core.renderer.html.HtmlRenderer;
+import com.semanticcms.core.renderer.html.PageIndex;
+import com.semanticcms.core.renderer.html.View;
 import com.semanticcms.core.resources.Resource;
 import com.semanticcms.core.resources.ResourceStore;
-import com.semanticcms.core.servlet.AuthorUtils;
-import com.semanticcms.core.servlet.Book;
-import com.semanticcms.core.servlet.CapturePage;
-import com.semanticcms.core.servlet.CopyrightUtils;
-import com.semanticcms.core.servlet.Headers;
-import com.semanticcms.core.servlet.PageDags;
-import com.semanticcms.core.servlet.PageIndex;
-import com.semanticcms.core.servlet.PageRefResolver;
-import com.semanticcms.core.servlet.PageUtils;
-import com.semanticcms.core.servlet.ResourceRefResolver;
-import com.semanticcms.core.servlet.SemanticCMS;
-import com.semanticcms.core.servlet.View;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -200,6 +201,7 @@ final public class Functions {
 		return URLEncoder.encode(value, getResponse().getCharacterEncoding());
 	}
 
+	// TODO: Move to a new semanticcms-core-renderer-html-taglib
 	public static String getRefId(String id) throws ServletException {
 		return PageIndex.getRefId(
 			getServletContext(),
@@ -372,6 +374,8 @@ final public class Functions {
 		);
 	}
 
+	// TODO: Move to a renderer-html-taglib package, along with other stuff here
+	// TODO: Maybe taglib directly in renderer-html.
 	public static Collection<Link> getViewLinks(View view, Page page) throws ServletException, IOException {
 		return view.getLinks(
 			getServletContext(),
@@ -390,12 +394,13 @@ final public class Functions {
 		);
 	}
 
+	// TODO: Move to renderer-html-taglib
 	public static String getLinkCssClass(Element element) {
-		return SemanticCMS.getInstance(getServletContext()).getLinkCssClass(element);
+		return HtmlRenderer.getInstance(getServletContext()).getLinkCssClass(element);
 	}
 
 	public static Map<String,String> mergeGlobalAndViewScripts(View view) {
-		Map<String,String> globalScripts = SemanticCMS.getInstance(getServletContext()).getScripts();
+		Map<String,String> globalScripts = HtmlRenderer.getInstance(getServletContext()).getScripts();
 		Map<String,String> viewScripts = view.getScripts();
 
 		// Shortcut for when no view scripts

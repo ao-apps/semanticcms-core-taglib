@@ -22,7 +22,7 @@
  */
 package com.semanticcms.core.taglib;
 
-import com.semanticcms.core.servlet.impl.NavigationTreeImpl;
+import com.semanticcms.core.renderer.html.NavigationTreeRenderer;
 import java.io.IOException;
 import javax.el.ValueExpression;
 import javax.servlet.ServletException;
@@ -104,7 +104,7 @@ public class NavigationTreeTag extends SimpleTagSupport {
 	public void doTag() throws JspTagException, IOException {
 		try {
 			final PageContext pageContext = (PageContext)getJspContext();
-			NavigationTreeImpl.writeNavigationTreeImpl(
+			NavigationTreeRenderer.writeNavigationTreeImpl(
 				pageContext.getServletContext(),
 				pageContext.getELContext(),
 				(HttpServletRequest)pageContext.getRequest(),

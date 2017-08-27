@@ -33,11 +33,11 @@ import com.aoindustries.servlet.jsp.LocalizedJspTagException;
 import com.aoindustries.taglib.AutoEncodingBufferedTag;
 import static com.aoindustries.util.StringUtility.nullIfEmpty;
 import com.aoindustries.validation.ValidationException;
+import com.semanticcms.core.controller.PageRefResolver;
+import com.semanticcms.core.controller.PageUtils;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.model.PageRef;
 import com.semanticcms.core.model.ResourceRef;
-import com.semanticcms.core.servlet.PageRefResolver;
-import com.semanticcms.core.servlet.PageUtils;
 import com.semanticcms.core.servlet.impl.PageImpl;
 import java.io.IOException;
 import java.io.InputStream;
@@ -483,6 +483,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 						@Override
 						public BufferResult doBody(boolean discard, Page page) throws JspException, IOException, SkipPageException {
 							// JSP pages are their own source when using default pageRef
+							// TODO: Finish this
 							if(jspSrc != null && jspSrc.equals(page.getPageRef())) page.setSrc(jspSrc);
 							if(discard) {
 								body.invoke(NullWriter.getInstance());

@@ -34,7 +34,7 @@ import com.aoindustries.taglib.ParamUtils;
 import com.aoindustries.taglib.ParamsAttribute;
 import com.semanticcms.core.pages.CaptureLevel;
 import com.semanticcms.core.pages.local.CurrentCaptureLevel;
-import com.semanticcms.core.servlet.impl.LinkImpl;
+import com.semanticcms.core.renderer.html.LinkRenderer;
 import java.io.IOException;
 import javax.el.ValueExpression;
 import javax.servlet.ServletException;
@@ -49,6 +49,7 @@ import javax.servlet.jsp.tagext.DynamicAttributes;
 import javax.servlet.jsp.tagext.JspFragment;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
+// TODO: Is now an ElementTag
 public class LinkTag
 	extends SimpleTagSupport
 	implements
@@ -162,7 +163,7 @@ public class LinkTag
 					capturedBody = null;
 				}
 				final JspWriter out = pageContext.getOut();
-				LinkImpl.writeLinkImpl(
+				LinkRenderer.writeLinkImpl(
 					pageContext.getServletContext(),
 					pageContext.getELContext(),
 					request,
@@ -180,7 +181,7 @@ public class LinkTag
 					clazz,
 					capturedBody == null || capturedBody.getLength() == 0
 						? null
-						: new LinkImpl.LinkImplBody<JspException>() {
+						: new LinkRenderer.LinkRendererBody<JspException>() {
 							@Override
 							public void doBody(boolean discard) throws JspException, IOException, SkipPageException {
 								if(discard) throw new AssertionError("Conditions that lead to discard should have caused no capturedBody above");
