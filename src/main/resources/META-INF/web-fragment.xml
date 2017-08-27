@@ -44,6 +44,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			*.properties files that provide page properties to *.jsp and *.jspx
 			pages.
 	-->
+	<!-- TODO: Protect from pages-jsp and pages-jspx -->
 	<filter>
 		<filter-name>NotFoundFilter</filter-name>
 		<filter-class>com.aoindustries.servlet.filter.NotFoundFilter</filter-class>
@@ -61,6 +62,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
 	<!-- Filter unnecessary whitespace -->
+	<!-- TODO: Move to pages-jsp and pages-jspx - or renderer-html? Still use as filter, or somehow call explicitely? -->
 	<filter>
 		<filter-name>TrimFilter</filter-name>
 		<filter-class>com.aoindustries.servlet.filter.TrimFilter</filter-class>
@@ -75,6 +77,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<dispatcher>ERROR</dispatcher>
 	</filter-mapping>
 	<!-- Set the context for taglib functions -->
+	<!-- TODO: Move to pages-jsp and pages-jspx? -->
 	<filter>
 		<filter-name>FunctionContextFilter</filter-name>
 		<filter-class>com.aoindustries.servlet.filter.FunctionContext</filter-class>

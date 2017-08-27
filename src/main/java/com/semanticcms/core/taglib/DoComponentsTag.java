@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2016  AO Industries, Inc.
+ * Copyright (C) 2016, 2017  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -23,9 +23,9 @@
 package com.semanticcms.core.taglib;
 
 import com.semanticcms.core.model.Page;
-import com.semanticcms.core.servlet.ComponentPosition;
-import com.semanticcms.core.servlet.ComponentUtils;
-import com.semanticcms.core.servlet.View;
+import com.semanticcms.core.renderer.html.ComponentPosition;
+import com.semanticcms.core.renderer.html.ComponentUtils;
+import com.semanticcms.core.renderer.html.View;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
