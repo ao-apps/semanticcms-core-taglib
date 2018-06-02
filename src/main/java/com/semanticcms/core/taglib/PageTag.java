@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2013, 2014, 2015, 2016, 2017  AO Industries, Inc.
+ * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -38,6 +38,7 @@ import com.semanticcms.core.controller.PageUtils;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.model.PageRef;
 import com.semanticcms.core.model.ResourceRef;
+import com.semanticcms.core.pages.local.CaptureContext;
 import com.semanticcms.core.servlet.impl.PageImpl;
 import java.io.IOException;
 import java.io.InputStream;
@@ -241,6 +242,11 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 			PageContext pageContext = (PageContext)getJspContext();
 			ServletContext servletContext = pageContext.getServletContext();
 			final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
+
+			CaptureContext capture = CaptureContext.getCaptureContext(request);
+			if(capture == null) {
+				throw new ServletException("CaptureContext not set, direct access to page instead of through Controller?");
+			}
 
 			// Resolve pageRef, if book or path set
 			final ResourceRef jspSrc;
@@ -462,6 +468,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 				servletContext,
 				request,
 				(HttpServletResponse)pageContext.getResponse(),
+				capture,
 				pageRef,
 				PageUtils.toDateTime(dateCreated),
 				PageUtils.toDateTime(datePublished),
