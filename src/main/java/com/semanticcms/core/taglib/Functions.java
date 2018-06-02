@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2013, 2014, 2015, 2016, 2017  AO Industries, Inc.
+ * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -49,6 +49,7 @@ import com.semanticcms.core.model.Page;
 import com.semanticcms.core.model.PageRef;
 import com.semanticcms.core.model.ResourceRef;
 import com.semanticcms.core.pages.CaptureLevel;
+import com.semanticcms.core.pages.local.CaptureContext;
 import com.semanticcms.core.pages.local.CurrentCaptureLevel;
 import com.semanticcms.core.renderer.html.Headers;
 import com.semanticcms.core.renderer.html.HtmlRenderer;
@@ -147,7 +148,7 @@ final public class Functions {
 	 */
 	public static String getCaptureLevel() {
 		final HttpServletRequest request = getRequest();
-		final CapturePage capture = CapturePage.getCaptureContext(request);
+		final CaptureContext capture = CaptureContext.getCaptureContext(request);
 		if(capture == null) return null;
 		return CurrentCaptureLevel.getCaptureLevel(request).name().toLowerCase(Locale.ROOT);
 	}
