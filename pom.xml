@@ -25,15 +25,11 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.semanticcms</groupId>
-		<artifactId>semanticcms-parent</artifactId>
-		<version>1.0.2-SNAPSHOT</version>
+		<groupId>com.semanticcms</groupId><artifactId>semanticcms-parent</artifactId><version>1.0.2-SNAPSHOT</version>
 		<relativePath>../../parent/pom.xml</relativePath>
 	</parent>
 
-	<groupId>com.semanticcms</groupId>
-	<artifactId>semanticcms-core-taglib</artifactId>
-	<version>1.9.1-SNAPSHOT</version>
+	<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib</artifactId><version>1.9.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<properties>
@@ -65,8 +61,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				<pluginManagement>
 					<plugins>
 						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-javadoc-plugin</artifactId>
+							<groupId>org.apache.maven.plugins</groupId><artifactId>maven-javadoc-plugin</artifactId>
 							<configuration>
 								<links>
 									<link>${javac.link.javaApi}</link>
@@ -91,92 +86,61 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 
 	<dependencies>
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.0.1</version>
+			<groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId><version>3.0.1</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>javax.el</groupId>
-			<artifactId>javax.el-api</artifactId>
-			<version>2.2.5</version>
+			<groupId>javax.el</groupId><artifactId>javax.el-api</artifactId><version>2.2.5</version>
 			<scope>provided</scope>
 		</dependency>
 		<!-- JSTL: See http://stackoverflow.com/questions/6094329/tomcat-7-and-jstl -->
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
+			<groupId>javax.servlet</groupId><artifactId>jstl</artifactId><version>1.2</version>
 		</dependency>
 		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>javax.servlet.jsp-api</artifactId>
-			<version>2.2.1</version>
+			<groupId>javax.servlet.jsp</groupId><artifactId>javax.servlet.jsp-api</artifactId><version>2.2.1</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.glassfish.web</groupId>
-			<artifactId>jstl-impl</artifactId>
-			<version>1.2</version>
+			<groupId>org.glassfish.web</groupId><artifactId>jstl-impl</artifactId><version>1.2</version>
 			<exclusions>
 				<exclusion>
-					<groupId>javax.servlet</groupId>
-					<artifactId>servlet-api</artifactId>
+					<groupId>javax.servlet</groupId><artifactId>servlet-api</artifactId>
 				</exclusion>
 				<exclusion>
-					<groupId>javax.servlet.jsp</groupId>
-					<artifactId>jsp-api</artifactId>
+					<groupId>javax.servlet.jsp</groupId><artifactId>jsp-api</artifactId>
 				</exclusion>
 				<exclusion>
-					<groupId>javax.servlet.jsp.jstl</groupId>
-					<artifactId>jstl-api</artifactId>
+					<groupId>javax.servlet.jsp.jstl</groupId><artifactId>jstl-api</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>2.9.9</version>
+			<groupId>joda-time</groupId><artifactId>joda-time</artifactId><version>2.9.9</version>
 		</dependency>
 		<dependency>
-			<groupId>com.aoindustries</groupId>
-			<artifactId>ao-encoding</artifactId>
-			<version>1.6.0</version>
+			<groupId>com.aoindustries</groupId><artifactId>ao-encoding</artifactId><version>1.6.0</version>
 		</dependency>
 		<dependency>
-			<groupId>com.aoindustries</groupId>
-			<artifactId>ao-io-buffer</artifactId>
-			<version>2.0.3</version>
+			<groupId>com.aoindustries</groupId><artifactId>ao-io-buffer</artifactId><version>2.0.3</version>
 		</dependency>
 		<dependency>
-			<groupId>com.aoindustries</groupId>
-			<artifactId>ao-lang</artifactId>
-			<version>1.0.0</version>
+			<groupId>com.aoindustries</groupId><artifactId>ao-lang</artifactId><version>1.0.0</version>
 		</dependency>
 		<dependency>
-			<groupId>com.aoindustries</groupId>
-			<artifactId>ao-servlet-filter</artifactId>
-			<version>1.5.0</version>
+			<groupId>com.aoindustries</groupId><artifactId>ao-servlet-filter</artifactId><version>1.5.0</version>
 		</dependency>
 		<dependency>
-			<groupId>com.aoindustries</groupId>
-			<artifactId>ao-taglib</artifactId>
-			<version>2.3.1</version>
+			<groupId>com.aoindustries</groupId><artifactId>ao-taglib</artifactId><version>2.3.1</version>
 		</dependency>
 		<dependency>
-			<groupId>com.aoindustries</groupId>
-			<artifactId>aocode-public</artifactId>
-			<version>1.9.0</version>
+			<groupId>com.aoindustries</groupId><artifactId>aocode-public</artifactId><version>1.9.0</version>
 		</dependency>
 		<dependency>
-			<groupId>com.semanticcms</groupId>
-			<artifactId>semanticcms-core-model</artifactId>
-			<version>1.8.2</version>
+			<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-model</artifactId><version>1.8.2</version>
 		</dependency>
 		<dependency>
-			<groupId>com.semanticcms</groupId>
-			<artifactId>semanticcms-core-servlet</artifactId>
-			<version>1.12.0-SNAPSHOT</version>
+			<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-servlet</artifactId><version>1.12.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>
