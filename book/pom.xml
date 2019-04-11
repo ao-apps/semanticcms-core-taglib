@@ -34,8 +34,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 
 	<properties>
 		<!-- These values are copied from the project being documented -->
-		<documented.groupId>com.semanticcms</documented.groupId>
-		<documented.artifactId>semanticcms-core-taglib</documented.artifactId>
+		<documented.groupId>com.semanticcms</documented.groupId><documented.artifactId>semanticcms-core-taglib</documented.artifactId>
 		<documented.javaVersion>1.6</documented.javaVersion>
 		<documented.javac.link.javaApi>${javac.link.javaApi.jdk16}</documented.javac.link.javaApi>
 		<documented.name>SemanticCMS 1 Core Taglib</documented.name>
