@@ -23,13 +23,10 @@
 package com.semanticcms.core.taglib;
 
 import com.aoindustries.io.NullWriter;
-import com.aoindustries.io.TempFileList;
-import com.aoindustries.io.buffer.AutoTempFileWriter;
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
 import com.aoindustries.net.HttpParametersMap;
 import com.aoindustries.net.MutableHttpParameters;
-import com.aoindustries.servlet.filter.TempFileContext;
 import com.aoindustries.servlet.jsp.LocalizedJspTagException;
 import static com.aoindustries.taglib.ApplicationResources.accessor;
 import com.aoindustries.taglib.AutoEncodingBufferedTag;
@@ -142,18 +139,7 @@ public class LinkTag
 				if(captureLevel == CaptureLevel.BODY) {
 					JspFragment body = getJspBody();
 					if(body != null) {
-						// Enable temp files if temp file context active
-						BufferWriter captureOut = TempFileContext.wrapTempFileList(
-							AutoEncodingBufferedTag.newBufferWriter(),
-							request,
-							// Java 1.8: AutoTempFileWriter::new
-							new TempFileContext.Wrapper<BufferWriter>() {
-								@Override
-								public BufferWriter call(BufferWriter original, TempFileList tempFileList) {
-									return new AutoTempFileWriter(original, tempFileList);
-								}
-							}
-						);
+						BufferWriter captureOut = AutoEncodingBufferedTag.newBufferWriter(request);
 						try {
 							body.invoke(captureOut);
 						} finally {

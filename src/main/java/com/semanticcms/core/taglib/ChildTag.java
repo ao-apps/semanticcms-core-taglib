@@ -52,7 +52,7 @@ public class ChildTag extends SimpleTagSupport {
 		final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 
 		final Node currentNode = CurrentNode.getCurrentNode(request);
-		if(!(currentNode instanceof Page)) throw new JspTagException("<p:child> tag must be nested directly inside a <p:page> tag.");
+		if(!(currentNode instanceof Page)) throw new JspTagException("<core:child> tag must be nested directly inside a <core:page> tag.");
 		final Page currentPage = (Page)currentNode;
 
 		try {

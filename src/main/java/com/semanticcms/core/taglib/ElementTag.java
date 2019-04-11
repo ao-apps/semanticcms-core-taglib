@@ -23,10 +23,7 @@
 package com.semanticcms.core.taglib;
 
 import com.aoindustries.io.NullWriter;
-import com.aoindustries.io.TempFileList;
-import com.aoindustries.io.buffer.AutoTempFileWriter;
 import com.aoindustries.io.buffer.BufferWriter;
-import com.aoindustries.servlet.filter.TempFileContext;
 import com.aoindustries.servlet.jsp.LocalizedJspTagException;
 import static com.aoindustries.taglib.AttributeUtils.resolveValue;
 import com.aoindustries.taglib.AutoEncodingBufferedTag;
@@ -196,18 +193,7 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 			if(captureLevel == CaptureLevel.BODY) {
 				final PageContext pageContext = (PageContext)getJspContext();
 				// Invoke tag body, capturing output
-				// Enable temp files if temp file context active
-				BufferWriter capturedOut = TempFileContext.wrapTempFileList(
-					AutoEncodingBufferedTag.newBufferWriter(),
-					pageContext.getRequest(),
-					// Java 1.8: AutoTempFileWriter::new
-					new TempFileContext.Wrapper<BufferWriter>() {
-						@Override
-						public BufferWriter call(BufferWriter original, TempFileList tempFileList) {
-							return new AutoTempFileWriter(original, tempFileList);
-						}
-					}
-				);
+				BufferWriter capturedOut = AutoEncodingBufferedTag.newBufferWriter(pageContext.getRequest());
 				try {
 					body.invoke(capturedOut);
 				} finally {
