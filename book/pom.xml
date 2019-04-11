@@ -30,7 +30,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 	</parent>
 
 	<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib-book</artifactId><version>1.9.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>bundle</packaging>
 
 	<properties>
 		<!-- These values are copied from the project being documented -->
