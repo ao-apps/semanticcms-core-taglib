@@ -55,7 +55,7 @@ public class CopyrightTag extends SimpleTagSupport {
 		final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 
 		final Node currentNode = CurrentNode.getCurrentNode(request);
-		if(!(currentNode instanceof Page)) throw new JspTagException("<p:copyright> tag must be nested directly inside a <p:page> tag.");
+		if(!(currentNode instanceof Page)) throw new JspTagException("<core:copyright> tag must be nested directly inside a <core:page> tag.");
 		final Page currentPage = (Page)currentNode;
 
 		currentPage.setCopyright(new Copyright(rightsHolder, rights, dateCopyrighted));

@@ -60,7 +60,7 @@ public class AuthorTag extends SimpleTagSupport {
 		final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 
 		final Node currentNode = CurrentNode.getCurrentNode(request);
-		if(!(currentNode instanceof Page)) throw new JspTagException("<p:author> tag must be nested directly inside a <p:page> tag.");
+		if(!(currentNode instanceof Page)) throw new JspTagException("<core:author> tag must be nested directly inside a <core:page> tag.");
 		final Page currentPage = (Page)currentNode;
 
 		String bookName = book;

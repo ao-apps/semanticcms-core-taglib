@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2013, 2014, 2015, 2016, 2017  AO Industries, Inc.
+ * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -23,13 +23,10 @@
 package com.semanticcms.core.taglib;
 
 import com.aoindustries.io.NullWriter;
-import com.aoindustries.io.TempFileList;
-import com.aoindustries.io.buffer.AutoTempFileWriter;
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
 import com.aoindustries.io.buffer.EmptyResult;
 import com.aoindustries.servlet.ServletContextCache;
-import com.aoindustries.servlet.filter.TempFileContext;
 import com.aoindustries.servlet.jsp.LocalizedJspTagException;
 import com.aoindustries.taglib.AutoEncodingBufferedTag;
 import static com.aoindustries.util.StringUtility.nullIfEmpty;
@@ -448,18 +445,10 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 								body.invoke(NullWriter.getInstance());
 								return EmptyResult.getInstance();
 							} else {
-								// Enable temp files if temp file context active
-								BufferWriter capturedOut = TempFileContext.wrapTempFileList(
-									AutoEncodingBufferedTag.newBufferWriter(),
-									request,
-									// Java 1.8: AutoTempFileWriter::new
-									new TempFileContext.Wrapper<BufferWriter>() {
-										@Override
-										public BufferWriter call(BufferWriter original, TempFileList tempFileList) {
-											return new AutoTempFileWriter(original, tempFileList);
-										}
-									}
-								);
+								// TODO: Are request-scoped temp files still correct for longer-term caches like the export cache?
+								// TODO:     Caches only store PAGE and META captures, right?  Impact?
+								// TODO:     Would we have a cache-scoped TempFileContext?
+								BufferWriter capturedOut = AutoEncodingBufferedTag.newBufferWriter(request);
 								try {
 									body.invoke(capturedOut);
 								} finally {

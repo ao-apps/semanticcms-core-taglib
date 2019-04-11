@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2015, 2016, 2017  AO Industries, Inc.
+ * Copyright (C) 2015, 2016, 2017, 2018  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -30,30 +30,26 @@ import java.beans.SimpleBeanInfo;
 
 public class LinkTagBeanInfo extends SimpleBeanInfo {
 
-	private static class PropertiesLock {}
-	private static final PropertiesLock propertiesLock = new PropertiesLock();
-	private static PropertyDescriptor[] properties;
+	private static volatile PropertyDescriptor[] properties;
 
 	@Override
 	public PropertyDescriptor[] getPropertyDescriptors () {
 		try {
-			synchronized(propertiesLock) {
-				PropertyDescriptor[] props = properties;
-				if(props==null) {
-					props = new PropertyDescriptor[] {
-						new PropertyDescriptor("class", LinkTag.class, "getClazz", "setClazz"),
-						new PropertyDescriptor("book", LinkTag.class, null, "setBook"),
-						new PropertyDescriptor("page", LinkTag.class, null, "setPage"),
-						new PropertyDescriptor("element", LinkTag.class, null, "setElement"),
-						new PropertyDescriptor("allowGeneratedElement", LinkTag.class, null, "setAllowGeneratedElement"),
-						new PropertyDescriptor("anchor", LinkTag.class, null, "setAnchor"),
-						new PropertyDescriptor("view", LinkTag.class, null, "setView"),
-						new PropertyDescriptor("small", LinkTag.class, null, "setSmall")
-					};
-					properties = props;
-				}
-				return props;
+			PropertyDescriptor[] props = properties;
+			if(props == null) {
+				props = new PropertyDescriptor[] {
+					new PropertyDescriptor("class", LinkTag.class, "getClazz", "setClazz"),
+					new PropertyDescriptor("book", LinkTag.class, null, "setBook"),
+					new PropertyDescriptor("page", LinkTag.class, null, "setPage"),
+					new PropertyDescriptor("element", LinkTag.class, null, "setElement"),
+					new PropertyDescriptor("allowGeneratedElement", LinkTag.class, null, "setAllowGeneratedElement"),
+					new PropertyDescriptor("anchor", LinkTag.class, null, "setAnchor"),
+					new PropertyDescriptor("view", LinkTag.class, null, "setView"),
+					new PropertyDescriptor("small", LinkTag.class, null, "setSmall")
+				};
+				properties = props;
 			}
+			return props; // Not copying array for performance
 		} catch(IntrospectionException err) {
 			throw new AssertionError(err);
 		}

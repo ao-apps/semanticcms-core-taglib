@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
-Copyright (C) 2013, 2014, 2015, 2016, 2017  AO Industries, Inc.
+Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018  AO Industries, Inc.
 	support@aoindustries.com
 	7262 Bull Pen Cir
 	Mobile, AL 36695
@@ -600,13 +600,13 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<p>
 				When a parameter value is <code>null</code> it is not added.
 				If the value is an
-				<a href="@{javac.link.javaApi}java/lang/Iterable.html">Iterable</a>,
-				<a href="@{javac.link.javaApi}java/util/Iterator.html">Iterator</a>,
-				<a href="@{javac.link.javaApi}java/util/Enumeration.html">Enumeration</a>,
+				<a rel="nofollow" href="@{javac.link.javaApi}java/lang/Iterable.html">Iterable</a>,
+				<a rel="nofollow" href="@{javac.link.javaApi}java/util/Iterator.html">Iterator</a>,
+				<a rel="nofollow" href="@{javac.link.javaApi}java/util/Enumeration.html">Enumeration</a>,
 				or array, then each non-null element is coerced to
-				<a href="@{javac.link.javaApi}java/lang/String.html">String</a> as a separate
+				<a rel="nofollow" href="@{javac.link.javaApi}java/lang/String.html">String</a> as a separate
 				parameter in iteration order.  Otherwise, the value itself is
-				coerced to <a href="@{javac.link.javaApi}java/lang/String.html">String</a>
+				coerced to <a rel="nofollow" href="@{javac.link.javaApi}java/lang/String.html">String</a>
 				for the parameter value.
 			</p>
 			<p>
@@ -649,6 +649,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			</deferred-value>
 		</attribute>
 		<attribute>
+			<!-- TODO: Support missing page when book provided, using the book's root page. -->
 			<description><![CDATA[
 				<p>
 					The page-relative path to the page.
@@ -819,7 +820,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				</p>
 				<p>
 					When provided, the values may not contain a
-					<a href="@{javac.link.javaApi}java/util/Map.html">Map</a>
+					<a rel="nofollow" href="@{javac.link.javaApi}java/util/Map.html">Map</a>
 					or <a href="https://aoindustries.com/aocode-public/apidocs/com/aoindustries/net/HttpParameters.html">HttpParameters</a>.
 					When provided, the exclude attribute may not be provided.
 				</p>
@@ -833,7 +834,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<description><![CDATA[
 				<p>
 					Optionally excludes all elements of a
-					<a href="@{javac.link.javaApi}java/util/Map.html">Map</a>
+					<a rel="nofollow" href="@{javac.link.javaApi}java/util/Map.html">Map</a>
 					or <a href="https://aoindustries.com/aocode-public/apidocs/com/aoindustries/net/HttpParameters.html">HttpParameters</a>
 					that match any of the comma-separated patterns.
 					May not be used in conjunction with the name attribute.
@@ -877,25 +878,25 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				</p>
 				<p>
 					When name is provided, supports
-					<a href="@{javac.link.javaApi}java/lang/Iterable.html">Iterable</a>,
-					<a href="@{javac.link.javaApi}java/util/Iterator.html">Iterator</a>,
-					<a href="@{javac.link.javaApi}java/util/Enumeration.html">Enumeration</a>,
+					<a rel="nofollow" href="@{javac.link.javaApi}java/lang/Iterable.html">Iterable</a>,
+					<a rel="nofollow" href="@{javac.link.javaApi}java/util/Iterator.html">Iterator</a>,
+					<a rel="nofollow" href="@{javac.link.javaApi}java/util/Enumeration.html">Enumeration</a>,
 					or array values.
 				</p>
 				<p>
 					When name is not provided, requires
-					<a href="@{javac.link.javaApi}java/util/Map.html">Map</a>
+					<a rel="nofollow" href="@{javac.link.javaApi}java/util/Map.html">Map</a>
 					or <a href="https://aoindustries.com/aocode-public/apidocs/com/aoindustries/net/HttpParameters.html">HttpParameters</a>,
-					where the parameter name is the map key coerced to <a href="@{javac.link.javaApi}java/lang/String.html">String</a>
+					where the parameter name is the map key coerced to <a rel="nofollow" href="@{javac.link.javaApi}java/lang/String.html">String</a>
 					and the value (or set of values) is the map value.  Each of the entry values may be
-					<a href="@{javac.link.javaApi}java/lang/Iterable.html">Iterable</a>,
-					<a href="@{javac.link.javaApi}java/util/Iterator.html">Iterator</a>,
-					<a href="@{javac.link.javaApi}java/util/Enumeration.html">Enumeration</a>,
+					<a rel="nofollow" href="@{javac.link.javaApi}java/lang/Iterable.html">Iterable</a>,
+					<a rel="nofollow" href="@{javac.link.javaApi}java/util/Iterator.html">Iterator</a>,
+					<a rel="nofollow" href="@{javac.link.javaApi}java/util/Enumeration.html">Enumeration</a>,
 					array, or single value.
 				</p>
 				<p>
 					When obtaining values from a
-					<a href="@{javac.link.javaApi}java/util/Map.html">Map</a>
+					<a rel="nofollow" href="@{javac.link.javaApi}java/util/Map.html">Map</a>
 					or <a href="https://aoindustries.com/aocode-public/apidocs/com/aoindustries/net/HttpParameters.html">HttpParameters</a>,
 					parameters may be excluded with the "exclude" attribute.
 				</p>
@@ -926,12 +927,10 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<tag-class>com.semanticcms.core.taglib.PropertyTag</tag-class>
 		<body-content>scriptless</body-content>
 		<attribute>
+			<!-- TODO: Allow object property names?  Too confusing? -->
 			<description><![CDATA[
 				<p>
 					The name of property.
-				</p>
-				<p>
-					TODO: Allow object property names?  Too confusing?
 				</p>
 			]]></description>
 			<name>name</name>
@@ -1255,7 +1254,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				Parameter "book": The name of the book containing the page.
 			</p>
 			<p>
-				Parameter "page": The book-relative path to the JSP file to include for the page to capture,
+				Parameter "page": The book-relative path to the page to capture,
 				must begin with a slash <code>/</code>.
 			</p>
 			<p>
@@ -1283,7 +1282,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				Captures a <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a>.
 			</p>
 			<p>
-				Parameter "page": The page-relative path to the JSP file to include for the page to capture.
+				Parameter "page": The page-relative path to the page to capture;
+				book-relative when begins with a slash <code>/</code>.
 			</p>
 			<p>
 				Parameter "level": Controls the level of detail to capture.  May be one of:
@@ -1428,9 +1428,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<function>
 		<description><![CDATA[
 			<p>
-				<a href="@{javac.link.javaApi}java/net/URLEncoder.html#encode%28java.lang.String,%20java.lang.String%29">Encodes a value</a>
+				<a rel="nofollow" href="@{javac.link.javaApi}java/net/URLEncoder.html#encode%28java.lang.String,%20java.lang.String%29">Encodes a value</a>
 				for use in a URL parameter in the current
-				<a href="@{javac.link.javaeeApi.6}javax/servlet/ServletResponse.html#getCharacterEncoding%28%29">response encoding</a>.
+				<a rel="nofollow" href="@{javac.link.javaeeApi.6}javax/servlet/ServletResponse.html#getCharacterEncoding%28%29">response encoding</a>.
 			</p>
 		]]></description>
 		<name>encodeUrlParam</name>
@@ -1473,7 +1473,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<function>
 		<description><![CDATA[
 			<p>
-				Calls <a href="@{javac.link.javaApi}java/lang/Math.html#ceil%28double%29">java.lang.Math.ceil(double)</a>,
+				Calls <a rel="nofollow" href="@{javac.link.javaApi}java/lang/Math.html#ceil%28double%29">java.lang.Math.ceil(double)</a>,
 				but returns <code>null</code> when argument is <code>null</code>.
 			</p>
 		]]></description>
@@ -1485,7 +1485,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<function>
 		<description><![CDATA[
 			<p>
-				Calls <a href="@{javac.link.javaApi}java/lang/Math.html#floor%28double%29">java.lang.Math.floor(double)</a>,
+				Calls <a rel="nofollow" href="@{javac.link.javaApi}java/lang/Math.html#floor%28double%29">java.lang.Math.floor(double)</a>,
 				but returns <code>null</code> when argument is <code>null</code>.
 			</p>
 		]]></description>
@@ -1503,7 +1503,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<p>
 				Maintains the original parameter order.
 				Only uses the first of each value per parameter name, multiple values not supported.
-				Uses the <a href="@{javac.link.javaeeApi.6}javax/servlet/ServletRequest.html#getCharacterEncoding%28%29">request encoding</a>
+				Uses the <a rel="nofollow" href="@{javac.link.javaeeApi.6}javax/servlet/ServletRequest.html#getCharacterEncoding%28%29">request encoding</a>
 				or <code>ISO-8859-1</code> if none set.
 			</p>
 		]]></description>
