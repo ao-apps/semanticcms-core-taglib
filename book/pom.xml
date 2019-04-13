@@ -110,6 +110,26 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 							<outputDirectory>${project.build.outputDirectory}/META-INF/resources/core/taglib</outputDirectory>
 						</configuration>
 					</execution>
+					<!-- Create a second copy in the resource directory used by maven-bundle-plugin -->
+					<execution>
+						<id>copy-semanticcms-core.tld-bundle</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<resources>
+								<resource>
+									<directory>${project.build.directory}/dependency/META-INF</directory>
+									<includes>
+										<include>semanticcms-core.tld</include>
+									</includes>
+								</resource>
+							</resources>
+							<!-- Put into META-INF/resources to be accessible as website content when jar included in WEB-INF/lib -->
+							<outputDirectory>${project.build.directory}/resources-filtered/META-INF/resources/core/taglib</outputDirectory>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
 		</plugins>
