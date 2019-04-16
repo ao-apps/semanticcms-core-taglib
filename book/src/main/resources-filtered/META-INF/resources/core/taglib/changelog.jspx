@@ -56,7 +56,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				<ul>
 					<li>
 						Fixed bug in <code><core:link page="semanticcms-core.tld/tag-page" /></code>
-						that threw <code><ao:a rel="nofollow" href="@{javac.link.javaeeApi.6}/javax/servlet/ServletException.html">ServletException</ao:a></code>
+						that threw <code><ao:a rel="nofollow" href="@{javac.link.javaeeApi.6}javax/servlet/ServletException.html">ServletException</ao:a></code>
 						when page not in a book, even when <code>book</code> and <code>path</code> attributes are provided.
 					</li>
 					<li>Added <core:link book="/core/model" page="/" /> domain support:
