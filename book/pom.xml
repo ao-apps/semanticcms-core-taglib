@@ -146,12 +146,12 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 							<links>
 								<link>${javac.link.javaApi}</link>
 								<link>${javac.link.javaeeApi.6}</link>
-								<link>https://aoindustries.com/ao-lang/apidocs</link>
-								<link>https://aoindustries.com/ao-taglib/apidocs</link>
-								<link>https://semanticcms.com/changelog/taglib/apidocs</link>
-								<link>https://semanticcms.com/core/taglib/apidocs</link>
-								<link>https://semanticcms.com/section/taglib/apidocs</link>
-								<link>https://semanticcms.com/tag-reference/apidocs</link>
+								<link>https://aoindustries.com/ao-lang/apidocs/</link>
+								<link>https://aoindustries.com/ao-taglib/apidocs/</link>
+								<link>https://semanticcms.com/changelog/taglib/apidocs/</link>
+								<link>https://semanticcms.com/core/taglib/apidocs/</link>
+								<link>https://semanticcms.com/section/taglib/apidocs/</link>
+								<link>https://semanticcms.com/tag-reference/apidocs/</link>
 							</links>
 						</configuration>
 					</plugin>
