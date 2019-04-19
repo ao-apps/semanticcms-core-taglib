@@ -117,7 +117,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			<groupId>joda-time</groupId><artifactId>joda-time</artifactId><version>2.10.1</version>
 		</dependency>
 		<dependency>
-			<groupId>com.aoindustries</groupId><artifactId>ao-encoding</artifactId><version>1.7.0-SNAPSHOT</version>
+			<groupId>com.aoindustries</groupId><artifactId>ao-encoding</artifactId><version>1.7.1-validation-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.aoindustries</groupId><artifactId>ao-io-buffer</artifactId><version>3.0.0-SNAPSHOT</version>
