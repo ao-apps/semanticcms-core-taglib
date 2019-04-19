@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2013, 2014, 2015, 2016  AO Industries, Inc.
+ * Copyright (C) 2013, 2014, 2015, 2016, 2019  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -192,7 +192,7 @@ final public class Functions {
 		if(queryString==null) return null;
 		String requestEncoding = ServletUtil.getRequestEncoding(getRequest());
 		List<String> pairs = StringUtility.splitString(queryString, '&');
-		Map<String,String> params = new LinkedHashMap<String,String>(pairs.size() * 4/3 + 1);
+		Map<String,String> params = new LinkedHashMap<>(pairs.size() * 4/3 + 1);
 		for(String pair : pairs) {
 			int equalPos = pair.indexOf('=');
 			String name, value;
@@ -360,7 +360,7 @@ final public class Functions {
 		// Shortcut for when no view scripts
 		if(viewScripts.isEmpty()) return globalScripts;
 
-		Map<String,String> merged = new LinkedHashMap<String,String>((globalScripts.size() + viewScripts.size())*4/3+1);
+		Map<String,String> merged = new LinkedHashMap<>((globalScripts.size() + viewScripts.size())*4/3+1);
 
 		// Add all global scripts
 		merged.putAll(globalScripts);
