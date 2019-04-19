@@ -37,7 +37,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2019-04-19T05:59:30-0500"
+		dateModified="2019-04-19T06:05:20-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-core-taglib:pom.version}" />
@@ -52,17 +52,26 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				groupId="@{documented.groupId}"
 				artifactId="@{documented.artifactId}"
 				scmUrl="@{documented.scm.url}"
-			>
-				<ul>
-					<li>Minimum Java version changed from 1.6 to 1.7.</li>
-					<li>
-						Fixed bug in <code><core:link page="semanticcms-core.tld/tag-page" /></code>
-						that threw <code><ao:a rel="nofollow" href="@{javac.link.javaeeApi.6}javax/servlet/ServletException.html">ServletException</ao:a></code>
-						when page not in a book, even when <code>book</code> and <code>path</code> attributes are provided.
-					</li>
-				</ul>
-			</changelog:release>
+			/>
 		</c:if>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="1.10.0"
+			datePublished="2019-04-19T06:05:20-0500"
+			groupId="@{documented.groupId}"
+			artifactId="@{documented.artifactId}"
+			scmUrl="@{documented.scm.url}"
+		>
+			<ul>
+				<li>Minimum Java version changed from 1.6 to 1.7.</li>
+				<li>
+					Fixed bug in <code><core:link page="semanticcms-core.tld/tag-page" /></code>
+					that threw <code><ao:a rel="nofollow" href="@{javac.link.javaeeApi.6}javax/servlet/ServletException.html">ServletException</ao:a></code>
+					when page not in a book, even when <code>book</code> and <code>path</code> attributes are provided.
+				</li>
+			</ul>
+		</changelog:release>
 
 		<changelog:release
 			projectName="@{documented.name}"
