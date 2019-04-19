@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018  AO Industries, Inc.
+ * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -189,7 +189,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 			if(value != null) {
 				String propertyName = localName.substring(PROPERTY_ATTRIBUTE_PREFIX.length());
 				if(properties == null) {
-					properties = new LinkedHashMap<String,Object>();
+					properties = new LinkedHashMap<>();
 				} else if(properties.containsKey(propertyName)) {
 					throw new LocalizedJspTagException(
 						ApplicationResources.accessor,
@@ -279,7 +279,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 							@SuppressWarnings("unchecked")
 							ConcurrentMap<URL,PropertiesCacheEntry> map = (ConcurrentMap)servletContext.getAttribute(PROPERTIES_CACHE_APPLICATION_KEY);
 							if(map == null) {
-								map = new ConcurrentHashMap<URL,PropertiesCacheEntry>();
+								map = new ConcurrentHashMap<>();
 								servletContext.setAttribute(PROPERTIES_CACHE_APPLICATION_KEY, map);
 								if(DEBUG) System.out.println("PageTag: doTag: Created propertiesCache");
 							}
@@ -348,11 +348,9 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 								Properties props = new Properties();
 								{
 									if(DEBUG) System.out.println("PageTag: doTag: Loading properties from URL: " + url);
-									InputStream in = urlConn.getInputStream();
-									try {
+									try (InputStream in = urlConn.getInputStream()) {
 										props.load(in);
 									} finally {
-										in.close();
 										urlClosed = true;
 									}
 								}
@@ -370,7 +368,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 									);
 								} else {
 									if(DEBUG) System.out.println("PageTag: doTag: Got " + size + " properties, using unmodifiable wrapped linked hash map");
-									Map<String,String> newMap = new LinkedHashMap<String,String>(size*4/3+1); // linked map for maximum iteration performance
+									Map<String,String> newMap = new LinkedHashMap<>(size*4/3+1); // linked map for maximum iteration performance
 									for(String propertyName : propertyNames) {
 										newMap.put(
 											propertyName,
@@ -396,7 +394,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 					int numPropsFromFile = propsFromFile.size();
 					if(numPropsFromFile > 0) {
 						if(properties == null) {
-							properties = new LinkedHashMap<String,Object>(numPropsFromFile*4/3+1);
+							properties = new LinkedHashMap<>(numPropsFromFile*4/3+1);
 						}
 						for(Map.Entry<String,String> entry : propsFromFile.entrySet()) {
 							String propertyName = entry.getKey();
