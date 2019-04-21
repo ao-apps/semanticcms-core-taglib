@@ -93,7 +93,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p class="semanticcms-tag-reference-summary">
-					The <a href="https://schema.org/dateCreated">dateCreated</a> in <a href="http://www.iso.org/iso/home/standards/iso8601.htm">ISO 8601</a> format.
+					The <a href="https://schema.org/dateCreated">dateCreated</a> in <a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a> format.
 				</p>
 				<p>
 					At least <code>YYYY-MM-DD</code> is required,
@@ -115,7 +115,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p class="semanticcms-tag-reference-summary">
-					The <a href="https://schema.org/datePublished">datePublished</a> in <a href="http://www.iso.org/iso/home/standards/iso8601.htm">ISO 8601</a> format.
+					The <a href="https://schema.org/datePublished">datePublished</a> in <a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a> format.
 				</p>
 				<p>
 					At least <code>YYYY-MM-DD</code> is required,
@@ -137,7 +137,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p class="semanticcms-tag-reference-summary">
-					The <a href="https://schema.org/dateModified">dateModified</a> in <a href="http://www.iso.org/iso/home/standards/iso8601.htm">ISO 8601</a> format.
+					The <a href="https://schema.org/dateModified">dateModified</a> in <a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a> format.
 				</p>
 				<p>
 					At least <code>YYYY-MM-DD</code> is required,
@@ -155,7 +155,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p class="semanticcms-tag-reference-summary">
-					The dateReviewed in <a href="http://www.iso.org/iso/home/standards/iso8601.htm">ISO 8601</a> format.
+					The dateReviewed in <a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a> format.
 				</p>
 				<p>
 					At least <code>YYYY-MM-DD</code> is required,
