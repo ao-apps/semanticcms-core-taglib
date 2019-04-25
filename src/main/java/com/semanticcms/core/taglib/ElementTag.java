@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2013, 2014, 2015, 2016, 2017  AO Industries, Inc.
+ * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2019  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -133,11 +133,7 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 					if(elementKey == null) {
 						try {
 							writeTo(out, new PageElementContext(pageContext));
-						} catch(JspException e) {
-							throw e;
-						} catch(IOException e) {
-							throw e;
-						} catch(RuntimeException e) {
+						} catch(JspException | IOException | RuntimeException e) {
 							throw e;
 						} catch(Exception e) {
 							throw new JspTagException(e);
