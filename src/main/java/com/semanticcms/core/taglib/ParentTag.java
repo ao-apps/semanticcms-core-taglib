@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2016  AO Industries, Inc.
+ * Copyright (C) 2016, 2017  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -39,7 +39,7 @@ public class ParentTag extends SimpleTagSupport {
 
 	private String book;
 	public void setBook(String book) {
-		this.book = book;
+		this.book = StringUtility.nullIfEmpty(book);
 	}
 
 	private String page;
