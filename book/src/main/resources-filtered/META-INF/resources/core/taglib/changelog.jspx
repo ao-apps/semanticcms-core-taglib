@@ -37,7 +37,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2017-08-23T03:03:48-0500"
+		dateModified="2019-06-04T01:56:30-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-core-taglib:pom.version}" />
@@ -54,11 +54,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				scmUrl="@{documented.scm.url}"
 			>
 				<ul>
-					<li>
-						Fixed bug in <code><core:link page="semanticcms-core.tld/tag-page" /></code>
-						that threw <code><ao:a rel="nofollow" href="@{javac.link.javaeeApi.6}javax/servlet/ServletException.html">ServletException</ao:a></code>
-						when page not in a book, even when <code>book</code> and <code>path</code> attributes are provided.
-					</li>
 					<li>Added <core:link book="/core/model" page="/" /> domain support:
 						<ol>
 							<li>New optional attribute <code>domain</code> that defaults to the domain of the current page on:
@@ -125,9 +120,33 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 						No longer using <code>HideJspExtensionFilter</code> because <core:link book="/" page="/" /> 2
 						references pages by abstract path instead of implementation page.
 					</li>
+					<li>Using managed dependencies:
+						<ol>
+							<li>This project uses transitive managed dependencies.</li>
+							<li>This project's managed dependencies may also be imported by other projects.</li>
+						</ol>
+					</li>
 				</ul>
 			</changelog:release>
 		</c:if>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="1.10.0"
+			datePublished="2019-04-19T06:05:20-0500"
+			groupId="@{documented.groupId}"
+			artifactId="@{documented.artifactId}"
+			scmUrl="@{documented.scm.url}"
+		>
+			<ul>
+				<li>Minimum Java version changed from 1.6 to 1.7.</li>
+				<li>
+					Fixed bug in <code><core:link page="semanticcms-core.tld/tag-page" /></code>
+					that threw <code><ao:a rel="nofollow" href="@{javac.link.javaeeApi.6}javax/servlet/ServletException.html">ServletException</ao:a></code>
+					when page not in a book, even when <code>book</code> and <code>path</code> attributes are provided.
+				</li>
+			</ul>
+		</changelog:release>
 
 		<changelog:release
 			projectName="@{documented.name}"
