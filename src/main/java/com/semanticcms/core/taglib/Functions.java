@@ -378,6 +378,7 @@ final public class Functions {
 	// TODO: Move to a renderer-html-taglib package, along with other stuff here
 	// TODO: Maybe taglib directly in renderer-html.
 	public static Collection<Link> getViewLinks(View view, Page page) throws ServletException, IOException {
+		if(view == null) return Collections.emptyList();
 		return view.getLinks(
 			getServletContext(),
 			getRequest(),
@@ -402,10 +403,10 @@ final public class Functions {
 
 	public static Map<String,String> mergeGlobalAndViewScripts(View view) {
 		Map<String,String> globalScripts = HtmlRenderer.getInstance(getServletContext()).getScripts();
-		Map<String,String> viewScripts = view.getScripts();
+		Map<String,String> viewScripts = view == null ? null : view.getScripts();
 
 		// Shortcut for when no view scripts
-		if(viewScripts.isEmpty()) return globalScripts;
+		if(viewScripts == null || viewScripts.isEmpty()) return globalScripts;
 
 		Map<String,String> merged = new LinkedHashMap<>((globalScripts.size() + viewScripts.size())*4/3+1);
 
