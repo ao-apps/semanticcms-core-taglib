@@ -26,7 +26,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
 	version="2.1">
 	<!-- datePublished="2016-08-07T23:48:25-0500" -->
-	<!-- dateModified="2019-06-13T05:25:15-0500" -->
+	<!-- dateModified="2016-11-11T16:21:13-0600" -->
 	<description><![CDATA[
 		<p>@{description.html}</p>
 	]]></description>
@@ -1308,7 +1308,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2017-08-23 02:21:47 -0500" -->
+		<!-- dateModified="2017-08-23T02:21:47-0500" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Captures a <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a>.
