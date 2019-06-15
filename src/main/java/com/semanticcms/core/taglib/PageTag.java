@@ -370,6 +370,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 											if(urlConn == null) {
 												urlConn = url.openConnection();
 												urlLastModified = urlConn.getLastModified();
+												// TODO: Use ServletContextCache.getLastModified?
 												if(DEBUG) System.out.println("PageTag: doTag: Got last modified 1: " + urlLastModified);
 											}
 											// Use properties when last modified matches
@@ -391,6 +392,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 								// Load properties
 								if(urlConn == null) {
 									urlConn = url.openConnection();
+									// TODO: Use ServletContextCache.getLastModified?
 									urlLastModified = urlConn.getLastModified();
 									if(DEBUG) System.out.println("PageTag: doTag: Got last modified 2: " + urlLastModified);
 								}
