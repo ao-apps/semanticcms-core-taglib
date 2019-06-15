@@ -320,6 +320,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 											if(DEBUG) System.out.println("PageTag: doTag: Time expired for cache entry with known last modified: currentTime = " + currentTime + ", cacheEntry.cachedTime = " + cacheEntry.cachedTime);
 											if(urlConn == null) {
 												urlConn = url.openConnection();
+												// TODO: Use ServletContextCache.getLastModified?
 												urlLastModified = urlConn.getLastModified();
 												if(DEBUG) System.out.println("PageTag: doTag: Got last modified 1: " + urlLastModified);
 											}
@@ -342,6 +343,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 								// Load properties
 								if(urlConn == null) {
 									urlConn = url.openConnection();
+									// TODO: Use ServletContextCache.getLastModified?
 									urlLastModified = urlConn.getLastModified();
 									if(DEBUG) System.out.println("PageTag: doTag: Got last modified 2: " + urlLastModified);
 								}
