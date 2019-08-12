@@ -1663,6 +1663,20 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:encodeUrlParam(value)}</code>]]></example>
 	</function>
 	<function>
+		<!-- datePublished="2019-08-12T17:04:19-0500" -->
+		<description><![CDATA[
+			<p>
+				<a href="https://aoindustries.com/aocode-public/apidocs/com/aoindustries/net/UrlUtils.html#encodeURIComponent%28java.lang.String,%20java.lang.String%29">Encodes a value</a>
+				for use in a URL path component or anchor in the current
+				<a rel="nofollow" href="@{javac.link.javaeeApi.6}javax/servlet/ServletResponse.html#getCharacterEncoding%28%29">response encoding</a>.
+			</p>
+		]]></description>
+		<name>encodeURIComponent</name>
+		<function-class>com.semanticcms.core.taglib.Functions</function-class>
+		<function-signature>java.lang.String encodeURIComponent(java.lang.String)</function-signature>
+		<example><![CDATA[<code>${core:encodeURIComponent(value)}</code>]]></example>
+	</function>
+	<function>
 		<!-- datePublished="2016-08-07T23:48:25-0500" -->
 		<!-- dateModified="2016-11-11T16:21:13-0600" -->
 		<description><![CDATA[
