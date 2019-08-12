@@ -36,7 +36,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2019-06-19T10:23:10-0500"
+		dateModified="2019-08-12T17:04:19-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-core-taglib:pom.version}" />
@@ -51,7 +51,16 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				groupId="@{documented.groupId}"
 				artifactId="@{documented.artifactId}"
 				scmUrl="@{documented.scm.url}"
-			/>
+			>
+				<ul>
+					<li>
+						New EL function <code><core:link page="semanticcms-core.tld/function-encodeURIComponent" /></code>
+						that <ao:a href="https://aoindustries.com/aocode-public/apidocs/com/aoindustries/net/UrlUtils.html#encodeURIComponent%28java.lang.String,%20java.lang.String%29">Encodes a value</ao:a>
+						for use in a URL path component or anchor in the current
+						<ao:a rel="nofollow" href="@{javac.link.javaeeApi.6}javax/servlet/ServletResponse.html#getCharacterEncoding%28%29">response encoding</ao:a>.
+					</li>
+				</ul>
+			</changelog:release>
 		</c:if>
 
 		<changelog:release
