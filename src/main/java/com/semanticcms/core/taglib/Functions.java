@@ -22,6 +22,7 @@
  */
 package com.semanticcms.core.taglib;
 
+import com.aoindustries.net.UrlUtils;
 import static com.aoindustries.servlet.filter.FunctionContext.getRequest;
 import static com.aoindustries.servlet.filter.FunctionContext.getResponse;
 import static com.aoindustries.servlet.filter.FunctionContext.getServletContext;
@@ -161,6 +162,10 @@ final public class Functions {
 
 	public static String encodeUrlParam(String value) throws UnsupportedEncodingException {
 		return URLEncoder.encode(value, getResponse().getCharacterEncoding());
+	}
+
+	public static String encodeURIComponent(String value) throws UnsupportedEncodingException {
+		return UrlUtils.encodeURIComponent(value, getResponse().getCharacterEncoding());
 	}
 
 	public static String getRefId(String id) throws ServletException {
