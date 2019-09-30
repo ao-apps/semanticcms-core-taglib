@@ -820,7 +820,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2019-04-15T19:33:26-0500" -->
+		<!-- dateModified="2019-08-21T03:06:55-0500" -->
 		<description><![CDATA[
 			<p>
 				Adds multiple parameters to its
@@ -839,7 +839,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				<p>
 					When provided, the values may not contain a
 					<a rel="nofollow" href="@{javac.link.javaApi}java/util/Map.html">Map</a>
-					or <a href="https://aoindustries.com/aocode-public/apidocs/com/aoindustries/net/HttpParameters.html">HttpParameters</a>.
+					or <a href="https://aoindustries.com/ao-net-types/apidocs/com/aoindustries/net/URIParameters.html">URIParameters</a>.
 					When provided, the exclude attribute may not be provided.
 				</p>
 			]]></description>
@@ -853,7 +853,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				<p>
 					Optionally excludes all elements of a
 					<a rel="nofollow" href="@{javac.link.javaApi}java/util/Map.html">Map</a>
-					or <a href="https://aoindustries.com/aocode-public/apidocs/com/aoindustries/net/HttpParameters.html">HttpParameters</a>
+					or <a href="https://aoindustries.com/ao-net-types/apidocs/com/aoindustries/net/URIParameters.html">URIParameters</a>
 					that match any of the comma-separated patterns.
 					May not be used in conjunction with the name attribute.
 				</p>
@@ -904,7 +904,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				<p>
 					When name is not provided, requires
 					<a rel="nofollow" href="@{javac.link.javaApi}java/util/Map.html">Map</a>
-					or <a href="https://aoindustries.com/aocode-public/apidocs/com/aoindustries/net/HttpParameters.html">HttpParameters</a>,
+					or <a href="https://aoindustries.com/ao-net-types/apidocs/com/aoindustries/net/URIParameters.html">URIParameters</a>,
 					where the parameter name is the map key coerced to <a rel="nofollow" href="@{javac.link.javaApi}java/lang/String.html">String</a>
 					and the value (or set of values) is the map value.  Each of the entry values may be
 					<a rel="nofollow" href="@{javac.link.javaApi}java/lang/Iterable.html">Iterable</a>,
@@ -915,7 +915,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				<p>
 					When obtaining values from a
 					<a rel="nofollow" href="@{javac.link.javaApi}java/util/Map.html">Map</a>
-					or <a href="https://aoindustries.com/aocode-public/apidocs/com/aoindustries/net/HttpParameters.html">HttpParameters</a>,
+					or <a href="https://aoindustries.com/ao-net-types/apidocs/com/aoindustries/net/URIParameters.html">URIParameters</a>,
 					parameters may be excluded with the "exclude" attribute.
 				</p>
 				<p>
@@ -1475,32 +1475,21 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2019-04-15T19:33:26-0500" -->
+		<!-- dateModified="2019-09-30T01:47:35-0500" -->
 		<description><![CDATA[
-			<p>
+			<p style="text-decoration: line-through">
 				<a rel="nofollow" href="@{javac.link.javaApi}java/net/URLEncoder.html#encode%28java.lang.String,%20java.lang.String%29">Encodes a value</a>
 				for use in a URL parameter in the current
 				<a rel="nofollow" href="@{javac.link.javaeeApi.6}javax/servlet/ServletResponse.html#getCharacterEncoding%28%29">response encoding</a>.
 			</p>
-		]]></description>
-		<name>encodeUrlParam</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.lang.String encodeUrlParam(java.lang.String)</function-signature>
-		<example><![CDATA[<code>${core:encodeUrlParam(value)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2019-08-12T17:04:19-0500" -->
-		<description><![CDATA[
 			<p>
-				<a href="https://aoindustries.com/aocode-public/apidocs/com/aoindustries/net/UrlUtils.html#encodeURIComponent%28java.lang.String,%20java.lang.String%29">Encodes a value</a>
-				for use in a URL path component or anchor in the current
-				<a rel="nofollow" href="@{javac.link.javaeeApi.6}javax/servlet/ServletResponse.html#getCharacterEncoding%28%29">response encoding</a>.
+				<strong>Deprecated:</strong>: Please use <code><a href="https://aoindustries.com/ao-taglib/ao.tld/function-encodeQuery">${ao:encodeQuery(value)}</a></code> instead.
 			</p>
 		]]></description>
-		<name>encodeURIComponent</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.lang.String encodeURIComponent(java.lang.String)</function-signature>
-		<example><![CDATA[<code>${core:encodeURIComponent(value)}</code>]]></example>
+		<name>encodeUrlParam</name>
+		<function-class>com.aoindustries.taglib.Functions</function-class>
+		<function-signature>java.lang.String encodeQuery(java.lang.String)</function-signature>
+		<example><![CDATA[<code style="text-decoration: line-through">${core:encodeUrlParam(value)}</code>]]></example>
 	</function>
 	<function>
 		<!-- datePublished="2016-08-07T23:48:25-0500" -->
