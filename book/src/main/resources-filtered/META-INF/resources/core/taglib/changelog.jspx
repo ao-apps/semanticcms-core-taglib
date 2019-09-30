@@ -56,7 +56,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 					<li>Element IDs may now contain the full range of <ao:a href="https://www.w3.org/TR/REC-xml/#id">valid XML identifiers</ao:a>.</li>
 					<li>
 						<code><core:link page="semanticcms-core.tld/function-encodeUrlParam" /></code> is deprecated - please use
-						<code><ao:a href="https://aoindustries.com/ao-taglib/ao.tld/function-encodeQuery">\${ao:encodeQuery()}<ao:a></code> instead.
+						<code><ao:a href="https://aoindustries.com/ao-taglib/ao.tld/function-encodeQuery">\${ao:encodeQuery()}</ao:a></code> instead.
 					</li>
 				</ul>
 			</changelog:release>
