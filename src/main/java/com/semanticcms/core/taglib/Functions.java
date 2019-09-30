@@ -22,11 +22,10 @@
  */
 package com.semanticcms.core.taglib;
 
-import com.aoindustries.net.UrlUtils;
+import com.aoindustries.servlet.URIComponent;
 import static com.aoindustries.servlet.filter.FunctionContext.getRequest;
 import static com.aoindustries.servlet.filter.FunctionContext.getResponse;
 import static com.aoindustries.servlet.filter.FunctionContext.getServletContext;
-import com.aoindustries.servlet.http.ServletUtil;
 import com.aoindustries.taglib.Link;
 import com.aoindustries.util.StringUtility;
 import com.semanticcms.core.model.Author;
@@ -50,8 +49,6 @@ import com.semanticcms.core.servlet.View;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -61,6 +58,7 @@ import java.util.Map;
 import java.util.Set;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspTagException;
 
@@ -160,12 +158,12 @@ final public class Functions {
 		return getExeFileInBook(null, path);
 	}
 
+	/**
+	 * @deprecated  Please use {@link com.aoindustries.taglib.Functions#encodeQuery(java.lang.String)} instead.
+	 */
+	@Deprecated
 	public static String encodeUrlParam(String value) throws UnsupportedEncodingException {
-		return URLEncoder.encode(value, getResponse().getCharacterEncoding());
-	}
-
-	public static String encodeURIComponent(String value) throws UnsupportedEncodingException {
-		return UrlUtils.encodeURIComponent(value, getResponse().getCharacterEncoding());
+		return com.aoindustries.taglib.Functions.encodeQuery(value);
 	}
 
 	public static String getRefId(String id) throws ServletException {
@@ -178,7 +176,6 @@ final public class Functions {
 
 	public static String getRefIdInPage(Page page, String id) {
 		return PageIndex.getRefIdInPage(
-			getServletContext(),
 			getRequest(),
 			page,
 			id
@@ -193,20 +190,21 @@ final public class Functions {
 		return a==null ? null : Math.floor(a);
 	}
 
+	// TODO: Move to ao-taglib?
 	public static Map<String,String> parseQueryString(String queryString) throws UnsupportedEncodingException {
 		if(queryString==null) return null;
-		String requestEncoding = ServletUtil.getRequestEncoding(getRequest());
+		ServletRequest request = getRequest();
 		List<String> pairs = StringUtility.splitString(queryString, '&');
 		Map<String,String> params = new LinkedHashMap<>(pairs.size() * 4/3 + 1);
 		for(String pair : pairs) {
 			int equalPos = pair.indexOf('=');
 			String name, value;
 			if(equalPos==-1) {
-				name = URLDecoder.decode(pair, requestEncoding);
+				name = URIComponent.QUERY.decode(pair, request);
 				value = "";
 			} else {
-				name = URLDecoder.decode(pair.substring(0, equalPos), requestEncoding);
-				value = URLDecoder.decode(pair.substring(equalPos + 1), requestEncoding);
+				name = URIComponent.QUERY.decode(pair.substring(0, equalPos), request);
+				value = URIComponent.QUERY.decode(pair.substring(equalPos + 1), request);
 			}
 			if(!params.containsKey(name)) params.put(name, value);
 		}
