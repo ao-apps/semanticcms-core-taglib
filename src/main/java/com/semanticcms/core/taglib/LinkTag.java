@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2013, 2014, 2015, 2016, 2017  AO Industries, Inc.
+ * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2019  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -25,8 +25,8 @@ package com.semanticcms.core.taglib;
 import com.aoindustries.io.NullWriter;
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
-import com.aoindustries.net.HttpParametersMap;
-import com.aoindustries.net.MutableHttpParameters;
+import com.aoindustries.net.MutableURIParameters;
+import com.aoindustries.net.URIParametersMap;
 import com.aoindustries.servlet.jsp.LocalizedJspTagException;
 import static com.aoindustries.taglib.ApplicationResources.accessor;
 import com.aoindustries.taglib.AutoEncodingBufferedTag;
@@ -58,7 +58,7 @@ public class LinkTag
 		ParamsAttribute
 {
 
-	private MutableHttpParameters params;
+	private MutableURIParameters params;
 	private ValueExpression clazz;
 	private ValueExpression domain;
 	private ValueExpression book;
@@ -71,7 +71,7 @@ public class LinkTag
 
 	@Override
 	public void addParam(String name, String value) {
-		if(params==null) params = new HttpParametersMap();
+		if(params==null) params = new URIParametersMap();
 		params.addParameter(name, value);
 	}
 
