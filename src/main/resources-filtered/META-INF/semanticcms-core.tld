@@ -1713,7 +1713,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2019-04-15T19:33:26-0500" -->
+		<!-- dateModified="2019-10-02T02:41:35-0500" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Parses the provided request query string into a
@@ -1722,8 +1722,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<p>
 				Maintains the original parameter order.
 				Only uses the first of each value per parameter name, multiple values not supported.
-				Uses the <a rel="nofollow" href="@{javac.link.javaeeApi.6}javax/servlet/ServletRequest.html#getCharacterEncoding%28%29">request encoding</a>
-				or <code>ISO-8859-1</code> if none set.
+				Decodes characters in the <a href="https://www.w3.org/TR/html40/appendix/notes.html#non-ascii-chars">recommended <code>UTF-8</code> encoding</a>.
 			</p>
 		]]></description>
 		<name>parseQueryString</name>

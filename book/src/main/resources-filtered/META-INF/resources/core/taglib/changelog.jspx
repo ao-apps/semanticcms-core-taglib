@@ -36,7 +36,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2019-09-30T01:47:35-0500"
+		dateModified="2019-10-02T02:41:35-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-core-taglib:pom.version}" />
@@ -120,6 +120,12 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 						references pages by abstract path instead of implementation page.
 					</li>
 					<li>Element IDs may now contain the full range of <ao:a href="https://www.w3.org/TR/REC-xml/#id">valid XML identifiers</ao:a>.</li>
+					<li>
+						<code><core:link page="semanticcms-core.tld/function-parseQueryString" /></code> now always decodes in
+						<ao:a href="https://www.w3.org/TR/html40/appendix/notes.html#non-ascii-chars">recommended <code>UTF-8</code> encoding</ao:a>.
+						Previously, would use <ao:a rel="nofollow" href="@{javac.link.javaeeApi.6}javax/servlet/ServletRequest.html#getCharacterEncoding%28%29">request encoding</ao:a>
+						or <code>ISO-8859-1</code> if none set.
+					</li>
 				</ul>
 			</changelog:release>
 		</c:if>

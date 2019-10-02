@@ -24,7 +24,7 @@ package com.semanticcms.core.taglib;
 
 import com.aoindustries.net.DomainName;
 import com.aoindustries.net.Path;
-import com.aoindustries.servlet.URIComponent;
+import com.aoindustries.net.URIDecoder;
 import static com.aoindustries.servlet.filter.FunctionContext.getRequest;
 import static com.aoindustries.servlet.filter.FunctionContext.getResponse;
 import static com.aoindustries.servlet.filter.FunctionContext.getServletContext;
@@ -59,7 +59,6 @@ import com.semanticcms.core.resources.Resource;
 import com.semanticcms.core.resources.ResourceStore;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -69,7 +68,6 @@ import java.util.Map;
 import java.util.Set;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspTagException;
 
@@ -227,20 +225,20 @@ final public class Functions {
 	}
 
 	// TODO: Move to ao-taglib?
-	public static Map<String,String> parseQueryString(String queryString) throws UnsupportedEncodingException {
+	public static Map<String,String> parseQueryString(String queryString) {
 		if(queryString==null) return null;
-		ServletRequest request = getRequest();
 		List<String> pairs = StringUtility.splitString(queryString, '&');
 		Map<String,String> params = new LinkedHashMap<>(pairs.size() * 4/3 + 1);
 		for(String pair : pairs) {
 			int equalPos = pair.indexOf('=');
 			String name, value;
 			if(equalPos==-1) {
-				name = URIComponent.QUERY.decode(pair, request);
+				name = URIDecoder.decodeURIComponent(pair);
 				value = "";
 			} else {
-				name = URIComponent.QUERY.decode(pair.substring(0, equalPos), request);
-				value = URIComponent.QUERY.decode(pair.substring(equalPos + 1), request);
+				// TODO: Avoid substring?
+				name = URIDecoder.decodeURIComponent(pair.substring(0, equalPos));
+				value = URIDecoder.decodeURIComponent(pair.substring(equalPos + 1));
 			}
 			if(!params.containsKey(name)) params.put(name, value);
 		}
