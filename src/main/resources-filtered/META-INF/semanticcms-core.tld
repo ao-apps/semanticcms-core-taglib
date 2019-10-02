@@ -1475,20 +1475,22 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2019-09-30T01:47:35-0500" -->
+		<!-- dateModified="2019-10-02T02:41:35-0500" -->
 		<description><![CDATA[
 			<p style="text-decoration: line-through">
-				<a rel="nofollow" href="@{javac.link.javaApi}java/net/URLEncoder.html#encode%28java.lang.String,%20java.lang.String%29">Encodes a value</a>
-				for use in a URL parameter in the current
-				<a rel="nofollow" href="@{javac.link.javaeeApi.6}javax/servlet/ServletResponse.html#getCharacterEncoding%28%29">response encoding</a>.
+				<a href="https://aoindustries.com/ao-net-types/apidocs/com/aoindustries/net/URIEncoder.html#encodeURIComponent-java.lang.String-">Encodes a value</a>
+				for use in a URI path component, query string, or fragment.
 			</p>
 			<p>
-				<strong>Deprecated:</strong>: Please use <code><a href="https://aoindustries.com/ao-taglib/ao.tld/function-encodeQuery">${ao:encodeQuery(value)}</a></code> instead.
+				Encodes characters in the <a href="https://www.w3.org/TR/html40/appendix/notes.html#non-ascii-chars">recommended <code>UTF-8</code> encoding</a>.
+			</p>
+			<p>
+				<strong>Deprecated:</strong>: Please use <code><a href="https://aoindustries.com/ao-taglib/ao.tld/function-encodeURIComponent">${ao:encodeURIComponent(value)}</a></code> instead.
 			</p>
 		]]></description>
 		<name>encodeUrlParam</name>
-		<function-class>com.aoindustries.taglib.Functions</function-class>
-		<function-signature>java.lang.String encodeQuery(java.lang.String)</function-signature>
+		<function-class>com.aoindustries.net.URIEncoder</function-class>
+		<function-signature>java.lang.String encodeURIComponent(java.lang.String)</function-signature>
 		<example><![CDATA[<code style="text-decoration: line-through">${core:encodeUrlParam(value)}</code>]]></example>
 	</function>
 	<function>
@@ -1557,7 +1559,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2019-04-15T19:33:26-0500" -->
+		<!-- dateModified="2019-10-02T02:41:35-0500" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Parses the provided request query string into a
@@ -1566,8 +1568,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<p>
 				Maintains the original parameter order.
 				Only uses the first of each value per parameter name, multiple values not supported.
-				Uses the <a rel="nofollow" href="@{javac.link.javaeeApi.6}javax/servlet/ServletRequest.html#getCharacterEncoding%28%29">request encoding</a>
-				or <code>ISO-8859-1</code> if none set.
+				Decodes characters in the <a href="https://www.w3.org/TR/html40/appendix/notes.html#non-ascii-chars">recommended <code>UTF-8</code> encoding</a>.
 			</p>
 		]]></description>
 		<name>parseQueryString</name>
