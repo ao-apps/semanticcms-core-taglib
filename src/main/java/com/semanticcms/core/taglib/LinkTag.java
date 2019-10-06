@@ -65,6 +65,8 @@ public class LinkTag
 	private ValueExpression anchor;
 	private ValueExpression view;
 	private boolean small;
+	private boolean absolute;
+	private boolean canonical;
 
 	@Override
 	public void addParam(String name, String value) {
@@ -106,6 +108,14 @@ public class LinkTag
 
 	public void setSmall(boolean small) {
 		this.small = small;
+	}
+
+	public void setAbsolute(boolean absolute) {
+		this.absolute = absolute;
+	}
+
+	public void setCanonical(boolean canonical) {
+		this.canonical = canonical;
 	}
 
 	@Override
@@ -170,6 +180,8 @@ public class LinkTag
 					view,
 					small,
 					params,
+					absolute,
+					canonical,
 					clazz,
 					capturedBody == null || capturedBody.getLength() == 0
 						? null

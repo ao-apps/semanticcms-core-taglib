@@ -600,7 +600,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2019-04-15T19:33:26-0500" -->
+		<!-- dateModified="2019-10-06T00:12:52-0500" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Writes a link to a page and optionally an element.
@@ -776,6 +776,32 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<name>small</name>
 			<required>false</required>
 			<rtexprvalue>false</rtexprvalue>
+			<type>boolean</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				<p>
+					When <code>true</code>, generates an absolute URL for the href for the link.
+					Defaults to <code>false</code>.
+				</p>
+			]]></description>
+			<name>absolute</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>boolean</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				<p>
+					When <code>true</code>, will generate a <a href="https://aoindustries.com/ao-servlet-util/apidocs/com/aoindustries/servlet/http/Canonical.html">Canonical URL</a>.
+					Canonical URLs should be used where per-user response URL rewriting
+					(such as information added when cookies are disabled) should be avoided.
+					Defaults to <code>false</code>.
+				</p>
+			]]></description>
+			<name>canonical</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
 			<type>boolean</type>
 		</attribute>
 		<dynamic-attributes>true</dynamic-attributes>
