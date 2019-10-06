@@ -29,7 +29,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
   metadata-complete="false">
 	<name>@{project.artifactId}-@{project.version}</name>
 	<!-- Causes error: "The display name was defined in multiple fragments with different value"
-    <display-name>@{project.name}</display-name>
+	<display-name>@{project.name}</display-name>
 	-->
 	<description>@{project.description}</description>
 	<!-- The function context filter must be last, declare this after all other fragments -->
