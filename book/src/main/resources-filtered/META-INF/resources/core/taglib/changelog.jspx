@@ -36,7 +36,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2019-10-02T02:41:35-0500"
+		dateModified="2019-10-06T00:12:52-0500"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-core-taglib:pom.version}" />
@@ -126,6 +126,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 						Previously, would use <ao:a rel="nofollow" href="@{javac.link.javaeeApi.6}javax/servlet/ServletRequest.html#getCharacterEncoding%28%29">request encoding</ao:a>
 						or <code>ISO-8859-1</code> if none set.
 					</li>
+					<li>Added absolute URL and <ao:a href="https://aoindustries.com/ao-servlet-util/apidocs/com/aoindustries/servlet/http/Canonical.html">Canonical URL</ao:a> support.</li>
 				</ul>
 			</changelog:release>
 		</c:if>

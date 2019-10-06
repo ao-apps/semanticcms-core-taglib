@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2015, 2016, 2017, 2018  AO Industries, Inc.
+ * Copyright (C) 2015, 2016, 2017, 2018, 2019  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -46,7 +46,9 @@ public class LinkTagBeanInfo extends SimpleBeanInfo {
 					new PropertyDescriptor("allowGeneratedElement", LinkTag.class, null, "setAllowGeneratedElement"),
 					new PropertyDescriptor("anchor", LinkTag.class, null, "setAnchor"),
 					new PropertyDescriptor("view", LinkTag.class, null, "setView"),
-					new PropertyDescriptor("small", LinkTag.class, null, "setSmall")
+					new PropertyDescriptor("small", LinkTag.class, null, "setSmall"),
+					new PropertyDescriptor("absolute", LinkTag.class, null, "setAbsolute"),
+					new PropertyDescriptor("canonical", LinkTag.class, null, "setCanonical")
 				};
 				properties = props;
 			}
