@@ -22,6 +22,8 @@
  */
 package com.semanticcms.core.taglib;
 
+import com.aoindustries.html.Doctype;
+import com.aoindustries.html.Serialization;
 import com.aoindustries.io.NullWriter;
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
@@ -46,6 +48,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
@@ -123,6 +126,26 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 	private Object dateReviewed;
 	public void setDateReviewed(Object dateReviewed) {
 		this.dateReviewed = dateReviewed;
+	}
+
+	private Serialization serialization;
+	public void setSerialization(String serialization) {
+		if(serialization == null) {
+			this.serialization = null;
+		} else {
+			serialization = serialization.trim();
+			this.serialization = (serialization.isEmpty() || "auto".equalsIgnoreCase(serialization)) ? null : Serialization.valueOf(serialization.toUpperCase(Locale.ROOT));
+		}
+	}
+
+	private Doctype doctype = Doctype.HTML5;
+	public void setDoctype(String doctype) {
+		if(doctype == null) {
+			this.doctype = null;
+		} else {
+			doctype = doctype.trim();
+			this.doctype = (doctype.isEmpty() || "default".equalsIgnoreCase(doctype)) ? null : Doctype.valueOf(doctype.toUpperCase(Locale.ROOT));
+		}
 	}
 
 	private String title;
@@ -474,6 +497,8 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 				PageUtils.toDateTime(datePublished),
 				PageUtils.toDateTime(dateModified),
 				PageUtils.toDateTime(dateReviewed),
+				serialization,
+				doctype,
 				title,
 				shortTitle,
 				description,
