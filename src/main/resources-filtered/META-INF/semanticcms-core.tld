@@ -39,7 +39,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<uri>@{project.url}</uri>
 	<tag>
 		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2019-04-20T21:05:55-0500" -->
+		<!-- dateModified="2019-10-27T16:59:13-0500" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				The body of this tag represents one page of content.
@@ -56,6 +56,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>page</name>
 		<tag-class>com.semanticcms.core.taglib.PageTag</tag-class>
+		<tei-class>com.semanticcms.core.taglib.PageTagTEI</tei-class>
 		<body-content>scriptless</body-content>
 		<attribute>
 			<description><![CDATA[
@@ -178,6 +179,64 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<type>java.lang.Object</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				<p>
+					When <code>SGML</code>, forces the content-type to be <code>text/html</code>.
+					When <code>XML</code>, forces the content-type to be <code>application/xhtml+xml</code>.
+					When <code>auto</code> (the default), the following steps are performed to resolve the serialization:
+				</p>
+				<ol>
+					<li>Use the serialization active on the current request.</li>
+					<li>
+						Use the application <a rel="nofollow" href="@{javac.link.javaeeApi.6}javax/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
+						<code>com.aoindustries.html.Serialization.default</code>
+						that allows an application to control the selection of HTML versus XHTML.
+					</li>
+					<li>
+						When this context-param is unspecified or <code>auto</code>,
+						determine the serialization based on the client's <code>Accept</code> header.
+					</li>
+				</ol>
+				<p>
+					This should normally be left with the default value of <code>auto</code>.  This is used
+					when the content is known to contain invalid markup that can not be parsed as XML.
+				</p>
+			]]></description>
+			<name>serialization</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				<p>
+					The <a href="https://www.w3schools.com/tags/tag_doctype.asp">&lt;!DOCTYPE&gt;</a> to use,
+					must be one of <code>default</code>, <code>HTML5</code>, <code>STRICT</code>, <code>TRANSITIONAL</code>,
+					<code>FRAMESET</code>, or <code>NONE</code>.
+					Defaults to <code>HTML5</code>.  <code>NONE</code> will suppress the output of a doctype.
+				</p>
+				<p>
+					When <code>default</code>, the following steps are performed to resolve the doctype:
+				</p>
+				<ol>
+					<li>Use the doctype active on the current request.</li>
+					<li>
+						Use the application <a rel="nofollow" href="@{javac.link.javaeeApi.6}javax/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
+						<code>com.aoindustries.html.Doctype.default</code>
+						that allows an application to control the default doctype.
+					</li>
+					<li>
+						When this context-param is unspecified or <code>default</code>,
+						defaults to <code>HTML5</code>.
+					</li>
+				</ol>
+			]]></description>
+			<name>doctype</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
 			<description><![CDATA[
