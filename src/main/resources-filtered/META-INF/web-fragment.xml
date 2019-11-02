@@ -97,9 +97,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</filter>
 	<filter-mapping>
 		<filter-name>FunctionContextFilter</filter-name>
-		<!-- This was previously declared on pattern "/" for a long time, trying to narrow scope to JSP now -->
-		<url-pattern>*.jspx</url-pattern>
-		<url-pattern>*.jsp</url-pattern>
+		<!-- "/" required for proper function of error handler -->
+		<url-pattern>/</url-pattern>
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>INCLUDE</dispatcher>
 		<dispatcher>REQUEST</dispatcher>
