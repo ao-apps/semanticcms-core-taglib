@@ -97,8 +97,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</filter>
 	<filter-mapping>
 		<filter-name>FunctionContextFilter</filter-name>
-		<!-- "/" required for proper function of error handler -->
-		<url-pattern>/</url-pattern>
+		<!-- "/*" required for proper function of error handler -->
+		<url-pattern>/*</url-pattern>
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>INCLUDE</dispatcher>
 		<dispatcher>REQUEST</dispatcher>
