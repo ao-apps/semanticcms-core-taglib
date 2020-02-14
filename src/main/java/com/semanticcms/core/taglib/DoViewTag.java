@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2016, 2017, 2019  AO Industries, Inc.
+ * Copyright (C) 2016, 2017, 2019, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,10 +22,12 @@
  */
 package com.semanticcms.core.taglib;
 
+import com.aoindustries.html.servlet.HtmlEE;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.servlet.View;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -52,19 +54,21 @@ public class DoViewTag extends SimpleTagSupport {
 	public void doTag() throws JspException, IOException {
 		try {
 			final PageContext pageContext = (PageContext)getJspContext();
-			final PrintWriter pw = new PrintWriter(pageContext.getOut()) {
+			final PrintWriter out = new PrintWriter(pageContext.getOut()) {
 				@Override
 				public void flush() {
 					// Avoid "Illegal to flush within a custom tag" from BodyContentImpl
 				}
 			};
+			ServletContext servletContext = pageContext.getServletContext();
+			HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 			view.doView(
-				pageContext.getServletContext(),
-				(HttpServletRequest)pageContext.getRequest(),
+				servletContext,
+				request,
 				new HttpServletResponseWrapper((HttpServletResponse)pageContext.getResponse()) {
 					@Override
 					public PrintWriter getWriter() {
-						return pw;
+						return out;
 					}
 					@Override
 					@SuppressWarnings("deprecation")
@@ -72,9 +76,10 @@ public class DoViewTag extends SimpleTagSupport {
 						throw new com.aoindustries.lang.NotImplementedException();
 					}
 				},
+				HtmlEE.get(servletContext, request, out),
 				page
 			);
-			if(pw.checkError()) throw new IOException("Error on doView PrintWriter");
+			if(out.checkError()) throw new IOException("Error on doView PrintWriter");
 		} catch(ServletException e) {
 			throw new JspTagException(e);
 		}

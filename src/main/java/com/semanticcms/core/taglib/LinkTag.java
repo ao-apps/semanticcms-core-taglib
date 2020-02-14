@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2019 AO Industries, Inc.
+ * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2019, 2020 AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,6 +22,7 @@
  */
 package com.semanticcms.core.taglib;
 
+import com.aoindustries.html.servlet.HtmlEE;
 import com.aoindustries.io.NullWriter;
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
@@ -36,6 +37,7 @@ import com.semanticcms.core.servlet.CaptureLevel;
 import com.semanticcms.core.servlet.impl.LinkImpl;
 import java.io.IOException;
 import javax.el.ValueExpression;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -166,12 +168,13 @@ public class LinkTag
 					capturedBody = null;
 				}
 				final JspWriter out = pageContext.getOut();
+				ServletContext servletContext = pageContext.getServletContext();
 				LinkImpl.writeLinkImpl(
-					pageContext.getServletContext(),
+					servletContext,
 					pageContext.getELContext(),
 					request,
 					(HttpServletResponse)pageContext.getResponse(),
-					out,
+					HtmlEE.get(servletContext, request, out),
 					book,
 					page,
 					element,

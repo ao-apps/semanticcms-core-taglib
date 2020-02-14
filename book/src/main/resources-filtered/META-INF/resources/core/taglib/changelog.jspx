@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
-Copyright (C) 2016, 2017, 2019  AO Industries, Inc.
+Copyright (C) 2016, 2017, 2019, 2020  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -36,7 +36,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2019-11-02T16:41:06-0500"
+		dateModified="2020-02-14T01:49:53-0600"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-core-taglib:pom.version}" />
@@ -56,6 +56,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 					<li>Minimum Java version changed from 1.7 to 1.8.</li>
 					<li>Enabled <code>HideJspExtensionFilter</code> on <code>ERROR</code> dispatcher, too.</li>
 					<li>Now supports page attributes for <code>serialization</code> (default "auto") and <code>doctype</code> (default "HTML5").</li>
+					<li>Using <ao:a href="https://aoindustries.com/ao-fluent-html/">AO Fluent HTML</ao:a> for HTML generation.</li>
 				</ul>
 			</changelog:release>
 		</c:if>
