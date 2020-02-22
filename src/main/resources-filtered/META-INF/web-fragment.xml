@@ -85,6 +85,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<filter-name>com.aoindustries.servlet.filter.TrimFilter</filter-name>
 		<url-pattern>*.jspx</url-pattern>
 		<url-pattern>*.jsp</url-pattern>
+		<url-pattern>*.html</url-pattern>
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>INCLUDE</dispatcher>
 		<dispatcher>REQUEST</dispatcher>
