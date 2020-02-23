@@ -38,19 +38,29 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<others />
 		</after>
 	</ordering>
-	<!--
-		Filter to block direct access to selected resources, including:
-			*.inc.jspx, *.inc.jsp and *.jspf files intended for include-only.
-			*.properties files that provide page properties to *.jsp and *.jspx
-			pages.
-	-->
+
+	<!-- Block direct access to selected resources -->
 	<!-- TODO: Protect from pages-jsp and pages-jspx -->
 	<filter>
+		<description><![CDATA[
+			Blocks direct access to selected resources, including:
+			<ul>
+				<li><code>*.inc.jspx</code>   - intended for include-only</li>
+				<li><code>*.inc.jsp</code>    - intended for include-only</li>
+				<li><code>*.jspf</code>       - intended for include-only</li>
+				<li><code>*.properties</code> - SemanticCMS page properties</li>
+			</ul>
+		]]></description>
 		<filter-name>com.aoindustries.servlet.filter.NotFoundFilter</filter-name>
 		<filter-class>com.aoindustries.servlet.filter.NotFoundFilter</filter-class>
 		<init-param>
 			<param-name>patterns</param-name>
-			<param-value>*.inc.jspx, *.inc.jsp, *.jspf, *.properties</param-value>
+			<param-value>
+				*.inc.jspx
+				*.inc.jsp
+				*.jspf
+				*.properties
+			</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>
@@ -61,6 +71,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<url-pattern>*.properties</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
+
 	<!-- Filter unnecessary whitespace -->
 	<!-- TODO: Move to pages-jsp and pages-jspx - or renderer-html? Still use as filter, or somehow call explicitely? -->
 	<filter>
@@ -71,14 +82,21 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<filter-name>com.aoindustries.servlet.filter.TrimFilter</filter-name>
 		<url-pattern>*.jspx</url-pattern>
 		<url-pattern>*.jsp</url-pattern>
+		<url-pattern>*.jspf</url-pattern>
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>INCLUDE</dispatcher>
 		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>ERROR</dispatcher>
 	</filter-mapping>
-	<!-- Set the context for taglib functions -->
+
+	<!-- Set the context for static functions -->
 	<!-- TODO: Move to pages-jsp and pages-jspx? -->
 	<filter>
+		<description>
+			Provides static access to the current request state via thread local variables.
+			This must be after all filters that wrap the request or the response.
+			It is recommended that this be the very last filter, when possible.
+		</description>
 		<filter-name>com.aoindustries.servlet.filter.FunctionContext</filter-name>
 		<filter-class>com.aoindustries.servlet.filter.FunctionContext</filter-class>
 	</filter>
@@ -91,4 +109,5 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>ERROR</dispatcher>
 	</filter-mapping>
+
 </web-fragment>
