@@ -32,6 +32,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<display-name>@{project.name}</display-name>
 	-->
 	<description>@{project.description}</description>
+
 	<!-- The function context filter must be last, declare this after all other fragments -->
 	<ordering>
 		<after>
@@ -136,4 +137,5 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<welcome-file>index.do</welcome-file>
 		-->
 	</welcome-file-list>
+
 </web-fragment>
