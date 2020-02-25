@@ -34,6 +34,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<description>@{project.description}</description>
 
 	<!-- The function context filter must be last, declare this after all other fragments -->
+	<!-- TODO: Move to separate ao-servlet-function-context project, so it can use web-fragment with ordering after -->
 	<ordering>
 		<after>
 			<others />
