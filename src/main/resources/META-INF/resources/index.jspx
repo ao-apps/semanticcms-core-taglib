@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
-Copyright (C) 2014, 2016, 2017  AO Industries, Inc.
+Copyright (C) 2014, 2016, 2017, 2020  AO Industries, Inc.
 	support@aoindustries.com
 	7262 Bull Pen Cir
 	Mobile, AL 36695
@@ -34,7 +34,8 @@ the site's content root.
 	statusCode="301"
 	href="${applicationScope.semanticCMS.rootBook.contentRoot.bookRef.prefix}${applicationScope.semanticCMS.rootBook.contentRoot.path}"
 >
-	<jsp:directive.page language="java" pageEncoding="UTF-8" session="false" />
+	<jsp:directive.page language="java" pageEncoding="UTF-8" />
+	<jsp:directive.page session="false" />
 	<c:forEach var="paramName" items="${pageContext.request.parameterNames}">
 		<ao:params name="${paramName}" values="${paramValues[paramName]}"/>
 	</c:forEach>
