@@ -365,7 +365,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 			if(propertiesPath != null) {
 				// TODO: Try real path first for more direct file-based I/O - benchmark if is any faster
 				// TODO: Work through Resources API
-				URL url = ServletContextCache.getCache(servletContext).getResource(
+				URL url = ServletContextCache.getInstance(servletContext).getResource(
 					pageRef.getBookRef().getPrefix()
 					+ propertiesPath
 				);
