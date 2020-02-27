@@ -51,7 +51,10 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.JspException;
@@ -68,11 +71,6 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 	 * The prefix for property attributes.
 	 */
 	public static final String PROPERTY_ATTRIBUTE_PREFIX = "property.";
-
-	/**
-	 * The application scoped attribute holding the properties cache.
-	 */
-	private static final String PROPERTIES_CACHE_APPLICATION_KEY = PageTag.class.getName() + ".propertiesCache";
 
 	/**
 	 * Cache properties files from URLs with unknown modified times for up to 10 seconds.
@@ -233,20 +231,49 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 		}
 	}
 
-	private static class PropertiesCacheEntry {
+	@WebListener
+	public static class PropertiesCache implements ServletContextListener {
 
-		private final long lastModified;
-		private final long cachedTime;
-		private final Map<String,String> properties;
+		/**
+		 * The application scoped attribute holding the properties cache.
+		 */
+		private static final String APPLICATION_ATTRIBUTE = PropertiesCache.class.getName();
 
-		private PropertiesCacheEntry(
-			long lastModified,
-			long cachedTime,
-			Map<String,String> properties
-		) {
-			this.lastModified = lastModified;
-			this.cachedTime = cachedTime;
-			this.properties = properties;
+		private static class Entry {
+
+			private final long lastModified;
+			private final long cachedTime;
+			private final Map<String,String> properties;
+
+			private Entry(
+				long lastModified,
+				long cachedTime,
+				Map<String,String> properties
+			) {
+				this.lastModified = lastModified;
+				this.cachedTime = cachedTime;
+				this.properties = properties;
+			}
+		}
+
+		@Override
+		public void contextInitialized(ServletContextEvent event) {
+			getInstance(event.getServletContext());
+		}
+
+		@Override
+		public void contextDestroyed(ServletContextEvent event) {
+			// Do nothing
+		}
+
+		private static ConcurrentMap<URL,Entry> getInstance(ServletContext servletContext) {
+			@SuppressWarnings("unchecked")
+			ConcurrentMap<URL,Entry> instance = (ConcurrentMap)servletContext.getAttribute(APPLICATION_ATTRIBUTE);
+			if(instance == null) {
+				instance = new ConcurrentHashMap<>();
+				servletContext.setAttribute(APPLICATION_ATTRIBUTE, instance);
+			}
+			return instance;
 		}
 	}
 
@@ -297,18 +324,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 					// if(DEBUG) System.out.println("PageTag: doTag: Got properties URL: " + url);
 					Map<String,String> propsFromFile;
 					{
-						final ConcurrentMap<URL,PropertiesCacheEntry> propertiesCache;
-						// No locking since no harm done if we create and immediately discard a cache instance between threads
-						{
-							@SuppressWarnings("unchecked")
-							ConcurrentMap<URL,PropertiesCacheEntry> map = (ConcurrentMap)servletContext.getAttribute(PROPERTIES_CACHE_APPLICATION_KEY);
-							if(map == null) {
-								map = new ConcurrentHashMap<>();
-								servletContext.setAttribute(PROPERTIES_CACHE_APPLICATION_KEY, map);
-								if(DEBUG) System.out.println("PageTag: doTag: Created propertiesCache");
-							}
-							propertiesCache = map;
-						}
+						final ConcurrentMap<URL,PropertiesCache.Entry> propertiesCache = PropertiesCache.getInstance(servletContext);
 						final long currentTime = System.currentTimeMillis();
 						URLConnection urlConn = null;
 						boolean urlClosed = false;
@@ -317,7 +333,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 							propsFromFile = null;
 							// Check cache first
 							{
-								PropertiesCacheEntry cacheEntry = propertiesCache.get(url);
+								PropertiesCache.Entry cacheEntry = propertiesCache.get(url);
 								if(cacheEntry != null) {
 									if(cacheEntry.lastModified == 0) {
 										// Using expiration time since last modified was unknown
@@ -354,7 +370,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 												// Refresh in cache
 												propertiesCache.put(
 													url,
-													new PropertiesCacheEntry(urlLastModified, currentTime, propsFromFile)
+													new PropertiesCache.Entry(urlLastModified, currentTime, propsFromFile)
 												);
 											}
 										}
@@ -406,7 +422,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 								// Store in cache
 								propertiesCache.put(
 									url,
-									new PropertiesCacheEntry(urlLastModified, currentTime, propsFromFile)
+									new PropertiesCache.Entry(urlLastModified, currentTime, propsFromFile)
 								);
 							}
 						} finally {
