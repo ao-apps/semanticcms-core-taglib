@@ -142,7 +142,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				<li>
 					<code><core:link page="semanticcms-core.tld/function-parseQueryString" /></code> now always decodes in
 					<ao:a href="https://www.w3.org/TR/html40/appendix/notes.html#non-ascii-chars">recommended <code>UTF-8</code> encoding</ao:a>.
-					Previously, would use <ao:a rel="nofollow" href="@{javac.link.javaeeApi.6}javax/servlet/ServletRequest.html#getCharacterEncoding%28%29">request encoding</ao:a>
+					Previously, would use <ao:a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletRequest.html#getCharacterEncoding%28%29">request encoding</ao:a>
 					or <code>ISO-8859-1</code> if none set.
 				</li>
 				<li>Added absolute URL and <ao:a href="https://aoindustries.com/ao-servlet-util/apidocs/com/aoindustries/servlet/http/Canonical.html">Canonical URL</ao:a> support.</li>
@@ -179,7 +179,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				<li>Minimum Java version changed from 1.6 to 1.7.</li>
 				<li>
 					Fixed bug in <code><core:link page="semanticcms-core.tld/tag-page" /></code>
-					that threw <code><ao:a rel="nofollow" href="@{javac.link.javaeeApi.6}javax/servlet/ServletException.html">ServletException</ao:a></code>
+					that threw <code><ao:a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletException.html">ServletException</ao:a></code>
 					when page not in a book, even when <code>book</code> and <code>path</code> attributes are provided.
 				</li>
 			</ul>

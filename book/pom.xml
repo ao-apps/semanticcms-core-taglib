@@ -35,8 +35,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 	<properties>
 		<!-- These values are copied from the project being documented -->
 		<documented.artifactId>semanticcms-core-taglib</documented.artifactId>
-		<documented.javaVersion>1.8</documented.javaVersion>
-		<documented.javac.link.javaApi>${javac.link.javaApi.jdk8}</documented.javac.link.javaApi>
 		<documented.name>SemanticCMS Core Taglib²</documented.name>
 		<documented.shortTitle>Taglib</documented.shortTitle>
 		<documented.description>Java API for modeling web page content and relationships in a JSP environment.</documented.description>
