@@ -49,9 +49,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			<changelog:release
 				projectName="@{documented.name}"
 				version="#{version}"
-				groupId="@{documented.groupId}"
+				groupId="@{project.groupId}"
 				artifactId="@{documented.artifactId}"
-				scmUrl="@{documented.scm.url}"
+				scmUrl="@{project.scm.url}"
 			>
 				<ul>
 					<li>Added <core:link book="/core/model" page="/" /> domain support:
@@ -129,9 +129,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			projectName="@{documented.name}"
 			version="1.11.0"
 			datePublished="2019-10-11T17:49:30-0500"
-			groupId="@{documented.groupId}"
+			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
-			scmUrl="@{documented.scm.url}"
+			scmUrl="@{project.scm.url}"
 		>
 			<ul>
 				<li>Element IDs may now contain the full range of <ao:a href="https://www.w3.org/TR/REC-xml/#id">valid XML identifiers</ao:a>.</li>
@@ -153,9 +153,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			projectName="@{documented.name}"
 			version="1.10.1"
 			datePublished="2019-06-19T10:23:10-0500"
-			groupId="@{documented.groupId}"
+			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
-			scmUrl="@{documented.scm.url}"
+			scmUrl="@{project.scm.url}"
 		>
 			<ul>
 				<li>Using managed dependencies:
@@ -171,9 +171,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			projectName="@{documented.name}"
 			version="1.10.0"
 			datePublished="2019-04-19T06:05:20-0500"
-			groupId="@{documented.groupId}"
+			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
-			scmUrl="@{documented.scm.url}"
+			scmUrl="@{project.scm.url}"
 		>
 			<ul>
 				<li>Minimum Java version changed from 1.6 to 1.7.</li>
@@ -189,9 +189,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			projectName="@{documented.name}"
 			version="1.9.0"
 			datePublished="2017-07-19T23:22:39-0500"
-			groupId="@{documented.groupId}"
+			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
-			scmUrl="@{documented.scm.url}"
+			scmUrl="@{project.scm.url}"
 		>
 			<ul>
 				<li>Nodes, including both pages and elements, now have properties:
@@ -215,9 +215,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			projectName="@{documented.name}"
 			version="1.8.1"
 			datePublished="2016-11-15T17:56:09-0600"
-			groupId="@{documented.groupId}"
+			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
-			scmUrl="@{documented.scm.url}"
+			scmUrl="@{project.scm.url}"
 		>
 			<ul>
 				<li>New <ao:a href="https://aoindustries.com/ao-oss-parent/">AO OSS Parent</ao:a> POM to simplify <code>pom.xml</code> files.</li>
@@ -237,9 +237,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			projectName="@{documented.name}"
 			version="1.8.0"
 			datePublished="2016-10-20T18:23:00-0500"
-			groupId="@{documented.groupId}"
+			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
-			scmUrl="@{documented.scm.url}"
+			scmUrl="@{project.scm.url}"
 		>
 			<ul>
 				<li>Improved Javadoc formatting.</li>
@@ -256,9 +256,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			projectName="@{documented.name}"
 			version="1.7.1"
 			datePublished="2016-10-11T13:58:00-0500"
-			groupId="@{documented.groupId}"
+			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
-			scmUrl="@{documented.scm.url}"
+			scmUrl="@{project.scm.url}"
 		>
 			<ul>
 				<li>display-name defined in web-fragment.xml was causing "The display name was defined in multiple fragments with different value"</li>
@@ -271,9 +271,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			projectName="@{documented.name}"
 			version="1.7.0"
 			datePublished="2016-10-04T20:55:00-0500"
-			groupId="@{documented.groupId}"
+			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
-			scmUrl="@{documented.scm.url}"
+			scmUrl="@{project.scm.url}"
 		>
 			<ul>
 				<li>Improved Javadoc formatting.</li>
@@ -297,9 +297,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			projectName="@{documented.name}"
 			version="1.6"
 			datePublished="2016-09-11T15:42:00-0500"
-			groupId="@{documented.groupId}"
+			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
-			scmUrl="@{documented.scm.url}"
+			scmUrl="@{project.scm.url}"
 		>
 			<ul>
 				<li>Use dependencyManagement instead of dependency for junit.</li>
@@ -314,9 +314,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			projectName="@{documented.name}"
 			version="1.5"
 			datePublished="2016-09-03T09:53:00-0500"
-			groupId="@{documented.groupId}"
+			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
-			scmUrl="@{documented.scm.url}"
+			scmUrl="@{project.scm.url}"
 		>
 			<ul>
 				<li>Improved Maven configuration for Java EE 6 dependencies.</li>
@@ -327,9 +327,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			projectName="@{documented.name}"
 			version="1.4"
 			datePublished="2016-08-28T20:36:00-0500"
-			groupId="@{documented.groupId}"
+			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
-			scmUrl="@{documented.scm.url}"
+			scmUrl="@{project.scm.url}"
 		>
 			<ul>
 				<li>Making use of web-fragment.xml to remove common configuration from per-app web.xml.</li>
@@ -344,9 +344,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			projectName="@{documented.name}"
 			version="1.3"
 			datePublished="2016-08-21T17:03:00-0500"
-			groupId="@{documented.groupId}"
+			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
-			scmUrl="@{documented.scm.url}"
+			scmUrl="@{project.scm.url}"
 		>
 			<ul>
 				<li>Hyperlinks now optional on links.</li>
@@ -361,9 +361,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			projectName="@{documented.name}"
 			version="1.2"
 			datePublished="2016-08-19T14:44:00-0500"
-			groupId="@{documented.groupId}"
+			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
-			scmUrl="@{documented.scm.url}"
+			scmUrl="@{project.scm.url}"
 		>
 			<ul>
 				<li>Now generating missing ids when first accesssed, not at the end of
@@ -387,9 +387,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			projectName="@{documented.name}"
 			version="1.1"
 			datePublished="2016-08-09T23:19:00-0500"
-			groupId="@{documented.groupId}"
+			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
-			scmUrl="@{documented.scm.url}"
+			scmUrl="@{project.scm.url}"
 		>
 			<ul>
 				<li>Renamed project from ao-web-page-taglib to semanticcms-core-taglib.</li>
@@ -402,7 +402,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			datePublished="2016-08-07T23:49:00-0500"
 			groupId="com.aoindustries"
 			artifactId="ao-web-page-taglib"
-			scmUrl="@{documented.scm.url}"
+			scmUrl="@{project.scm.url}"
 		>
 			<ul>
 				<li>Project moved to GitHub and Maven.</li>
