@@ -44,8 +44,8 @@ public class SemanticCmsCoreTldInitializer extends TagReferenceInitializer {
 			"Taglib Reference",
 			"/core/taglib",
 			"/semanticcms-core.tld",
-			Maven.properties.getProperty("documented.javac.link.javaApi"),
-			Maven.properties.getProperty("javac.link.javaeeApi.6"),
+			Maven.properties.getProperty("documented.javadoc.link.javase"),
+			Maven.properties.getProperty("javadoc.link.javaee.6"),
 			additionalApiLinks
 		);
 	}
