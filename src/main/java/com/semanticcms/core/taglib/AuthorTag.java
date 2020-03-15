@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2016, 2017  AO Industries, Inc.
+ * Copyright (C) 2016, 2017, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -24,7 +24,7 @@ package com.semanticcms.core.taglib;
 
 import com.aoindustries.net.DomainName;
 import com.aoindustries.net.Path;
-import com.aoindustries.util.StringUtility;
+import com.aoindustries.lang.Strings;
 import com.aoindustries.validation.ValidationException;
 import com.semanticcms.core.model.Author;
 import com.semanticcms.core.model.Node;
@@ -41,27 +41,27 @@ public class AuthorTag extends SimpleTagSupport {
 
 	private String name;
 	public void setName(String name) {
-		this.name = StringUtility.nullIfEmpty(name);
+		this.name = Strings.nullIfEmpty(name);
 	}
 
 	private String href;
 	public void setHref(String href) {
-		this.href = StringUtility.nullIfEmpty(href);
+		this.href = Strings.nullIfEmpty(href);
 	}
 
 	private DomainName domain;
 	public void setDomain(String domain) throws ValidationException {
-		this.domain = DomainName.valueOf(StringUtility.nullIfEmpty(domain));
+		this.domain = DomainName.valueOf(Strings.nullIfEmpty(domain));
 	}
 
 	private Path book;
 	public void setBook(String book) throws ValidationException {
-		this.book = Path.valueOf(StringUtility.nullIfEmpty(book));
+		this.book = Path.valueOf(Strings.nullIfEmpty(book));
 	}
 
 	private Path page;
 	public void setPage(String page) throws ValidationException {
-		this.page = Path.valueOf(StringUtility.nullIfEmpty(page));
+		this.page = Path.valueOf(Strings.nullIfEmpty(page));
 	}
 
 	@Override

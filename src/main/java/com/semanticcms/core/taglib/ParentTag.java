@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2016, 2017  AO Industries, Inc.
+ * Copyright (C) 2016, 2017, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -24,7 +24,7 @@ package com.semanticcms.core.taglib;
 
 import com.aoindustries.net.DomainName;
 import com.aoindustries.net.Path;
-import com.aoindustries.util.StringUtility;
+import com.aoindustries.lang.Strings;
 import com.aoindustries.validation.ValidationException;
 import com.semanticcms.core.controller.PageRefResolver;
 import com.semanticcms.core.model.Node;
@@ -42,12 +42,12 @@ public class ParentTag extends SimpleTagSupport {
 
 	private DomainName domain;
 	public void setDomain(String domain) throws ValidationException {
-		this.domain = DomainName.valueOf(StringUtility.nullIfEmpty(domain));
+		this.domain = DomainName.valueOf(Strings.nullIfEmpty(domain));
 	}
 
 	private Path book;
 	public void setBook(String book) throws ValidationException {
-		this.book = Path.valueOf(StringUtility.nullIfEmpty(book));
+		this.book = Path.valueOf(Strings.nullIfEmpty(book));
 	}
 
 	private String page;
@@ -57,7 +57,7 @@ public class ParentTag extends SimpleTagSupport {
 
 	private String shortTitle;
 	public void setShortTitle(String shortTitle) {
-		this.shortTitle = StringUtility.nullIfEmpty(shortTitle);
+		this.shortTitle = Strings.nullIfEmpty(shortTitle);
 	}
 
 	@Override
