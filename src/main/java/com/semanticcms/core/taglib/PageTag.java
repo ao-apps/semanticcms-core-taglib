@@ -32,7 +32,7 @@ import com.aoindustries.io.buffer.EmptyResult;
 import com.aoindustries.servlet.ServletContextCache;
 import com.aoindustries.servlet.jsp.LocalizedJspTagException;
 import com.aoindustries.taglib.AutoEncodingBufferedTag;
-import static com.aoindustries.util.StringUtility.nullIfEmpty;
+import static com.aoindustries.lang.Strings.nullIfEmpty;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.model.PageRef;
 import com.semanticcms.core.servlet.PageRefResolver;

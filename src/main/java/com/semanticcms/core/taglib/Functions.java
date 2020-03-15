@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019  AO Industries, Inc.
+ * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -28,7 +28,7 @@ import static com.aoindustries.servlet.filter.FunctionContext.getRequest;
 import static com.aoindustries.servlet.filter.FunctionContext.getResponse;
 import static com.aoindustries.servlet.filter.FunctionContext.getServletContext;
 import com.aoindustries.taglib.Link;
-import com.aoindustries.util.StringUtility;
+import com.aoindustries.lang.Strings;
 import com.semanticcms.core.model.Author;
 import com.semanticcms.core.model.Book;
 import com.semanticcms.core.model.Copyright;
@@ -192,7 +192,7 @@ final public class Functions {
 	// TODO: Move to ao-taglib?
 	public static Map<String,String> parseQueryString(String queryString) {
 		if(queryString==null) return null;
-		List<String> pairs = StringUtility.splitString(queryString, '&');
+		List<String> pairs = Strings.splitString(queryString, '&');
 		Map<String,String> params = new LinkedHashMap<>(pairs.size() * 4/3 + 1);
 		for(String pair : pairs) {
 			int equalPos = pair.indexOf('=');
