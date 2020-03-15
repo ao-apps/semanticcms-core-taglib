@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019  AO Industries, Inc.
+ * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -29,7 +29,7 @@ import static com.aoindustries.servlet.filter.FunctionContext.getRequest;
 import static com.aoindustries.servlet.filter.FunctionContext.getResponse;
 import static com.aoindustries.servlet.filter.FunctionContext.getServletContext;
 import com.aoindustries.taglib.Link;
-import com.aoindustries.util.StringUtility;
+import com.aoindustries.lang.Strings;
 import com.aoindustries.validation.ValidationException;
 import com.semanticcms.core.controller.AuthorUtils;
 import com.semanticcms.core.controller.Book;
@@ -78,8 +78,8 @@ final public class Functions {
 		PageRef pageRef = PageRefResolver.getPageRef(
 			servletContext,
 			getRequest(),
-			DomainName.valueOf(StringUtility.nullIfEmpty(domain)),
-			Path.valueOf(StringUtility.nullIfEmpty(book)),
+			DomainName.valueOf(Strings.nullIfEmpty(domain)),
+			Path.valueOf(Strings.nullIfEmpty(book)),
 			page
 		);
 		BookRef bookRef = pageRef.getBookRef();
@@ -155,8 +155,8 @@ final public class Functions {
 		ResourceRef resourceRef = ResourceRefResolver.getResourceRef(
 			servletContext,
 			getRequest(),
-			DomainName.valueOf(StringUtility.nullIfEmpty(domain)),
-			Path.valueOf(StringUtility.nullIfEmpty(book)),
+			DomainName.valueOf(Strings.nullIfEmpty(domain)),
+			Path.valueOf(Strings.nullIfEmpty(book)),
 			path
 		);
 		BookRef bookRef = resourceRef.getBookRef();
@@ -227,7 +227,7 @@ final public class Functions {
 	// TODO: Move to ao-taglib?
 	public static Map<String,String> parseQueryString(String queryString) {
 		if(queryString==null) return null;
-		List<String> pairs = StringUtility.splitString(queryString, '&');
+		List<String> pairs = Strings.splitString(queryString, '&');
 		Map<String,String> params = new LinkedHashMap<>(pairs.size() * 4/3 + 1);
 		for(String pair : pairs) {
 			int equalPos = pair.indexOf('=');
