@@ -56,7 +56,7 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 abstract public class ElementTag<E extends Element> extends SimpleTagSupport implements DynamicAttributes, ElementWriter {
 
 	/**
-	 * Set during the beginning of doTag, but only for captureLevel >= META.
+	 * Set during the beginning of doTag, but only for {@code captureLevel >= META}.
 	 * This is not available while tag attributes are set.
 	 */
 	private E element;
@@ -153,7 +153,7 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 
 	/**
 	 * Called to create the element from doTag.
-	 * This is only called for captureLevel >= META.
+	 * This is only called for {@code captureLevel >= META}.
 	 */
 	abstract protected E createElement() throws JspException, IOException;
 
@@ -171,7 +171,7 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 
 	/**
 	 * Resolves all attributes, setting into the created element as appropriate,
-	 * This is only called for captureLevel >= META.
+	 * This is only called for {@code captureLevel >= META}.
 	 * Attributes are resolved before the element is added to any parent node.
 	 * Typically, deferred expressions will be evaluated here.
 	 * Overriding methods must call this implementation.
@@ -182,7 +182,7 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 	}
 
 	/**
-	 * This is only called for captureLevel >= META.
+	 * This is only called for {@code captureLevel >= META}.
 	 */
 	protected void doBody(E element, CaptureLevel captureLevel) throws JspException, IOException {
 		JspFragment body = getJspBody();
