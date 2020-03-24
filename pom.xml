@@ -67,8 +67,10 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 								<!-- Java EE -->
 								<link>${javadoc.link.javaee}</link>
 								<!-- Direct -->
+								<link>https://aoindustries.com/ao-collections/apidocs/</link>
 								<link>https://aoindustries.com/ao-encoding/apidocs/</link>
 								<link>https://aoindustries.com/ao-fluent-html/apidocs/</link>
+								<link>https://aoindustries.com/ao-fluent-html/servlet/apidocs/</link>
 								<link>https://aoindustries.com/ao-io-buffer/apidocs/</link>
 								<link>https://aoindustries.com/ao-lang/apidocs/</link>
 								<link>https://aoindustries.com/ao-net-types/apidocs/</link>
@@ -97,10 +99,16 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			</dependency>
 			<!-- Direct -->
 			<dependency>
+				<groupId>com.aoindustries</groupId><artifactId>ao-collections</artifactId><version>1.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+			</dependency>
+			<dependency>
 				<groupId>com.aoindustries</groupId><artifactId>ao-encoding</artifactId><version>3.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
 			</dependency>
 			<dependency>
 				<groupId>com.aoindustries</groupId><artifactId>ao-fluent-html</artifactId><version>0.1.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+			</dependency>
+			<dependency>
+				<groupId>com.aoindustries</groupId><artifactId>ao-fluent-html-servlet</artifactId><version>0.1.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
 			</dependency>
 			<dependency>
 				<groupId>com.aoindustries</groupId><artifactId>ao-io-buffer</artifactId><version>3.2.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
@@ -157,10 +165,16 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		</dependency>
 		<!-- Direct -->
 		<dependency>
+			<groupId>com.aoindustries</groupId><artifactId>ao-collections</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.aoindustries</groupId><artifactId>ao-encoding</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.aoindustries</groupId><artifactId>ao-fluent-html</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.aoindustries</groupId><artifactId>ao-fluent-html-servlet</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.aoindustries</groupId><artifactId>ao-io-buffer</artifactId>
