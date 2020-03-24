@@ -22,9 +22,9 @@
  */
 package com.semanticcms.core.taglib;
 
+import com.aoindustries.collections.MinimalList;
 import com.aoindustries.encoding.Doctype;
 import com.aoindustries.encoding.Serialization;
-import com.aoindustries.util.MinimalList;
 import java.util.List;
 import java.util.Locale;
 import javax.servlet.jsp.tagext.TagData;
