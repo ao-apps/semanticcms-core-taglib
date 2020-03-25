@@ -227,7 +227,7 @@ final public class Functions {
 	// TODO: Move to ao-taglib?
 	public static Map<String,String> parseQueryString(String queryString) {
 		if(queryString==null) return null;
-		List<String> pairs = Strings.splitString(queryString, '&');
+		List<String> pairs = Strings.split(queryString, '&');
 		Map<String,String> params = new LinkedHashMap<>(pairs.size() * 4/3 + 1);
 		for(String pair : pairs) {
 			int equalPos = pair.indexOf('=');
