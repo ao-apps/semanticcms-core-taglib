@@ -73,7 +73,7 @@ public class DoViewTag extends SimpleTagSupport {
 					@Override
 					@SuppressWarnings("deprecation")
 					public ServletOutputStream getOutputStream() {
-						throw new com.aoindustries.lang.NotImplementedException();
+						throw new com.aoindustries.exception.NotImplementedException();
 					}
 				},
 				HtmlEE.get(servletContext, request, out),
