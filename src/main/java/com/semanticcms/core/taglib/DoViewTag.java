@@ -37,6 +37,7 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspTagException;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
+import org.apache.commons.lang3.NotImplementedException;
 
 public class DoViewTag extends SimpleTagSupport {
 
@@ -71,9 +72,8 @@ public class DoViewTag extends SimpleTagSupport {
 						return out;
 					}
 					@Override
-					@SuppressWarnings("deprecation")
 					public ServletOutputStream getOutputStream() {
-						throw new com.aoindustries.exception.NotImplementedException();
+						throw new NotImplementedException("getOutputStream not expected");
 					}
 				},
 				HtmlEE.get(servletContext, request, out),
