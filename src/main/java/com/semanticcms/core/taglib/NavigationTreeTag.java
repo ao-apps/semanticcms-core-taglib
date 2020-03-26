@@ -108,12 +108,13 @@ public class NavigationTreeTag extends SimpleTagSupport {
 			final PageContext pageContext = (PageContext)getJspContext();
 			ServletContext servletContext = pageContext.getServletContext();
 			HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
+			HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
 			NavigationTreeRenderer.writeNavigationTree(
 				servletContext,
 				pageContext.getELContext(),
 				request,
-				(HttpServletResponse)pageContext.getResponse(),
-				HtmlEE.get(servletContext, request, pageContext.getOut()),
+				response,
+				HtmlEE.get(servletContext, request, response, pageContext.getOut()),
 				root,
 				skipRoot,
 				yuiConfig,

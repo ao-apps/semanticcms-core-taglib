@@ -63,20 +63,21 @@ public class DoViewTag extends SimpleTagSupport {
 			};
 			ServletContext servletContext = pageContext.getServletContext();
 			HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
+			HttpServletResponse response = new HttpServletResponseWrapper((HttpServletResponse)pageContext.getResponse()) {
+				@Override
+				public PrintWriter getWriter() {
+					return out;
+				}
+				@Override
+				public ServletOutputStream getOutputStream() {
+					throw new NotImplementedException("getOutputStream not expected");
+				}
+			};
 			view.doView(
 				servletContext,
 				request,
-				new HttpServletResponseWrapper((HttpServletResponse)pageContext.getResponse()) {
-					@Override
-					public PrintWriter getWriter() {
-						return out;
-					}
-					@Override
-					public ServletOutputStream getOutputStream() {
-						throw new NotImplementedException("getOutputStream not expected");
-					}
-				},
-				HtmlEE.get(servletContext, request, out),
+				response,
+				HtmlEE.get(servletContext, request, response, out),
 				page
 			);
 			if(out.checkError()) throw new IOException("Error on doView PrintWriter");
