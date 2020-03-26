@@ -169,12 +169,13 @@ public class LinkTag
 				}
 				final JspWriter out = pageContext.getOut();
 				ServletContext servletContext = pageContext.getServletContext();
+				HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
 				LinkImpl.writeLinkImpl(
 					servletContext,
 					pageContext.getELContext(),
 					request,
-					(HttpServletResponse)pageContext.getResponse(),
-					HtmlEE.get(servletContext, request, out),
+					response,
+					HtmlEE.get(servletContext, request, response, out),
 					book,
 					page,
 					element,
