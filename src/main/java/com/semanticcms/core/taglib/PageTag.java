@@ -23,16 +23,15 @@
 package com.semanticcms.core.taglib;
 
 import com.aoindustries.encoding.Doctype;
-import com.aoindustries.encoding.EncodingContext;
 import com.aoindustries.encoding.Serialization;
 import com.aoindustries.io.NullWriter;
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
 import com.aoindustries.io.buffer.EmptyResult;
+import static com.aoindustries.lang.Strings.nullIfEmpty;
 import com.aoindustries.servlet.ServletContextCache;
 import com.aoindustries.servlet.jsp.LocalizedJspTagException;
 import com.aoindustries.taglib.AutoEncodingBufferedTag;
-import static com.aoindustries.lang.Strings.nullIfEmpty;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.model.PageRef;
 import com.semanticcms.core.servlet.PageRefResolver;
@@ -127,7 +126,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 		}
 	}
 
-	private Doctype doctype = EncodingContext.DEFAULT_DOCTYPE;
+	private Doctype doctype = Doctype.DEFAULT;
 	public void setDoctype(String doctype) {
 		if(doctype == null) {
 			this.doctype = null;
