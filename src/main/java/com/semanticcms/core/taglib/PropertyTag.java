@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2017  AO Industries, Inc.
+ * Copyright (C) 2017, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,7 +22,6 @@
  */
 package com.semanticcms.core.taglib;
 
-import com.aoindustries.encoding.Coercion;
 import com.aoindustries.encoding.MediaType;
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.servlet.jsp.LocalizedJspTagException;
@@ -44,7 +43,7 @@ public class PropertyTag
 		ValueAttribute
 {
 
-	private Object name;
+	private String name;
 	private Object value;
 	private boolean valueSet = false;
 	private Node target;
@@ -61,7 +60,7 @@ public class PropertyTag
 	}
 
 	@Override
-	public void setName(Object name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
@@ -89,16 +88,15 @@ public class PropertyTag
 			resolvedTarget = CurrentNode.getCurrentNode(((PageContext)getJspContext()).getRequest());
 			if(resolvedTarget == null) throw new JspTagException("Unable to find parent node for property target");
 		}
-		String propertyName = Coercion.toString(name);
 		boolean propertySet = resolvedTarget.setProperty(
-			propertyName,
+			name,
 			valueSet ? value : capturedBody.trim()
 		);
 		if(!propertySet && !allowExisting) {
 			throw new LocalizedJspTagException(
 				ApplicationResources.accessor,
 				"error.duplicateDynamicElementProperty",
-				propertyName
+				name
 			);
 		}
 	}

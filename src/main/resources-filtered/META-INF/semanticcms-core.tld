@@ -1078,7 +1078,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<!-- datePublished="2017-07-19T12:12:39-0500" -->
-		<!-- dateModified="2017-08-01T16:44:47-0500" -->
+		<!-- dateModified="2020-03-27T00:33:46-05:00" -->
 		<description><![CDATA[
 			<p>
 				Sets a property of a
@@ -1094,7 +1094,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<tag-class>com.semanticcms.core.taglib.PropertyTag</tag-class>
 		<body-content>scriptless</body-content>
 		<attribute>
-			<!-- TODO: Allow object property names?  Too confusing? -->
 			<description><![CDATA[
 				<p>
 					The name of property.
@@ -1103,7 +1102,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<name>name</name>
 			<required>true</required>
 			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.Object</type>
+			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
 			<description><![CDATA[
