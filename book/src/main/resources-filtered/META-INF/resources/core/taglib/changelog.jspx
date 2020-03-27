@@ -37,7 +37,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2020-03-15T00:27:10-05:00"
+		dateModified="2020-03-27T14:34:36-05:00"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-core-taglib:pom.version}" />
@@ -52,21 +52,30 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				groupId="@{project.groupId}"
 				artifactId="@{documented.artifactId}"
 				scmUrl="@{project.scm.url}"
-			>
-				<ul>
-					<li>Minimum Java version changed from 1.7 to 1.8.</li>
-					<li>
-						Reduced use of property substitutions in <code>pom.xml</code>.
-						This is to help 3rd-party parsers that fail to perform full Maven-compatible substitutions.
-					</li>
-					<li>Enabled <code>HideJspExtensionFilter</code> on <code>ERROR</code> dispatcher, too.</li>
-					<li>Now supports page attributes for <code>serialization</code> (default "auto") and <code>doctype</code> (default "HTML5").</li>
-					<li>Using <ao:a href="https://aoindustries.com/ao-fluent-html/">AO Fluent HTML</ao:a> for HTML generation.</li>
-					<li>Optimized ServletContext attribute initialization and concurrency.</li>
-					<li>Updated dependencies.</li>
-				</ul>
-			</changelog:release>
+			/>
 		</c:if>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="1.12.0"
+			datePublished="2020-03-27T14:34:36-05:00"
+			groupId="@{project.groupId}"
+			artifactId="@{documented.artifactId}"
+			scmUrl="@{project.scm.url}"
+		>
+			<ul>
+				<li>Minimum Java version changed from 1.7 to 1.8.</li>
+				<li>
+					Reduced use of property substitutions in <code>pom.xml</code>.
+					This is to help 3rd-party parsers that fail to perform full Maven-compatible substitutions.
+				</li>
+				<li>Enabled <code>HideJspExtensionFilter</code> on <code>ERROR</code> dispatcher, too.</li>
+				<li>Now supports page attributes for <code>serialization</code> (default "auto") and <code>doctype</code> (default "HTML5").</li>
+				<li>Using <ao:a href="https://aoindustries.com/ao-fluent-html/">AO Fluent HTML</ao:a> for HTML generation.</li>
+				<li>Optimized ServletContext attribute initialization and concurrency.</li>
+				<li>Updated dependencies.</li>
+			</ul>
+		</changelog:release>
 
 		<changelog:release
 			projectName="@{documented.name}"
