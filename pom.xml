@@ -165,11 +165,11 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>javax.servlet</groupId><artifactId>jstl</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>javax.servlet.jsp</groupId><artifactId>javax.servlet.jsp-api</artifactId>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId><artifactId>jstl</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.web</groupId><artifactId>jstl-impl</artifactId>
