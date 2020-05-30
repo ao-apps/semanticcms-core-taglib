@@ -32,9 +32,10 @@ import java.util.Collections;
 
 public class SemanticCmsCoreTldInitializer extends TagReferenceInitializer {
 
+	@SuppressWarnings("unchecked")
 	public SemanticCmsCoreTldInitializer() throws ValidationException {
 		super(
-			"Core Taglib Reference",
+			Maven.properties.getProperty("project.name") + " Reference",
 			"Taglib Reference",
 			new ResourceRef(
 				new BookRef(
