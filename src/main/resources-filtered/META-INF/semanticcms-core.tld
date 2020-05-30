@@ -39,7 +39,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<uri>@{project.url}</uri>
 	<tag>
 		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2019-10-27T16:59:13-0500" -->
+		<!-- dateModified="2020-05-30T01:03:45-05:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				The body of this tag represents one page of content.
@@ -191,7 +191,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 					<li>Use the serialization active on the current request.</li>
 					<li>
 						Use the application <a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
-						<code>com.aoindustries.html.Serialization.default</code>
+						<code>com.aoindustries.encoding.Serialization.default</code>
 						that allows an application to control the selection of HTML versus XHTML.
 					</li>
 					<li>
@@ -224,7 +224,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 					<li>Use the doctype active on the current request.</li>
 					<li>
 						Use the application <a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
-						<code>com.aoindustries.html.Doctype.default</code>
+						<code>com.aoindustries.encoding.Doctype.default</code>
 						that allows an application to control the default doctype.
 					</li>
 					<li>
