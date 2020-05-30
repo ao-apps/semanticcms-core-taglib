@@ -1016,7 +1016,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<!-- datePublished="2017-07-19T12:12:39-0500" -->
-		<!-- dateModified="2020-03-27T00:33:46-05:00" -->
+		<!-- dateModified="2020-05-30T02:46:48-05:00" -->
 		<description><![CDATA[
 			<p>
 				Sets a property of a
@@ -1025,7 +1025,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				or an <a href="https://semanticcms.com/core/model/apidocs/com/semanticcms/core/model/Element.html">Element</a>).
 			</p>
 			<p>
-				See <a href="https://semanticcms.com/core/model/apidocs/com/semanticcms/core/model/Node.html#setProperty-java.lang.String-java.lang.Object-">setProperty(String name, Object value)</a>.
+				See <a href="https://semanticcms.com/core/model/apidocs/com/semanticcms/core/model/Node.html#setProperty(java.lang.String,java.lang.Object)">setProperty(String name, Object value)</a>.
 			</p>
 		]]></description>
 		<name>property</name>
@@ -1559,10 +1559,10 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2019-10-02T02:41:35-0500" -->
+		<!-- dateModified="2020-05-30T02:46:48-05:00" -->
 		<description><![CDATA[
 			<p style="text-decoration: line-through">
-				<a href="https://aoindustries.com/ao-net-types/apidocs/com/aoindustries/net/URIEncoder.html#encodeURIComponent-java.lang.String-">Encodes a value</a>
+				<a href="https://aoindustries.com/ao-net-types/apidocs/com/aoindustries/net/URIEncoder.html#encodeURIComponent(java.lang.String)">Encodes a value</a>
 				for use in a URI path component, query string, or fragment.
 			</p>
 			<p>
