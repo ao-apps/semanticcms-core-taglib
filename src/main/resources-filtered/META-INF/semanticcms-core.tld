@@ -1603,7 +1603,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2016-11-11T16:21:13-0600" -->
+		<!-- dateModified="2020-05-29T14:33:14-05:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Flattens a page directed acyclic graph (DAG) into a list in depth-first traversal order.
@@ -1632,7 +1632,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>convertPageDagToList</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.util.List convertPageDagToList(com.semanticcms.core.model.Page,java.lang.String)</function-signature>
+		<function-signature><![CDATA[java.util.List<com.semanticcms.core.model.Page> convertPageDagToList(com.semanticcms.core.model.Page,java.lang.String)]]></function-signature>
 		<example><![CDATA[<code>${core:convertPageDagToList(rootPage, level)}</code>]]></example>
 	</function>
 	<function>
@@ -1797,7 +1797,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2019-10-02T02:41:35-0500" -->
+		<!-- dateModified="2020-05-29T14:35:21-05:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Parses the provided request query string into a
@@ -1811,7 +1811,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>parseQueryString</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.util.Map parseQueryString(java.lang.String)</function-signature>
+		<function-signature><![CDATA[java.util.Map<java.lang.String,java.lang.String> parseQueryString(java.lang.String)]]></function-signature>
 		<example><![CDATA[<code>${core:parseQueryString(pageContext.request.queryString)}</code>]]></example>
 	</function>
 	<function>
@@ -1889,7 +1889,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2016-11-11T16:21:13-0600" -->
+		<!-- dateModified="2020-05-29T14:37:58-05:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Finds the author(s) for the given page.
@@ -1901,7 +1901,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>findAuthors</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.util.Set findAuthors(com.semanticcms.core.model.Page)</function-signature>
+		<function-signature><![CDATA[java.util.Set<com.semanticcms.core.model.Author> findAuthors(com.semanticcms.core.model.Page)]]></function-signature>
 		<example><![CDATA[<code>${core:findAuthors(page)}</code>]]></example>
 	</function>
 	<function>
@@ -1951,7 +1951,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<!-- datePublished="2016-08-14T14:01:04-0500" -->
-		<!-- dateModified="2016-11-11T16:21:13-0600" -->
+		<!-- dateModified="2020-05-29T14:43:45-05:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Looks for the nearest nested elements of the given class.
@@ -1966,12 +1966,12 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>findTopLevelElements</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.util.List findTopLevelElements(com.semanticcms.core.model.Node,java.lang.String)</function-signature>
+		<function-signature><![CDATA[java.util.List<? extends com.semanticcms.core.model.Element> findTopLevelElements(com.semanticcms.core.model.Node,java.lang.String)]]></function-signature>
 		<example><![CDATA[<code>${core:findTopLevelElements(node, elementType)}</code>]]></example>
 	</function>
 	<function>
 		<!-- datePublished="2016-08-14T14:01:04-0500" -->
-		<!-- dateModified="2016-11-08T02:37:12-0600" -->
+		<!-- dateModified="2020-05-29T14:45:17-05:00" -->
 		<description><![CDATA[
 			<p>
 				Gets all elements in the page (including all child elements) that are of the
@@ -1980,7 +1980,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>filterElements</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.util.List filterElements(com.semanticcms.core.model.Page,java.lang.String)</function-signature>
+		<function-signature><![CDATA[java.util.List<? extends com.semanticcms.core.model.Element> filterElements(com.semanticcms.core.model.Page,java.lang.String)]]></function-signature>
 		<example><![CDATA[<code>${core:filterElements(page, elementType)}</code>]]></example>
 	</function>
 	<function>
@@ -2011,7 +2011,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<!-- datePublished="2016-08-28T17:56:51-0500" -->
-		<!-- dateModified="2018-06-02T01:11:31-0500" -->
+		<!-- dateModified="2020-05-29T14:47:21-05:00" -->
 		<description><![CDATA[
 			<p>
 				Gets the optional additional parameter to a view link.
@@ -2019,7 +2019,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>getViewLinkParams</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.util.Map getViewLinkParams(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)</function-signature>
+		<function-signature><![CDATA[java.util.Map<java.lang.String,java.util.List<java.lang.String>> getViewLinkParams(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)]]></function-signature>
 		<example><![CDATA[<code>${core:getViewLinkParams(view, page)}</code>]]></example>
 	</function>
 	<function>
@@ -2037,7 +2037,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<!-- datePublished="2016-08-12T01:59:04-0500" -->
-		<!-- dateModified="2018-06-02T01:11:31-0500" -->
+		<!-- dateModified="2020-05-29T18:27:08-05:00" -->
 		<description><![CDATA[
 			<p>
 				Gets the authors for the given view and page.
@@ -2045,7 +2045,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>getViewAuthors</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.util.Set getViewAuthors(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)</function-signature>
+		<function-signature><![CDATA[java.util.Set<com.semanticcms.core.model.Author> getViewAuthors(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)]]></function-signature>
 		<example><![CDATA[<code>${core:getViewAuthors(view, page)}</code>]]></example>
 	</function>
 	<function>
@@ -2063,7 +2063,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<!-- datePublished="2016-09-11T00:56:38-0500" -->
-		<!-- dateModified="2018-06-02T01:11:31-0500" -->
+		<!-- dateModified="2020-05-29T14:50:38-05:00" -->
 		<description><![CDATA[
 			<p>
 				Gets an optional set of additional links to include for this view
@@ -2072,7 +2072,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>getViewLinks</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.util.Collection getViewLinks(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)</function-signature>
+		<function-signature><![CDATA[java.util.Collection<com.aoindustries.taglib.Link> getViewLinks(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)]]></function-signature>
 		<example><![CDATA[<code>${core:getViewLinks(view, page)}</code>]]></example>
 	</function>
 	<function>
@@ -2104,7 +2104,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<!-- datePublished="2016-08-28T16:31:50-0500" -->
-		<!-- dateModified="2018-06-02T01:11:31-0500" -->
+		<!-- dateModified="2020-05-29T14:52:13-05:00" -->
 		<description><![CDATA[
 			<p>
 				Merges global and per-view scripts for the provided view.
@@ -2112,7 +2112,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>mergeGlobalAndViewScripts</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.util.Map mergeGlobalAndViewScripts(com.semanticcms.core.renderer.html.View)</function-signature>
+		<function-signature><![CDATA[java.util.Map<java.lang.String,java.lang.String> mergeGlobalAndViewScripts(com.semanticcms.core.renderer.html.View)]]></function-signature>
 		<example><![CDATA[<code>${core:mergeGlobalAndViewScripts(view)}</code>]]></example>
 	</function>
 	<function>

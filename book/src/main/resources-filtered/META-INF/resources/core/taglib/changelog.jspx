@@ -37,7 +37,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2020-03-27T14:34:36-05:00"
+		dateModified="2020-05-29T18:25:35-05:00"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-core-taglib:pom.version}" />
@@ -120,6 +120,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 						No longer using <code>HideJspExtensionFilter</code> because <core:link book="/" page="/" /> 2
 						references pages by abstract path instead of implementation page.
 					</li>
+					<li>Added generics to TLD types and signatures.</li>
 				</ul>
 			</changelog:release>
 		</c:if>
