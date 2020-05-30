@@ -34,14 +34,17 @@ public class SemanticCmsCoreTldInitializer extends TagReferenceInitializer {
 			"Taglib Reference",
 			"/core/taglib",
 			"/semanticcms-core.tld",
+			true,
 			Maven.properties.getProperty("documented.javadoc.link.javase"),
 			Maven.properties.getProperty("documented.javadoc.link.javaee"),
 			// Self
 			Collections.singletonMap("com.semanticcms.core.taglib", Maven.properties.getProperty("project.url") + "apidocs/"),
 			// Dependencies
+			Collections.singletonMap("com.aoindustries.net", "https://aoindustries.com/ao-net-types/apidocs/"),
 			Collections.singletonMap("com.aoindustries.taglib", "https://aoindustries.com/ao-taglib/apidocs/"),
 			Collections.singletonMap("com.semanticcms.core.model", "https://semanticcms.com/core/model/apidocs/"),
-			Collections.singletonMap("com.semanticcms.core.servlet", "https://semanticcms.com/core/servlet/apidocs/")
+			Collections.singletonMap("com.semanticcms.core.servlet", "https://semanticcms.com/core/servlet/apidocs/"),
+			Collections.singletonMap("com.semanticcms.core.servlet.impl", "https://semanticcms.com/core/servlet/apidocs/")
 		);
 	}
 }
