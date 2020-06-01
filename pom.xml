@@ -40,7 +40,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<javadoc.taglibReference><![CDATA[<li><a target="${javadoc.target}" href="${project.url}semanticcms-core.tld/">Taglib Reference</a></li>]]></javadoc.taglibReference>
 		<jodaTimeApidocs>https://www.joda.org/joda-time/apidocs/</jodaTimeApidocs>
 		<!-- Dependencies -->
-		<org.apache.commons.commons-lang3.version>3.10</org.apache.commons.commons-lang3.version>
+		<commons-lang3.version>3.10</commons-lang3.version>
 	</properties>
 
 	<name>SemanticCMS Core Taglib²</name>
@@ -66,6 +66,121 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			<build>
 				<plugins>
 					<plugin>
+						<groupId>org.apache.maven.plugins</groupId><artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>unpack.offlinkLinks</id>
+								<phase>generate-sources</phase>
+								<goals><goal>unpack</goal></goals>
+								<configuration>
+									<artifactItems>
+										<!-- Direct -->
+										<artifactItem>
+											<groupId>com.aoindustries</groupId><artifactId>ao-collections</artifactId>
+											<classifier>javadoc</classifier><includes>element-list, package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks/com.aoindustries/ao-collections</outputDirectory>
+										</artifactItem>
+										<artifactItem>
+											<groupId>com.aoindustries</groupId><artifactId>ao-encoding</artifactId>
+											<classifier>javadoc</classifier><includes>element-list, package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks/com.aoindustries/ao-encoding</outputDirectory>
+										</artifactItem>
+										<artifactItem>
+											<groupId>com.aoindustries</groupId><artifactId>ao-fluent-html</artifactId>
+											<classifier>javadoc</classifier><includes>element-list, package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks/com.aoindustries/ao-fluent-html</outputDirectory>
+										</artifactItem>
+										<artifactItem>
+											<groupId>com.aoindustries</groupId><artifactId>ao-fluent-html-servlet</artifactId>
+											<classifier>javadoc</classifier><includes>element-list, package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks/com.aoindustries/ao-fluent-html-servlet</outputDirectory>
+										</artifactItem>
+										<artifactItem>
+											<groupId>com.aoindustries</groupId><artifactId>ao-io-buffer</artifactId>
+											<classifier>javadoc</classifier><includes>element-list, package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks/com.aoindustries/ao-io-buffer</outputDirectory>
+										</artifactItem>
+										<artifactItem>
+											<groupId>com.aoindustries</groupId><artifactId>ao-lang</artifactId>
+											<classifier>javadoc</classifier><includes>element-list, package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks/com.aoindustries/ao-lang</outputDirectory>
+										</artifactItem>
+										<artifactItem>
+											<groupId>com.aoindustries</groupId><artifactId>ao-net-types</artifactId>
+											<classifier>javadoc</classifier><includes>element-list, package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks/com.aoindustries/ao-net-types</outputDirectory>
+										</artifactItem>
+										<artifactItem>
+											<groupId>com.aoindustries</groupId><artifactId>ao-servlet-filter</artifactId>
+											<classifier>javadoc</classifier><includes>element-list, package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks/com.aoindustries/ao-servlet-filter</outputDirectory>
+										</artifactItem>
+										<artifactItem>
+											<groupId>com.aoindustries</groupId><artifactId>ao-servlet-util</artifactId>
+											<classifier>javadoc</classifier><includes>element-list, package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks/com.aoindustries/ao-servlet-util</outputDirectory>
+										</artifactItem>
+										<artifactItem>
+											<groupId>com.aoindustries</groupId><artifactId>ao-taglib</artifactId>
+											<classifier>javadoc</classifier><includes>element-list, package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks/com.aoindustries/ao-taglib</outputDirectory>
+										</artifactItem>
+										<artifactItem>
+											<groupId>com.aoindustries</groupId><artifactId>aocode-public</artifactId>
+											<classifier>javadoc</classifier><includes>element-list, package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks/com.aoindustries/aocode-public</outputDirectory>
+										</artifactItem>
+										<artifactItem>
+											<groupId>org.apache.commons</groupId><artifactId>commons-lang3</artifactId>
+											<classifier>javadoc</classifier><includes>element-list, package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks/org.apache.commons/commons-lang3</outputDirectory>
+										</artifactItem>
+										<artifactItem>
+											<groupId>joda-time</groupId><artifactId>joda-time</artifactId>
+											<classifier>javadoc</classifier><includes>element-list, package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks/joda-time/joda-time</outputDirectory>
+										</artifactItem>
+										<artifactItem>
+											<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-controller</artifactId>
+											<classifier>javadoc</classifier><includes>element-list, package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks/com.semanticcms/semanticcms-core-controller</outputDirectory>
+										</artifactItem>
+										<artifactItem>
+											<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-model</artifactId>
+											<classifier>javadoc</classifier><includes>element-list, package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks/com.semanticcms/semanticcms-core-model</outputDirectory>
+										</artifactItem>
+										<artifactItem>
+											<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-pages</artifactId>
+											<classifier>javadoc</classifier><includes>element-list, package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks/com.semanticcms/semanticcms-core-pages</outputDirectory>
+										</artifactItem>
+										<artifactItem>
+											<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-pages-local</artifactId>
+											<classifier>javadoc</classifier><includes>element-list, package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks/com.semanticcms/semanticcms-core-pages-local</outputDirectory>
+										</artifactItem>
+										<artifactItem>
+											<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-renderer-html</artifactId>
+											<classifier>javadoc</classifier><includes>element-list, package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks/com.semanticcms/semanticcms-core-renderer-html</outputDirectory>
+										</artifactItem>
+										<artifactItem>
+											<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-resources</artifactId>
+											<classifier>javadoc</classifier><includes>element-list, package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks/com.semanticcms/semanticcms-core-resources</outputDirectory>
+										</artifactItem>
+										<artifactItem>
+											<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-servlet</artifactId>
+											<classifier>javadoc</classifier><includes>element-list, package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks/com.semanticcms/semanticcms-core-servlet</outputDirectory>
+										</artifactItem>
+									</artifactItems>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
 						<groupId>org.apache.maven.plugins</groupId><artifactId>maven-javadoc-plugin</artifactId>
 						<configuration>
 							<links>
@@ -73,27 +188,110 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 								<!-- Java EE -->
 								<link>${javadoc.link.javaee}</link>
 								<!-- Direct -->
-								<link>https://aoindustries.com/ao-collections/apidocs/</link>
-								<link>https://aoindustries.com/ao-encoding/apidocs/</link>
-								<link>https://aoindustries.com/ao-fluent-html/apidocs/</link>
-								<link>https://aoindustries.com/ao-fluent-html/servlet/apidocs/</link>
-								<link>https://aoindustries.com/ao-io-buffer/apidocs/</link>
-								<link>https://aoindustries.com/ao-lang/apidocs/</link>
-								<link>https://aoindustries.com/ao-net-types/apidocs/</link>
-								<link>https://aoindustries.com/ao-servlet-filter/apidocs/</link>
-								<link>https://aoindustries.com/ao-servlet-util/apidocs/</link>
-								<link>https://aoindustries.com/ao-taglib/apidocs/</link>
-								<link>https://aoindustries.com/aocode-public/apidocs/</link>
-								<link>https://commons.apache.org/proper/commons-lang/javadocs/api-${org.apache.commons.commons-lang3.version}/</link>
-								<link>${jodaTimeApidocs}</link>
-								<!-- TODO: Once published: <link>https://semanticcms.com/core/controller/apidocs/</link> -->
-								<link>https://semanticcms.com/core/model/apidocs/</link>
-								<!-- TODO: Once published: <link>https://semanticcms.com/core/pages/apidocs/</link> -->
-								<!-- TODO: Once published: <link>https://semanticcms.com/core/pages/local/apidocs/</link> -->
-								<!-- TODO: Once published: <link>https://semanticcms.com/core/renderer/html/apidocs/</link> -->
-								<!-- TODO: Once published: <link>https://semanticcms.com/core/resources/apidocs/</link> -->
-								<link>https://semanticcms.com/core/servlet/apidocs/</link>
+								<!-- offlineLink: <groupId>com.aoindustries</groupId><artifactId>ao-collections</artifactId> -->
+								<!-- offlineLink: <groupId>com.aoindustries</groupId><artifactId>ao-encoding</artifactId> -->
+								<!-- offlineLink: <groupId>com.aoindustries</groupId><artifactId>ao-fluent-html</artifactId> -->
+								<!-- offlineLink: <groupId>com.aoindustries</groupId><artifactId>ao-fluent-html-servlet</artifactId> -->
+								<!-- offlineLink: <groupId>com.aoindustries</groupId><artifactId>ao-io-buffer</artifactId> -->
+								<!-- offlineLink: <groupId>com.aoindustries</groupId><artifactId>ao-lang</artifactId> -->
+								<!-- offlineLink: <groupId>com.aoindustries</groupId><artifactId>ao-net-types</artifactId> -->
+								<!-- offlineLink: <groupId>com.aoindustries</groupId><artifactId>ao-servlet-filter</artifactId> -->
+								<!-- offlineLink: <groupId>com.aoindustries</groupId><artifactId>ao-servlet-util</artifactId> -->
+								<!-- offlineLink: <groupId>com.aoindustries</groupId><artifactId>ao-taglib</artifactId> -->
+								<!-- offlineLink: <groupId>com.aoindustries</groupId><artifactId>aocode-public</artifactId> -->
+								<!-- offlineLink: <groupId>org.apache.commons</groupId><artifactId>commons-lang3</artifactId> -->
+								<!-- offlineLink: <groupId>joda-time</groupId><artifactId>joda-time</artifactId> -->
+								<!-- offlineLink: <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-controller</artifactId> -->
+								<!-- offlineLink: <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-model</artifactId> -->
+								<!-- offlineLink: <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-pages</artifactId> -->
+								<!-- offlineLink: <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-pages-local</artifactId> -->
+								<!-- offlineLink: <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-renderer-html</artifactId> -->
+								<!-- offlineLink: <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-resources</artifactId> -->
+								<!-- offlineLink: <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-servlet</artifactId> -->
 							</links>
+							<offlineLinks>
+								<!-- Direct -->
+								<offlineLink>
+									<url>https://aoindustries.com/ao-collections/apidocs/</url>
+									<location>${project.build.directory}/offlineLinks/com.aoindustries/ao-collections</location>
+								</offlineLink>
+								<offlineLink>
+									<url>https://aoindustries.com/ao-encoding/apidocs/</url>
+									<location>${project.build.directory}/offlineLinks/com.aoindustries/ao-encoding</location>
+								</offlineLink>
+								<offlineLink>
+									<url>https://aoindustries.com/ao-fluent-html/apidocs/</url>
+									<location>${project.build.directory}/offlineLinks/com.aoindustries/ao-fluent-html</location>
+								</offlineLink>
+								<offlineLink>
+									<url>https://aoindustries.com/ao-fluent-html/servlet/apidocs/</url>
+									<location>${project.build.directory}/offlineLinks/com.aoindustries/ao-fluent-html-servlet</location>
+								</offlineLink>
+								<offlineLink>
+									<url>https://aoindustries.com/ao-io-buffer/apidocs/</url>
+									<location>${project.build.directory}/offlineLinks/com.aoindustries/ao-io-buffer</location>
+								</offlineLink>
+								<offlineLink>
+									<url>https://aoindustries.com/ao-lang/apidocs/</url>
+									<location>${project.build.directory}/offlineLinks/com.aoindustries/ao-lang</location>
+								</offlineLink>
+								<offlineLink>
+									<url>https://aoindustries.com/ao-net-types/apidocs/</url>
+									<location>${project.build.directory}/offlineLinks/com.aoindustries/ao-net-types</location>
+								</offlineLink>
+								<offlineLink>
+									<url>https://aoindustries.com/ao-servlet-filter/apidocs/</url>
+									<location>${project.build.directory}/offlineLinks/com.aoindustries/ao-servlet-filter</location>
+								</offlineLink>
+								<offlineLink>
+									<url>https://aoindustries.com/ao-servlet-util/apidocs/</url>
+									<location>${project.build.directory}/offlineLinks/com.aoindustries/ao-servlet-util</location>
+								</offlineLink>
+								<offlineLink>
+									<url>https://aoindustries.com/ao-taglib/apidocs/</url>
+									<location>${project.build.directory}/offlineLinks/com.aoindustries/ao-taglib</location>
+								</offlineLink>
+								<offlineLink>
+									<url>https://aoindustries.com/aocode-public/apidocs/</url>
+									<location>${project.build.directory}/offlineLinks/com.aoindustries/aocode-public</location>
+								</offlineLink>
+								<offlineLink>
+									<url>https://commons.apache.org/proper/commons-lang/javadocs/api-${commons-lang3.version}/</url>
+									<location>${project.build.directory}/offlineLinks/org.apache.commons/commons-lang3</location>
+								</offlineLink>
+								<offlineLink>
+									<url>${jodaTimeApidocs}</url>
+									<location>${project.build.directory}/offlineLinks/joda-time/joda-time</location>
+								</offlineLink>
+								<offlineLink>
+									<url>https://semanticcms.com/core/controller/apidocs/</url>
+									<location>${project.build.directory}/offlineLinks/com.semanticcms/semanticcms-core-controller</location>
+								</offlineLink>
+								<offlineLink>
+									<url>https://semanticcms.com/core/model/apidocs/</url>
+									<location>${project.build.directory}/offlineLinks/com.semanticcms/semanticcms-core-model</location>
+								</offlineLink>
+								<offlineLink>
+									<url>https://semanticcms.com/core/pages/apidocs/</url>
+									<location>${project.build.directory}/offlineLinks/com.semanticcms/semanticcms-core-pages</location>
+								</offlineLink>
+								<offlineLink>
+									<url>https://semanticcms.com/core/pages/local/apidocs/</url>
+									<location>${project.build.directory}/offlineLinks/com.semanticcms/semanticcms-core-pages-local</location>
+								</offlineLink>
+								<offlineLink>
+									<url>https://semanticcms.com/core/renderer/html/apidocs/</url>
+									<location>${project.build.directory}/offlineLinks/com.semanticcms/semanticcms-core-renderer-html</location>
+								</offlineLink>
+								<offlineLink>
+									<url>https://semanticcms.com/core/resources/apidocs/</url>
+									<location>${project.build.directory}/offlineLinks/com.semanticcms/semanticcms-core-resources</location>
+								</offlineLink>
+								<offlineLink>
+									<url>https://semanticcms.com/core/servlet/apidocs/</url>
+									<location>${project.build.directory}/offlineLinks/com.semanticcms/semanticcms-core-servlet</location>
+								</offlineLink>
+							</offlineLinks>
 						</configuration>
 					</plugin>
 				</plugins>
@@ -144,7 +342,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				<groupId>com.aoindustries</groupId><artifactId>aocode-public</artifactId><version>4.1.0${POST-SNAPSHOT}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.apache.commons</groupId><artifactId>commons-lang3</artifactId><version>${org.apache.commons.commons-lang3.version}</version>
+				<groupId>org.apache.commons</groupId><artifactId>commons-lang3</artifactId><version>${commons-lang3.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>joda-time</groupId><artifactId>joda-time</artifactId><version>2.10.6</version>
