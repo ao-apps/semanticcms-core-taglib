@@ -67,13 +67,22 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId><artifactId>maven-dependency-plugin</artifactId>
+						<dependencies>
+							<dependency>
+								<groupId>com.aoindustries</groupId><artifactId>ao-javadoc-offline</artifactId><version>1.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+							</dependency>
+						</dependencies>
 						<executions>
 							<execution>
-								<id>unpack.offlinkLinks</id>
-								<phase>generate-sources</phase>
-								<goals><goal>unpack</goal></goals>
+								<id>unpack.offlinkLinks</id><phase>generate-sources</phase><goals><goal>unpack</goal></goals>
 								<configuration>
+									<silent>true</silent>
 									<artifactItems>
+										<artifactItem>
+											<groupId>com.aoindustries</groupId><artifactId>ao-javadoc-offline</artifactId><version>1.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+											<includes>**/element-list, **/package-list</includes>
+											<outputDirectory>${project.build.directory}/offlineLinks</outputDirectory>
+										</artifactItem>
 										<!-- Direct -->
 										<artifactItem>
 											<groupId>com.aoindustries</groupId><artifactId>ao-collections</artifactId>
@@ -183,33 +192,16 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId><artifactId>maven-javadoc-plugin</artifactId>
 						<configuration>
-							<links>
-								<link>${javadoc.link.javase}</link>
-								<!-- Java EE -->
-								<link>${javadoc.link.javaee}</link>
-								<!-- Direct -->
-								<!-- offlineLink: <groupId>com.aoindustries</groupId><artifactId>ao-collections</artifactId> -->
-								<!-- offlineLink: <groupId>com.aoindustries</groupId><artifactId>ao-encoding</artifactId> -->
-								<!-- offlineLink: <groupId>com.aoindustries</groupId><artifactId>ao-fluent-html</artifactId> -->
-								<!-- offlineLink: <groupId>com.aoindustries</groupId><artifactId>ao-fluent-html-servlet</artifactId> -->
-								<!-- offlineLink: <groupId>com.aoindustries</groupId><artifactId>ao-io-buffer</artifactId> -->
-								<!-- offlineLink: <groupId>com.aoindustries</groupId><artifactId>ao-lang</artifactId> -->
-								<!-- offlineLink: <groupId>com.aoindustries</groupId><artifactId>ao-net-types</artifactId> -->
-								<!-- offlineLink: <groupId>com.aoindustries</groupId><artifactId>ao-servlet-filter</artifactId> -->
-								<!-- offlineLink: <groupId>com.aoindustries</groupId><artifactId>ao-servlet-util</artifactId> -->
-								<!-- offlineLink: <groupId>com.aoindustries</groupId><artifactId>ao-taglib</artifactId> -->
-								<!-- offlineLink: <groupId>com.aoindustries</groupId><artifactId>aocode-public</artifactId> -->
-								<!-- offlineLink: <groupId>org.apache.commons</groupId><artifactId>commons-lang3</artifactId> -->
-								<!-- offlineLink: <groupId>joda-time</groupId><artifactId>joda-time</artifactId> -->
-								<!-- offlineLink: <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-controller</artifactId> -->
-								<!-- offlineLink: <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-model</artifactId> -->
-								<!-- offlineLink: <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-pages</artifactId> -->
-								<!-- offlineLink: <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-pages-local</artifactId> -->
-								<!-- offlineLink: <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-renderer-html</artifactId> -->
-								<!-- offlineLink: <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-resources</artifactId> -->
-								<!-- offlineLink: <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-servlet</artifactId> -->
-							</links>
 							<offlineLinks>
+								<offlineLink>
+									<url>${javadoc.link.javase}</url>
+									<location>${project.build.directory}/offlineLinks/com/aoindustries/javadoc/offline/javase/${javase.release}</location>
+								</offlineLink>
+								<!-- Java EE -->
+								<offlineLink>
+									<url>${javadoc.link.javaee}</url>
+									<location>${project.build.directory}/offlineLinks/com/aoindustries/javadoc/offline/javaee/${javaee.version}</location>
+								</offlineLink>
 								<!-- Direct -->
 								<offlineLink>
 									<url>https://aoindustries.com/ao-collections/apidocs/</url>
