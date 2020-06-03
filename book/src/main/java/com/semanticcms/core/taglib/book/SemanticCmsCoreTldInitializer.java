@@ -28,11 +28,9 @@ import com.aoindustries.validation.ValidationException;
 import com.semanticcms.core.model.BookRef;
 import com.semanticcms.core.model.ResourceRef;
 import com.semanticcms.tagreference.TagReferenceInitializer;
-import java.util.Collections;
 
 public class SemanticCmsCoreTldInitializer extends TagReferenceInitializer {
 
-	@SuppressWarnings("unchecked")
 	public SemanticCmsCoreTldInitializer() throws ValidationException {
 		super(
 			Maven.properties.getProperty("project.name") + " Reference",
@@ -48,11 +46,11 @@ public class SemanticCmsCoreTldInitializer extends TagReferenceInitializer {
 			Maven.properties.getProperty("documented.javadoc.link.javase"),
 			Maven.properties.getProperty("documented.javadoc.link.javaee"),
 			// Self
-			Collections.singletonMap("com.semanticcms.core.taglib", Maven.properties.getProperty("project.url") + "apidocs/"),
+			"com.semanticcms.core.taglib", Maven.properties.getProperty("project.url") + "apidocs/",
 			// Dependencies
-			Collections.singletonMap("com.aoindustries.taglib", "https://aoindustries.com/ao-taglib/apidocs/"),
-			Collections.singletonMap("com.semanticcms.core.model", "https://semanticcms.com/core/model/apidocs/"),
-			Collections.singletonMap("com.semanticcms.core.servlet", "https://semanticcms.com/core/servlet/apidocs/")
+			"com.aoindustries.taglib", "https://aoindustries.com/ao-taglib/apidocs/",
+			"com.semanticcms.core.model", "https://semanticcms.com/core/model/apidocs/",
+			"com.semanticcms.core.servlet", "https://semanticcms.com/core/servlet/apidocs/"
 		);
 	}
 }
