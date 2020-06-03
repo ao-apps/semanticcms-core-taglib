@@ -70,11 +70,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				<groupId>org.apache.maven.plugins</groupId><artifactId>maven-dependency-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>unpack.tld</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>unpack</goal>
-						</goals>
+						<id>unpack.tld</id><phase>prepare-package</phase><goals><goal>unpack</goal></goals>
 						<configuration>
 							<artifactItems>
 								<artifactItem>
@@ -91,11 +87,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				<groupId>org.apache.maven.plugins</groupId><artifactId>maven-resources-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>copy.tld</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
+						<id>copy.tld</id><phase>prepare-package</phase><goals><goal>copy-resources</goal></goals>
 						<configuration>
 							<resources>
 								<resource>
@@ -111,11 +103,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 					</execution>
 					<!-- Create a second copy in the resource directory used by maven-bundle-plugin -->
 					<execution>
-						<id>copy.tld-bundle</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
+						<id>copy.tld-bundle</id><phase>prepare-package</phase><goals><goal>copy-resources</goal></goals>
 						<configuration>
 							<resources>
 								<resource>
