@@ -1632,7 +1632,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>convertPageDagToList</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature><![CDATA[java.util.List<com.semanticcms.core.model.Page> convertPageDagToList(com.semanticcms.core.model.Page,java.lang.String)]]></function-signature>
+		<function-signature>java.util.List convertPageDagToList(com.semanticcms.core.model.Page,java.lang.String)</function-signature>
+		<!-- functionSignature="java.util.List<com.semanticcms.core.model.Page> convertPageDagToList(com.semanticcms.core.model.Page,java.lang.String)" -->
 		<example><![CDATA[<code>${core:convertPageDagToList(rootPage, level)}</code>]]></example>
 	</function>
 	<function>
@@ -1811,7 +1812,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>parseQueryString</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature><![CDATA[java.util.Map<java.lang.String,java.lang.String> parseQueryString(java.lang.String)]]></function-signature>
+		<function-signature>java.util.Map parseQueryString(java.lang.String)</function-signature>
+		<!-- functionSignature="java.util.Map<java.lang.String,java.lang.String> parseQueryString(java.lang.String)" -->
 		<example><![CDATA[<code>${core:parseQueryString(pageContext.request.queryString)}</code>]]></example>
 	</function>
 	<function>
@@ -1901,7 +1903,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>findAuthors</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature><![CDATA[java.util.Set<com.semanticcms.core.model.Author> findAuthors(com.semanticcms.core.model.Page)]]></function-signature>
+		<function-signature>java.util.Set findAuthors(com.semanticcms.core.model.Page)</function-signature>
+		<!-- functionSignature="java.util.Set<com.semanticcms.core.model.Author> findAuthors(com.semanticcms.core.model.Page)" -->
 		<example><![CDATA[<code>${core:findAuthors(page)}</code>]]></example>
 	</function>
 	<function>
@@ -1966,7 +1969,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>findTopLevelElements</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature><![CDATA[java.util.List<? extends com.semanticcms.core.model.Element> findTopLevelElements(com.semanticcms.core.model.Node,java.lang.String)]]></function-signature>
+		<function-signature>java.util.List findTopLevelElements(com.semanticcms.core.model.Node,java.lang.String)</function-signature>
+		<!-- functionSignature="java.util.List<? extends com.semanticcms.core.model.Element> findTopLevelElements(com.semanticcms.core.model.Node,java.lang.String)" -->
 		<example><![CDATA[<code>${core:findTopLevelElements(node, elementType)}</code>]]></example>
 	</function>
 	<function>
@@ -1980,7 +1984,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>filterElements</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature><![CDATA[java.util.List<? extends com.semanticcms.core.model.Element> filterElements(com.semanticcms.core.model.Page,java.lang.String)]]></function-signature>
+		<function-signature>java.util.List filterElements(com.semanticcms.core.model.Page,java.lang.String)</function-signature>
+		<!-- functionSignature="java.util.List<? extends com.semanticcms.core.model.Element> filterElements(com.semanticcms.core.model.Page,java.lang.String)" -->
 		<example><![CDATA[<code>${core:filterElements(page, elementType)}</code>]]></example>
 	</function>
 	<function>
@@ -2019,7 +2024,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>getViewLinkParams</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature><![CDATA[java.util.Map<java.lang.String,java.util.List<java.lang.String>> getViewLinkParams(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)]]></function-signature>
+		<function-signature>java.util.Map getViewLinkParams(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)</function-signature>
+		<!-- functionSignature="java.util.Map<java.lang.String,java.util.List<java.lang.String>> getViewLinkParams(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)" -->
 		<example><![CDATA[<code>${core:getViewLinkParams(view, page)}</code>]]></example>
 	</function>
 	<function>
@@ -2045,7 +2051,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>getViewAuthors</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature><![CDATA[java.util.Set<com.semanticcms.core.model.Author> getViewAuthors(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)]]></function-signature>
+		<function-signature>java.util.Set getViewAuthors(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)</function-signature>
+		<!-- functionSignature="java.util.Set<com.semanticcms.core.model.Author> getViewAuthors(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)" -->
 		<example><![CDATA[<code>${core:getViewAuthors(view, page)}</code>]]></example>
 	</function>
 	<function>
@@ -2072,7 +2079,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>getViewLinks</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature><![CDATA[java.util.Collection<com.aoindustries.taglib.Link> getViewLinks(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)]]></function-signature>
+		<function-signature>java.util.Collection getViewLinks(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)</function-signature>
+		<!-- functionSignature="java.util.Collection<com.aoindustries.taglib.Link> getViewLinks(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)" -->
 		<example><![CDATA[<code>${core:getViewLinks(view, page)}</code>]]></example>
 	</function>
 	<function>
@@ -2112,7 +2120,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>mergeGlobalAndViewScripts</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature><![CDATA[java.util.Map<java.lang.String,java.lang.String> mergeGlobalAndViewScripts(com.semanticcms.core.renderer.html.View)]]></function-signature>
+		<function-signature>java.util.Map mergeGlobalAndViewScripts(com.semanticcms.core.renderer.html.View)</function-signature>
+		<!-- function-signature="java.util.Map<java.lang.String,java.lang.String> mergeGlobalAndViewScripts(com.semanticcms.core.renderer.html.View)" -->
 		<example><![CDATA[<code>${core:mergeGlobalAndViewScripts(view)}</code>]]></example>
 	</function>
 	<function>
