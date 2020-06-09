@@ -70,7 +70,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				<groupId>org.apache.maven.plugins</groupId><artifactId>maven-dependency-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>unpack.tld</id><phase>prepare-package</phase><goals><goal>unpack</goal></goals>
+						<id>unpack.tld</id><phase>generate-resources</phase><goals><goal>unpack</goal></goals>
 						<configuration>
 							<artifactItems>
 								<artifactItem>
@@ -87,7 +87,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				<groupId>org.apache.maven.plugins</groupId><artifactId>maven-resources-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>copy.tld</id><phase>prepare-package</phase><goals><goal>copy-resources</goal></goals>
+						<id>copy.tld</id><phase>generate-resources</phase><goals><goal>copy-resources</goal></goals>
 						<configuration>
 							<resources>
 								<resource>
@@ -98,23 +98,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 								</resource>
 							</resources>
 							<!-- Put into META-INF/resources to be accessible as website content when jar included in WEB-INF/lib -->
-							<outputDirectory>${project.build.outputDirectory}/META-INF/resources/core/taglib</outputDirectory>
-						</configuration>
-					</execution>
-					<!-- Create a second copy in the resource directory used by maven-bundle-plugin -->
-					<execution>
-						<id>copy.tld-bundle</id><phase>prepare-package</phase><goals><goal>copy-resources</goal></goals>
-						<configuration>
-							<resources>
-								<resource>
-									<directory>${project.build.directory}/dependency/META-INF</directory>
-									<includes>
-										<include>semanticcms-core.tld</include>
-									</includes>
-								</resource>
-							</resources>
-							<!-- Put into META-INF/resources to be accessible as website content when jar included in WEB-INF/lib -->
-							<outputDirectory>${project.build.directory}/resources-filtered/META-INF/resources/core/taglib</outputDirectory>
+							<outputDirectory>${project.build.directory}/generated-resources/META-INF/resources/core/taglib</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>
