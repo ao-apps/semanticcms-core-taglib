@@ -126,7 +126,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			<groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId><!-- javaee-web-api-bom -->
 		</dependency>
 		<dependency>
-			<groupId>com.semanticcms</groupId><artifactId>semanticcms-tag-reference</artifactId><version>1.5.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+			<groupId>com.semanticcms</groupId><artifactId>semanticcms-tag-reference</artifactId><version>1.5.0${POST-SNAPSHOT}</version>
 		</dependency>
 		<!-- Runtime Direct -->
 		<dependency>
