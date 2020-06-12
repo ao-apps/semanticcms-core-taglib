@@ -313,7 +313,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			]]></description>
 			<name>allowRobots</name>
 			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
+			<rtexprvalue>false</rtexprvalue><!-- TODO: true, here and many, many other places, deferred where appropriate -->
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
