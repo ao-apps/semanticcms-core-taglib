@@ -27,7 +27,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
                       http://java.sun.com/xml/ns/javaee/web-fragment_3_0.xsd"
   version="3.0"
   metadata-complete="false">
-	<name>@{project.artifactId}</name>
+	<name>@{project.groupId}:@{project.artifactId}<!-- @{project.version} --></name>
 	<!-- Causes error: "The display name was defined in multiple fragments with different value"
 	<display-name>@{project.name}</display-name>
 	-->
