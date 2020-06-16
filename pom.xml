@@ -273,7 +273,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				<groupId>com.aoindustries</groupId><artifactId>ao-servlet-util</artifactId><version>2.1.0${POST-SNAPSHOT}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.aoindustries</groupId><artifactId>ao-taglib</artifactId><version>5.0.1${POST-SNAPSHOT}</version>
+				<groupId>com.aoindustries</groupId><artifactId>ao-taglib</artifactId><version>5.0.2${POST-SNAPSHOT}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.aoindustries</groupId><artifactId>aocode-public</artifactId><version>4.1.0${POST-SNAPSHOT}</version>
