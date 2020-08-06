@@ -26,6 +26,7 @@ import com.aoindustries.io.NullWriter;
 import com.aoindustries.io.buffer.BufferWriter;
 import static com.aoindustries.lang.Strings.nullIfEmpty;
 import com.aoindustries.servlet.jsp.LocalizedJspTagException;
+import com.aoindustries.taglib.AttributeUtils;
 import static com.aoindustries.taglib.AttributeUtils.resolveValue;
 import com.aoindustries.taglib.AutoEncodingBufferedTag;
 import com.semanticcms.core.model.Element;
@@ -38,6 +39,8 @@ import com.semanticcms.core.servlet.CurrentNode;
 import com.semanticcms.core.servlet.CurrentPage;
 import static com.semanticcms.core.taglib.PageTag.PROPERTY_ATTRIBUTE_PREFIX;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.el.ELContext;
 import javax.el.ValueExpression;
 import javax.servlet.ServletRequest;
@@ -65,8 +68,14 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 		this.id = id;
 	}
 
-	@Override
-	public void setDynamicAttribute(String uri, String localName, Object value) throws JspTagException {
+	/**
+	 * Adds a {@linkplain DynamicAttributes dynamic attribute}.
+	 *
+	 * @return  {@code true} when added, or {@code false} when attribute not expected and has not been added.
+	 *
+	 * @see  #setDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object)
+	 */
+	protected boolean addDynamicAttribute(String uri, String localName, Object value, List<String> expectedPatterns) throws JspTagException {
 		if(
 			uri == null
 			&& localName.startsWith(PROPERTY_ATTRIBUTE_PREFIX)
@@ -81,13 +90,26 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 					);
 				}
 			}
+			return true;
 		} else {
-			throw new LocalizedJspTagException(
-				com.aoindustries.taglib.ApplicationResources.accessor,
-				"error.unexpectedDynamicAttribute",
-				localName,
-				PROPERTY_ATTRIBUTE_PREFIX + "*"
-			);
+			expectedPatterns.add(PROPERTY_ATTRIBUTE_PREFIX + "*");
+			return false;
+		}
+	}
+
+	/**
+	 * Sets a {@linkplain DynamicAttributes dynamic attribute}.
+	 *
+	 * @deprecated  You should probably be implementing in {@link #addDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object, java.util.List)}
+	 *
+	 * @see  #addDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object, java.util.List)
+	 */
+	@Override
+	@Deprecated
+	public void setDynamicAttribute(String uri, String localName, Object value) throws JspTagException {
+		List<String> expectedPatterns = new ArrayList<>();
+		if(!addDynamicAttribute(uri, localName, value, expectedPatterns)) {
+			throw AttributeUtils.newDynamicAttributeFailedException(uri, localName, value, expectedPatterns);
 		}
 	}
 

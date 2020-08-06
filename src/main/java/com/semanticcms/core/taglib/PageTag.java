@@ -31,6 +31,7 @@ import com.aoindustries.io.buffer.EmptyResult;
 import static com.aoindustries.lang.Strings.nullIfEmpty;
 import com.aoindustries.servlet.ServletContextCache;
 import com.aoindustries.servlet.jsp.LocalizedJspTagException;
+import com.aoindustries.taglib.AttributeUtils;
 import com.aoindustries.taglib.AutoEncodingBufferedTag;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.model.PageRef;
@@ -41,8 +42,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
@@ -201,8 +204,14 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 
 	private Map<String,Object> properties;
 
-	@Override
-	public void setDynamicAttribute(String uri, String localName, Object value) throws JspTagException {
+	/**
+	 * Adds a {@linkplain DynamicAttributes dynamic attribute}.
+	 *
+	 * @return  {@code true} when added, or {@code false} when attribute not expected and has not been added.
+	 *
+	 * @see  #setDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object)
+	 */
+	protected boolean addDynamicAttribute(String uri, String localName, Object value, List<String> expectedPatterns) throws JspTagException {
 		if(
 			uri == null
 			&& localName.startsWith(PROPERTY_ATTRIBUTE_PREFIX)
@@ -220,13 +229,26 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 				}
 				properties.put(propertyName, value);
 			}
+			return true;
 		} else {
-			throw new LocalizedJspTagException(
-				com.aoindustries.taglib.ApplicationResources.accessor,
-				"error.unexpectedDynamicAttribute",
-				localName,
-				PROPERTY_ATTRIBUTE_PREFIX + "*"
-			);
+			expectedPatterns.add(PROPERTY_ATTRIBUTE_PREFIX + "*");
+			return false;
+		}
+	}
+
+	/**
+	 * Sets a {@linkplain DynamicAttributes dynamic attribute}.
+	 *
+	 * @deprecated  You should probably be implementing in {@link #addDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object, java.util.List)}
+	 *
+	 * @see  #addDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object, java.util.List)
+	 */
+	@Override
+	@Deprecated
+	public void setDynamicAttribute(String uri, String localName, Object value) throws JspTagException {
+		List<String> expectedPatterns = new ArrayList<>();
+		if(!addDynamicAttribute(uri, localName, value, expectedPatterns)) {
+			throw AttributeUtils.newDynamicAttributeFailedException(uri, localName, value, expectedPatterns);
 		}
 	}
 

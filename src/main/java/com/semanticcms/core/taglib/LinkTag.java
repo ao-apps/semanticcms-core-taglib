@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2019, 2020 AO Industries, Inc.
+ * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2019, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -28,14 +28,15 @@ import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
 import com.aoindustries.net.MutableURIParameters;
 import com.aoindustries.net.URIParametersMap;
-import com.aoindustries.servlet.jsp.LocalizedJspTagException;
-import static com.aoindustries.taglib.ApplicationResources.accessor;
+import com.aoindustries.taglib.AttributeUtils;
 import com.aoindustries.taglib.AutoEncodingBufferedTag;
 import com.aoindustries.taglib.ParamUtils;
 import com.aoindustries.taglib.ParamsAttribute;
 import com.semanticcms.core.servlet.CaptureLevel;
 import com.semanticcms.core.servlet.impl.LinkImpl;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.el.ValueExpression;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -120,20 +121,31 @@ public class LinkTag
 		this.canonical = canonical;
 	}
 
+	/**
+	 * Adds a {@linkplain DynamicAttributes dynamic attribute}.
+	 *
+	 * @return  {@code true} when added, or {@code false} when attribute not expected and has not been added.
+	 *
+	 * @see  ParamUtils#addDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object, java.util.List, com.aoindustries.taglib.ParamsAttribute)
+	 * @see  #setDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object)
+	 */
+	protected boolean addDynamicAttribute(String uri, String localName, Object value, List<String> expectedPatterns) throws JspTagException {
+		return ParamUtils.addDynamicAttribute(uri, localName, value, expectedPatterns, this);
+	}
+
+	/**
+	 * Sets a {@linkplain DynamicAttributes dynamic attribute}.
+	 *
+	 * @deprecated  You should probably be implementing in {@link #addDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object, java.util.List)}
+	 *
+	 * @see  #addDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object, java.util.List)
+	 */
 	@Override
+	@Deprecated
 	public void setDynamicAttribute(String uri, String localName, Object value) throws JspTagException {
-		if(
-			uri==null
-			&& localName.startsWith(ParamUtils.PARAM_ATTRIBUTE_PREFIX)
-		) {
-			ParamUtils.setDynamicAttribute(this, uri, localName, value);
-		} else {
-			throw new LocalizedJspTagException(
-				accessor,
-				"error.unexpectedDynamicAttribute",
-				localName,
-				ParamUtils.PARAM_ATTRIBUTE_PREFIX+"*"
-			);
+		List<String> expectedPatterns = new ArrayList<>();
+		if(!addDynamicAttribute(uri, localName, value, expectedPatterns)) {
+			throw AttributeUtils.newDynamicAttributeFailedException(uri, localName, value, expectedPatterns);
 		}
 	}
 
