@@ -22,13 +22,13 @@
  */
 package com.semanticcms.core.taglib;
 
+import com.aoindustries.lang.Strings;
 import com.aoindustries.net.URIDecoder;
 import com.aoindustries.net.URIEncoder;
 import static com.aoindustries.servlet.filter.FunctionContext.getRequest;
 import static com.aoindustries.servlet.filter.FunctionContext.getResponse;
 import static com.aoindustries.servlet.filter.FunctionContext.getServletContext;
 import com.aoindustries.taglib.Link;
-import com.aoindustries.lang.Strings;
 import com.semanticcms.core.model.Author;
 import com.semanticcms.core.model.Book;
 import com.semanticcms.core.model.Copyright;
