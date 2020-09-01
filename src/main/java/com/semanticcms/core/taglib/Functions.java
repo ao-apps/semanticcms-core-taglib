@@ -22,6 +22,7 @@
  */
 package com.semanticcms.core.taglib;
 
+import com.aoindustries.lang.Strings;
 import com.aoindustries.net.DomainName;
 import com.aoindustries.net.Path;
 import com.aoindustries.net.URIDecoder;
@@ -29,7 +30,6 @@ import static com.aoindustries.servlet.filter.FunctionContext.getRequest;
 import static com.aoindustries.servlet.filter.FunctionContext.getResponse;
 import static com.aoindustries.servlet.filter.FunctionContext.getServletContext;
 import com.aoindustries.taglib.Link;
-import com.aoindustries.lang.Strings;
 import com.aoindustries.validation.ValidationException;
 import com.semanticcms.core.controller.AuthorUtils;
 import com.semanticcms.core.controller.Book;
