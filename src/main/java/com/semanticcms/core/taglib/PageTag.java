@@ -52,6 +52,8 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -69,6 +71,8 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 
+	private static final Logger logger = Logger.getLogger(PageTag.class.getName());
+
 	/**
 	 * The prefix for property attributes.
 	 */
@@ -83,11 +87,6 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 	 * The time span between URL last modified checks.
 	 */
 	private static final long PROPERTIES_CACHE_LAST_MODIFIED_RECHECK_INTERVAL = 1000;
-
-	/**
-	 * Constant debug flag for compile-time debugging.
-	 */
-	private static final boolean DEBUG = false;
 
 	private String book;
 	public void setBook(String book) {
@@ -366,7 +365,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 											//if(DEBUG) System.out.println("PageTag: doTag: Still in unknown last modified");
 											propsFromFile = cacheEntry.properties;
 										} else {
-											if(DEBUG) System.out.println("PageTag: doTag: Time expired for cache entry with unknown last modified: currentTime = " + currentTime + ", cacheEntry.cachedTime = " + cacheEntry.cachedTime);
+											if(logger.isLoggable(Level.FINE)) logger.fine("PageTag: doTag: Time expired for cache entry with unknown last modified: currentTime = " + currentTime + ", cacheEntry.cachedTime = " + cacheEntry.cachedTime);
 										}
 									} else {
 										// Only check last modified from URL at defined interval
@@ -378,12 +377,12 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 											//if(DEBUG) System.out.println("PageTag: doTag: Still in known last modified");
 											propsFromFile = cacheEntry.properties;
 										} else {
-											if(DEBUG) System.out.println("PageTag: doTag: Time expired for cache entry with known last modified: currentTime = " + currentTime + ", cacheEntry.cachedTime = " + cacheEntry.cachedTime);
+											if(logger.isLoggable(Level.FINE)) logger.fine("PageTag: doTag: Time expired for cache entry with known last modified: currentTime = " + currentTime + ", cacheEntry.cachedTime = " + cacheEntry.cachedTime);
 											if(urlConn == null) {
 												urlConn = url.openConnection();
 												// TODO: Use ServletContextCache.getLastModified?
 												urlLastModified = urlConn.getLastModified();
-												if(DEBUG) System.out.println("PageTag: doTag: Got last modified 1: " + urlLastModified);
+												if(logger.isLoggable(Level.FINE)) logger.fine("PageTag: doTag: Got last modified 1: " + urlLastModified);
 											}
 											// Use properties when last modified matches
 											if(urlLastModified != 0 && cacheEntry.lastModified == urlLastModified) {
@@ -397,7 +396,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 										}
 									}
 								} else {
-									if(DEBUG) System.out.println("PageTag: doTag: URL not found in cache: " + url);
+									if(logger.isLoggable(Level.FINER)) logger.finer("PageTag: doTag: URL not found in cache: " + url);
 								}
 							}
 							if(propsFromFile == null) {
@@ -406,11 +405,11 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 									urlConn = url.openConnection();
 									// TODO: Use ServletContextCache.getLastModified?
 									urlLastModified = urlConn.getLastModified();
-									if(DEBUG) System.out.println("PageTag: doTag: Got last modified 2: " + urlLastModified);
+									if(logger.isLoggable(Level.FINE)) logger.fine("PageTag: doTag: Got last modified 2: " + urlLastModified);
 								}
 								Properties props = new Properties();
 								{
-									if(DEBUG) System.out.println("PageTag: doTag: Loading properties from URL: " + url);
+									if(logger.isLoggable(Level.FINE)) logger.fine("PageTag: doTag: Loading properties from URL: " + url);
 									try (InputStream in = urlConn.getInputStream()) {
 										props.load(in);
 									} finally {
@@ -420,17 +419,17 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 								Set<String> propertyNames = props.stringPropertyNames();
 								int size = propertyNames.size();
 								if(size == 0) {
-									if(DEBUG) System.out.println("PageTag: doTag: Got " + size + " properties, using empty map");
+									if(logger.isLoggable(Level.FINER)) logger.finer("PageTag: doTag: Got " + size + " properties, using empty map");
 									propsFromFile = Collections.emptyMap();
 								} else if(size == 1) {
-									if(DEBUG) System.out.println("PageTag: doTag: Got " + size + " property, using singleton map");
+									if(logger.isLoggable(Level.FINER)) logger.finer("PageTag: doTag: Got " + size + " property, using singleton map");
 									String propertyName = propertyNames.iterator().next();
 									propsFromFile = Collections.singletonMap(
 										propertyName,
 										props.getProperty(propertyName)
 									);
 								} else {
-									if(DEBUG) System.out.println("PageTag: doTag: Got " + size + " properties, using unmodifiable wrapped linked hash map");
+									if(logger.isLoggable(Level.FINER)) logger.finer("PageTag: doTag: Got " + size + " properties, using unmodifiable wrapped linked hash map");
 									Map<String,String> newMap = new LinkedHashMap<>(size*4/3+1); // linked map for maximum iteration performance
 									for(String propertyName : propertyNames) {
 										newMap.put(
@@ -448,7 +447,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 							}
 						} finally {
 							if(urlConn != null && !urlClosed) {
-								if(DEBUG) System.out.println("PageTag: doTag: Closing connection");
+								if(logger.isLoggable(Level.FINER)) logger.finer("PageTag: doTag: Closing connection");
 								urlConn.getInputStream().close();
 							}
 						}
