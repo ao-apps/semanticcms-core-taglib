@@ -22,9 +22,9 @@
  */
 package com.semanticcms.core.taglib;
 
+import com.aoindustries.lang.Strings;
 import com.aoindustries.net.DomainName;
 import com.aoindustries.net.Path;
-import com.aoindustries.lang.Strings;
 import com.aoindustries.validation.ValidationException;
 import com.semanticcms.core.model.Author;
 import com.semanticcms.core.model.Node;

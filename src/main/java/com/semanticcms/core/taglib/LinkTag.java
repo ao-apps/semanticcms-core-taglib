@@ -157,6 +157,7 @@ public class LinkTag
 	}
 
 	@Override
+	@SuppressWarnings("TooBroadCatch") // Should not be necessary, NetBeans bug?
 	public void doTag() throws JspException, IOException {
 		try {
 			final PageContext pageContext = (PageContext)getJspContext();

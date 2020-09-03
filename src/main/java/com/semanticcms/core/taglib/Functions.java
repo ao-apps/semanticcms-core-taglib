@@ -250,7 +250,9 @@ final public class Functions {
 		int len = value.length();
 		if(len==0) return value;
 		StringBuilder sb = new StringBuilder(len * count);
-		for(int i=0; i<count; i++) sb.append(value);
+		for(int i = 0; i < count; i++) {
+			sb.append(value);
+		}
 		return sb.toString();
 	}
 
