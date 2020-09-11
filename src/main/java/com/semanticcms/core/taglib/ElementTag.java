@@ -120,6 +120,7 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 	 * Then, if not capturing or capturing META or higher, calls {@link #doBody}
 	 */
 	@Override
+	@SuppressWarnings({"UseSpecificCatch", "TooBroadCatch"})
 	public void doTag() throws JspException, IOException {
 		final PageContext pageContext = (PageContext)getJspContext();
 		final ServletRequest request = pageContext.getRequest();
@@ -155,10 +156,10 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 					if(elementKey == null) {
 						try {
 							writeTo(out, new PageElementContext(pageContext));
-						} catch(JspException | IOException | RuntimeException e) {
+						} catch(Error | RuntimeException | JspException | IOException e) {
 							throw e;
-						} catch(Exception e) {
-							throw new JspTagException(e);
+						} catch(Throwable t) {
+							throw new JspTagException(t);
 						}
 					} else {
 						// Write an element marker instead
