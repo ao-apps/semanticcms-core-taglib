@@ -22,6 +22,7 @@
  */
 package com.semanticcms.core.taglib;
 
+import com.aoindustries.collections.AoCollections;
 import com.aoindustries.lang.Strings;
 import com.aoindustries.net.DomainName;
 import com.aoindustries.net.Path;
@@ -61,7 +62,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -228,7 +228,7 @@ final public class Functions {
 	public static Map<String,String> parseQueryString(String queryString) {
 		if(queryString==null) return null;
 		List<String> pairs = Strings.split(queryString, '&');
-		Map<String,String> params = new LinkedHashMap<>(pairs.size() * 4/3 + 1);
+		Map<String,String> params = AoCollections.newLinkedHashMap(pairs.size());
 		for(String pair : pairs) {
 			int equalPos = pair.indexOf('=');
 			String name, value;
@@ -403,7 +403,7 @@ final public class Functions {
 		// Shortcut for when no view scripts
 		if(viewScripts == null || viewScripts.isEmpty()) return globalScripts;
 
-		Map<String,String> merged = new LinkedHashMap<>((globalScripts.size() + viewScripts.size())*4/3+1);
+		Map<String,String> merged = AoCollections.newLinkedHashMap(globalScripts.size() + viewScripts.size());
 
 		// Add all global scripts
 		merged.putAll(globalScripts);

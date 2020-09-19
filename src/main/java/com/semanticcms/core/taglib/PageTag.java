@@ -22,6 +22,7 @@
  */
 package com.semanticcms.core.taglib;
 
+import com.aoindustries.collections.AoCollections;
 import com.aoindustries.encoding.Doctype;
 import com.aoindustries.encoding.Serialization;
 import com.aoindustries.io.NullWriter;
@@ -479,7 +480,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 									);
 								} else {
 									if(logger.isLoggable(Level.FINER)) logger.finer("PageTag: doTag: Got " + size + " properties, using unmodifiable wrapped linked hash map");
-									Map<String,String> newMap = new LinkedHashMap<>(size*4/3+1); // linked map for maximum iteration performance
+									Map<String,String> newMap = AoCollections.newLinkedHashMap(size); // linked map for maximum iteration performance
 									for(String propertyName : propertyNames) {
 										newMap.put(
 											propertyName,
@@ -505,7 +506,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 					int numPropsFromFile = propsFromFile.size();
 					if(numPropsFromFile > 0) {
 						if(properties == null) {
-							properties = new LinkedHashMap<>(numPropsFromFile*4/3+1);
+							properties = AoCollections.newLinkedHashMap(numPropsFromFile);
 						}
 						for(Map.Entry<String,String> entry : propsFromFile.entrySet()) {
 							String propertyName = entry.getKey();
