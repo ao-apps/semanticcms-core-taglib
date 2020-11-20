@@ -867,7 +867,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2016-11-11T16:21:13-0600" -->
+		<!-- dateModified="2020-11-19T20:09:21-06:00" -->
 		<description><![CDATA[
 			<p>
 				Adds a parameter to its
@@ -876,7 +876,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			</p>
 		]]></description>
 		<name>param</name>
-		<tag-class>com.aoindustries.taglib.ParamTag</tag-class>
+		<tag-class>com.aoindustries.taglib.ParamSimpleTag</tag-class>
 		<body-content>scriptless</body-content>
 		<attribute>
 			<description><![CDATA[
