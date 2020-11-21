@@ -22,7 +22,7 @@
  */
 package com.semanticcms.core.taglib;
 
-import com.aoindustries.encoding.taglib.EncodingBufferedSimpleTag;
+import com.aoindustries.encoding.taglib.EncodingBufferedTag;
 import com.aoindustries.html.servlet.HtmlEE;
 import com.aoindustries.io.NullWriter;
 import com.aoindustries.io.buffer.BufferResult;
@@ -164,7 +164,7 @@ public class LinkTag
 				if(captureLevel == CaptureLevel.BODY) {
 					JspFragment body = getJspBody();
 					if(body != null) {
-						BufferWriter captureOut = EncodingBufferedSimpleTag.newBufferWriter(request);
+						BufferWriter captureOut = EncodingBufferedTag.newBufferWriter(request);
 						try {
 							body.invoke(captureOut);
 						} finally {

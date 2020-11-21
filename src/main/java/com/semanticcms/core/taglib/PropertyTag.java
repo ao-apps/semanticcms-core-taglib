@@ -23,7 +23,7 @@
 package com.semanticcms.core.taglib;
 
 import com.aoindustries.encoding.MediaType;
-import com.aoindustries.encoding.taglib.EncodingBufferedSimpleTag;
+import com.aoindustries.encoding.taglib.EncodingBufferedTag;
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.servlet.jsp.LocalizedJspTagException;
 import com.aoindustries.taglib.AttributeRequiredException;
@@ -37,7 +37,7 @@ import javax.servlet.jsp.JspTagException;
 import javax.servlet.jsp.PageContext;
 
 public class PropertyTag
-	extends EncodingBufferedSimpleTag
+	extends EncodingBufferedTag
 	implements
 		NameAttribute,
 		ValueAttribute
