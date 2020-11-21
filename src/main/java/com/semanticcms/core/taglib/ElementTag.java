@@ -22,7 +22,7 @@
  */
 package com.semanticcms.core.taglib;
 
-import com.aoindustries.encoding.taglib.EncodingBufferedSimpleTag;
+import com.aoindustries.encoding.taglib.EncodingBufferedTag;
 import com.aoindustries.io.NullWriter;
 import com.aoindustries.io.buffer.BufferWriter;
 import static com.aoindustries.lang.Strings.nullIfEmpty;
@@ -213,7 +213,7 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 			if(captureLevel == CaptureLevel.BODY) {
 				final PageContext pageContext = (PageContext)getJspContext();
 				// Invoke tag body, capturing output
-				BufferWriter capturedOut = EncodingBufferedSimpleTag.newBufferWriter(pageContext.getRequest());
+				BufferWriter capturedOut = EncodingBufferedTag.newBufferWriter(pageContext.getRequest());
 				try {
 					body.invoke(capturedOut);
 				} finally {

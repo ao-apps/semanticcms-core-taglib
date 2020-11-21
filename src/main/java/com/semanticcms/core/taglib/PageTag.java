@@ -25,7 +25,7 @@ package com.semanticcms.core.taglib;
 import com.aoindustries.collections.AoCollections;
 import com.aoindustries.encoding.Doctype;
 import com.aoindustries.encoding.Serialization;
-import com.aoindustries.encoding.taglib.EncodingBufferedSimpleTag;
+import com.aoindustries.encoding.taglib.EncodingBufferedTag;
 import com.aoindustries.io.NullWriter;
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
@@ -562,7 +562,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 								// TODO: Are request-scoped temp files still correct for longer-term caches like the export cache?
 								// TODO:     Caches only store PAGE and META captures, right?  Impact?
 								// TODO:     Would we have a cache-scoped TempFileContext?
-								BufferWriter capturedOut = EncodingBufferedSimpleTag.newBufferWriter(request);
+								BufferWriter capturedOut = EncodingBufferedTag.newBufferWriter(request);
 								try {
 									body.invoke(capturedOut);
 								} finally {
