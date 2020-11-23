@@ -172,13 +172,18 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 	private Boolean allowRobots;
 	public void setAllowRobots(String allowRobots) {
 		// Not using Boolean.valueOf to be more specific in parsing, "blarg" is not same as "false".
-		if("auto".equalsIgnoreCase(allowRobots)) {
+		if(
+			allowRobots == null
+			|| (allowRobots = allowRobots.trim()).isEmpty()
+			|| "auto".equalsIgnoreCase(allowRobots)
+		) {
 			this.allowRobots = null;
 		} else if("true".equalsIgnoreCase(allowRobots)) {
 			this.allowRobots = true;
 		} else if("false".equalsIgnoreCase(allowRobots)) {
 			this.allowRobots = false;
 		} else {
+			// Matches ao-tld-parser:XmlHelper.java
 			throw new IllegalArgumentException("Unexpected value for allowRobots, expect one of \"auto\", \"true\", or \"false\": " + allowRobots);
 		}
 	}
@@ -186,7 +191,11 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 	private Boolean toc;
 	public void setToc(String toc) {
 		// Not using Boolean.valueOf to be more specific in parsing, "blarg" is not same as "false".
-		if("auto".equalsIgnoreCase(toc)) {
+		if(
+			toc == null
+			|| (toc = toc.trim()).isEmpty()
+			|| "auto".equalsIgnoreCase(toc)
+		) {
 			this.toc = null;
 		} else if("true".equalsIgnoreCase(toc)) {
 			this.toc = true;
