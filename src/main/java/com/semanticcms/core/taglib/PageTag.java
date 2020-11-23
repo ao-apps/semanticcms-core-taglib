@@ -253,8 +253,8 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 	 *
 	 * @see  #addDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object, java.util.List)
 	 */
-	@Override
 	@Deprecated
+	@Override
 	public void setDynamicAttribute(String uri, String localName, Object value) throws JspTagException {
 		List<String> expectedPatterns = new ArrayList<>();
 		if(!addDynamicAttribute(uri, localName, value, expectedPatterns)) {
