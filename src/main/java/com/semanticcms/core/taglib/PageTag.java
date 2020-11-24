@@ -79,6 +79,8 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 
 	private static final Logger logger = Logger.getLogger(PageTag.class.getName());
 
+	public static final String TAG_NAME = "<core:page>";
+
 	/**
 	 * The prefix for property attributes.
 	 */

@@ -39,6 +39,8 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 public class AuthorTag extends SimpleTagSupport {
 
+	public static final String TAG_NAME = "<core:author>";
+
 	private String name;
 	public void setName(String name) {
 		this.name = Strings.nullIfEmpty(name);
@@ -70,7 +72,7 @@ public class AuthorTag extends SimpleTagSupport {
 		final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 
 		final Node currentNode = CurrentNode.getCurrentNode(request);
-		if(!(currentNode instanceof Page)) throw new JspTagException("<core:author> tag must be nested directly inside a <core:page> tag.");
+		if(!(currentNode instanceof Page)) throw new JspTagException(TAG_NAME + " tag must be nested directly inside a " + PageTag.TAG_NAME + " tag.");
 		final Page currentPage = (Page)currentNode;
 
 		PageRef currentPageRef = null;
