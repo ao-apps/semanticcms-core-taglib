@@ -37,6 +37,8 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 public class ChildTag extends SimpleTagSupport {
 
+	public static final String TAG_NAME = "<core:child>";
+
 	private String book;
 	public void setBook(String book) {
 		this.book = Strings.nullIfEmpty(book);
@@ -53,7 +55,7 @@ public class ChildTag extends SimpleTagSupport {
 		final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 
 		final Node currentNode = CurrentNode.getCurrentNode(request);
-		if(!(currentNode instanceof Page)) throw new JspTagException("<core:child> tag must be nested directly inside a <core:page> tag.");
+		if(!(currentNode instanceof Page)) throw new JspTagException(TAG_NAME + " tag must be nested directly inside a " + PageTag.TAG_NAME + " tag.");
 		final Page currentPage = (Page)currentNode;
 
 		try {
