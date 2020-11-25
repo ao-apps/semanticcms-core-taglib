@@ -85,6 +85,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 						<dependency>com.semanticcms:semanticcms-core-pages-jspx</dependency>
 					</usedDependencies>
 					<ignoredUnusedDeclaredDependencies>
+						<dependency>com.semanticcms:semanticcms-core-taglib:jar</dependency><!-- Required because is both :jar and :pom? -->
 						<!-- Dependency for dependencyversion-maven-plugin only -->
 						<dependency>com.semanticcms:semanticcms-core-taglib:pom</dependency>
 					</ignoredUnusedDeclaredDependencies>
