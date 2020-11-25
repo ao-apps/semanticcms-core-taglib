@@ -69,7 +69,6 @@ import java.util.Set;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.jsp.JspTagException;
 
 final public class Functions {
 
@@ -99,7 +98,7 @@ final public class Functions {
 		return capturePageInDomain(null, book, page, level);
 	}
 
-	public static Page capturePage(String page, String level) throws ServletException, IOException, JspTagException {
+	public static Page capturePage(String page, String level) throws ServletException, IOException {
 		try {
 			return capturePageInDomain(null, null, page, level);
 		} catch(ValidationException e) {
@@ -118,7 +117,7 @@ final public class Functions {
 		);
 	}
 
-	public static PageIndex getPageIndex(PageRef pageRef) throws ServletException, IOException, JspTagException {
+	public static PageIndex getPageIndex(PageRef pageRef) throws ServletException, IOException {
 		return PageIndex.getPageIndex(
 			getServletContext(),
 			getRequest(),

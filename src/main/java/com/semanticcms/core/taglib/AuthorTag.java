@@ -33,6 +33,7 @@ import com.semanticcms.core.model.PageRef;
 import com.semanticcms.core.pages.local.CurrentNode;
 import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspTagException;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
@@ -67,7 +68,7 @@ public class AuthorTag extends SimpleTagSupport {
 	}
 
 	@Override
-	public void doTag() throws JspTagException, IOException {
+	public void doTag() throws JspException, IOException {
 		final PageContext pageContext = (PageContext)getJspContext();
 		final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 
