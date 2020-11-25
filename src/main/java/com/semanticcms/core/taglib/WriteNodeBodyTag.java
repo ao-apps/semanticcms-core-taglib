@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2015, 2016, 2017  AO Industries, Inc.
+ * Copyright (C) 2015, 2016, 2017, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -28,7 +28,7 @@ import com.semanticcms.core.model.NodeBodyWriter;
 import com.semanticcms.core.servlet.CaptureLevel;
 import java.io.IOException;
 import javax.el.ValueExpression;
-import javax.servlet.jsp.JspTagException;
+import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
@@ -40,7 +40,7 @@ public class WriteNodeBodyTag extends SimpleTagSupport {
 	}
 
 	@Override
-	public void doTag() throws JspTagException, IOException {
+	public void doTag() throws JspException, IOException {
 		PageContext pageContext = (PageContext)getJspContext();
 		// Get the current capture state
 		final CaptureLevel captureLevel = CaptureLevel.getCaptureLevel(pageContext.getRequest());

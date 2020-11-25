@@ -33,6 +33,7 @@ import com.semanticcms.core.model.Node;
 import com.semanticcms.core.servlet.CurrentNode;
 import java.io.IOException;
 import java.io.Writer;
+import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspTagException;
 import javax.servlet.jsp.PageContext;
 
@@ -79,7 +80,7 @@ public class PropertyTag
 	}
 
 	@Override
-	protected void doTag(BufferResult capturedBody, Writer out) throws JspTagException, IOException {
+	protected void doTag(BufferResult capturedBody, Writer out) throws JspException, IOException {
 		if(name == null) throw new AttributeRequiredException("name");
 		Node resolvedTarget;
 		if(target != null) {

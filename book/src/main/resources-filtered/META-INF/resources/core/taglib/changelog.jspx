@@ -37,7 +37,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2020-11-23T03:04:27-06:00"
+		dateModified="2020-11-24T12:46:17-06:00"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-core-taglib:pom.version}" />
@@ -63,6 +63,12 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 					<li><code><core:link page="semanticcms-core.tld/tag-page" /></code>:
 						<code>allowRobots</code> and <code>toc</code> now parse null or
 						empty strings as "auto".
+					</li>
+					<li>
+						Cleaned-up use of <code>JspTagException</code> versus <code>JspException</code>.  Generally,
+						methods declare <code>throws JspException</code> while actually throwing instances of
+						<code>JspTagException</code>.  The exceptions to this are attribute setters and private
+						implemententation methods that both declare and throw <code>JspTagException</code>.
 					</li>
 				</ul>
 			</changelog:release>
