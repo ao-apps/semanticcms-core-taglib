@@ -37,7 +37,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2020-11-25T03:56:35-06:00"
+		dateModified="2020-11-25T07:09:05-06:00"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-core-taglib:pom.version}" />
@@ -146,7 +146,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				<li>
 					Cleaned-up use of <code>JspTagException</code> versus <code>JspException</code>.  Generally,
 					methods declare <code>throws JspException</code> while actually throwing instances of
-					<code>JspTagException</code>.  The exception to this is private implemententation methods that
+					<code>JspTagException</code>.  The exception to this is private implementation methods that
 					both declare and throw <code>JspTagException</code>.
 				</li>
 				<li>Attribute setters now throw <code>IllegalArgumentException</code> instead of <code>JspTagException</code>.</li>
