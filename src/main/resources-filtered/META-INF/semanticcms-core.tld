@@ -1796,7 +1796,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<!-- datePublished="2016-08-14T14:01:04-0500" -->
-		<!-- dateModified="2020-05-29T14:43:45-05:00" -->
+		<!-- dateModified="2020-11-26T20:49:30-06:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Looks for the nearest nested elements of the given class.
@@ -1812,7 +1812,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>findTopLevelElements</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.util.List findTopLevelElements(com.semanticcms.core.model.Node,java.lang.String)</function-signature>
-		<!-- functionSignature="java.util.List<? extends com.semanticcms.core.model.Element> findTopLevelElements(com.semanticcms.core.model.Node,java.lang.String)" -->
+		<!-- functionSignature="java.util.List<?> findTopLevelElements(com.semanticcms.core.model.Node,java.lang.String)" -->
 		<example><![CDATA[<code>${core:findTopLevelElements(node, elementType)}</code>]]></example>
 	</function>
 	<function>
