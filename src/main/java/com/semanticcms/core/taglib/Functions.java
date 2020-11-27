@@ -304,10 +304,8 @@ final public class Functions {
 		);
 	}
 
-	public static List<? extends Element> findTopLevelElements(Node node, String elementType) throws ClassNotFoundException {
-		return node.findTopLevelElements(
-			Class.forName(elementType).asSubclass(Element.class)
-		);
+	public static List<?> findTopLevelElements(Node node, String elementType) throws ClassNotFoundException {
+		return node.findTopLevelElements(Class.forName(elementType));
 	}
 
 	public static List<? extends Element> filterElements(Page page, String elementType) throws ClassNotFoundException {
