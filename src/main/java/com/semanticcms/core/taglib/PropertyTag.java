@@ -24,6 +24,7 @@ package com.semanticcms.core.taglib;
 
 import com.aoindustries.encoding.MediaType;
 import com.aoindustries.encoding.taglib.EncodingBufferedTag;
+import com.aoindustries.i18n.Resources;
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.servlet.jsp.LocalizedJspTagException;
 import com.aoindustries.taglib.AttributeRequiredException;
@@ -43,6 +44,8 @@ public class PropertyTag
 		NameAttribute,
 		ValueAttribute
 {
+
+	private static final Resources RESOURCES = Resources.getResources(PropertyTag.class.getPackage());
 
 	private String name;
 	private Object value;
@@ -95,7 +98,7 @@ public class PropertyTag
 		);
 		if(!propertySet && !allowExisting) {
 			throw new LocalizedJspTagException(
-				ApplicationResources.accessor,
+				RESOURCES,
 				"error.duplicateDynamicElementProperty",
 				name
 			);

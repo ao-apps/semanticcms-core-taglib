@@ -23,6 +23,7 @@
 package com.semanticcms.core.taglib;
 
 import com.aoindustries.encoding.taglib.EncodingBufferedTag;
+import com.aoindustries.i18n.Resources;
 import com.aoindustries.io.NullWriter;
 import com.aoindustries.io.buffer.BufferWriter;
 import static com.aoindustries.lang.Strings.nullIfEmpty;
@@ -58,6 +59,8 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
  */
 abstract public class ElementTag<E extends Element> extends SimpleTagSupport implements DynamicAttributes, ElementWriter {
 
+	private static final Resources RESOURCES = Resources.getResources(ElementTag.class.getPackage());
+
 	/**
 	 * Set during the beginning of doTag, but only for {@code captureLevel >= META}.
 	 * This is not available while tag attributes are set.
@@ -85,7 +88,7 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 				String propertyName = localName.substring(PROPERTY_ATTRIBUTE_PREFIX.length());
 				if(!element.setProperty(propertyName, value)) {
 					throw new LocalizedJspTagException(
-						ApplicationResources.accessor,
+						RESOURCES,
 						"error.duplicateDynamicElementProperty",
 						localName
 					);

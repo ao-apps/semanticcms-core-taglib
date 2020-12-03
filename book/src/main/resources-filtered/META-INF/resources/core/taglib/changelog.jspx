@@ -37,7 +37,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2020-11-27T15:14:26-06:00"
+		dateModified="2020-12-03T07:12:04-06:00"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-core-taglib:pom.version}" />
@@ -119,6 +119,10 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 					<li>
 						No longer using <code>HideJspExtensionFilter</code> because <core:link book="/" page="/" /> 2
 						references pages by abstract path instead of implementation page.
+					</li>
+					<li>
+						Split development-only classes into a new sub-project in <code>devel/</code>.  This
+						sub-project is used development only and is never deployed to artifact repositories.
 					</li>
 				</ul>
 			</changelog:release>

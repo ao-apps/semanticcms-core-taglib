@@ -51,7 +51,7 @@ public class PageTagTEI extends TagExtraInfo {
 				} catch(IllegalArgumentException e) {
 					messages = MinimalList.add(
 						messages,
-						new ValidationMessage(data.getId(), com.aoindustries.taglib.ApplicationResources.accessor.getMessage("HtmlTag.serialization.invalid", serialization))
+						new ValidationMessage(data.getId(), com.aoindustries.taglib.Resources.RESOURCES.getMessage("HtmlTag.serialization.invalid", serialization))
 					);
 				}
 			}
@@ -68,7 +68,7 @@ public class PageTagTEI extends TagExtraInfo {
 				} catch(IllegalArgumentException e) {
 					messages = MinimalList.add(
 						messages,
-						new ValidationMessage(data.getId(), com.aoindustries.taglib.ApplicationResources.accessor.getMessage("HtmlTag.doctype.invalid", doctype))
+						new ValidationMessage(data.getId(), com.aoindustries.taglib.Resources.RESOURCES.getMessage("HtmlTag.doctype.invalid", doctype))
 					);
 				}
 			}
