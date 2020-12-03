@@ -26,6 +26,7 @@ import com.aoindustries.collections.AoCollections;
 import com.aoindustries.encoding.Doctype;
 import com.aoindustries.encoding.Serialization;
 import com.aoindustries.encoding.taglib.EncodingBufferedTag;
+import com.aoindustries.i18n.Resources;
 import com.aoindustries.io.NullWriter;
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
@@ -73,6 +74,8 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 
 	private static final Logger logger = Logger.getLogger(PageTag.class.getName());
+
+	private static final Resources RESOURCES = Resources.getResources(PageTag.class.getPackage());
 
 	public static final String TAG_NAME = "<core:page>";
 
@@ -233,7 +236,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 					properties = new LinkedHashMap<>();
 				} else if(properties.containsKey(propertyName)) {
 					throw new LocalizedJspTagException(
-						ApplicationResources.accessor,
+						RESOURCES,
 						"error.duplicateDynamicPageProperty",
 						localName
 					);
@@ -351,7 +354,9 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 			}
 			if(propertiesPath != null) {
 				// TODO: Try real path first for more direct file-based I/O - benchmark if is any faster
-				URL url = ServletContextCache.getInstance(servletContext).getResource(pageRef.setPath(propertiesPath).getServletPath());
+				URL url = ServletContextCache.getInstance(servletContext).getResource(
+					pageRef.setPath(propertiesPath).getServletPath()
+				);
 				if(url != null) {
 					// if(DEBUG) System.out.println("PageTag: doTag: Got properties URL: " + url);
 					Map<String,String> propsFromFile;
@@ -474,7 +479,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 							String propertyName = entry.getKey();
 							if(properties.containsKey(propertyName)) {
 								throw new LocalizedJspTagException(
-									ApplicationResources.accessor,
+									RESOURCES,
 									"error.duplicatePropertiesFileProperty",
 									propertyName,
 									url
