@@ -1560,7 +1560,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2020-05-30T02:46:48-05:00" -->
+		<!-- dateModified="2020-12-03T20:49:12-06:00" -->
 		<description><![CDATA[
 			<p style="text-decoration: line-through">
 				<a href="https://aoindustries.com/ao-net-types/apidocs/com/aoindustries/net/URIEncoder.html#encodeURIComponent(java.lang.String)">Encodes a value</a>
@@ -1570,7 +1570,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				Encodes characters in the <a href="https://www.w3.org/TR/html40/appendix/notes.html#non-ascii-chars">recommended <code>UTF-8</code> encoding</a>.
 			</p>
 			<p>
-				<strong>Deprecated:</strong>: Please use <code><a href="https://aoindustries.com/ao-taglib/ao.tld/function-encodeURIComponent">${ao:encodeURIComponent(value)}</a></code> instead.
+				<strong>Deprecated:</strong> Please use <code><a href="https://aoindustries.com/ao-taglib/ao.tld/function-encodeURIComponent">${ao:encodeURIComponent(value)}</a></code> instead.
 			</p>
 		]]></description>
 		<name>encodeUrlParam</name>
