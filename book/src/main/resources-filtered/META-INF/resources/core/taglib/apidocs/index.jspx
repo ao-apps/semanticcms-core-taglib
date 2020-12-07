@@ -35,7 +35,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<ao:forward page="index.html" />
 	</c:if>
 	<core:page
-		title="@{documented.name} @{com.semanticcms:semanticcms-core-taglib:pom.version} API Docs"
+		title="@{documented.name} ${ao:getProjectVersion('./', 'com.semanticcms', 'semanticcms-core-taglib', '¿@{project.version}?')} API Docs"
 		shortTitle="API Docs"
 		datePublished="2016-09-12T13:30:00-0500"
 		dateModified="${ao:getLastModified('index.html')}"
