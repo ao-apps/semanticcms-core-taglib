@@ -25,6 +25,7 @@ package com.semanticcms.core.taglib;
 import com.aoindustries.collections.MinimalList;
 import com.aoindustries.encoding.Doctype;
 import com.aoindustries.encoding.Serialization;
+import com.aoindustries.taglib.HtmlTag;
 import java.util.List;
 import java.util.Locale;
 import javax.servlet.jsp.tagext.TagData;
@@ -51,7 +52,7 @@ public class PageTagTEI extends TagExtraInfo {
 				} catch(IllegalArgumentException e) {
 					messages = MinimalList.add(
 						messages,
-						new ValidationMessage(data.getId(), com.aoindustries.taglib.Resources.PACKAGE_RESOURCES.getMessage("HtmlTag.serialization.invalid", serialization))
+						new ValidationMessage(data.getId(), HtmlTag.RESOURCES.getMessage("serialization.invalid", serialization))
 					);
 				}
 			}
@@ -68,7 +69,7 @@ public class PageTagTEI extends TagExtraInfo {
 				} catch(IllegalArgumentException e) {
 					messages = MinimalList.add(
 						messages,
-						new ValidationMessage(data.getId(), com.aoindustries.taglib.Resources.PACKAGE_RESOURCES.getMessage("HtmlTag.doctype.invalid", doctype))
+						new ValidationMessage(data.getId(), HtmlTag.RESOURCES.getMessage("doctype.invalid", doctype))
 					);
 				}
 			}
