@@ -37,7 +37,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2020-12-07T21:28:02-06:00"
+		dateModified="2020-12-13T02:24:39-06:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -117,6 +117,19 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				</ul>
 			</changelog:release>
 		</c:if>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="1.14.1"
+			datePublished="2020-12-13T02:24:39-06:00"
+			groupId="@{project.groupId}"
+			artifactId="@{documented.artifactId}"
+			scmUrl="@{project.scm.url}"
+		>
+			<ul>
+				<li>Updated dependencies.</li>
+			</ul>
+		</changelog:release>
 
 		<changelog:release
 			projectName="@{documented.name}"
