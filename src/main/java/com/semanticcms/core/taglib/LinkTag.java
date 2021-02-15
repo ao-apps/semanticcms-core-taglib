@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -75,9 +75,9 @@ public class LinkTag
 	private boolean canonical;
 
 	@Override
-	public void addParam(String name, String value) {
-		if(params==null) params = new URIParametersMap();
-		params.addParameter(name, value);
+	public void addParam(String name, Object value) {
+		if(params == null) params = new URIParametersMap();
+		params.add(name, value);
 	}
 
 	public ValueExpression getClazz() {
