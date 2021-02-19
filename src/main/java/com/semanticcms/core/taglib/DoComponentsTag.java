@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2016, 2017, 2020  AO Industries, Inc.
+ * Copyright (C) 2016, 2017, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,7 +22,7 @@
  */
 package com.semanticcms.core.taglib;
 
-import com.aoindustries.html.servlet.HtmlEE;
+import com.aoindustries.html.servlet.DocumentEE;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.renderer.html.ComponentPosition;
 import com.semanticcms.core.renderer.html.ComponentUtils;
@@ -66,11 +66,10 @@ public class DoComponentsTag extends SimpleTagSupport {
 			ServletContext servletContext = pageContext.getServletContext();
 			HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 			HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
-			ComponentUtils.doComponents(
-				servletContext,
+			ComponentUtils.doComponents(servletContext,
 				request,
 				response,
-				HtmlEE.get(servletContext, request, response, pageContext.getOut()),
+				DocumentEE.get(servletContext, request, response, pageContext.getOut()),
 				view,
 				page,
 				position,

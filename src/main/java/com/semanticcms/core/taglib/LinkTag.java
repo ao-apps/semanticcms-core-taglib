@@ -23,7 +23,7 @@
 package com.semanticcms.core.taglib;
 
 import com.aoindustries.encoding.taglib.EncodingBufferedTag;
-import com.aoindustries.html.servlet.HtmlEE;
+import com.aoindustries.html.servlet.DocumentEE;
 import com.aoindustries.io.NullWriter;
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
@@ -190,12 +190,11 @@ public class LinkTag
 				final JspWriter out = pageContext.getOut();
 				ServletContext servletContext = pageContext.getServletContext();
 				HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
-				LinkRenderer.writeLinkImpl(
-					servletContext,
+				LinkRenderer.writeLinkImpl(servletContext,
 					pageContext.getELContext(),
 					request,
 					response,
-					HtmlEE.get(servletContext, request, response, out),
+					DocumentEE.get(servletContext, request, response, out),
 					domain,
 					book,
 					page,
