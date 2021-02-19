@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2016, 2017, 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2016, 2017, 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,7 +22,7 @@
  */
 package com.semanticcms.core.taglib;
 
-import com.aoindustries.html.servlet.HtmlEE;
+import com.aoindustries.html.servlet.DocumentEE;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.servlet.View;
 import java.io.IOException;
@@ -73,11 +73,10 @@ public class DoViewTag extends SimpleTagSupport {
 					throw new NotImplementedException("getOutputStream not expected");
 				}
 			};
-			view.doView(
-				servletContext,
+			view.doView(servletContext,
 				request,
 				response,
-				HtmlEE.get(servletContext, request, response, out),
+				DocumentEE.get(servletContext, request, response, out),
 				page
 			);
 			if(out.checkError()) throw new IOException("Error on doView PrintWriter");

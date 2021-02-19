@@ -25,11 +25,11 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.semanticcms</groupId><artifactId>semanticcms-parent</artifactId><version>1.11.0-POST-SNAPSHOT</version>
+		<groupId>com.semanticcms</groupId><artifactId>semanticcms-parent</artifactId><version>1.11.1-SNAPSHOT</version>
 		<relativePath>../../../parent/pom.xml</relativePath>
 	</parent>
 
-	<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib-devel</artifactId><version>1.14.1-POST-SNAPSHOT</version>
+	<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib-devel</artifactId><version>1.14.2-SNAPSHOT</version>
 	<packaging>bundle</packaging>
 
 	<name>SemanticCMS Core Taglib Devel</name>

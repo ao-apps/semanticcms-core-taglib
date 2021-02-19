@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2020  AO Industries, Inc.
+ * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,7 +22,7 @@
  */
 package com.semanticcms.core.taglib;
 
-import com.aoindustries.html.servlet.HtmlEE;
+import com.aoindustries.html.servlet.DocumentEE;
 import com.semanticcms.core.servlet.impl.NavigationTreeImpl;
 import java.io.IOException;
 import javax.el.ValueExpression;
@@ -100,12 +100,11 @@ public class NavigationTreeTag extends SimpleTagSupport {
 			ServletContext servletContext = pageContext.getServletContext();
 			HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 			HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
-			NavigationTreeImpl.writeNavigationTreeImpl(
-				servletContext,
+			NavigationTreeImpl.writeNavigationTreeImpl(servletContext,
 				pageContext.getELContext(),
 				request,
 				response,
-				HtmlEE.get(servletContext, request, response, pageContext.getOut()),
+				DocumentEE.get(servletContext, request, response, pageContext.getOut()),
 				root,
 				skipRoot,
 				yuiConfig,
