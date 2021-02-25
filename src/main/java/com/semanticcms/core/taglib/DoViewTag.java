@@ -76,7 +76,13 @@ public class DoViewTag extends SimpleTagSupport {
 			view.doView(servletContext,
 				request,
 				response,
-				DocumentEE.get(servletContext, request, response, out),
+				DocumentEE.get(
+					servletContext,
+					request,
+					response,
+					out,
+					false // Do not add extra indentation to JSP
+				),
 				page
 			);
 			if(out.checkError()) throw new IOException("Error on doView PrintWriter");

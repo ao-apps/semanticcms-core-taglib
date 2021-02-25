@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,10 +22,10 @@
  */
 package com.semanticcms.core.taglib;
 
-import com.aoindustries.collections.MinimalList;
 import com.aoindustries.encoding.Doctype;
 import com.aoindustries.encoding.Serialization;
 import com.aoindustries.taglib.HtmlTag;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import javax.servlet.jsp.tagext.TagData;
@@ -39,20 +39,22 @@ public class PageTagTEI extends TagExtraInfo {
 
 	@Override
 	public ValidationMessage[] validate(TagData data) {
-		List<ValidationMessage> messages = MinimalList.emptyList();
+		List<ValidationMessage> messages = new ArrayList<>();
 		Object serializationAttr = data.getAttribute("serialization");
 		if(
 			serializationAttr != null
 			&& serializationAttr != TagData.REQUEST_TIME_VALUE
 		) {
-			String serialization = ((String)serializationAttr).trim();
+			String serialization = ((String)serializationAttr).trim(); // TODO: normalizeSerialization
 			if(!serialization.isEmpty() && !"auto".equalsIgnoreCase(serialization)) {
 				try {
 					Serialization.valueOf(serialization.toUpperCase(Locale.ROOT));
 				} catch(IllegalArgumentException e) {
-					messages = MinimalList.add(
-						messages,
-						new ValidationMessage(data.getId(), HtmlTag.RESOURCES.getMessage("serialization.invalid", serialization))
+					messages.add(
+						new ValidationMessage(
+							data.getId(),
+							HtmlTag.RESOURCES.getMessage("serialization.invalid", serialization)
+						)
 					);
 				}
 			}
@@ -62,16 +64,38 @@ public class PageTagTEI extends TagExtraInfo {
 			doctypeAttr != null
 			&& doctypeAttr != TagData.REQUEST_TIME_VALUE
 		) {
-			String doctype = ((String)doctypeAttr).trim();
+			String doctype = ((String)doctypeAttr).trim(); // TODO: normalizeDoctype
 			if(!doctype.isEmpty() && !"default".equalsIgnoreCase(doctype)) {
 				try {
 					Doctype.valueOf(doctype.toUpperCase(Locale.ROOT));
 				} catch(IllegalArgumentException e) {
-					messages = MinimalList.add(
-						messages,
-						new ValidationMessage(data.getId(), HtmlTag.RESOURCES.getMessage("doctype.invalid", doctype))
+					messages.add(
+						new ValidationMessage(
+							data.getId(),
+							HtmlTag.RESOURCES.getMessage("doctype.invalid", doctype)
+						)
 					);
 				}
+			}
+		}
+		Object indentAttr = data.getAttribute("indent");
+		if(
+			indentAttr != null
+			&& indentAttr != TagData.REQUEST_TIME_VALUE
+		) {
+			String indent = ((String)indentAttr).trim(); // TODO: normalizeIndent
+			if(
+				!indent.isEmpty()
+				&& !"auto".equalsIgnoreCase(indent)
+				&& !"true".equalsIgnoreCase(indent)
+				&& !"false".equalsIgnoreCase(indent)
+			) {
+				messages.add(
+					new ValidationMessage(
+						data.getId(),
+						HtmlTag.RESOURCES.getMessage("indent.invalid", indent)
+					)
+				);
 			}
 		}
 		return messages.isEmpty() ? null : messages.toArray(new ValidationMessage[messages.size()]);

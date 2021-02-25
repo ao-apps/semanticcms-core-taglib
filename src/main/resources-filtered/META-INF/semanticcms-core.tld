@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
-Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020  AO Industries, Inc.
+Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021  AO Industries, Inc.
 	support@aoindustries.com
 	7262 Bull Pen Cir
 	Mobile, AL 36695
@@ -39,7 +39,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<uri>@{project.url}</uri>
 	<tag>
 		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2020-11-23T03:04:27-06:00" -->
+		<!-- dateModified="2021-02-24T23:45:06-06:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				The body of this tag represents one page of content.
@@ -234,6 +234,31 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				</ol>
 			]]></description>
 			<name>doctype</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				<p>
+					When <code>true</code>, enables tab indentation.
+					When <code>false</code>, disables tab indentation.
+					When <code>auto</code> (the default), the following steps are performed to resolve the indent setting:
+				</p>
+				<ol>
+					<li>Use the indent setting active on the current request.</li>
+					<li>
+						Use the application <a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
+						<code>com.aoindustries.html.Document.indent</code>
+						that allows an application to control the default indent setting.
+					</li>
+					<li>
+						When this context-param is unspecified or <code>auto</code>,
+						defaults to <code>false</code>.
+					</li>
+				</ol>
+			]]></description>
+			<name>indent</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<type>java.lang.String</type>

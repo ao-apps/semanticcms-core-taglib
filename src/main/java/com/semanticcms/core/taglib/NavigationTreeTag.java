@@ -114,7 +114,13 @@ public class NavigationTreeTag extends SimpleTagSupport {
 				pageContext.getELContext(),
 				request,
 				response,
-				DocumentEE.get(servletContext, request, response, pageContext.getOut()),
+				DocumentEE.get(
+					servletContext,
+					request,
+					response,
+					pageContext.getOut(),
+					false // Do not add extra indentation to JSP
+				),
 				root,
 				skipRoot,
 				yuiConfig,
