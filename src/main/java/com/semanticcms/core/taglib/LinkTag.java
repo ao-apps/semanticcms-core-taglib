@@ -187,7 +187,13 @@ public class LinkTag
 					pageContext.getELContext(),
 					request,
 					response,
-					DocumentEE.get(servletContext, request, response, out),
+					DocumentEE.get(
+						servletContext,
+						request,
+						response,
+						out,
+						false // Do not add extra indentation to JSP
+					),
 					book,
 					page,
 					element,

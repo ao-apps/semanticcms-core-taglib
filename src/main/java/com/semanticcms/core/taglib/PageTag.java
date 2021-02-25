@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -30,10 +30,12 @@ import com.aoindustries.io.NullWriter;
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
 import com.aoindustries.io.buffer.EmptyResult;
+import com.aoindustries.lang.LocalizedIllegalArgumentException;
 import static com.aoindustries.lang.Strings.nullIfEmpty;
 import com.aoindustries.servlet.ServletContextCache;
 import com.aoindustries.servlet.jsp.LocalizedJspTagException;
 import com.aoindustries.taglib.AttributeUtils;
+import com.aoindustries.taglib.HtmlTag;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.model.PageRef;
 import com.semanticcms.core.servlet.PageRefResolver;
@@ -138,6 +140,24 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 		} else {
 			doctype = doctype.trim();
 			this.doctype = (doctype.isEmpty() || "default".equalsIgnoreCase(doctype)) ? null : Doctype.valueOf(doctype.toUpperCase(Locale.ROOT));
+		}
+	}
+
+	private Boolean indent;
+	public void setIndent(String indent) {
+		if(indent == null) {
+			this.indent = null;
+		} else {
+			indent = indent.trim();
+			if(indent.isEmpty() || "auto".equalsIgnoreCase(indent)) {
+				this.indent = null;
+			} else if("true".equalsIgnoreCase(indent)) {
+				this.indent = true;
+			} else if("false".equalsIgnoreCase(indent)) {
+				this.indent = false;
+			} else {
+				throw new LocalizedIllegalArgumentException(HtmlTag.RESOURCES, "indent.invalid", indent);
+			}
 		}
 	}
 
@@ -500,6 +520,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 				PageUtils.toDateTime(dateReviewed),
 				serialization,
 				doctype,
+				indent,
 				title,
 				shortTitle,
 				description,

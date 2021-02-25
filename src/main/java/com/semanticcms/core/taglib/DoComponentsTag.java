@@ -69,7 +69,13 @@ public class DoComponentsTag extends SimpleTagSupport {
 			ComponentUtils.doComponents(servletContext,
 				request,
 				response,
-				DocumentEE.get(servletContext, request, response, pageContext.getOut()),
+				DocumentEE.get(
+					servletContext,
+					request,
+					response,
+					pageContext.getOut(),
+					false // Do not add extra indentation to JSP
+				),
 				view,
 				page,
 				position,
