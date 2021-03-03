@@ -40,7 +40,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<javadoc.taglibReference><![CDATA[<li><a target="${javadoc.target}" href="${project.url}semanticcms-core.tld/">Taglib Reference</a></li>]]></javadoc.taglibReference>
 		<jodaTimeApidocs>https://www.joda.org/joda-time/apidocs/</jodaTimeApidocs>
 		<!-- Dependencies -->
-		<commons-lang3.version>3.11</commons-lang3.version>
+		<commons-lang3.version>3.12.0</commons-lang3.version>
 	</properties>
 
 	<name>SemanticCMS Core Taglib²</name>
@@ -271,7 +271,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 									<location>${project.build.directory}/offlineLinks/com.aoindustries/ao-taglib</location>
 								</offlineLink>
 								<offlineLink>
-									<url>https://commons.apache.org/proper/commons-lang/javadocs/api-${commons-lang3.version}/</url>
+									<url>https://javadoc.io/doc/org.apache.commons/commons-lang3/${commons-lang3.version}/</url>
 									<location>${project.build.directory}/offlineLinks/org.apache.commons/commons-lang3</location>
 								</offlineLink>
 								<!-- Java EE: <groupId>javax.el</groupId><artifactId>javax.el-api</artifactId> -->
