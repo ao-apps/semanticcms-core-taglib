@@ -78,6 +78,26 @@ public class PageTagTEI extends TagExtraInfo {
 				}
 			}
 		}
+		Object autonliAttr = data.getAttribute("autonli");
+		if(
+			autonliAttr != null
+			&& autonliAttr != TagData.REQUEST_TIME_VALUE
+		) {
+			String autonli = ((String)autonliAttr).trim(); // TODO: normalizeAutonli
+			if(
+				!autonli.isEmpty()
+				&& !"auto".equalsIgnoreCase(autonli)
+				&& !"true".equalsIgnoreCase(autonli)
+				&& !"false".equalsIgnoreCase(autonli)
+			) {
+				messages.add(
+					new ValidationMessage(
+						data.getId(),
+						HtmlTag.RESOURCES.getMessage("autonli.invalid", autonli)
+					)
+				);
+			}
+		}
 		Object indentAttr = data.getAttribute("indent");
 		if(
 			indentAttr != null

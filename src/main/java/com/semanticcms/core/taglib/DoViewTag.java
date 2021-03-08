@@ -81,7 +81,8 @@ public class DoViewTag extends SimpleTagSupport {
 					request,
 					response,
 					out,
-					false // Do not add extra indentation to JSP
+					false, // Do not add extra newlines to JSP
+					false  // Do not add extra indentation to JSP
 				),
 				page
 			);

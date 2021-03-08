@@ -37,7 +37,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2021-02-24T23:45:06-06:00"
+		dateModified="2021-03-06T23:34:43-06:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -49,7 +49,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			>
 				<ul>
 					<li>Updated dependencies.</li>
-					<li>Implemented tab indentation.</li>
+					<li>Implemented automatic newline and tab indentation.</li>
 				</ul>
 			</changelog:release>
 		</c:if>

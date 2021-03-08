@@ -109,7 +109,8 @@ public class NavigationTreeTag extends SimpleTagSupport {
 					request,
 					response,
 					pageContext.getOut(),
-					false // Do not add extra indentation to JSP
+					false, // Do not add extra newlines to JSP
+					false  // Do not add extra indentation to JSP
 				),
 				root,
 				skipRoot,
