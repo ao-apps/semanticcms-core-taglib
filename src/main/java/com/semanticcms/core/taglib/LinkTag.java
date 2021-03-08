@@ -199,7 +199,8 @@ public class LinkTag
 						request,
 						response,
 						out,
-						false // Do not add extra indentation to JSP
+						false, // Do not add extra newlines to JSP
+						false  // Do not add extra indentation to JSP
 					),
 					domain,
 					book,

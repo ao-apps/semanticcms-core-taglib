@@ -153,6 +153,24 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 		}
 	}
 
+	private Boolean autonli;
+	public void setAutonli(String autonli) {
+		if(autonli == null) {
+			this.autonli = null;
+		} else {
+			autonli = autonli.trim();
+			if(autonli.isEmpty() || "auto".equalsIgnoreCase(autonli)) {
+				this.autonli = null;
+			} else if("true".equalsIgnoreCase(autonli)) {
+				this.autonli = true;
+			} else if("false".equalsIgnoreCase(autonli)) {
+				this.autonli = false;
+			} else {
+				throw new LocalizedIllegalArgumentException(HtmlTag.RESOURCES, "autonli.invalid", autonli);
+			}
+		}
+	}
+
 	private Boolean indent;
 	public void setIndent(String indent) {
 		if(indent == null) {
@@ -568,6 +586,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 				PageUtils.toDateTime(dateReviewed),
 				serialization,
 				doctype,
+				autonli,
 				indent,
 				title,
 				shortTitle,
