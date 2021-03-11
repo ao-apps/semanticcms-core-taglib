@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -189,10 +189,10 @@ final public class Functions {
 	}
 
 	// TODO: Move to ao-taglib?
-	public static Map<String,String> parseQueryString(String queryString) {
+	public static Map<String, String> parseQueryString(String queryString) {
 		if(queryString==null) return null;
 		List<String> pairs = Strings.split(queryString, '&');
-		Map<String,String> params = AoCollections.newLinkedHashMap(pairs.size());
+		Map<String, String> params = AoCollections.newLinkedHashMap(pairs.size());
 		for(String pair : pairs) {
 			int equalPos = pair.indexOf('=');
 			String name, value;
@@ -296,7 +296,7 @@ final public class Functions {
 		);
 	}
 
-	public static Map<String,List<String>> getViewLinkParams(View view, Page page) throws ServletException, IOException {
+	public static Map<String, List<String>> getViewLinkParams(View view, Page page) throws ServletException, IOException {
 		return view.getLinkParams(
 			getServletContext(),
 			getRequest(),
@@ -355,20 +355,20 @@ final public class Functions {
 		return SemanticCMS.getInstance(getServletContext()).getLinkCssClass(element);
 	}
 
-	public static Map<String,String> mergeGlobalAndViewScripts(View view) {
-		Map<String,String> globalScripts = SemanticCMS.getInstance(getServletContext()).getScripts();
-		Map<String,String> viewScripts = view == null ? null : view.getScripts();
+	public static Map<String, String> mergeGlobalAndViewScripts(View view) {
+		Map<String, String> globalScripts = SemanticCMS.getInstance(getServletContext()).getScripts();
+		Map<String, String> viewScripts = view == null ? null : view.getScripts();
 
 		// Shortcut for when no view scripts
 		if(viewScripts == null || viewScripts.isEmpty()) return globalScripts;
 
-		Map<String,String> merged = AoCollections.newLinkedHashMap(globalScripts.size() + viewScripts.size());
+		Map<String, String> merged = AoCollections.newLinkedHashMap(globalScripts.size() + viewScripts.size());
 
 		// Add all global scripts
 		merged.putAll(globalScripts);
 
 		// Merge per-view scripts
-		for(Map.Entry<String,String> entry : viewScripts.entrySet()) {
+		for(Map.Entry<String, String> entry : viewScripts.entrySet()) {
 			String name = entry.getKey();
 			String src = entry.getValue();
 			String existingSrc = merged.get(name);

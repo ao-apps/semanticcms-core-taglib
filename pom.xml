@@ -128,11 +128,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 											<outputDirectory>${project.build.directory}/offlineLinks/com.aoindustries/ao-encoding-taglib</outputDirectory>
 										</artifactItem>
 										<artifactItem>
-											<groupId>com.aoindustries</groupId><artifactId>ao-fluent-html</artifactId><classifier>javadoc</classifier>
-											<includes>element-list, package-list</includes>
-											<outputDirectory>${project.build.directory}/offlineLinks/com.aoindustries/ao-fluent-html</outputDirectory>
-										</artifactItem>
-										<artifactItem>
 											<groupId>com.aoindustries</groupId><artifactId>ao-fluent-html-servlet</artifactId><classifier>javadoc</classifier>
 											<includes>element-list, package-list</includes>
 											<outputDirectory>${project.build.directory}/offlineLinks/com.aoindustries/ao-fluent-html-servlet</outputDirectory>
@@ -214,10 +209,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 									<location>${project.build.directory}/offlineLinks/com.aoindustries/ao-encoding-taglib</location>
 								</offlineLink>
 								<offlineLink>
-									<url>https://aoindustries.com/ao-fluent-html/apidocs/</url>
-									<location>${project.build.directory}/offlineLinks/com.aoindustries/ao-fluent-html</location>
-								</offlineLink>
-								<offlineLink>
 									<url>https://aoindustries.com/ao-fluent-html/servlet/apidocs/</url>
 									<location>${project.build.directory}/offlineLinks/com.aoindustries/ao-fluent-html-servlet</location>
 								</offlineLink>
@@ -296,9 +287,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				<groupId>com.aoindustries</groupId><artifactId>ao-encoding-taglib</artifactId><version>1.0.2${POST-SNAPSHOT}</version>
 			</dependency>
 			<dependency>
-				<groupId>com.aoindustries</groupId><artifactId>ao-fluent-html</artifactId><version>0.4.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
-			</dependency>
-			<dependency>
 				<groupId>com.aoindustries</groupId><artifactId>ao-fluent-html-servlet</artifactId><version>0.2.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
 			</dependency>
 			<dependency>
@@ -341,6 +329,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			</dependency>
 			<dependency>
 				<groupId>com.aoindustries</groupId><artifactId>ao-encoding-servlet</artifactId><version>3.0.0${POST-SNAPSHOT}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.aoindustries</groupId><artifactId>ao-fluent-html</artifactId><version>0.4.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
 			</dependency>
 			<dependency>
 				<groupId>com.aoindustries</groupId><artifactId>ao-servlet-last-modified</artifactId><version>1.2.0${POST-SNAPSHOT}</version>
@@ -387,9 +378,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		</dependency>
 		<dependency>
 			<groupId>com.aoindustries</groupId><artifactId>ao-encoding-taglib</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.aoindustries</groupId><artifactId>ao-fluent-html</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.aoindustries</groupId><artifactId>ao-fluent-html-servlet</artifactId>

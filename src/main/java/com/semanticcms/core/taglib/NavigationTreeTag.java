@@ -104,7 +104,7 @@ public class NavigationTreeTag extends SimpleTagSupport {
 				pageContext.getELContext(),
 				request,
 				response,
-				DocumentEE.get(
+				new DocumentEE(
 					servletContext,
 					request,
 					response,

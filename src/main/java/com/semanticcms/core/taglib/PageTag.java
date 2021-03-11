@@ -251,7 +251,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 		this.allowChildMismatch = allowChildMismatch;
 	}
 
-	private Map<String,Object> properties;
+	private Map<String, Object> properties;
 
 	/**
 	 * Adds a {@linkplain DynamicAttributes dynamic attribute}.
@@ -313,12 +313,12 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 
 			private final long lastModified;
 			private final long cachedTime;
-			private final Map<String,String> properties;
+			private final Map<String, String> properties;
 
 			private Entry(
 				long lastModified,
 				long cachedTime,
-				Map<String,String> properties
+				Map<String, String> properties
 			) {
 				this.lastModified = lastModified;
 				this.cachedTime = cachedTime;
@@ -336,9 +336,9 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 			// Do nothing
 		}
 
-		private static ConcurrentMap<URL,Entry> getInstance(ServletContext servletContext) {
+		private static ConcurrentMap<URL, Entry> getInstance(ServletContext servletContext) {
 			@SuppressWarnings("unchecked")
-			ConcurrentMap<URL,Entry> instance = (ConcurrentMap)servletContext.getAttribute(APPLICATION_ATTRIBUTE);
+			ConcurrentMap<URL, Entry> instance = (ConcurrentMap)servletContext.getAttribute(APPLICATION_ATTRIBUTE);
 			if(instance == null) {
 				instance = new ConcurrentHashMap<>();
 				servletContext.setAttribute(APPLICATION_ATTRIBUTE, instance);
@@ -394,9 +394,9 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 				);
 				if(url != null) {
 					// if(DEBUG) System.out.println("PageTag: doTag: Got properties URL: " + url);
-					Map<String,String> propsFromFile;
+					Map<String, String> propsFromFile;
 					{
-						final ConcurrentMap<URL,PropertiesCache.Entry> propertiesCache = PropertiesCache.getInstance(servletContext);
+						final ConcurrentMap<URL, PropertiesCache.Entry> propertiesCache = PropertiesCache.getInstance(servletContext);
 						final long currentTime = System.currentTimeMillis();
 						URLConnection urlConn = null;
 						boolean urlClosed = false;
@@ -482,7 +482,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 									);
 								} else {
 									if(logger.isLoggable(Level.FINER)) logger.finer("PageTag: doTag: Got " + size + " properties, using unmodifiable wrapped linked hash map");
-									Map<String,String> newMap = AoCollections.newLinkedHashMap(size); // linked map for maximum iteration performance
+									Map<String, String> newMap = AoCollections.newLinkedHashMap(size); // linked map for maximum iteration performance
 									for(String propertyName : propertyNames) {
 										newMap.put(
 											propertyName,
@@ -510,7 +510,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 						if(properties == null) {
 							properties = AoCollections.newLinkedHashMap(numPropsFromFile);
 						}
-						for(Map.Entry<String,String> entry : propsFromFile.entrySet()) {
+						for(Map.Entry<String, String> entry : propsFromFile.entrySet()) {
 							String propertyName = entry.getKey();
 							if(properties.containsKey(propertyName)) {
 								throw new LocalizedJspTagException(

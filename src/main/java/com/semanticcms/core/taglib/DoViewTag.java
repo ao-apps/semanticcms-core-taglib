@@ -76,7 +76,7 @@ public class DoViewTag extends SimpleTagSupport {
 			view.doView(servletContext,
 				request,
 				response,
-				DocumentEE.get(
+				new DocumentEE(
 					servletContext,
 					request,
 					response,
