@@ -194,7 +194,7 @@ public class LinkTag
 					pageContext.getELContext(),
 					request,
 					response,
-					DocumentEE.get(
+					new DocumentEE(
 						servletContext,
 						request,
 						response,

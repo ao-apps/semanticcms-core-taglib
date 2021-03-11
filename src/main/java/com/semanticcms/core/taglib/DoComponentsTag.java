@@ -69,7 +69,7 @@ public class DoComponentsTag extends SimpleTagSupport {
 			ComponentUtils.doComponents(servletContext,
 				request,
 				response,
-				DocumentEE.get(
+				new DocumentEE(
 					servletContext,
 					request,
 					response,
