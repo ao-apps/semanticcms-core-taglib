@@ -39,7 +39,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<uri>@{project.url}</uri>
 	<tag>
 		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2021-03-06T23:34:43-06:00" -->
+		<!-- dateModified="2021-03-14T23:41:08-05:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				The body of this tag represents one page of content.
@@ -249,7 +249,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 					<li>Use the autonli setting active on the current request.</li>
 					<li>
 						Use the application <a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
-						<code>com.aoindustries.html.Document.autonli</code>
+						<code>com.aoindustries.html.servlet.DocumentEE.autonli</code>
 						that allows an application to control the default autonli setting.
 					</li>
 					<li>
@@ -274,7 +274,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 					<li>Use the indent setting active on the current request.</li>
 					<li>
 						Use the application <a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
-						<code>com.aoindustries.html.Document.indent</code>
+						<code>com.aoindustries.html.servlet.DocumentEE.indent</code>
 						that allows an application to control the default indent setting.
 					</li>
 					<li>
