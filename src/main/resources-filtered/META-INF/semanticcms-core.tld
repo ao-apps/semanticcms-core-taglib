@@ -25,8 +25,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
 	version="2.1">
-	<!-- datePublished="2016-08-07T23:48:25-0500" -->
-	<!-- dateModified="2016-11-11T16:21:13-0600" -->
+	<!-- datePublished="2016-08-07T23:48:25-05:00" -->
+	<!-- dateModified="2016-11-11T16:21:13-06:00" -->
 	<description><![CDATA[
 		<p>@{description.html}</p>
 	]]></description>
@@ -38,7 +38,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<short-name>core</short-name>
 	<uri>@{project.url}</uri>
 	<tag>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
 		<!-- dateModified="2021-03-14T23:41:08-05:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
@@ -451,8 +451,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<dynamic-attributes>true</dynamic-attributes>
 	</tag>
 	<tag>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2016-11-11T16:21:13-0600" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
+		<!-- dateModified="2016-11-11T16:21:13-06:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Sets the copyright for the current page.
@@ -514,7 +514,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 	</tag>
 	<tag>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
 		<!-- dateModified="2020-11-23T03:04:27-06:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
@@ -603,8 +603,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 	</tag>
 	<tag>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2017-08-01T16:44:47-0500" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
+		<!-- dateModified="2017-08-01T16:44:47-05:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Adds the given page as a parent of the current page.
@@ -695,8 +695,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 	</tag>
 	<tag>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2017-08-01T16:44:47-0500" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
+		<!-- dateModified="2017-08-01T16:44:47-05:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Adds the given page as a subpage of the current page.
@@ -757,7 +757,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 	</tag>
 	<tag>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
 		<!-- dateModified="2020-11-23T03:04:27-06:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
@@ -978,7 +978,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<dynamic-attributes>true</dynamic-attributes>
 	</tag>
 	<tag>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
 		<!-- dateModified="2020-11-21T03:38:17-06:00" -->
 		<description><![CDATA[
 			<p>
@@ -1016,8 +1016,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 	</tag>
 	<tag>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2020-02-25T13:50:20-0600" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
+		<!-- dateModified="2020-02-25T13:50:20-06:00" -->
 		<description><![CDATA[
 			<p>
 				Adds multiple parameters to its
@@ -1127,7 +1127,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 	</tag>
 	<tag>
-		<!-- datePublished="2017-07-19T12:12:39-0500" -->
+		<!-- datePublished="2017-07-19T12:12:39-05:00" -->
 		<!-- dateModified="2020-05-30T02:46:48-05:00" -->
 		<description><![CDATA[
 			<p>
@@ -1212,7 +1212,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<!-- TODO: core:properties, that sets multiple properties, accepts a map (or single Map.Entry)? -->
 	<tag>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
 		<!-- dateModified="2020-11-23T03:04:27-06:00" -->
 		<description><![CDATA[
 			<p>
@@ -1376,8 +1376,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 	</tag>
 	<tag>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2016-11-11T16:21:13-0600" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
+		<!-- dateModified="2016-11-11T16:21:13-06:00" -->
 		<description><![CDATA[
 			<p>
 				Writes the body of the given node, recursively replacing any nested
@@ -1401,8 +1401,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 	</tag>
 	<tag>
-		<!-- datePublished="2016-08-12T03:18:55-0500" -->
-		<!-- dateModified="2018-06-02T01:11:31-0500" -->
+		<!-- datePublished="2016-08-12T03:18:55-05:00" -->
+		<!-- dateModified="2018-06-02T01:11:31-05:00" -->
 		<description><![CDATA[
 			<p>
 				Calls the view for the given page.
@@ -1435,7 +1435,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 	</tag>
 	<tag>
-		<!-- datePublished="2016-10-17T20:33:52-0500" -->
+		<!-- datePublished="2016-10-17T20:33:52-05:00" -->
 		<!-- dateModified="2020-11-23T03:04:27-06:00" -->
 		<description><![CDATA[
 			<p>
@@ -1493,8 +1493,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 	</tag>
 	<function>
-		<!-- datePublished="2017-08-01T16:44:47-0500" -->
-		<!-- dateModified="2017-08-03T10:59:48-0500" -->
+		<!-- datePublished="2017-08-01T16:44:47-05:00" -->
+		<!-- dateModified="2017-08-03T10:59:48-05:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Captures a <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a> in a provided domain and book.
@@ -1532,8 +1532,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:capturePageInDomain(domain, book, page, level)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2017-08-03T10:59:48-0500" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
+		<!-- dateModified="2017-08-03T10:59:48-05:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Captures a <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a> in a provided book
@@ -1569,8 +1569,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:capturePageInBook(book, page, level)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2017-08-23T02:21:47-0500" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
+		<!-- dateModified="2017-08-23T02:21:47-05:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Captures a <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a>
@@ -1603,8 +1603,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:capturePage(page, level)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2016-11-11T16:21:13-0600" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
+		<!-- dateModified="2016-11-11T16:21:13-06:00" -->
 		<description><![CDATA[
 			<p>
 				Captures the content root <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a>
@@ -1617,8 +1617,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:captureContentRoot(level)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2016-11-11T16:21:13-0600" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
+		<!-- dateModified="2016-11-11T16:21:13-06:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Gets the current capture level.
@@ -1639,8 +1639,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:getCaptureLevel()}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2016-11-11T16:21:13-0600" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
+		<!-- dateModified="2016-11-11T16:21:13-06:00" -->
 		<description><![CDATA[
 			<p>
 				Get the page index for the given page reference.
@@ -1652,7 +1652,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:getPageIndex(pageRef)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
 		<!-- dateModified="2020-05-29T14:33:14-05:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
@@ -1687,8 +1687,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:convertPageDagToList(rootPage, level)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2017-08-03T10:59:48-0500" -->
-		<!-- dateModified="2019-04-15T19:32:44-0500" -->
+		<!-- datePublished="2017-08-03T10:59:48-05:00" -->
+		<!-- dateModified="2019-04-15T19:32:44-05:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Gets the resource for a domain, book, and book-relative path.
@@ -1722,8 +1722,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:getResourceInDomain(domain, book, path, require)</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2017-08-03T10:59:48-0500" -->
-		<!-- dateModified="2019-04-15T19:32:44-0500" -->
+		<!-- datePublished="2017-08-03T10:59:48-05:00" -->
+		<!-- dateModified="2019-04-15T19:32:44-05:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Gets the resource for a book and book-relative path in the domain of the current JSP file.
@@ -1754,8 +1754,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:getResourceInBook(book, path, require)</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2017-08-03T10:59:48-0500" -->
-		<!-- dateModified="2019-04-15T19:32:44-0500" -->
+		<!-- datePublished="2017-08-03T10:59:48-05:00" -->
+		<!-- dateModified="2019-04-15T19:32:44-05:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Gets the resource for a page-relative path in the domain and book of the current JSP file.
@@ -1783,8 +1783,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:getResource(path, require)</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2016-11-11T16:21:13-0600" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
+		<!-- dateModified="2016-11-11T16:21:13-06:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Gets an id for use in the current page.
@@ -1801,8 +1801,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:getRefId(id)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2016-11-11T16:21:13-0600" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
+		<!-- dateModified="2016-11-11T16:21:13-06:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Gets an id for use in referencing the given page.
@@ -1819,8 +1819,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:getRefIdInPage(page, id)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2019-04-15T19:33:26-0500" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
+		<!-- dateModified="2019-04-15T19:33:26-05:00" -->
 		<description><![CDATA[
 			<p>
 				Calls <a rel="nofollow" href="@{javadoc.link.javase}java/lang/Math.html#ceil%28double%29">java.lang.Math.ceil(double)</a>,
@@ -1833,8 +1833,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:ceil(a)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2019-04-15T19:33:26-0500" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
+		<!-- dateModified="2019-04-15T19:33:26-05:00" -->
 		<description><![CDATA[
 			<p>
 				Calls <a rel="nofollow" href="@{javadoc.link.javase}java/lang/Math.html#floor%28double%29">java.lang.Math.floor(double)</a>,
@@ -1847,7 +1847,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:floor(a)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
 		<!-- dateModified="2020-05-29T14:35:21-05:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
@@ -1867,8 +1867,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:parseQueryString(pageContext.request.queryString)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2016-11-08T02:37:12-0600" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
+		<!-- dateModified="2016-11-08T02:37:12-06:00" -->
 		<description><![CDATA[
 			<p>
 				Repeats a string the given number of times.
@@ -1880,8 +1880,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:repeat(value, count)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2017-08-02T20:31:57-0500" -->
-		<!-- dateModified="2017-08-02T20:31:57-0500" -->
+		<!-- datePublished="2017-08-02T20:31:57-05:00" -->
+		<!-- dateModified="2017-08-02T20:31:57-05:00" -->
 		<description><![CDATA[
 			<p>
 				Gets the book published at the provided page path or <code>null</code>
@@ -1897,8 +1897,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:getPublishedBook(pagePath)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2018-06-02T01:11:31-0500" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
+		<!-- dateModified="2018-06-02T01:11:31-05:00" -->
 		<description><![CDATA[
 			<p>
 				Encodes arbitrary data into a UTF-8 encoded, then hex-encoded string.
@@ -1910,8 +1910,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:encodeHexData(data)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2016-11-11T16:21:13-0600" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
+		<!-- dateModified="2016-11-11T16:21:13-06:00" -->
 		<description><![CDATA[
 			<p>
 				Checks if the current request is part of a static export.
@@ -1923,8 +1923,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:isExporting()}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2016-11-11T16:21:13-0600" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
+		<!-- dateModified="2016-11-11T16:21:13-06:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Finds the copyright for the given page or <code>null</code> if none set.
@@ -1940,7 +1940,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:findCopyright(page)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
 		<!-- dateModified="2020-05-29T14:37:58-05:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
@@ -1958,8 +1958,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:findAuthors(page)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-09-06T16:13:33-0500" -->
-		<!-- dateModified="2016-11-11T16:21:13-0600" -->
+		<!-- datePublished="2016-09-06T16:13:33-05:00" -->
+		<!-- dateModified="2016-11-11T16:21:13-06:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Finds the allowRobots setting for the given page.
@@ -1975,8 +1975,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:findAllowRobots(page)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2016-11-11T16:21:13-0600" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
+		<!-- dateModified="2016-11-11T16:21:13-06:00" -->
 		<description><![CDATA[
 			<p>
 				Checks if the given page has at least one accessible child page.
@@ -1989,8 +1989,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:hasChild(page)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-07T23:48:25-0500" -->
-		<!-- dateModified="2016-11-08T02:37:12-0600" -->
+		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
+		<!-- dateModified="2016-11-08T02:37:12-06:00" -->
 		<description><![CDATA[
 			<p>
 				Checks if the given page, or optionally any of its child pages, has at least
@@ -2003,7 +2003,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:hasElement(page, elementType, recursive)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-14T14:01:04-0500" -->
+		<!-- datePublished="2016-08-14T14:01:04-05:00" -->
 		<!-- dateModified="2020-11-26T20:49:30-06:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
@@ -2024,7 +2024,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:findTopLevelElements(node, elementType)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-14T14:01:04-0500" -->
+		<!-- datePublished="2016-08-14T14:01:04-05:00" -->
 		<!-- dateModified="2020-05-29T14:45:17-05:00" -->
 		<description><![CDATA[
 			<p>
@@ -2039,8 +2039,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:filterElements(page, elementType)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-18T01:24:55-0500" -->
-		<!-- dateModified="2018-06-02T01:11:31-0500" -->
+		<!-- datePublished="2016-08-18T01:24:55-05:00" -->
+		<!-- dateModified="2018-06-02T01:11:31-05:00" -->
 		<description><![CDATA[
 			<p>
 				Checks if a view is applicable the given request and page.
@@ -2052,8 +2052,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:isViewApplicable(view, page)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-28T15:04:17-0500" -->
-		<!-- dateModified="2018-06-02T01:11:31-0500" -->
+		<!-- datePublished="2016-08-28T15:04:17-05:00" -->
+		<!-- dateModified="2018-06-02T01:11:31-05:00" -->
 		<description><![CDATA[
 			<p>
 				Gets the CSS class to use for the main navigation link to this view.
@@ -2065,7 +2065,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:getViewLinkCssClass(view)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-28T17:56:51-0500" -->
+		<!-- datePublished="2016-08-28T17:56:51-05:00" -->
 		<!-- dateModified="2020-05-29T14:47:21-05:00" -->
 		<description><![CDATA[
 			<p>
@@ -2079,8 +2079,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:getViewLinkParams(view, page)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-12T01:59:04-0500" -->
-		<!-- dateModified="2018-06-02T01:11:31-0500" -->
+		<!-- datePublished="2016-08-12T01:59:04-05:00" -->
+		<!-- dateModified="2018-06-02T01:11:31-05:00" -->
 		<description><![CDATA[
 			<p>
 				Gets the copyright for the given view and page.
@@ -2092,7 +2092,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:getViewCopyright(view, page)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-12T01:59:04-0500" -->
+		<!-- datePublished="2016-08-12T01:59:04-05:00" -->
 		<!-- dateModified="2020-05-29T18:27:08-05:00" -->
 		<description><![CDATA[
 			<p>
@@ -2106,8 +2106,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:getViewAuthors(view, page)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-15T22:33:52-0500" -->
-		<!-- dateModified="2018-06-02T01:11:31-0500" -->
+		<!-- datePublished="2016-08-15T22:33:52-05:00" -->
+		<!-- dateModified="2018-06-02T01:11:31-05:00" -->
 		<description><![CDATA[
 			<p>
 				Gets the title for the given view and page.
@@ -2119,7 +2119,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:getViewTitle(view, page)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-09-11T00:56:38-0500" -->
+		<!-- datePublished="2016-09-11T00:56:38-05:00" -->
 		<!-- dateModified="2020-05-29T14:50:38-05:00" -->
 		<description><![CDATA[
 			<p>
@@ -2134,8 +2134,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:getViewLinks(view, page)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-09-06T16:13:33-0500" -->
-		<!-- dateModified="2018-06-02T01:11:31-0500" -->
+		<!-- datePublished="2016-09-06T16:13:33-05:00" -->
+		<!-- dateModified="2018-06-02T01:11:31-05:00" -->
 		<description><![CDATA[
 			<p>
 				Gets the allowRobots for the given view and page.
@@ -2147,8 +2147,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:getViewAllowRobots(view, page)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-20T22:50:54-0500" -->
-		<!-- dateModified="2016-11-08T02:37:12-0600" -->
+		<!-- datePublished="2016-08-20T22:50:54-05:00" -->
+		<!-- dateModified="2016-11-08T02:37:12-06:00" -->
 		<description><![CDATA[
 			<p>
 				Gets the CSS class that is to be used to link to the given element or <code>null</code>
@@ -2161,7 +2161,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:getLinkCssClass(element)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-08-28T16:31:50-0500" -->
+		<!-- datePublished="2016-08-28T16:31:50-05:00" -->
 		<!-- dateModified="2020-05-29T14:52:13-05:00" -->
 		<description><![CDATA[
 			<p>
@@ -2175,8 +2175,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<example><![CDATA[<code>${core:mergeGlobalAndViewScripts(view)}</code>]]></example>
 	</function>
 	<function>
-		<!-- datePublished="2016-10-18T15:33:03-0500" -->
-		<!-- dateModified="2016-11-08T02:37:12-0600" -->
+		<!-- datePublished="2016-10-18T15:33:03-05:00" -->
+		<!-- dateModified="2016-11-08T02:37:12-06:00" -->
 		<description><![CDATA[
 			<p>
 				Determines the short title for a page and one of its parents.

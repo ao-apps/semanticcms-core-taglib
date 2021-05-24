@@ -36,8 +36,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		title="@{documented.name} Changelog"
 		shortTitle="Changelog"
 		tocLevels="1"
-		datePublished="2016-10-30T20:28:28-0500"
-		dateModified="2021-03-18T05:20:36-05:00"
+		datePublished="2016-10-30T20:28:28-05:00"
+		dateModified="2021-05-22T13:07:02-05:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -114,6 +114,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 						No longer using <code>HideJspExtensionFilter</code> because <core:link book="/" page="/" /> 2
 						references pages by abstract path instead of implementation page.
 					</li>
+					<li>Updated to <ao:a rel="nofollow" href="https://www.oracle.com/java/technologies/javaee/javaeetechnologies.html#javaee7">Java™ EE 7 Web Profile</ao:a> (Servlet 3.1, JSP 2.3, EL 3.0, and JSTL 1.2).</li>
 				</ul>
 			</changelog:release>
 		</c:if>
@@ -228,7 +229,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<changelog:release
 			projectName="@{documented.name}"
 			version="1.11.0"
-			datePublished="2019-10-11T17:49:30-0500"
+			datePublished="2019-10-11T17:49:30-05:00"
 			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
 			scmUrl="@{project.scm.url}"
@@ -252,7 +253,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<changelog:release
 			projectName="@{documented.name}"
 			version="1.10.1"
-			datePublished="2019-06-19T10:23:10-0500"
+			datePublished="2019-06-19T10:23:10-05:00"
 			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
 			scmUrl="@{project.scm.url}"
@@ -270,7 +271,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<changelog:release
 			projectName="@{documented.name}"
 			version="1.10.0"
-			datePublished="2019-04-19T06:05:20-0500"
+			datePublished="2019-04-19T06:05:20-05:00"
 			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
 			scmUrl="@{project.scm.url}"
@@ -288,7 +289,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<changelog:release
 			projectName="@{documented.name}"
 			version="1.9.0"
-			datePublished="2017-07-19T23:22:39-0500"
+			datePublished="2017-07-19T23:22:39-05:00"
 			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
 			scmUrl="@{project.scm.url}"
@@ -314,7 +315,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<changelog:release
 			projectName="@{documented.name}"
 			version="1.8.1"
-			datePublished="2016-11-15T17:56:09-0600"
+			datePublished="2016-11-15T17:56:09-06:00"
 			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
 			scmUrl="@{project.scm.url}"
@@ -336,7 +337,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<changelog:release
 			projectName="@{documented.name}"
 			version="1.8.0"
-			datePublished="2016-10-20T18:23:00-0500"
+			datePublished="2016-10-20T18:23:00-05:00"
 			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
 			scmUrl="@{project.scm.url}"
@@ -355,7 +356,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<changelog:release
 			projectName="@{documented.name}"
 			version="1.7.1"
-			datePublished="2016-10-11T13:58:00-0500"
+			datePublished="2016-10-11T13:58:00-05:00"
 			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
 			scmUrl="@{project.scm.url}"
@@ -370,7 +371,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<changelog:release
 			projectName="@{documented.name}"
 			version="1.7.0"
-			datePublished="2016-10-04T20:55:00-0500"
+			datePublished="2016-10-04T20:55:00-05:00"
 			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
 			scmUrl="@{project.scm.url}"
@@ -396,7 +397,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<changelog:release
 			projectName="@{documented.name}"
 			version="1.6"
-			datePublished="2016-09-11T15:42:00-0500"
+			datePublished="2016-09-11T15:42:00-05:00"
 			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
 			scmUrl="@{project.scm.url}"
@@ -413,7 +414,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<changelog:release
 			projectName="@{documented.name}"
 			version="1.5"
-			datePublished="2016-09-03T09:53:00-0500"
+			datePublished="2016-09-03T09:53:00-05:00"
 			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
 			scmUrl="@{project.scm.url}"
@@ -426,7 +427,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<changelog:release
 			projectName="@{documented.name}"
 			version="1.4"
-			datePublished="2016-08-28T20:36:00-0500"
+			datePublished="2016-08-28T20:36:00-05:00"
 			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
 			scmUrl="@{project.scm.url}"
@@ -443,7 +444,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<changelog:release
 			projectName="@{documented.name}"
 			version="1.3"
-			datePublished="2016-08-21T17:03:00-0500"
+			datePublished="2016-08-21T17:03:00-05:00"
 			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
 			scmUrl="@{project.scm.url}"
@@ -460,7 +461,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<changelog:release
 			projectName="@{documented.name}"
 			version="1.2"
-			datePublished="2016-08-19T14:44:00-0500"
+			datePublished="2016-08-19T14:44:00-05:00"
 			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
 			scmUrl="@{project.scm.url}"
@@ -486,7 +487,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<changelog:release
 			projectName="@{documented.name}"
 			version="1.1"
-			datePublished="2016-08-09T23:19:00-0500"
+			datePublished="2016-08-09T23:19:00-05:00"
 			groupId="@{project.groupId}"
 			artifactId="@{documented.artifactId}"
 			scmUrl="@{project.scm.url}"
@@ -499,7 +500,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<changelog:release
 			projectName="@{documented.name}"
 			version="1.0"
-			datePublished="2016-08-07T23:49:00-0500"
+			datePublished="2016-08-07T23:49:00-05:00"
 			groupId="com.aoindustries"
 			artifactId="ao-web-page-taglib"
 			scmUrl="@{project.scm.url}"
