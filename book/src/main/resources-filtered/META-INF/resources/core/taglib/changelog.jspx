@@ -22,7 +22,7 @@ You should have received a copy of the GNU Lesser General Public License
 along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />.
 -->
 <jsp:root
-	xmlns:ao="https://aoindustries.com/ao-taglib/"
+	xmlns:ao="https://oss.aoapps.com/taglib/"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:changelog="https://semanticcms.com/changelog/taglib/"
 	xmlns:core="https://semanticcms.com/core/taglib/"
@@ -37,7 +37,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-05:00"
-		dateModified="2021-05-26T06:36:49-05:00"
+		dateModified="2021-05-31T08:58:51-05:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -45,6 +45,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				version="@{project.version}"
 				groupId="@{project.groupId}"
 				artifactId="@{documented.artifactId}"
+				repository="https://oss.sonatype.org/content/repositories/snapshots/"
 				scmUrl="@{project.scm.url}"
 			>
 				<ul>
@@ -221,7 +222,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				</li>
 				<li>Enabled <code>HideJspExtensionFilter</code> on <code>ERROR</code> dispatcher, too.</li>
 				<li>Now supports page attributes for <code>serialization</code> (default "auto") and <code>doctype</code> (default "HTML5").</li>
-				<li>Using <ao:a href="https://aoindustries.com/ao-fluent-html/">AO Fluent HTML</ao:a> for HTML generation.</li>
+				<li>Using <ao:a href="https://oss.aoapps.com/fluent-html/">AO Fluent HTML</ao:a> for HTML generation.</li>
 				<li>Optimized ServletContext attribute initialization and concurrency.</li>
 				<li>Updated dependencies.</li>
 			</ul>
@@ -239,7 +240,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				<li>Element IDs may now contain the full range of <ao:a href="https://www.w3.org/TR/REC-xml/#id">valid XML identifiers</ao:a>.</li>
 				<li>
 					<code><core:link page="semanticcms-core.tld/function-encodeUrlParam" /></code> is deprecated - please use
-					<code><ao:a href="https://aoindustries.com/ao-taglib/ao.tld/function-encodeURIComponent">\${ao:encodeURIComponent()}</ao:a></code> instead.
+					<code><ao:a href="https://oss.aoapps.com/taglib/ao.tld/function-encodeURIComponent">\${ao:encodeURIComponent()}</ao:a></code> instead.
 				</li>
 				<li>
 					<code><core:link page="semanticcms-core.tld/function-parseQueryString" /></code> now always decodes in
@@ -247,7 +248,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 					Previously, would use <ao:a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletRequest.html#getCharacterEncoding%28%29">request encoding</ao:a>
 					or <code>ISO-8859-1</code> if none set.
 				</li>
-				<li>Added absolute URL and <ao:a href="https://aoindustries.com/ao-servlet-util/apidocs/com/aoindustries/servlet/http/Canonical.html">Canonical URL</ao:a> support.</li>
+				<li>Added absolute URL and <ao:a href="https://oss.aoapps.com/servlet-util/apidocs/com/aoindustries/servlet/http/Canonical.html">Canonical URL</ao:a> support.</li>
 			</ul>
 		</changelog:release>
 
@@ -322,7 +323,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			scmUrl="@{project.scm.url}"
 		>
 			<ul>
-				<li>New <ao:a href="https://aoindustries.com/ao-oss-parent/">AO OSS Parent</ao:a> POM to simplify <code>pom.xml</code> files.</li>
+				<li>New <ao:a href="https://oss.aoapps.com/parent/">AO OSS Parent</ao:a> POM to simplify <code>pom.xml</code> files.</li>
 				<li>Added support for dateCreated, datePublished, dateModified, and dateReviewed.</li>
 				<li>Project documentation moved to per-project book in <core:link book="/" page="/" /> format.</li>
 				<li>Added changelog as top-level project link.</li>

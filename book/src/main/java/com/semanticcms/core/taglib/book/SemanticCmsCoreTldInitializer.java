@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2016, 2017, 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2016, 2017, 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -48,7 +48,7 @@ public class SemanticCmsCoreTldInitializer extends TagReferenceInitializer {
 			// Self
 			"com.semanticcms.core.taglib", Maven.properties.getProperty("project.url") + "apidocs/",
 			// Dependencies
-			"com.aoindustries.taglib", "https://aoindustries.com/ao-taglib/apidocs/",
+			"com.aoindustries.taglib", "https://oss.aoapps.com/taglib/apidocs/",
 			"com.semanticcms.core.model", "https://semanticcms.com/core/model/apidocs/",
 			"com.semanticcms.core.servlet", "https://semanticcms.com/core/servlet/apidocs/"
 		);

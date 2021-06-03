@@ -39,14 +39,14 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<uri>@{project.url}</uri>
 	<tag>
 		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2021-03-14T23:41:08-05:00" -->
+		<!-- dateModified="2021-06-01T03:18:06-05:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				The body of this tag represents one page of content.
 			</p>
 			<p>
 				There must be at most one &lt;core:page&gt; tag per JSP file because the path to
-				the page is determined by the servlet requestPath (or most recent <a href="https://aoindustries.com/ao-taglib/ao.tld/tag-include">&lt;ao:include&gt;</a>).
+				the page is determined by the servlet requestPath (or most recent <a href="https://oss.aoapps.com/taglib/ao.tld/tag-include">&lt;ao:include&gt;</a>).
 			</p>
 			<p>
 				When this page is directly accessed, the page is rendered with the
@@ -758,7 +758,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2020-11-23T03:04:27-06:00" -->
+		<!-- dateModified="2021-06-01T03:18:06-05:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Writes a link to a page and optionally an element.
@@ -964,7 +964,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p>
-					When <code>true</code>, will generate a <a href="https://aoindustries.com/ao-servlet-util/apidocs/com/aoindustries/servlet/http/Canonical.html">Canonical URL</a>.
+					When <code>true</code>, will generate a <a href="https://oss.aoapps.com/servlet-util/apidocs/com/aoindustries/servlet/http/Canonical.html">Canonical URL</a>.
 					Canonical URLs should be used where per-user response URL rewriting
 					(such as information added when cookies are disabled) should be avoided.
 					Defaults to <code>false</code>.
@@ -979,11 +979,11 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2020-11-21T03:38:17-06:00" -->
+		<!-- dateModified="2021-06-01T03:18:06-05:00" -->
 		<description><![CDATA[
 			<p>
 				Adds a parameter to its
-				<a href="https://aoindustries.com/ao-taglib/apidocs/com/aoindustries/taglib/ParamsAttribute.html">ParamsAttribute</a>
+				<a href="https://oss.aoapps.com/taglib/apidocs/com/aoindustries/taglib/ParamsAttribute.html">ParamsAttribute</a>
 				parent tag.
 			</p>
 		]]></description>
@@ -1017,11 +1017,11 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2020-02-25T13:50:20-06:00" -->
+		<!-- dateModified="2021-06-01T03:18:06-05:00" -->
 		<description><![CDATA[
 			<p>
 				Adds multiple parameters to its
-				<a href="https://aoindustries.com/ao-taglib/apidocs/com/aoindustries/taglib/ParamsAttribute.html">ParamsAttribute</a>
+				<a href="https://oss.aoapps.com/taglib/apidocs/com/aoindustries/taglib/ParamsAttribute.html">ParamsAttribute</a>
 				parent tag.
 			</p>
 		]]></description>
@@ -1036,7 +1036,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				<p>
 					When provided, the values may not contain a
 					<a rel="nofollow" href="@{javadoc.link.javase}java/util/Map.html">Map</a>
-					or <a href="https://aoindustries.com/ao-net-types/apidocs/com/aoindustries/net/URIParameters.html">URIParameters</a>.
+					or <a href="https://oss.aoapps.com/net-types/apidocs/com/aoindustries/net/URIParameters.html">URIParameters</a>.
 					When provided, the exclude attribute may not be provided.
 				</p>
 			]]></description>
@@ -1050,7 +1050,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				<p>
 					Optionally excludes all elements of a
 					<a rel="nofollow" href="@{javadoc.link.javase}java/util/Map.html">Map</a>
-					or <a href="https://aoindustries.com/ao-net-types/apidocs/com/aoindustries/net/URIParameters.html">URIParameters</a>
+					or <a href="https://oss.aoapps.com/net-types/apidocs/com/aoindustries/net/URIParameters.html">URIParameters</a>
 					that match any of the comma-separated patterns.
 					May not be used in conjunction with the name attribute.
 				</p>
@@ -1101,7 +1101,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				<p>
 					When name is not provided, requires
 					<a rel="nofollow" href="@{javadoc.link.javase}java/util/Map.html">Map</a>
-					or <a href="https://aoindustries.com/ao-net-types/apidocs/com/aoindustries/net/URIParameters.html">URIParameters</a>,
+					or <a href="https://oss.aoapps.com/net-types/apidocs/com/aoindustries/net/URIParameters.html">URIParameters</a>,
 					where the parameter name is the map key coerced to <a rel="nofollow" href="@{javadoc.link.javase}java/lang/String.html">String</a>
 					and the value (or set of values) is the map value.  Each of the entry values may be
 					<a rel="nofollow" href="@{javadoc.link.javase}java/lang/Iterable.html">Iterable</a>,
@@ -1112,7 +1112,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				<p>
 					When obtaining values from a
 					<a rel="nofollow" href="@{javadoc.link.javase}java/util/Map.html">Map</a>
-					or <a href="https://aoindustries.com/ao-net-types/apidocs/com/aoindustries/net/URIParameters.html">URIParameters</a>,
+					or <a href="https://oss.aoapps.com/net-types/apidocs/com/aoindustries/net/URIParameters.html">URIParameters</a>,
 					parameters may be excluded with the "exclude" attribute.
 				</p>
 				<p>
