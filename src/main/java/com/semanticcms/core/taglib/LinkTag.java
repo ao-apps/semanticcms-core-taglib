@@ -22,16 +22,16 @@
  */
 package com.semanticcms.core.taglib;
 
-import com.aoindustries.encoding.taglib.EncodingBufferedTag;
-import com.aoindustries.html.servlet.DocumentEE;
-import com.aoindustries.io.NullWriter;
-import com.aoindustries.io.buffer.BufferResult;
-import com.aoindustries.io.buffer.BufferWriter;
-import com.aoindustries.net.MutableURIParameters;
-import com.aoindustries.net.URIParametersMap;
-import com.aoindustries.taglib.AttributeUtils;
-import com.aoindustries.taglib.ParamUtils;
-import com.aoindustries.taglib.ParamsAttribute;
+import com.aoapps.encoding.taglib.EncodingBufferedTag;
+import com.aoapps.html.servlet.DocumentEE;
+import com.aoapps.io.buffer.BufferResult;
+import com.aoapps.io.buffer.BufferWriter;
+import com.aoapps.lang.io.NullWriter;
+import com.aoapps.net.MutableURIParameters;
+import com.aoapps.net.URIParametersMap;
+import com.aoapps.taglib.AttributeUtils;
+import com.aoapps.taglib.ParamUtils;
+import com.aoapps.taglib.ParamsAttribute;
 import com.semanticcms.core.pages.CaptureLevel;
 import com.semanticcms.core.pages.local.CurrentCaptureLevel;
 import com.semanticcms.core.renderer.html.LinkRenderer;
@@ -133,7 +133,7 @@ public class LinkTag
 	 *
 	 * @return  {@code true} when added, or {@code false} when attribute not expected and has not been added.
 	 *
-	 * @see  ParamUtils#addDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object, java.util.List, com.aoindustries.taglib.ParamsAttribute)
+	 * @see  ParamUtils#addDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object, java.util.List, com.aoapps.taglib.ParamsAttribute)
 	 * @see  #setDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object)
 	 */
 	protected boolean addDynamicAttribute(String uri, String localName, Object value, List<String> expectedPatterns) throws JspTagException {

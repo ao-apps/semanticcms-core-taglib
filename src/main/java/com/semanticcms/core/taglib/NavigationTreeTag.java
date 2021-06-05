@@ -22,7 +22,7 @@
  */
 package com.semanticcms.core.taglib;
 
-import com.aoindustries.html.servlet.DocumentEE;
+import com.aoapps.html.servlet.DocumentEE;
 import com.semanticcms.core.renderer.html.NavigationTreeRenderer;
 import java.io.IOException;
 import javax.el.ValueExpression;

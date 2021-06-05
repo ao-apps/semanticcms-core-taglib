@@ -22,16 +22,16 @@
  */
 package com.semanticcms.core.taglib;
 
-import com.aoindustries.collections.AoCollections;
-import com.aoindustries.lang.Strings;
-import com.aoindustries.net.DomainName;
-import com.aoindustries.net.Path;
-import com.aoindustries.net.URIDecoder;
-import static com.aoindustries.servlet.filter.FunctionContext.getRequest;
-import static com.aoindustries.servlet.filter.FunctionContext.getResponse;
-import static com.aoindustries.servlet.filter.FunctionContext.getServletContext;
-import com.aoindustries.taglib.Link;
-import com.aoindustries.validation.ValidationException;
+import com.aoapps.collections.AoCollections;
+import com.aoapps.lang.Strings;
+import com.aoapps.lang.validation.ValidationException;
+import com.aoapps.net.DomainName;
+import com.aoapps.net.Path;
+import com.aoapps.net.URIDecoder;
+import static com.aoapps.servlet.filter.FunctionContext.getRequest;
+import static com.aoapps.servlet.filter.FunctionContext.getResponse;
+import static com.aoapps.servlet.filter.FunctionContext.getServletContext;
+import com.aoapps.taglib.Link;
 import com.semanticcms.core.controller.AuthorUtils;
 import com.semanticcms.core.controller.Book;
 import com.semanticcms.core.controller.CapturePage;

@@ -22,9 +22,9 @@
  */
 package com.semanticcms.core.taglib;
 
-import com.aoindustries.encoding.Doctype;
-import com.aoindustries.encoding.Serialization;
-import com.aoindustries.taglib.HtmlTag;
+import com.aoapps.encoding.Doctype;
+import com.aoapps.encoding.Serialization;
+import com.aoapps.taglib.HtmlTag;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
