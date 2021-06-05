@@ -39,7 +39,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<uri>@{project.url}</uri>
 	<tag>
 		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2021-06-01T03:18:06-05:00" -->
+		<!-- dateModified="2021-06-03T22:53:21-05:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				The body of this tag represents one page of content.
@@ -179,7 +179,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 					<li>Use the serialization active on the current request.</li>
 					<li>
 						Use the application <a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
-						<code>com.aoindustries.encoding.Serialization.default</code>
+						<code>com.aoapps.encoding.Serialization.default</code>
 						that allows an application to control the selection of HTML versus XHTML.
 					</li>
 					<li>
@@ -212,7 +212,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 					<li>Use the doctype active on the current request.</li>
 					<li>
 						Use the application <a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
-						<code>com.aoindustries.encoding.Doctype.default</code>
+						<code>com.aoapps.encoding.Doctype.default</code>
 						that allows an application to control the default doctype.
 					</li>
 					<li>
@@ -237,7 +237,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 					<li>Use the autonli setting active on the current request.</li>
 					<li>
 						Use the application <a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
-						<code>com.aoindustries.html.servlet.DocumentEE.autonli</code>
+						<code>com.aoapps.html.servlet.DocumentEE.autonli</code>
 						that allows an application to control the default autonli setting.
 					</li>
 					<li>
@@ -262,7 +262,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 					<li>Use the indent setting active on the current request.</li>
 					<li>
 						Use the application <a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
-						<code>com.aoindustries.html.servlet.DocumentEE.indent</code>
+						<code>com.aoapps.html.servlet.DocumentEE.indent</code>
 						that allows an application to control the default indent setting.
 					</li>
 					<li>
@@ -709,7 +709,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2021-06-01T03:18:06-05:00" -->
+		<!-- dateModified="2021-06-03T22:53:21-05:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Writes a link to a page and optionally an element.
@@ -902,7 +902,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p>
-					When <code>true</code>, will generate a <a href="https://oss.aoapps.com/servlet-util/apidocs/com/aoindustries/servlet/http/Canonical.html">Canonical URL</a>.
+					When <code>true</code>, will generate a <a href="https://oss.aoapps.com/servlet-util/apidocs/com/aoapps/servlet/http/Canonical.html">Canonical URL</a>.
 					Canonical URLs should be used where per-user response URL rewriting
 					(such as information added when cookies are disabled) should be avoided.
 					Defaults to <code>false</code>.
@@ -917,16 +917,16 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2021-06-01T03:18:06-05:00" -->
+		<!-- dateModified="2021-06-03T22:53:21-05:00" -->
 		<description><![CDATA[
 			<p>
 				Adds a parameter to its
-				<a href="https://oss.aoapps.com/taglib/apidocs/com/aoindustries/taglib/ParamsAttribute.html">ParamsAttribute</a>
+				<a href="https://oss.aoapps.com/taglib/apidocs/com/aoapps/taglib/ParamsAttribute.html">ParamsAttribute</a>
 				parent tag.
 			</p>
 		]]></description>
 		<name>param</name>
-		<tag-class>com.aoindustries.taglib.ParamTag</tag-class>
+		<tag-class>com.aoapps.taglib.ParamTag</tag-class>
 		<body-content>scriptless</body-content>
 		<attribute>
 			<description><![CDATA[
@@ -955,16 +955,16 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2021-06-01T03:18:06-05:00" -->
+		<!-- dateModified="2021-06-03T22:53:21-05:00" -->
 		<description><![CDATA[
 			<p>
 				Adds multiple parameters to its
-				<a href="https://oss.aoapps.com/taglib/apidocs/com/aoindustries/taglib/ParamsAttribute.html">ParamsAttribute</a>
+				<a href="https://oss.aoapps.com/taglib/apidocs/com/aoapps/taglib/ParamsAttribute.html">ParamsAttribute</a>
 				parent tag.
 			</p>
 		]]></description>
 		<name>params</name>
-		<tag-class>com.aoindustries.taglib.ParamsTag</tag-class>
+		<tag-class>com.aoapps.taglib.ParamsTag</tag-class>
 		<body-content>scriptless</body-content>
 		<attribute>
 			<description><![CDATA[
@@ -974,7 +974,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				<p>
 					When provided, the values may not contain a
 					<a rel="nofollow" href="@{javadoc.link.javase}java/util/Map.html">Map</a>
-					or <a href="https://oss.aoapps.com/net-types/apidocs/com/aoindustries/net/URIParameters.html">URIParameters</a>.
+					or <a href="https://oss.aoapps.com/net-types/apidocs/com/aoapps/net/URIParameters.html">URIParameters</a>.
 					When provided, the exclude attribute may not be provided.
 				</p>
 			]]></description>
@@ -988,7 +988,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				<p>
 					Optionally excludes all elements of a
 					<a rel="nofollow" href="@{javadoc.link.javase}java/util/Map.html">Map</a>
-					or <a href="https://oss.aoapps.com/net-types/apidocs/com/aoindustries/net/URIParameters.html">URIParameters</a>
+					or <a href="https://oss.aoapps.com/net-types/apidocs/com/aoapps/net/URIParameters.html">URIParameters</a>
 					that match any of the comma-separated patterns.
 					May not be used in conjunction with the name attribute.
 				</p>
@@ -1039,7 +1039,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				<p>
 					When name is not provided, requires
 					<a rel="nofollow" href="@{javadoc.link.javase}java/util/Map.html">Map</a>
-					or <a href="https://oss.aoapps.com/net-types/apidocs/com/aoindustries/net/URIParameters.html">URIParameters</a>,
+					or <a href="https://oss.aoapps.com/net-types/apidocs/com/aoapps/net/URIParameters.html">URIParameters</a>,
 					where the parameter name is the map key coerced to <a rel="nofollow" href="@{javadoc.link.javase}java/lang/String.html">String</a>
 					and the value (or set of values) is the map value.  Each of the entry values may be
 					<a rel="nofollow" href="@{javadoc.link.javase}java/lang/Iterable.html">Iterable</a>,
@@ -1050,7 +1050,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				<p>
 					When obtaining values from a
 					<a rel="nofollow" href="@{javadoc.link.javase}java/util/Map.html">Map</a>
-					or <a href="https://oss.aoapps.com/net-types/apidocs/com/aoindustries/net/URIParameters.html">URIParameters</a>,
+					or <a href="https://oss.aoapps.com/net-types/apidocs/com/aoapps/net/URIParameters.html">URIParameters</a>,
 					parameters may be excluded with the "exclude" attribute.
 				</p>
 				<p>
@@ -1610,10 +1610,10 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2021-06-01T03:18:06-05:00" -->
+		<!-- dateModified="2021-06-03T22:53:21-05:00" -->
 		<description><![CDATA[
 			<p style="text-decoration: line-through">
-				<a href="https://oss.aoapps.com/net-types/apidocs/com/aoindustries/net/URIEncoder.html#encodeURIComponent(java.lang.String)">Encodes a value</a>
+				<a href="https://oss.aoapps.com/net-types/apidocs/com/aoapps/net/URIEncoder.html#encodeURIComponent(java.lang.String)">Encodes a value</a>
 				for use in a URI path component, query string, or fragment.
 			</p>
 			<p>
@@ -1624,7 +1624,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			</p>
 		]]></description>
 		<name>encodeUrlParam</name>
-		<function-class>com.aoindustries.net.URIEncoder</function-class>
+		<function-class>com.aoapps.net.URIEncoder</function-class>
 		<function-signature>java.lang.String encodeURIComponent(java.lang.String)</function-signature>
 		<example><![CDATA[<code style="text-decoration: line-through">${core:encodeUrlParam(value)}</code>]]></example>
 	</function>
@@ -1962,7 +1962,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<!-- datePublished="2016-09-11T00:56:38-05:00" -->
-		<!-- dateModified="2020-05-29T14:50:38-05:00" -->
+		<!-- dateModified="2021-06-03T22:53:21-05:00" -->
 		<description><![CDATA[
 			<p>
 				Gets an optional set of additional links to include for this view
@@ -1972,7 +1972,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>getViewLinks</name>
 		<function-class>com.semanticcms.core.taglib.Functions</function-class>
 		<function-signature>java.util.Collection getViewLinks(com.semanticcms.core.servlet.View,com.semanticcms.core.model.Page)</function-signature>
-		<!-- functionSignature="java.util.Collection<com.aoindustries.taglib.Link> getViewLinks(com.semanticcms.core.servlet.View,com.semanticcms.core.model.Page)" -->
+		<!-- functionSignature="java.util.Collection<com.aoapps.taglib.Link> getViewLinks(com.semanticcms.core.servlet.View,com.semanticcms.core.model.Page)" -->
 		<example><![CDATA[<code>${core:getViewLinks(view, page)}</code>]]></example>
 	</function>
 	<function>

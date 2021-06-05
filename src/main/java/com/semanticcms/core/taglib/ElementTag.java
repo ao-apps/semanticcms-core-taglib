@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,13 +22,13 @@
  */
 package com.semanticcms.core.taglib;
 
-import com.aoindustries.encoding.taglib.EncodingBufferedTag;
-import com.aoindustries.io.NullWriter;
-import com.aoindustries.io.buffer.BufferWriter;
-import static com.aoindustries.lang.Strings.nullIfEmpty;
-import com.aoindustries.servlet.jsp.LocalizedJspTagException;
-import com.aoindustries.taglib.AttributeUtils;
-import static com.aoindustries.taglib.AttributeUtils.resolveValue;
+import com.aoapps.encoding.taglib.EncodingBufferedTag;
+import com.aoapps.io.buffer.BufferWriter;
+import static com.aoapps.lang.Strings.nullIfEmpty;
+import com.aoapps.lang.io.NullWriter;
+import com.aoapps.servlet.jsp.LocalizedJspTagException;
+import com.aoapps.taglib.AttributeUtils;
+import static com.aoapps.taglib.AttributeUtils.resolveValue;
 import com.semanticcms.core.model.Element;
 import com.semanticcms.core.model.ElementWriter;
 import com.semanticcms.core.model.Node;

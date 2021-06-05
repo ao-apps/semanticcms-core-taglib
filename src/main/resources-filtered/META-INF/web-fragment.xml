@@ -50,8 +50,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				<li><code>*.properties</code> - SemanticCMS page properties</li>
 			</ul>
 		]]></description>
-		<filter-name>com.aoindustries.servlet.filter.NotFoundFilter</filter-name>
-		<filter-class>com.aoindustries.servlet.filter.NotFoundFilter</filter-class>
+		<filter-name>com.aoapps.servlet.filter.NotFoundFilter</filter-name>
+		<filter-class>com.aoapps.servlet.filter.NotFoundFilter</filter-class>
 		<init-param>
 			<param-name>patterns</param-name>
 			<param-value>
@@ -63,7 +63,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</init-param>
 	</filter>
 	<filter-mapping>
-		<filter-name>com.aoindustries.servlet.filter.NotFoundFilter</filter-name>
+		<filter-name>com.aoapps.servlet.filter.NotFoundFilter</filter-name>
 		<url-pattern>*.jspx</url-pattern>
 		<url-pattern>*.jsp</url-pattern>
 		<url-pattern>*.jspf</url-pattern>
@@ -73,8 +73,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 
 	<!-- Filter to remove .jspx and .jsp file extensions -->
 	<filter>
-		<filter-name>com.aoindustries.servlet.filter.HideJspExtensionFilter</filter-name>
-		<filter-class>com.aoindustries.servlet.filter.HideJspExtensionFilter</filter-class>
+		<filter-name>com.aoapps.servlet.filter.HideJspExtensionFilter</filter-name>
+		<filter-class>com.aoapps.servlet.filter.HideJspExtensionFilter</filter-class>
 		<init-param>
 			<description><![CDATA[
 				Do not rewrite the <code>*.inc.jspx</code> or <code>*.inc.jsp</code> files
@@ -85,7 +85,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</init-param>
 	</filter>
 	<filter-mapping>
-		<filter-name>com.aoindustries.servlet.filter.HideJspExtensionFilter</filter-name>
+		<filter-name>com.aoapps.servlet.filter.HideJspExtensionFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>ERROR</dispatcher>
@@ -93,11 +93,11 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 
 	<!-- Filter unnecessary whitespace -->
 	<filter>
-		<filter-name>com.aoindustries.servlet.filter.TrimFilter</filter-name>
-		<filter-class>com.aoindustries.servlet.filter.TrimFilter</filter-class>
+		<filter-name>com.aoapps.servlet.filter.TrimFilter</filter-name>
+		<filter-class>com.aoapps.servlet.filter.TrimFilter</filter-class>
 	</filter>
 	<filter-mapping>
-		<filter-name>com.aoindustries.servlet.filter.TrimFilter</filter-name>
+		<filter-name>com.aoapps.servlet.filter.TrimFilter</filter-name>
 		<url-pattern>*.jspx</url-pattern>
 		<url-pattern>*.jsp</url-pattern>
 		<url-pattern>*.jspf</url-pattern>
@@ -114,11 +114,11 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			This must be after all filters that wrap the request or the response.
 			It is recommended that this be the very last filter, when possible.
 		</description>
-		<filter-name>com.aoindustries.servlet.filter.FunctionContext</filter-name>
-		<filter-class>com.aoindustries.servlet.filter.FunctionContext</filter-class>
+		<filter-name>com.aoapps.servlet.filter.FunctionContext</filter-name>
+		<filter-class>com.aoapps.servlet.filter.FunctionContext</filter-class>
 	</filter>
 	<filter-mapping>
-		<filter-name>com.aoindustries.servlet.filter.FunctionContext</filter-name>
+		<filter-name>com.aoapps.servlet.filter.FunctionContext</filter-name>
 		<!-- "/*" required for proper function of error handler -->
 		<url-pattern>/*</url-pattern>
 		<dispatcher>FORWARD</dispatcher>
