@@ -709,7 +709,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2021-06-03T22:53:21-05:00" -->
+		<!-- dateModified="2021-06-16T14:18:10-05:00" -->
 		<description><![CDATA[
 			<p class="semanticcms-tag-reference-summary">
 				Writes a link to a page and optionally an element.
@@ -723,13 +723,13 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<p>
 				When a parameter value is <code>null</code> it is not added.
 				If the value is an
-				<a rel="nofollow" href="@{javadoc.link.javase}java/lang/Iterable.html">Iterable</a>,
-				<a rel="nofollow" href="@{javadoc.link.javase}java/util/Iterator.html">Iterator</a>,
-				<a rel="nofollow" href="@{javadoc.link.javase}java/util/Enumeration.html">Enumeration</a>,
+				<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/Iterable.html">Iterable</a>,
+				<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Iterator.html">Iterator</a>,
+				<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Enumeration.html">Enumeration</a>,
 				or array, then each non-null element is coerced to
-				<a rel="nofollow" href="@{javadoc.link.javase}java/lang/String.html">String</a> as a separate
+				<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/String.html">String</a> as a separate
 				parameter in iteration order.  Otherwise, the value itself is
-				coerced to <a rel="nofollow" href="@{javadoc.link.javase}java/lang/String.html">String</a>
+				coerced to <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/String.html">String</a>
 				for the parameter value.
 			</p>
 			<p>
@@ -902,7 +902,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p>
-					When <code>true</code>, will generate a <a href="https://oss.aoapps.com/servlet-util/apidocs/com/aoapps/servlet/http/Canonical.html">Canonical URL</a>.
+					When <code>true</code>, will generate a <a href="https://oss.aoapps.com/servlet-util/apidocs/com.aoapps.servlet.util/com/aoapps/servlet/http/Canonical.html">Canonical URL</a>.
 					Canonical URLs should be used where per-user response URL rewriting
 					(such as information added when cookies are disabled) should be avoided.
 					Defaults to <code>false</code>.
@@ -917,11 +917,11 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2021-06-03T22:53:21-05:00" -->
+		<!-- dateModified="2021-06-16T13:20:50-05:00" -->
 		<description><![CDATA[
 			<p>
 				Adds a parameter to its
-				<a href="https://oss.aoapps.com/taglib/apidocs/com/aoapps/taglib/ParamsAttribute.html">ParamsAttribute</a>
+				<a href="https://oss.aoapps.com/taglib/apidocs/com.aoapps.taglib/com/aoapps/taglib/ParamsAttribute.html">ParamsAttribute</a>
 				parent tag.
 			</p>
 		]]></description>
@@ -955,11 +955,11 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2021-06-03T22:53:21-05:00" -->
+		<!-- dateModified="2021-06-16T14:18:10-05:00" -->
 		<description><![CDATA[
 			<p>
 				Adds multiple parameters to its
-				<a href="https://oss.aoapps.com/taglib/apidocs/com/aoapps/taglib/ParamsAttribute.html">ParamsAttribute</a>
+				<a href="https://oss.aoapps.com/taglib/apidocs/com.aoapps.taglib/com/aoapps/taglib/ParamsAttribute.html">ParamsAttribute</a>
 				parent tag.
 			</p>
 		]]></description>
@@ -973,8 +973,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				</p>
 				<p>
 					When provided, the values may not contain a
-					<a rel="nofollow" href="@{javadoc.link.javase}java/util/Map.html">Map</a>
-					or <a href="https://oss.aoapps.com/net-types/apidocs/com/aoapps/net/URIParameters.html">URIParameters</a>.
+					<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Map.html">Map</a>
+					or <a href="https://oss.aoapps.com/net-types/apidocs/com.aoapps.net.types/com/aoapps/net/URIParameters.html">URIParameters</a>.
 					When provided, the exclude attribute may not be provided.
 				</p>
 			]]></description>
@@ -987,8 +987,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<description><![CDATA[
 				<p>
 					Optionally excludes all elements of a
-					<a rel="nofollow" href="@{javadoc.link.javase}java/util/Map.html">Map</a>
-					or <a href="https://oss.aoapps.com/net-types/apidocs/com/aoapps/net/URIParameters.html">URIParameters</a>
+					<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Map.html">Map</a>
+					or <a href="https://oss.aoapps.com/net-types/apidocs/com.aoapps.net.types/com/aoapps/net/URIParameters.html">URIParameters</a>
 					that match any of the comma-separated patterns.
 					May not be used in conjunction with the name attribute.
 				</p>
@@ -1031,26 +1031,26 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				</p>
 				<p>
 					When name is provided, supports
-					<a rel="nofollow" href="@{javadoc.link.javase}java/lang/Iterable.html">Iterable</a>,
-					<a rel="nofollow" href="@{javadoc.link.javase}java/util/Iterator.html">Iterator</a>,
-					<a rel="nofollow" href="@{javadoc.link.javase}java/util/Enumeration.html">Enumeration</a>,
+					<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/Iterable.html">Iterable</a>,
+					<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Iterator.html">Iterator</a>,
+					<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Enumeration.html">Enumeration</a>,
 					or array values.
 				</p>
 				<p>
 					When name is not provided, requires
-					<a rel="nofollow" href="@{javadoc.link.javase}java/util/Map.html">Map</a>
-					or <a href="https://oss.aoapps.com/net-types/apidocs/com/aoapps/net/URIParameters.html">URIParameters</a>,
-					where the parameter name is the map key coerced to <a rel="nofollow" href="@{javadoc.link.javase}java/lang/String.html">String</a>
+					<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Map.html">Map</a>
+					or <a href="https://oss.aoapps.com/net-types/apidocs/com.aoapps.net.types/com/aoapps/net/URIParameters.html">URIParameters</a>,
+					where the parameter name is the map key coerced to <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/String.html">String</a>
 					and the value (or set of values) is the map value.  Each of the entry values may be
-					<a rel="nofollow" href="@{javadoc.link.javase}java/lang/Iterable.html">Iterable</a>,
-					<a rel="nofollow" href="@{javadoc.link.javase}java/util/Iterator.html">Iterator</a>,
-					<a rel="nofollow" href="@{javadoc.link.javase}java/util/Enumeration.html">Enumeration</a>,
+					<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/Iterable.html">Iterable</a>,
+					<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Iterator.html">Iterator</a>,
+					<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Enumeration.html">Enumeration</a>,
 					array, or single value.
 				</p>
 				<p>
 					When obtaining values from a
-					<a rel="nofollow" href="@{javadoc.link.javase}java/util/Map.html">Map</a>
-					or <a href="https://oss.aoapps.com/net-types/apidocs/com/aoapps/net/URIParameters.html">URIParameters</a>,
+					<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Map.html">Map</a>
+					or <a href="https://oss.aoapps.com/net-types/apidocs/com.aoapps.net.types/com/aoapps/net/URIParameters.html">URIParameters</a>,
 					parameters may be excluded with the "exclude" attribute.
 				</p>
 				<p>
@@ -1066,16 +1066,16 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<!-- datePublished="2017-07-19T12:12:39-05:00" -->
-		<!-- dateModified="2020-05-30T02:46:48-05:00" -->
+		<!-- dateModified="2021-06-16T13:20:50-05:00" -->
 		<description><![CDATA[
 			<p>
 				Sets a property of a
-				<a href="https://semanticcms.com/core/model/apidocs/com/semanticcms/core/model/Node.html">Node</a>
-				parent tag (either a <a href="https://semanticcms.com/core/model/apidocs/com/semanticcms/core/model/Page.html">Page</a>
-				or an <a href="https://semanticcms.com/core/model/apidocs/com/semanticcms/core/model/Element.html">Element</a>).
+				<a href="https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/com/semanticcms/core/model/Node.html">Node</a>
+				parent tag (either a <a href="https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/com/semanticcms/core/model/Page.html">Page</a>
+				or an <a href="https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/com/semanticcms/core/model/Element.html">Element</a>).
 			</p>
 			<p>
-				See <a href="https://semanticcms.com/core/model/apidocs/com/semanticcms/core/model/Node.html#setProperty(java.lang.String,java.lang.Object)">setProperty(String name, Object value)</a>.
+				See <a href="https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/com/semanticcms/core/model/Node.html#setProperty(java.lang.String,java.lang.Object)">setProperty(String name, Object value)</a>.
 			</p>
 		]]></description>
 		<name>property</name>
@@ -1110,9 +1110,9 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 					Target object whose property will be set.
 				</p>
 				<p>
-					If not provided, sets the property on the closest parent <a href="https://semanticcms.com/core/model/apidocs/com/semanticcms/core/model/Node.html">Node</a>
-					parent tag (either a <a href="https://semanticcms.com/core/model/apidocs/com/semanticcms/core/model/Page.html">Page</a>
-					or an <a href="https://semanticcms.com/core/model/apidocs/com/semanticcms/core/model/Element.html">Element</a>).
+					If not provided, sets the property on the closest parent <a href="https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/com/semanticcms/core/model/Node.html">Node</a>
+					parent tag (either a <a href="https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/com/semanticcms/core/model/Page.html">Page</a>
+					or an <a href="https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/com/semanticcms/core/model/Element.html">Element</a>).
 				</p>
 				<p>
 					The target must not be frozen, which, in the context of JSP, means only the parent element tags
@@ -1610,10 +1610,10 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2021-06-03T22:53:21-05:00" -->
+		<!-- dateModified="2021-06-16T13:20:50-05:00" -->
 		<description><![CDATA[
 			<p style="text-decoration: line-through">
-				<a href="https://oss.aoapps.com/net-types/apidocs/com/aoapps/net/URIEncoder.html#encodeURIComponent(java.lang.String)">Encodes a value</a>
+				<a href="https://oss.aoapps.com/net-types/apidocs/com.aoapps.net.types/com/aoapps/net/URIEncoder.html#encodeURIComponent(java.lang.String)">Encodes a value</a>
 				for use in a URI path component, query string, or fragment.
 			</p>
 			<p>
@@ -1666,10 +1666,10 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2019-04-15T19:33:26-05:00" -->
+		<!-- dateModified="2021-06-16T14:18:10-05:00" -->
 		<description><![CDATA[
 			<p>
-				Calls <a rel="nofollow" href="@{javadoc.link.javase}java/lang/Math.html#ceil%28double%29">java.lang.Math.ceil(double)</a>,
+				Calls <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/Math.html#ceil%28double%29">java.lang.Math.ceil(double)</a>,
 				but returns <code>null</code> when argument is <code>null</code>.
 			</p>
 		]]></description>
@@ -1680,10 +1680,10 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</function>
 	<function>
 		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2019-04-15T19:33:26-05:00" -->
+		<!-- dateModified="2021-06-16T14:18:10-05:00" -->
 		<description><![CDATA[
 			<p>
-				Calls <a rel="nofollow" href="@{javadoc.link.javase}java/lang/Math.html#floor%28double%29">java.lang.Math.floor(double)</a>,
+				Calls <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/Math.html#floor%28double%29">java.lang.Math.floor(double)</a>,
 				but returns <code>null</code> when argument is <code>null</code>.
 			</p>
 		]]></description>
