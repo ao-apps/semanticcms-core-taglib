@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.semanticcms.core.taglib;
+package com.semanticcms.core.taglib.i18n;
 
 import com.aoapps.hodgepodge.i18n.EditableResourceBundle;
 import java.util.Locale;

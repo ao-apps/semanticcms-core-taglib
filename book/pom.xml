@@ -33,14 +33,12 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 	<packaging>bundle</packaging>
 
 	<properties>
+		<module.name>com.semanticcms.core.taglib.book</module.name>
 		<!-- These values are copied from the project being documented -->
 		<documented.artifactId>semanticcms-core-taglib</documented.artifactId>
 		<documented.name>SemanticCMS Core Taglib²</documented.name>
 		<documented.description>Java API for modeling web page content and relationships in a JSP environment.</documented.description>
 
-		<javadoc.breadcrumbs><![CDATA[<a target="${javadoc.target}" href="https://semanticcms.com/">SemanticCMS</a>
-/ <a target="${javadoc.target}" href="https://semanticcms.com/core/">Core</a>
-/ <a target="${javadoc.target}" href="${project.url}">Taglib Book</a>]]></javadoc.breadcrumbs>
 		<description.html><![CDATA[Documentation for <a target="${javadoc.target}" href="${project.url}">${documented.name}</a> in <a target="${javadoc.target}" href="https://semanticcms.com/">SemanticCMS</a> format.]]></description.html>
 	</properties>
 
@@ -91,20 +89,24 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				<configuration>
 					<usedDependencies>
 						<!-- JSP Only -->
-						<dependency>com.aoapps:ao-badges</dependency>
 						<dependency>com.aoapps:ao-taglib</dependency>
 						<dependency>com.semanticcms:semanticcms-changelog-taglib</dependency>
 						<dependency>com.semanticcms:semanticcms-core-taglib</dependency>
 						<dependency>com.semanticcms:semanticcms-section-taglib</dependency>
 						<dependency>org.apache.taglibs:taglibs-standard-spec</dependency>
 						<!-- Direct -->
-						<dependency>javax.servlet:javax.servlet-api</dependency><!-- Needed but declared unused, plugin bug? -->
+						<dependency>javax.servlet.jsp:javax.servlet.jsp-api</dependency>
 						<!-- Runtime Direct -->
 						<dependency>com.aoapps:ao-mime-mappings</dependency>
 						<dependency>com.aoapps:ao-style</dependency>
 						<dependency>org.apache.taglibs:taglibs-standard-impl</dependency>
 						<dependency>com.semanticcms:semanticcms-core-pages-jspx</dependency>
 					</usedDependencies>
+					<ignoredDependencies>
+						<!-- No "module-info.java" in some release builds -->
+						<dependency>com.aoapps:ao-badges</dependency>
+						<dependency>com.aoapps:ao-web-resources-registry</dependency>
+					</ignoredDependencies>
 				</configuration>
 				<executions>
 					<!-- Add a copy of the taglib files from dependencies -->
@@ -151,6 +153,29 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		</plugins>
 	</build>
 
+	<profiles>
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.felix</groupId><artifactId>maven-bundle-plugin</artifactId>
+						<configuration>
+							<instructions>
+								<!--
+									Releases use "Automatic-Module-Name" instead of "module-info.java"
+									since has direct dependencies that are not yet modularized.
+								-->
+								<Automatic-Module-Name>${module.name}</Automatic-Module-Name>
+								<Private-Package>!.</Private-Package>
+							</instructions>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
 	<dependencyManagement>
 		<dependencies>
 			<!-- Direct -->
@@ -164,9 +189,13 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				<groupId>com.aoapps</groupId><artifactId>ao-net-types</artifactId><version>2.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
 			</dependency>
 			<dependency>
+				<groupId>com.aoapps</groupId><artifactId>ao-servlet-util</artifactId><version>4.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+			</dependency>
+			<dependency>
 				<groupId>com.aoapps</groupId><artifactId>ao-taglib</artifactId><version>7.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
 			</dependency>
 			<!-- javaee-web-api-bom: <groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId> -->
+			<!-- javaee-web-api-bom: <groupId>javax.servlet.jsp</groupId><artifactId>javax.servlet.jsp-api</artifactId> -->
 			<dependency>
 				<groupId>com.semanticcms</groupId><artifactId>semanticcms-changelog-taglib</artifactId><version>2.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
 			</dependency>
@@ -222,9 +251,6 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			</dependency>
 			<dependency>
 				<groupId>com.aoapps</groupId><artifactId>ao-servlet-subrequest</artifactId><version>2.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
-			</dependency>
-			<dependency>
-				<groupId>com.aoapps</groupId><artifactId>ao-servlet-util</artifactId><version>4.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
 			</dependency>
 			<dependency>
 				<groupId>com.aoapps</groupId><artifactId>ao-tempfiles</artifactId><version>3.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
@@ -328,10 +354,16 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 			<groupId>com.aoapps</groupId><artifactId>ao-net-types</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>com.aoapps</groupId><artifactId>ao-servlet-util</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.aoapps</groupId><artifactId>ao-taglib</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId><artifactId>javax.servlet.jsp-api</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.semanticcms</groupId><artifactId>semanticcms-changelog-taglib</artifactId>
