@@ -8,6 +8,8 @@
 [![semantic versioning: 2.0.0](https://semanticcms.com/ao-badges/semver-2.0.0.svg)](http://semver.org/spec/v2.0.0.html)
 [![license: LGPL v3](https://semanticcms.com/ao-badges/license-lgpl-3.0.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 
+[![Build](https://github.com/aoindustries/semanticcms-core-taglib/workflows/Build/badge.svg?branch=1.x)](https://github.com/aoindustries/semanticcms-core-taglib/actions?query=workflow%3ABuild)
+
 Java API for modeling web page content and relationships in a JSP environment.
 
 ## Project Links
