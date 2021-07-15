@@ -82,6 +82,11 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<url>https://github.com/aoindustries/semanticcms-core-taglib/issues</url>
 	</issueManagement>
 
+	<ciManagement>
+		<system>GitHub Actions</system>
+		<url>https://github.com/aoindustries/semanticcms-core-taglib/actions</url>
+	</ciManagement>
+
 	<repositories>
 		<!-- Repository required here, too, so can find parent -->
 		<repository>
