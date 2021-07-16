@@ -39,7 +39,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 / <a target="${javadoc.target}" href="${project.url}">Taglib</a>]]></javadoc.breadcrumbs>
 		<javadoc.taglibReference><![CDATA[<li><a target="${javadoc.target}" href="${project.url}semanticcms-core.tld/">Taglib Reference</a></li>]]></javadoc.taglibReference>
 		<jodaTimeApidocs>https://www.joda.org/joda-time/apidocs/</jodaTimeApidocs>
-		<!-- SonarCloud.io -->
+		<!-- SonarQube -->
 		<sonar.projectKey>${project.groupId}:${project.artifactId}</sonar.projectKey>
 		<sonar.organization>aoindustries</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
