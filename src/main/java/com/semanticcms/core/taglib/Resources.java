@@ -22,6 +22,7 @@
  */
 package com.semanticcms.core.taglib;
 
+import com.aoapps.lang.function.Suppliers;
 import java.util.ResourceBundle;
 
 /**
@@ -31,8 +32,15 @@ import java.util.ResourceBundle;
  */
 final class Resources {
 
-	static final com.aoapps.lang.i18n.Resources PACKAGE_RESOURCES =
-		com.aoapps.lang.i18n.Resources.getResources(ResourceBundle::getBundle, Resources.class.getPackage());
+	@SuppressWarnings("unchecked")
+	static final com.aoapps.lang.i18n.Resources PACKAGE_RESOURCES = com.aoapps.lang.i18n.Resources.getResources(
+		Suppliers.coalesce(
+			Resources.class::getClassLoader,
+			ClassLoader::getSystemClassLoader
+		).get(),
+		ResourceBundle::getBundle,
+		Resources.class.getPackage()
+	);
 
 	/**
 	 * Make no instances.
