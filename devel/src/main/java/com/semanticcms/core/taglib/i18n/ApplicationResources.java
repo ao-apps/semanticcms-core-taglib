@@ -26,6 +26,8 @@ import com.aoapps.hodgepodge.i18n.EditableResourceBundle;
 import com.aoapps.hodgepodge.i18n.EditableResourceBundleSet;
 import java.io.File;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public final class ApplicationResources extends EditableResourceBundle {
 
@@ -36,7 +38,16 @@ public final class ApplicationResources extends EditableResourceBundle {
 	);
 
 	static File getSourceFile(String filename) {
-		return new File(System.getProperty("user.home") + "/maven2/ao/semanticcms/core/taglib/src/main/resources/com/semanticcms/core/taglib/i18n", filename);
+		try {
+			return new File(System.getProperty("user.home") + "/maven2/ao/semanticcms/core/taglib/src/main/resources/com/semanticcms/core/taglib/i18n", filename);
+		} catch(SecurityException e) {
+			Logger.getLogger(ApplicationResources.class.getName()).log(
+				Level.WARNING,
+				"Unable to locate source file: " + filename,
+				e
+			);
+			return null;
+		}
 	}
 
 	public ApplicationResources() {
