@@ -24,4 +24,6 @@ module com.semanticcms.core.taglib.devel {
 	exports com.semanticcms.core.taglib.i18n;
 	// Direct
 	requires com.aoapps.hodgepodge; // <groupId>com.aoapps</groupId><artifactId>ao-hodgepodge</artifactId>
+	// Java SE
+	requires java.logging;
 }
