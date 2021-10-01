@@ -32,6 +32,7 @@ import com.aoapps.io.buffer.EmptyResult;
 import com.aoapps.lang.LocalizedIllegalArgumentException;
 import static com.aoapps.lang.Strings.nullIfEmpty;
 import com.aoapps.lang.io.NullWriter;
+import com.aoapps.servlet.attribute.ScopeEE;
 import com.aoapps.servlet.ServletContextCache;
 import com.aoapps.servlet.jsp.LocalizedJspTagException;
 import com.aoapps.taglib.AttributeUtils;
@@ -307,7 +308,8 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 		/**
 		 * The application scoped attribute holding the properties cache.
 		 */
-		private static final String APPLICATION_ATTRIBUTE = PropertiesCache.class.getName();
+		private static final ScopeEE.Application.Attribute<ConcurrentMap<URL, Entry>> APPLICATION_ATTRIBUTE =
+			ScopeEE.APPLICATION.attribute(PropertiesCache.class.getName());
 
 		private static class Entry {
 
@@ -337,13 +339,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 		}
 
 		private static ConcurrentMap<URL, Entry> getInstance(ServletContext servletContext) {
-			@SuppressWarnings("unchecked")
-			ConcurrentMap<URL, Entry> instance = (ConcurrentMap)servletContext.getAttribute(APPLICATION_ATTRIBUTE);
-			if(instance == null) {
-				instance = new ConcurrentHashMap<>();
-				servletContext.setAttribute(APPLICATION_ATTRIBUTE, instance);
-			}
-			return instance;
+			return APPLICATION_ATTRIBUTE.context(servletContext).computeIfAbsent(__ -> new ConcurrentHashMap<>());
 		}
 	}
 
