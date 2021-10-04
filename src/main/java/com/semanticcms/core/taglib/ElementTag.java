@@ -56,7 +56,7 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 /**
  * The base tag for capturing elements.
  */
-abstract public class ElementTag<E extends Element> extends SimpleTagSupport implements DynamicAttributes, ElementWriter {
+public abstract class ElementTag<E extends Element> extends SimpleTagSupport implements DynamicAttributes, ElementWriter {
 
 	/**
 	 * Set during the beginning of doTag, but only for {@code captureLevel >= META}.
@@ -178,7 +178,7 @@ abstract public class ElementTag<E extends Element> extends SimpleTagSupport imp
 	 * Called to create the element from doTag.
 	 * This is only called for {@code captureLevel >= META}.
 	 */
-	abstract protected E createElement() throws JspException, IOException;
+	protected abstract E createElement() throws JspException, IOException;
 
 	/**
 	 * Gets the element, only available after created.

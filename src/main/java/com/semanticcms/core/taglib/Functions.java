@@ -70,7 +70,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
-final public class Functions {
+public final class Functions {
 
 	public static Page capturePageInDomain(String domain, String book, String page, String level) throws ServletException, IOException, ValidationException {
 		ServletContext servletContext = getServletContext();
