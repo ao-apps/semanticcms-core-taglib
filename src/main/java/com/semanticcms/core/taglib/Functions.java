@@ -60,7 +60,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
-final public class Functions {
+public final class Functions {
 
 	public static Page capturePageInBook(String book, String page, String level) throws ServletException, IOException {
 		PageRef pageRef = PageRefResolver.getPageRef(
