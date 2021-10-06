@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2015, 2016, 2017, 2018, 2019, 2020  AO Industries, Inc.
+ * Copyright (C) 2015, 2016, 2017, 2018, 2019, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -30,33 +30,31 @@ import java.beans.SimpleBeanInfo;
 
 public class LinkTagBeanInfo extends SimpleBeanInfo {
 
-	@SuppressWarnings("VolatileArrayField")
-	private static volatile PropertyDescriptor[] properties;
+	private static final PropertyDescriptor[] properties;
+	static {
+		try {
+			properties = new PropertyDescriptor[] {
+				new PropertyDescriptor("class",                 LinkTag.class, "getClazz", "setClazz"),
+				new PropertyDescriptor("domain",                LinkTag.class, null,       "setDomain"),
+				new PropertyDescriptor("book",                  LinkTag.class, null,       "setBook"),
+				new PropertyDescriptor("page",                  LinkTag.class, null,       "setPage"),
+				new PropertyDescriptor("element",               LinkTag.class, null,       "setElement"),
+				new PropertyDescriptor("allowGeneratedElement", LinkTag.class, null,       "setAllowGeneratedElement"),
+				new PropertyDescriptor("anchor",                LinkTag.class, null,       "setAnchor"),
+				new PropertyDescriptor("view",                  LinkTag.class, null,       "setView"),
+				new PropertyDescriptor("small",                 LinkTag.class, null,       "setSmall"),
+				new PropertyDescriptor("absolute",              LinkTag.class, null,       "setAbsolute"),
+				new PropertyDescriptor("canonical",             LinkTag.class, null,       "setCanonical")
+			};
+		} catch(IntrospectionException err) {
+			throw new ExceptionInInitializerError(err);
+		}
+	}
 
 	@Override
+	@SuppressWarnings("ReturnOfCollectionOrArrayField") // Not copying array for performance
 	public PropertyDescriptor[] getPropertyDescriptors () {
-		try {
-			PropertyDescriptor[] props = properties;
-			if(props == null) {
-				props = new PropertyDescriptor[] {
-					new PropertyDescriptor("class", LinkTag.class, "getClazz", "setClazz"),
-					new PropertyDescriptor("domain", LinkTag.class, null, "setDomain"),
-					new PropertyDescriptor("book", LinkTag.class, null, "setBook"),
-					new PropertyDescriptor("page", LinkTag.class, null, "setPage"),
-					new PropertyDescriptor("element", LinkTag.class, null, "setElement"),
-					new PropertyDescriptor("allowGeneratedElement", LinkTag.class, null, "setAllowGeneratedElement"),
-					new PropertyDescriptor("anchor", LinkTag.class, null, "setAnchor"),
-					new PropertyDescriptor("view", LinkTag.class, null, "setView"),
-					new PropertyDescriptor("small", LinkTag.class, null, "setSmall"),
-					new PropertyDescriptor("absolute", LinkTag.class, null, "setAbsolute"),
-					new PropertyDescriptor("canonical", LinkTag.class, null, "setCanonical")
-				};
-				properties = props;
-			}
-			return props; // Not copying array for performance
-		} catch(IntrospectionException err) {
-			throw new AssertionError(err);
-		}
+		return properties;
 	}
 
 	/**
