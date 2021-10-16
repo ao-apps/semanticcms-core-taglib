@@ -29,7 +29,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<relativePath>../../parent/pom.xml</relativePath>
 	</parent>
 
-	<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib</artifactId><version>1.15.1</version>
+	<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib</artifactId><version>1.15.1-POST-SNAPSHOT</version>
 	<packaging>bundle</packaging>
 
 	<properties>
@@ -81,7 +81,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		<connection>scm:git:git://github.com/ao-apps/semanticcms-core-taglib.git</connection>
 		<developerConnection>scm:git:git@github.com:ao-apps/semanticcms-core-taglib.git</developerConnection>
 		<url>https://github.com/ao-apps/semanticcms-core-taglib</url>
-		<tag>semanticcms-core-taglib-1.15.1</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<issueManagement>
