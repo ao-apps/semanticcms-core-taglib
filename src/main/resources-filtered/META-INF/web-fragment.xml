@@ -49,6 +49,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				<li><code>*.inc.jsp</code>    - intended for include-only</li>
 				<li><code>*.jspf</code>       - intended for include-only</li>
 				<li><code>*.properties</code> - SemanticCMS page properties</li>
+				<li><code>/META-INF/*</code>  - Just in case the servlet container does not already block
+				<li><code>/WEB-INF/*</code>   - Just in case the servlet container does not already block</li>
 			</ul>
 		]]></description>
 		<filter-name>com.aoapps.servlet.filter.NotFoundFilter</filter-name>
@@ -60,6 +62,8 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 				*.inc.jsp
 				*.jspf
 				*.properties
+				/META-INF/*
+				/WEB-INF/*
 			</param-value>
 		</init-param>
 	</filter>
@@ -69,6 +73,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<url-pattern>*.jsp</url-pattern>
 		<url-pattern>*.jspf</url-pattern>
 		<url-pattern>*.properties</url-pattern>
+		<url-pattern>/WEB-INF/*</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
 
