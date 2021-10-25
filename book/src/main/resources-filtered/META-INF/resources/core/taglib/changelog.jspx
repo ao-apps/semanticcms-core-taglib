@@ -37,7 +37,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-30T20:28:28-05:00"
-		dateModified="2021-10-15T23:38:30-05:00"
+		dateModified="2021-10-25T09:14:13-05:00"
 	>
 		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
 			<changelog:release
@@ -47,7 +47,15 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses />
 				artifactId="@{documented.artifactId}"
 				repository="@{nexusUrl}content/repositories/snapshots/"
 				scmUrl="@{project.scm.url}"
-			/>
+			>
+				<ul>
+					<li>
+						No longer hiding <code>*.jspx</code> or <code>*.jsp</code> extensions for resources within
+						<code>/WEB-INF/*</code>.  This is to help interoperability with frameworks that hide their JSP
+						pages from direct access.
+					</li>
+				</ul>
+			</changelog:release>
 		</c:if>
 
 		<changelog:release
