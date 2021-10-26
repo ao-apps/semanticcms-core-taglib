@@ -955,7 +955,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<tag>
 		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2021-06-16T14:18:10-05:00" -->
+		<!-- dateModified="2021-10-25T18:37:50-05:00" -->
 		<description><![CDATA[
 			<p>
 				Adds multiple parameters to its
@@ -993,7 +993,7 @@ along with semanticcms-core-taglib.  If not, see <http://www.gnu.org/licenses/>.
 					May not be used in conjunction with the name attribute.
 				</p>
 				<p>
-					Each pattern in the comma-separated list may in the following format:
+					Each pattern in the comma-separated list may be in the following format:
 				</p>
 				<table class="ao-grid">
 					<tbody>
