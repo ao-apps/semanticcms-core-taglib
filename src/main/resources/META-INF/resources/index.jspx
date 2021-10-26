@@ -28,14 +28,12 @@ the site's content root.
 -->
 <ao:redirect
 	xmlns:ao="https://oss.aoapps.com/taglib/"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:jsp="http://java.sun.com/JSP/Page"
 	statusCode="301"
 	href="${applicationScope.semanticCMS.rootBook.contentRoot.servletPath}"
 >
 	<jsp:directive.page language="java" pageEncoding="UTF-8" />
 	<jsp:directive.page session="false" />
-	<c:forEach var="paramName" items="${pageContext.request.parameterNames}">
-		<ao:params name="${paramName}" values="${paramValues[paramName]}"/>
-	</c:forEach>
+	<!-- Include all request parameters -->
+	<ao:params values="${paramValues}" />
 </ao:redirect>
