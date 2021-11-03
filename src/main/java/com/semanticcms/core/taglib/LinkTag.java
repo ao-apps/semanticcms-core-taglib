@@ -46,7 +46,6 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspTagException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.PageContext;
-import javax.servlet.jsp.SkipPageException;
 import javax.servlet.jsp.tagext.DynamicAttributes;
 import javax.servlet.jsp.tagext.JspFragment;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
@@ -208,12 +207,9 @@ public class LinkTag
 					clazz,
 					capturedBody == null || capturedBody.getLength() == 0
 						? null
-						: new LinkImpl.LinkImplBody<JspException>() {
-							@Override
-							public void doBody(boolean discard) throws JspException, IOException, SkipPageException {
-								if(discard) throw new AssertionError("Conditions that lead to discard should have caused no capturedBody above");
-								capturedBody.writeTo(out);
-							}
+						: discard -> {
+							if(discard) throw new AssertionError("Conditions that lead to discard should have caused no capturedBody above");
+							capturedBody.writeTo(out);
 						}
 				);
 			}

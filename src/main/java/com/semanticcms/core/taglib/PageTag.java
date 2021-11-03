@@ -26,14 +26,13 @@ import com.aoapps.collections.AoCollections;
 import com.aoapps.encoding.Doctype;
 import com.aoapps.encoding.Serialization;
 import com.aoapps.encoding.taglib.EncodingBufferedTag;
-import com.aoapps.io.buffer.BufferResult;
 import com.aoapps.io.buffer.BufferWriter;
 import com.aoapps.io.buffer.EmptyResult;
 import com.aoapps.lang.LocalizedIllegalArgumentException;
 import static com.aoapps.lang.Strings.nullIfEmpty;
 import com.aoapps.lang.io.NullWriter;
-import com.aoapps.servlet.attribute.ScopeEE;
 import com.aoapps.servlet.ServletContextCache;
+import com.aoapps.servlet.attribute.ScopeEE;
 import com.aoapps.servlet.jsp.LocalizedJspTagException;
 import com.aoapps.taglib.AttributeUtils;
 import com.aoapps.taglib.HtmlTag;
@@ -68,7 +67,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspTagException;
 import javax.servlet.jsp.PageContext;
-import javax.servlet.jsp.SkipPageException;
 import javax.servlet.jsp.tagext.DynamicAttributes;
 import javax.servlet.jsp.tagext.JspFragment;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
@@ -548,26 +546,23 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 				properties,
 				body == null
 					? null
-					: new PageImpl.PageImplBody<JspException>() {
-						@Override
-						public BufferResult doBody(boolean discard, Page page) throws JspException, IOException, SkipPageException {
-							// JSP pages are their own source when using default pageRef
-							if(jspSrc != null && jspSrc.equals(page.getPageRef())) page.setSrc(jspSrc);
-							if(discard) {
-								body.invoke(NullWriter.getInstance());
-								return EmptyResult.getInstance();
-							} else {
-								// TODO: Are request-scoped temp files still correct for longer-term caches like the export cache?
-								// TODO:     Caches only store PAGE and META captures, right?  Impact?
-								// TODO:     Would we have a cache-scoped TempFileContext?
-								BufferWriter capturedOut = EncodingBufferedTag.newBufferWriter(request);
-								try {
-									body.invoke(capturedOut);
-								} finally {
-									capturedOut.close();
-								}
-								return capturedOut.getResult();
+					: (discard, page) -> {
+						// JSP pages are their own source when using default pageRef
+						if(jspSrc != null && jspSrc.equals(page.getPageRef())) page.setSrc(jspSrc);
+						if(discard) {
+							body.invoke(NullWriter.getInstance());
+							return EmptyResult.getInstance();
+						} else {
+							// TODO: Are request-scoped temp files still correct for longer-term caches like the export cache?
+							// TODO:     Caches only store PAGE and META captures, right?  Impact?
+							// TODO:     Would we have a cache-scoped TempFileContext?
+							BufferWriter capturedOut = EncodingBufferedTag.newBufferWriter(request);
+							try {
+								body.invoke(capturedOut);
+							} finally {
+								capturedOut.close();
 							}
+							return capturedOut.getResult();
 						}
 					}
 			);
