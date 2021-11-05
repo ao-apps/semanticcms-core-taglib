@@ -162,7 +162,7 @@ public abstract class Functions {
 	/**
 	 * @deprecated  Please use {@link URIEncoder#encodeURIComponent(java.lang.String)} instead.
 	 */
-	@Deprecated
+	@Deprecated(forRemoval = true)
 	public static String encodeUrlParam(String value) {
 		return URIEncoder.encodeURIComponent(value);
 	}
