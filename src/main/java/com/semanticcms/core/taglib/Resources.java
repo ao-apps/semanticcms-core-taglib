@@ -29,13 +29,11 @@ import java.util.ResourceBundle;
  *
  * @author  AO Industries, Inc.
  */
-final class Resources {
+abstract class Resources {
+
+	/** Make no instances. */
+	private Resources() {throw new AssertionError();}
 
 	static final com.aoapps.lang.i18n.Resources PACKAGE_RESOURCES =
 		com.aoapps.lang.i18n.Resources.getResources(ResourceBundle::getBundle, Resources.class.getPackage());
-
-	/**
-	 * Make no instances.
-	 */
-	private Resources() {}
 }
