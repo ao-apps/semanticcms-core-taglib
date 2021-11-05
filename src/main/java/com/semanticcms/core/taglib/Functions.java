@@ -70,7 +70,10 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
-public final class Functions {
+public abstract class Functions {
+
+	/** Make no instances. */
+	private Functions() {throw new AssertionError();}
 
 	public static Page capturePageInDomain(String domain, String book, String page, String level) throws ServletException, IOException, ValidationException {
 		ServletContext servletContext = getServletContext();
@@ -139,7 +142,7 @@ public final class Functions {
 	/**
 	 * Gets the current capture level or <code>null</code> if not currently
 	 * capturing
-	 * 
+	 *
 	 * @see  CaptureLevel
 	 */
 	public static String getCaptureLevel() {
@@ -428,11 +431,5 @@ public final class Functions {
 			}
 		}
 		return Collections.unmodifiableMap(merged);
-	}
-
-	/**
-	 * Make no instances.
-	 */
-	private Functions() {
 	}
 }
