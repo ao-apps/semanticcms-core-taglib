@@ -510,6 +510,7 @@ pipeline {
 						]
 					]
 				]
+				sh "${niceCmd}git verify-commit HEAD"
 				sh "${niceCmd}git reset --hard"
 				sh "${niceCmd}git clean -fdx -e ${(projectDir == '.') ? '/.m2' : ('/' + projectDir + '/.m2')}"
 			}
