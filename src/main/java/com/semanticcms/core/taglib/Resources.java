@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2017, 2019, 2020, 2021  AO Industries, Inc.
+ * Copyright (C) 2017, 2019, 2020, 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -29,7 +29,7 @@ import java.util.ResourceBundle;
  *
  * @author  AO Industries, Inc.
  */
-abstract class Resources {
+final class Resources {
 
 	/** Make no instances. */
 	private Resources() {throw new AssertionError();}
