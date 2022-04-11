@@ -129,6 +129,9 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
 			<dependency>
 				<groupId>com.aoapps</groupId><artifactId>ao-hodgepodge</artifactId><version>5.1.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
 			</dependency>
+			<dependency>
+				<groupId>com.google.code.findbugs</groupId><artifactId>jsr305</artifactId><version>3.0.2</version>
+			</dependency>
 			<!-- Transitive -->
 			<dependency>
 				<groupId>com.aoapps</groupId><artifactId>ao-collections</artifactId><version>3.0.0${POST-SNAPSHOT}</version>
@@ -146,6 +149,10 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
 		<!-- Direct -->
 		<dependency>
 			<groupId>com.aoapps</groupId><artifactId>ao-hodgepodge</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.findbugs</groupId><artifactId>jsr305</artifactId>
+			<optional>true</optional>
 		</dependency>
 	</dependencies>
 </project>
