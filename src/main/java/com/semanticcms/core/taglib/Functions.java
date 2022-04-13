@@ -291,7 +291,7 @@ public final class Functions {
 		);
 	}
 
-	public static String getViewLinkCssClass(View view) throws ServletException, IOException {
+	public static String getViewLinkCssClass(View view) {
 		return view.getLinkCssClass(
 			getServletContext(),
 			getRequest(),
@@ -299,7 +299,7 @@ public final class Functions {
 		);
 	}
 
-	public static Map<String, List<String>> getViewLinkParams(View view, Page page) throws ServletException, IOException {
+	public static Map<String, List<String>> getViewLinkParams(View view, Page page) {
 		return view.getLinkParams(
 			getServletContext(),
 			getRequest(),
@@ -326,7 +326,7 @@ public final class Functions {
 		);
 	}
 
-	public static String getViewTitle(View view, Page page) throws ServletException, IOException {
+	public static String getViewTitle(View view, Page page) {
 		return view.getTitle(
 			getServletContext(),
 			getRequest(),
