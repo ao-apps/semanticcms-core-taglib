@@ -20,6 +20,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>.
  */
+
 package com.semanticcms.core.taglib.book;
 
 import com.aoapps.lang.util.PropertiesUtils;
