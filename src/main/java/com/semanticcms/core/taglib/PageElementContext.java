@@ -33,11 +33,11 @@ import javax.servlet.jsp.PageContext;
  */
 public class PageElementContext extends ServletElementContext {
 
-	public PageElementContext(PageContext pageContext) {
-		super(
-			pageContext.getServletContext(),
-			(HttpServletRequest)pageContext.getRequest(),
-			(HttpServletResponse)pageContext.getResponse()
-		);
-	}
+  public PageElementContext(PageContext pageContext) {
+    super(
+      pageContext.getServletContext(),
+      (HttpServletRequest)pageContext.getRequest(),
+      (HttpServletResponse)pageContext.getResponse()
+    );
+  }
 }

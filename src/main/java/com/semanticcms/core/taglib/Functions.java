@@ -63,336 +63,362 @@ import javax.servlet.http.HttpServletRequest;
 
 public final class Functions {
 
-	/** Make no instances. */
-	private Functions() {throw new AssertionError();}
+  /** Make no instances. */
+  private Functions() {
+    throw new AssertionError();
+  }
 
-	public static Page capturePageInBook(String book, String page, String level) throws ServletException, IOException {
-		PageRef pageRef = PageRefResolver.getPageRef(
-			getServletContext(),
-			getRequest(),
-			book,
-			page
-		);
-		if(pageRef.getBook()==null) throw new IllegalArgumentException("Book not found: " + pageRef.getBookName());
-		return CapturePage.capturePage(
-			getServletContext(),
-			getRequest(),
-			getResponse(),
-			pageRef,
-			CaptureLevel.valueOf(level.toUpperCase(Locale.ROOT))
-		);
-	}
+  public static Page capturePageInBook(String book, String page, String level) throws ServletException, IOException {
+    PageRef pageRef = PageRefResolver.getPageRef(
+      getServletContext(),
+      getRequest(),
+      book,
+      page
+    );
+    if (pageRef.getBook() == null) {
+      throw new IllegalArgumentException("Book not found: " + pageRef.getBookName());
+    }
+    return CapturePage.capturePage(
+      getServletContext(),
+      getRequest(),
+      getResponse(),
+      pageRef,
+      CaptureLevel.valueOf(level.toUpperCase(Locale.ROOT))
+    );
+  }
 
-	public static Page capturePage(String page, String level) throws ServletException, IOException {
-		return capturePageInBook(null, page, level);
-	}
+  public static Page capturePage(String page, String level) throws ServletException, IOException {
+    return capturePageInBook(null, page, level);
+  }
 
-	public static Page captureContentRoot(String level) throws ServletException, IOException {
-		ServletContext servletContext = getServletContext();
-		return CapturePage.capturePage(
-			servletContext,
-			getRequest(),
-			getResponse(),
-			SemanticCMS.getInstance(servletContext).getRootBook().getContentRoot(),
-			CaptureLevel.valueOf(level.toUpperCase(Locale.ROOT))
-		);
-	}
+  public static Page captureContentRoot(String level) throws ServletException, IOException {
+    ServletContext servletContext = getServletContext();
+    return CapturePage.capturePage(
+      servletContext,
+      getRequest(),
+      getResponse(),
+      SemanticCMS.getInstance(servletContext).getRootBook().getContentRoot(),
+      CaptureLevel.valueOf(level.toUpperCase(Locale.ROOT))
+    );
+  }
 
-	public static PageIndex getPageIndex(PageRef pageRef) throws ServletException, IOException {
-		return PageIndex.getPageIndex(
-			getServletContext(),
-			getRequest(),
-			getResponse(),
-			pageRef
-		);
-	}
+  public static PageIndex getPageIndex(PageRef pageRef) throws ServletException, IOException {
+    return PageIndex.getPageIndex(
+      getServletContext(),
+      getRequest(),
+      getResponse(),
+      pageRef
+    );
+  }
 
-	public static List<Page> convertPageDagToList(Page rootPage, String level) throws ServletException, IOException {
-		return PageDags.convertPageDagToList(
-			getServletContext(),
-			getRequest(),
-			getResponse(),
-			rootPage,
-			CaptureLevel.valueOf(level.toUpperCase(Locale.ROOT))
-		);
-	}
+  public static List<Page> convertPageDagToList(Page rootPage, String level) throws ServletException, IOException {
+    return PageDags.convertPageDagToList(
+      getServletContext(),
+      getRequest(),
+      getResponse(),
+      rootPage,
+      CaptureLevel.valueOf(level.toUpperCase(Locale.ROOT))
+    );
+  }
 
-	/**
-	 * Gets the current capture level or <code>null</code> if not currently
-	 * capturing
-	 *
-	 * @see  CaptureLevel
-	 */
-	public static String getCaptureLevel() {
-		final HttpServletRequest request = getRequest();
-		final CapturePage capture = CapturePage.getCaptureContext(request);
-		if(capture == null) return null;
-		return CaptureLevel.getCaptureLevel(request).name().toLowerCase(Locale.ROOT);
-	}
+  /**
+   * Gets the current capture level or <code>null</code> if not currently
+   * capturing
+   *
+   * @see  CaptureLevel
+   */
+  public static String getCaptureLevel() {
+    final HttpServletRequest request = getRequest();
+    final CapturePage capture = CapturePage.getCaptureContext(request);
+    if (capture == null) {
+      return null;
+    }
+    return CaptureLevel.getCaptureLevel(request).name().toLowerCase(Locale.ROOT);
+  }
 
-	public static File getFileInBook(String book, String path, boolean requireFile) throws ServletException, IOException {
-		PageRef pageRef = PageRefResolver.getPageRef(
-			getServletContext(),
-			getRequest(),
-			book,
-			path
-		);
-		if(pageRef.getBook()==null) throw new IllegalArgumentException("Book not found: " + pageRef.getBookName());
-		return pageRef.getResourceFile(true, requireFile);
-	}
+  public static File getFileInBook(String book, String path, boolean requireFile) throws ServletException, IOException {
+    PageRef pageRef = PageRefResolver.getPageRef(
+      getServletContext(),
+      getRequest(),
+      book,
+      path
+    );
+    if (pageRef.getBook() == null) {
+      throw new IllegalArgumentException("Book not found: " + pageRef.getBookName());
+    }
+    return pageRef.getResourceFile(true, requireFile);
+  }
 
-	public static File getFile(String path, boolean requireFile) throws ServletException, IOException {
-		return getFileInBook(null, path, requireFile);
-	}
+  public static File getFile(String path, boolean requireFile) throws ServletException, IOException {
+    return getFileInBook(null, path, requireFile);
+  }
 
-	public static File getExeFileInBook(String book, String path) throws ServletException, IOException {
-		File file = getFileInBook(book, path, false);
-		if(
-			!file.canExecute()
-			&& !file.setExecutable(true)
-		) {
-			throw new IOException("Unable to set executable flag: " + file.getPath());
-		}
-		return file;
-	}
+  public static File getExeFileInBook(String book, String path) throws ServletException, IOException {
+    File file = getFileInBook(book, path, false);
+    if (
+      !file.canExecute()
+      && !file.setExecutable(true)
+    ) {
+      throw new IOException("Unable to set executable flag: " + file.getPath());
+    }
+    return file;
+  }
 
-	public static File getExeFile(String path) throws ServletException, IOException {
-		return getExeFileInBook(null, path);
-	}
+  public static File getExeFile(String path) throws ServletException, IOException {
+    return getExeFileInBook(null, path);
+  }
 
-	/**
-	 * @deprecated  Please use {@link URIEncoder#encodeURIComponent(java.lang.String)} instead.
-	 */
-	@Deprecated(forRemoval = true)
-	public static String encodeUrlParam(String value) {
-		return URIEncoder.encodeURIComponent(value);
-	}
+  /**
+   * @deprecated  Please use {@link URIEncoder#encodeURIComponent(java.lang.String)} instead.
+   */
+  @Deprecated(forRemoval = true)
+  public static String encodeUrlParam(String value) {
+    return URIEncoder.encodeURIComponent(value);
+  }
 
-	public static String getRefId(String id) throws ServletException {
-		return PageIndex.getRefId(
-			getServletContext(),
-			getRequest(),
-			id
-		);
-	}
+  public static String getRefId(String id) throws ServletException {
+    return PageIndex.getRefId(
+      getServletContext(),
+      getRequest(),
+      id
+    );
+  }
 
-	public static String getRefIdInPage(Page page, String id) {
-		return PageIndex.getRefIdInPage(
-			getRequest(),
-			page,
-			id
-		);
-	}
+  public static String getRefIdInPage(Page page, String id) {
+    return PageIndex.getRefIdInPage(
+      getRequest(),
+      page,
+      id
+    );
+  }
 
-	public static Double ceil(Double a) {
-		return a==null ? null : Math.ceil(a);
-	}
+  public static Double ceil(Double a) {
+    return a == null ? null : Math.ceil(a);
+  }
 
-	public static Double floor(Double a) {
-		return a==null ? null : Math.floor(a);
-	}
+  public static Double floor(Double a) {
+    return a == null ? null : Math.floor(a);
+  }
 
-	// TODO: Move to ao-taglib?
-	public static Map<String, String> parseQueryString(String queryString) {
-		if(queryString==null) return null;
-		List<String> pairs = Strings.split(queryString, '&');
-		Map<String, String> params = AoCollections.newLinkedHashMap(pairs.size());
-		for(String pair : pairs) {
-			int equalPos = pair.indexOf('=');
-			String name, value;
-			if(equalPos==-1) {
-				name = URIDecoder.decodeURIComponent(pair);
-				value = "";
-			} else {
-				// TODO: Avoid substring?
-				name = URIDecoder.decodeURIComponent(pair.substring(0, equalPos));
-				value = URIDecoder.decodeURIComponent(pair.substring(equalPos + 1));
-			}
-			if(!params.containsKey(name)) params.put(name, value);
-		}
-		return params;
-	}
+  // TODO: Move to ao-taglib?
+  public static Map<String, String> parseQueryString(String queryString) {
+    if (queryString == null) {
+      return null;
+    }
+    List<String> pairs = Strings.split(queryString, '&');
+    Map<String, String> params = AoCollections.newLinkedHashMap(pairs.size());
+    for (String pair : pairs) {
+      int equalPos = pair.indexOf('=');
+      String name, value;
+      if (equalPos == -1) {
+        name = URIDecoder.decodeURIComponent(pair);
+        value = "";
+      } else {
+        // TODO: Avoid substring?
+        name = URIDecoder.decodeURIComponent(pair.substring(0, equalPos));
+        value = URIDecoder.decodeURIComponent(pair.substring(equalPos + 1));
+      }
+      if (!params.containsKey(name)) {
+        params.put(name, value);
+      }
+    }
+    return params;
+  }
 
-	public static String repeat(String value, int count) {
-		if(value==null) return null;
-		int len = value.length();
-		if(len==0) return value;
-		StringBuilder sb = new StringBuilder(len * count);
-		for(int i = 0; i < count; i++) {
-			sb.append(value);
-		}
-		return sb.toString();
-	}
+  public static String repeat(String value, int count) {
+    if (value == null) {
+      return null;
+    }
+    int len = value.length();
+    if (len == 0) {
+      return value;
+    }
+    StringBuilder sb = new StringBuilder(len * count);
+    for (int i = 0; i < count; i++) {
+      sb.append(value);
+    }
+    return sb.toString();
+  }
 
-	public static Book getBook(String pagePath) {
-		if(pagePath==null) return null;
-		Book book = SemanticCMS.getInstance(getServletContext()).getBook(pagePath);
-		if(book==null) throw new IllegalArgumentException("Book not found: " + pagePath);
-		return book;
-	}
+  public static Book getBook(String pagePath) {
+    if (pagePath == null) {
+      return null;
+    }
+    Book book = SemanticCMS.getInstance(getServletContext()).getBook(pagePath);
+    if (book == null) {
+      throw new IllegalArgumentException("Book not found: " + pagePath);
+    }
+    return book;
+  }
 
-	public static boolean isExporting() {
-		return Headers.isExporting(getRequest());
-	}
+  public static boolean isExporting() {
+    return Headers.isExporting(getRequest());
+  }
 
-	public static Copyright findCopyright(Page page) throws ServletException, IOException {
-		return CopyrightUtils.findCopyright(
-			getServletContext(),
-			getRequest(),
-			getResponse(),
-			page
-		);
-	}
+  public static Copyright findCopyright(Page page) throws ServletException, IOException {
+    return CopyrightUtils.findCopyright(
+      getServletContext(),
+      getRequest(),
+      getResponse(),
+      page
+    );
+  }
 
-	public static Set<Author> findAuthors(Page page) throws ServletException, IOException {
-		return AuthorUtils.findAuthors(
-			getServletContext(),
-			getRequest(),
-			getResponse(),
-			page
-		);
-	}
+  public static Set<Author> findAuthors(Page page) throws ServletException, IOException {
+    return AuthorUtils.findAuthors(
+      getServletContext(),
+      getRequest(),
+      getResponse(),
+      page
+    );
+  }
 
-	public static boolean findAllowRobots(Page page) throws ServletException, IOException {
-		return PageUtils.findAllowRobots(
-			getServletContext(),
-			getRequest(),
-			getResponse(),
-			page
-		);
-	}
+  public static boolean findAllowRobots(Page page) throws ServletException, IOException {
+    return PageUtils.findAllowRobots(
+      getServletContext(),
+      getRequest(),
+      getResponse(),
+      page
+    );
+  }
 
-	public static boolean hasElement(Page page, String elementType, boolean recursive) throws ServletException, IOException, ClassNotFoundException {
-		return PageUtils.hasElement(
-			getServletContext(),
-			getRequest(),
-			getResponse(),
-			page,
-			Class.forName(elementType).asSubclass(Element.class),
-			recursive
-		);
-	}
+  public static boolean hasElement(Page page, String elementType, boolean recursive) throws ServletException, IOException, ClassNotFoundException {
+    return PageUtils.hasElement(
+      getServletContext(),
+      getRequest(),
+      getResponse(),
+      page,
+      Class.forName(elementType).asSubclass(Element.class),
+      recursive
+    );
+  }
 
-	public static List<?> findTopLevelElements(Node node, String elementType) throws ClassNotFoundException {
-		return node.findTopLevelElements(Class.forName(elementType));
-	}
+  public static List<?> findTopLevelElements(Node node, String elementType) throws ClassNotFoundException {
+    return node.findTopLevelElements(Class.forName(elementType));
+  }
 
-	public static List<? extends Element> filterElements(Page page, String elementType) throws ClassNotFoundException {
-		return page.filterElements(
-			Class.forName(elementType).asSubclass(Element.class)
-		);
-	}
+  public static List<? extends Element> filterElements(Page page, String elementType) throws ClassNotFoundException {
+    return page.filterElements(
+      Class.forName(elementType).asSubclass(Element.class)
+    );
+  }
 
-	public static boolean isViewApplicable(View view, Page page) throws ServletException, IOException {
-		return view.isApplicable(
-			getServletContext(),
-			getRequest(),
-			getResponse(),
-			page
-		);
-	}
+  public static boolean isViewApplicable(View view, Page page) throws ServletException, IOException {
+    return view.isApplicable(
+      getServletContext(),
+      getRequest(),
+      getResponse(),
+      page
+    );
+  }
 
-	public static String getViewLinkCssClass(View view) {
-		return view.getLinkCssClass(
-			getServletContext(),
-			getRequest(),
-			getResponse()
-		);
-	}
+  public static String getViewLinkCssClass(View view) {
+    return view.getLinkCssClass(
+      getServletContext(),
+      getRequest(),
+      getResponse()
+    );
+  }
 
-	public static Map<String, List<String>> getViewLinkParams(View view, Page page) {
-		return view.getLinkParams(
-			getServletContext(),
-			getRequest(),
-			getResponse(),
-			page
-		);
-	}
+  public static Map<String, List<String>> getViewLinkParams(View view, Page page) {
+    return view.getLinkParams(
+      getServletContext(),
+      getRequest(),
+      getResponse(),
+      page
+    );
+  }
 
-	public static Copyright getViewCopyright(View view, Page page) throws ServletException, IOException {
-		return view.getCopyright(
-			getServletContext(),
-			getRequest(),
-			getResponse(),
-			page
-		);
-	}
+  public static Copyright getViewCopyright(View view, Page page) throws ServletException, IOException {
+    return view.getCopyright(
+      getServletContext(),
+      getRequest(),
+      getResponse(),
+      page
+    );
+  }
 
-	public static Set<Author> getViewAuthors(View view, Page page) throws ServletException, IOException {
-		return view.getAuthors(
-			getServletContext(),
-			getRequest(),
-			getResponse(),
-			page
-		);
-	}
+  public static Set<Author> getViewAuthors(View view, Page page) throws ServletException, IOException {
+    return view.getAuthors(
+      getServletContext(),
+      getRequest(),
+      getResponse(),
+      page
+    );
+  }
 
-	public static String getViewTitle(View view, Page page) {
-		return view.getTitle(
-			getServletContext(),
-			getRequest(),
-			getResponse(),
-			page
-		);
-	}
+  public static String getViewTitle(View view, Page page) {
+    return view.getTitle(
+      getServletContext(),
+      getRequest(),
+      getResponse(),
+      page
+    );
+  }
 
-	public static Collection<Link> getViewLinks(View view, Page page) throws ServletException, IOException {
-		if(view == null) return Collections.emptyList();
-		return view.getLinks(
-			getServletContext(),
-			getRequest(),
-			getResponse(),
-			page
-		);
-	}
+  public static Collection<Link> getViewLinks(View view, Page page) throws ServletException, IOException {
+    if (view == null) {
+      return Collections.emptyList();
+    }
+    return view.getLinks(
+      getServletContext(),
+      getRequest(),
+      getResponse(),
+      page
+    );
+  }
 
-	public static boolean getViewAllowRobots(View view, Page page) throws ServletException, IOException {
-		return view.getAllowRobots(
-			getServletContext(),
-			getRequest(),
-			getResponse(),
-			page
-		);
-	}
+  public static boolean getViewAllowRobots(View view, Page page) throws ServletException, IOException {
+    return view.getAllowRobots(
+      getServletContext(),
+      getRequest(),
+      getResponse(),
+      page
+    );
+  }
 
-	public static String getLinkCssClass(Element element) {
-		return SemanticCMS.getInstance(getServletContext()).getLinkCssClass(element);
-	}
+  public static String getLinkCssClass(Element element) {
+    return SemanticCMS.getInstance(getServletContext()).getLinkCssClass(element);
+  }
 
-	public static Map<String, String> mergeGlobalAndViewScripts(View view) {
-		Map<String, String> globalScripts = SemanticCMS.getInstance(getServletContext()).getScripts();
-		Map<String, String> viewScripts = view == null ? null : view.getScripts();
+  public static Map<String, String> mergeGlobalAndViewScripts(View view) {
+    Map<String, String> globalScripts = SemanticCMS.getInstance(getServletContext()).getScripts();
+    Map<String, String> viewScripts = view == null ? null : view.getScripts();
 
-		// Shortcut for when no view scripts
-		if(viewScripts == null || viewScripts.isEmpty()) return globalScripts;
+    // Shortcut for when no view scripts
+    if (viewScripts == null || viewScripts.isEmpty()) {
+      return globalScripts;
+    }
 
-		Map<String, String> merged = AoCollections.newLinkedHashMap(globalScripts.size() + viewScripts.size());
+    Map<String, String> merged = AoCollections.newLinkedHashMap(globalScripts.size() + viewScripts.size());
 
-		// Add all global scripts
-		merged.putAll(globalScripts);
+    // Add all global scripts
+    merged.putAll(globalScripts);
 
-		// Merge per-view scripts
-		for(Map.Entry<String, String> entry : viewScripts.entrySet()) {
-			String name = entry.getKey();
-			String src = entry.getValue();
-			String existingSrc = merged.get(name);
-			if(existingSrc != null) {
-				assert merged.containsKey(name);
-				if(!src.equals(existingSrc)) {
-					throw new IllegalStateException(
-						"Script already registered but with a different src:"
-						+ " name=" + name
-						+ " src=" + src
-						+ " existingSrc=" + existingSrc
-					);
-				}
-			} else {
-				if(merged.values().contains(src)) {
-					throw new IllegalStateException("Non-unique view script src: " + src);
-				}
-				if(merged.put(name, src) != null) throw new AssertionError();
-			}
-		}
-		return Collections.unmodifiableMap(merged);
-	}
+    // Merge per-view scripts
+    for (Map.Entry<String, String> entry : viewScripts.entrySet()) {
+      String name = entry.getKey();
+      String src = entry.getValue();
+      String existingSrc = merged.get(name);
+      if (existingSrc != null) {
+        assert merged.containsKey(name);
+        if (!src.equals(existingSrc)) {
+          throw new IllegalStateException(
+            "Script already registered but with a different src:"
+            + " name=" + name
+            + " src=" + src
+            + " existingSrc=" + existingSrc
+          );
+        }
+      } else {
+        if (merged.values().contains(src)) {
+          throw new IllegalStateException("Non-unique view script src: " + src);
+        }
+        if (merged.put(name, src) != null) {
+          throw new AssertionError();
+        }
+      }
+    }
+    return Collections.unmodifiableMap(merged);
+  }
 }

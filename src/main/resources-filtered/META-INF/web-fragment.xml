@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
-Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021  AO Industries, Inc.
-	support@aoindustries.com
-	7262 Bull Pen Cir
-	Mobile, AL 36695
+Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022  AO Industries, Inc.
+    support@aoindustries.com
+    7262 Bull Pen Cir
+    Mobile, AL 36695
 
 This file is part of semanticcms-core-taglib.
 
@@ -27,117 +27,117 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
                       http://xmlns.jcp.org/xml/ns/javaee/web-fragment_3_1.xsd"
   version="3.1"
   metadata-complete="false">
-	<name>@{project.groupId}:@{project.artifactId}</name>
-	<!-- <display-name>@{project.name} @{project.version}</display-name> -->
-	<description>@{project.description}</description>
+  <name>@{project.groupId}:@{project.artifactId}</name>
+  <!-- <display-name>@{project.name} @{project.version}</display-name> -->
+  <description>@{project.description}</description>
 
-	<!-- The function context filter must be last, declare this after all other fragments -->
-	<!-- TODO: Move to separate ao-servlet-function-context project, so it can use web-fragment with ordering after -->
-	<ordering>
-		<after>
-			<others />
-		</after>
-	</ordering>
+  <!-- The function context filter must be last, declare this after all other fragments -->
+  <!-- TODO: Move to separate ao-servlet-function-context project, so it can use web-fragment with ordering after -->
+  <ordering>
+    <after>
+      <others />
+    </after>
+  </ordering>
 
-	<!-- Block direct access to selected resources -->
-	<filter>
-		<description><![CDATA[
-			Blocks direct access to selected resources, including:
-			<ul>
-				<li><code>*.inc.jspx</code>   - intended for include-only</li>
-				<li><code>*.inc.jsp</code>    - intended for include-only</li>
-				<li><code>*.jspf</code>       - intended for include-only</li>
-				<li><code>*.properties</code> - SemanticCMS page properties</li>
-				<li><code>/META-INF/*</code>  - Just in case the servlet container does not already block
-				<li><code>/WEB-INF/*</code>   - Just in case the servlet container does not already block</li>
-			</ul>
-		]]></description>
-		<filter-name>com.aoapps.servlet.filter.NotFoundFilter</filter-name>
-		<filter-class>com.aoapps.servlet.filter.NotFoundFilter</filter-class>
-		<init-param>
-			<param-name>patterns</param-name>
-			<param-value>
-				*.inc.jspx
-				*.inc.jsp
-				*.jspf
-				*.properties
-				/META-INF/*
-				/WEB-INF/*
-			</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>com.aoapps.servlet.filter.NotFoundFilter</filter-name>
-		<url-pattern>*.jspx</url-pattern>
-		<url-pattern>*.jsp</url-pattern>
-		<url-pattern>*.jspf</url-pattern>
-		<url-pattern>*.properties</url-pattern>
-		<url-pattern>/WEB-INF/*</url-pattern>
-		<dispatcher>REQUEST</dispatcher>
-	</filter-mapping>
+  <!-- Block direct access to selected resources -->
+  <filter>
+    <description><![CDATA[
+      Blocks direct access to selected resources, including:
+      <ul>
+        <li><code>*.inc.jspx</code>   - intended for include-only</li>
+        <li><code>*.inc.jsp</code>    - intended for include-only</li>
+        <li><code>*.jspf</code>       - intended for include-only</li>
+        <li><code>*.properties</code> - SemanticCMS page properties</li>
+        <li><code>/META-INF/*</code>  - Just in case the servlet container does not already block
+        <li><code>/WEB-INF/*</code>   - Just in case the servlet container does not already block</li>
+      </ul>
+    ]]></description>
+    <filter-name>com.aoapps.servlet.filter.NotFoundFilter</filter-name>
+    <filter-class>com.aoapps.servlet.filter.NotFoundFilter</filter-class>
+    <init-param>
+      <param-name>patterns</param-name>
+      <param-value>
+        *.inc.jspx
+        *.inc.jsp
+        *.jspf
+        *.properties
+        /META-INF/*
+        /WEB-INF/*
+      </param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>com.aoapps.servlet.filter.NotFoundFilter</filter-name>
+    <url-pattern>*.jspx</url-pattern>
+    <url-pattern>*.jsp</url-pattern>
+    <url-pattern>*.jspf</url-pattern>
+    <url-pattern>*.properties</url-pattern>
+    <url-pattern>/WEB-INF/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
 
-	<!-- Filter to remove .jspx and .jsp file extensions -->
-	<filter>
-		<filter-name>com.aoapps.servlet.filter.HideJspExtensionFilter</filter-name>
-		<filter-class>com.aoapps.servlet.filter.HideJspExtensionFilter</filter-class>
-		<init-param>
-			<description><![CDATA[
-				Do not rewrite the <code>*.inc.jspx</code> or <code>*.inc.jsp</code> files
-				because the rewritting would allow bypass of the forced 404 above.
-			]]></description>
-			<param-name>noRewritePatterns</param-name>
-			<param-value>*.inc.jspx, *.inc.jsp, /WEB-INF/*</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>com.aoapps.servlet.filter.HideJspExtensionFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-		<dispatcher>REQUEST</dispatcher>
-		<dispatcher>ERROR</dispatcher>
-	</filter-mapping>
+  <!-- Filter to remove .jspx and .jsp file extensions -->
+  <filter>
+    <filter-name>com.aoapps.servlet.filter.HideJspExtensionFilter</filter-name>
+    <filter-class>com.aoapps.servlet.filter.HideJspExtensionFilter</filter-class>
+    <init-param>
+      <description><![CDATA[
+        Do not rewrite the <code>*.inc.jspx</code> or <code>*.inc.jsp</code> files
+        because the rewritting would allow bypass of the forced 404 above.
+      ]]></description>
+      <param-name>noRewritePatterns</param-name>
+      <param-value>*.inc.jspx, *.inc.jsp, /WEB-INF/*</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>com.aoapps.servlet.filter.HideJspExtensionFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+  </filter-mapping>
 
-	<!-- Filter unnecessary whitespace -->
-	<filter>
-		<filter-name>com.aoapps.servlet.filter.TrimFilter</filter-name>
-		<filter-class>com.aoapps.servlet.filter.TrimFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>com.aoapps.servlet.filter.TrimFilter</filter-name>
-		<url-pattern>*.jspx</url-pattern>
-		<url-pattern>*.jsp</url-pattern>
-		<url-pattern>*.jspf</url-pattern>
-		<dispatcher>FORWARD</dispatcher>
-		<dispatcher>INCLUDE</dispatcher>
-		<dispatcher>REQUEST</dispatcher>
-		<dispatcher>ERROR</dispatcher>
-	</filter-mapping>
+  <!-- Filter unnecessary whitespace -->
+  <filter>
+    <filter-name>com.aoapps.servlet.filter.TrimFilter</filter-name>
+    <filter-class>com.aoapps.servlet.filter.TrimFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>com.aoapps.servlet.filter.TrimFilter</filter-name>
+    <url-pattern>*.jspx</url-pattern>
+    <url-pattern>*.jsp</url-pattern>
+    <url-pattern>*.jspf</url-pattern>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+  </filter-mapping>
 
-	<!-- Set the context for static functions -->
-	<filter>
-		<description>
-			Provides static access to the current request state via thread local variables.
-			This must be after all filters that wrap the request or the response.
-			It is recommended that this be the very last filter, when possible.
-		</description>
-		<filter-name>com.aoapps.servlet.filter.FunctionContext</filter-name>
-		<filter-class>com.aoapps.servlet.filter.FunctionContext</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>com.aoapps.servlet.filter.FunctionContext</filter-name>
-		<!-- "/*" required for proper function of error handler -->
-		<url-pattern>/*</url-pattern>
-		<dispatcher>FORWARD</dispatcher>
-		<dispatcher>INCLUDE</dispatcher>
-		<dispatcher>REQUEST</dispatcher>
-		<dispatcher>ERROR</dispatcher>
-	</filter-mapping>
+  <!-- Set the context for static functions -->
+  <filter>
+    <description>
+      Provides static access to the current request state via thread local variables.
+      This must be after all filters that wrap the request or the response.
+      It is recommended that this be the very last filter, when possible.
+    </description>
+    <filter-name>com.aoapps.servlet.filter.FunctionContext</filter-name>
+    <filter-class>com.aoapps.servlet.filter.FunctionContext</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>com.aoapps.servlet.filter.FunctionContext</filter-name>
+    <!-- "/*" required for proper function of error handler -->
+    <url-pattern>/*</url-pattern>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>ERROR</dispatcher>
+  </filter-mapping>
 
-	<welcome-file-list>
-		<!-- index.jspx before index.html for apidocs views -->
-		<welcome-file>index.jspx</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
-	</welcome-file-list>
+  <welcome-file-list>
+    <!-- index.jspx before index.html for apidocs views -->
+    <welcome-file>index.jspx</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+  </welcome-file-list>
 
 </web-fragment>

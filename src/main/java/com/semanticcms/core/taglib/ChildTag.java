@@ -39,40 +39,42 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 public class ChildTag extends SimpleTagSupport {
 
-	public static final String TAG_NAME = "<core:child>";
+  public static final String TAG_NAME = "<core:child>";
 
-	private String book;
-	public void setBook(String book) {
-		this.book = Strings.nullIfEmpty(book);
-	}
+  private String book;
+  public void setBook(String book) {
+    this.book = Strings.nullIfEmpty(book);
+  }
 
-	private String page;
-	public void setPage(String page) {
-		this.page = page;
-	}
+  private String page;
+  public void setPage(String page) {
+    this.page = page;
+  }
 
-	@Override
-	public void doTag() throws JspException, IOException {
-		final PageContext pageContext = (PageContext)getJspContext();
-		final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
+  @Override
+  public void doTag() throws JspException, IOException {
+    final PageContext pageContext = (PageContext)getJspContext();
+    final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 
-		final Node currentNode = CurrentNode.getCurrentNode(request);
-		if(!(currentNode instanceof Page)) throw new JspTagException(TAG_NAME + " tag must be nested directly inside a " + PageTag.TAG_NAME + " tag.");
-		final Page currentPage = (Page)currentNode;
+    final Node currentNode = CurrentNode.getCurrentNode(request);
+    if (!(currentNode instanceof Page)) {
+      throw new JspTagException(TAG_NAME + " tag must be nested directly inside a " + PageTag.TAG_NAME + " tag.");
+    }
+    final Page currentPage = (Page)currentNode;
 
-		try {
-			currentPage.addChildRef(
-				new ChildRef(
-					PageRefResolver.getPageRef(
-						pageContext.getServletContext(),
-						request,
-						book,
-						page
-					)
-				)
-			);
-		} catch(ServletException e) {
-			throw new JspTagException(e);
-		}
-	}
+    try {
+      currentPage.addChildRef(
+        new ChildRef(
+          PageRefResolver.getPageRef(
+            pageContext.getServletContext(),
+            request,
+            book,
+            page
+          )
+        )
+      );
+    } catch (ServletException e) {
+      throw new JspTagException(e);
+    }
+  }
 }

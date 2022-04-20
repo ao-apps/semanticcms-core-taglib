@@ -36,32 +36,34 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 public class CopyrightTag extends SimpleTagSupport {
 
-	public static final String TAG_NAME = "<core:copyright>";
+  public static final String TAG_NAME = "<core:copyright>";
 
-	private String rightsHolder;
-	public void setRightsHolder(String rightsHolder) {
-		this.rightsHolder = rightsHolder;
-	}
+  private String rightsHolder;
+  public void setRightsHolder(String rightsHolder) {
+    this.rightsHolder = rightsHolder;
+  }
 
-	private String rights;
-	public void setRights(String rights) {
-		this.rights = rights;
-	}
+  private String rights;
+  public void setRights(String rights) {
+    this.rights = rights;
+  }
 
-	private String dateCopyrighted;
-	public void setDateCopyrighted(String dateCopyrighted) {
-		this.dateCopyrighted = dateCopyrighted;
-	}
+  private String dateCopyrighted;
+  public void setDateCopyrighted(String dateCopyrighted) {
+    this.dateCopyrighted = dateCopyrighted;
+  }
 
-	@Override
-	public void doTag() throws JspException, IOException {
-		final PageContext pageContext = (PageContext)getJspContext();
-		final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
+  @Override
+  public void doTag() throws JspException, IOException {
+    final PageContext pageContext = (PageContext)getJspContext();
+    final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 
-		final Node currentNode = CurrentNode.getCurrentNode(request);
-		if(!(currentNode instanceof Page)) throw new JspTagException(TAG_NAME + " tag must be nested directly inside a " + PageTag.TAG_NAME + " tag.");
-		final Page currentPage = (Page)currentNode;
+    final Node currentNode = CurrentNode.getCurrentNode(request);
+    if (!(currentNode instanceof Page)) {
+      throw new JspTagException(TAG_NAME + " tag must be nested directly inside a " + PageTag.TAG_NAME + " tag.");
+    }
+    final Page currentPage = (Page)currentNode;
 
-		currentPage.setCopyright(new Copyright(rightsHolder, rights, dateCopyrighted));
-	}
+    currentPage.setCopyright(new Copyright(rightsHolder, rights, dateCopyrighted));
+  }
 }

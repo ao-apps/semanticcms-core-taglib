@@ -37,50 +37,54 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 public class AuthorTag extends SimpleTagSupport {
 
-	public static final String TAG_NAME = "<core:author>";
+  public static final String TAG_NAME = "<core:author>";
 
-	private String name;
-	public void setName(String name) {
-		this.name = Strings.nullIfEmpty(name);
-	}
+  private String name;
+  public void setName(String name) {
+    this.name = Strings.nullIfEmpty(name);
+  }
 
-	private String href;
-	public void setHref(String href) {
-		this.href = Strings.nullIfEmpty(href);
-	}
+  private String href;
+  public void setHref(String href) {
+    this.href = Strings.nullIfEmpty(href);
+  }
 
-	private String book;
-	public void setBook(String book) {
-		this.book = Strings.nullIfEmpty(book);
-	}
+  private String book;
+  public void setBook(String book) {
+    this.book = Strings.nullIfEmpty(book);
+  }
 
-	private String page;
-	public void setPage(String page) {
-		this.page = Strings.nullIfEmpty(page);
-	}
+  private String page;
+  public void setPage(String page) {
+    this.page = Strings.nullIfEmpty(page);
+  }
 
-	@Override
-	public void doTag() throws JspException, IOException {
-		final PageContext pageContext = (PageContext)getJspContext();
-		final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
+  @Override
+  public void doTag() throws JspException, IOException {
+    final PageContext pageContext = (PageContext)getJspContext();
+    final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 
-		final Node currentNode = CurrentNode.getCurrentNode(request);
-		if(!(currentNode instanceof Page)) throw new JspTagException(TAG_NAME + " tag must be nested directly inside a " + PageTag.TAG_NAME + " tag.");
-		final Page currentPage = (Page)currentNode;
+    final Node currentNode = CurrentNode.getCurrentNode(request);
+    if (!(currentNode instanceof Page)) {
+      throw new JspTagException(TAG_NAME + " tag must be nested directly inside a " + PageTag.TAG_NAME + " tag.");
+    }
+    final Page currentPage = (Page)currentNode;
 
-		String bookName = book;
-		// Default to this book if nothing set
-		if(page != null && bookName == null) bookName = currentPage.getPageRef().getBookName();
-		// Name required when referencing an author outside this book
-		if(
-			name == null
-			&& bookName != null
-			&& !bookName.equals(currentPage.getPageRef().getBookName())
-		) {
-			throw new IllegalStateException("Author name required when author is in a different book: " + page);
-		}
-		currentPage.addAuthor(
-			new Author(name, href, bookName, page)
-		);
-	}
+    String bookName = book;
+    // Default to this book if nothing set
+    if (page != null && bookName == null) {
+      bookName = currentPage.getPageRef().getBookName();
+    }
+    // Name required when referencing an author outside this book
+    if (
+      name == null
+      && bookName != null
+      && !bookName.equals(currentPage.getPageRef().getBookName())
+    ) {
+      throw new IllegalStateException("Author name required when author is in a different book: " + page);
+    }
+    currentPage.addAuthor(
+      new Author(name, href, bookName, page)
+    );
+  }
 }
