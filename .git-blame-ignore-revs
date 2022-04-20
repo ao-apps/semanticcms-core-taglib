@@ -1,18 +1,36 @@
+# Since version 2.23 (released in August 2019), git-blame has a feature
+# to ignore or bypass certain commits.
+#
+# This file contains a list of commits that are not likely what you
+# are looking for in a blame, such as mass reformatting or renaming.
+# You can set this file as a default ignore file for blame by running
+# the following command.
+#
+# $ git config blame.ignoreRevsFile .git-blame-ignore-revs
+
 # Significant manual code formatting clean-up…
 98333052d3440562f5960a37cd9f785c779a7f97
+
 # Tab indent
 a63c9957fc51308349bcdcf6a41218aef1c33d37
+
 # Converted remaining four-space indents to our standard tab indent.
 3851acdd8a701849426f495b844be6c98cf48d02
+
 # Converted remaining four-space indents to our standard tab indent.
 c7f56469157c91477fe3d67ed1584df1c40224f0
+
 # Converted remaining four-space indents to our standard tab indent.
 c53a53bf785afb906b1960b2fde29dfc03266e69
+
 # Tab indent
 af509f8557d854a635a615ba1502d8d934955339
+
 # Converted remaining four-space indents to our standard tab indent.
 5e9e0040260f2c655f63174d2a897a19be3a9a67
+
 # Converted remaining four-space indents to our standard tab indent.
 82ce67b301b6a392464829c9c87fa256637dbced
+
 # Converted remaining four-space indents to our standard tab indent.
 ad0e382ae7a95a394360b4ceec757f6c10ac7225
