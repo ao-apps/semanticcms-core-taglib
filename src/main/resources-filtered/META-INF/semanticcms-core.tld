@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
-Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021  AO Industries, Inc.
-	support@aoindustries.com
-	7262 Bull Pen Cir
-	Mobile, AL 36695
+Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022  AO Industries, Inc.
+    support@aoindustries.com
+    7262 Bull Pen Cir
+    Mobile, AL 36695
 
 This file is part of semanticcms-core-taglib.
 
@@ -22,2169 +22,2169 @@ You should have received a copy of the GNU Lesser General Public License
 along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>.
 -->
 <taglib xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
-	version="2.1">
-	<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-	<!-- dateModified="2016-11-11T16:21:13-06:00" -->
-	<description><![CDATA[
-		<p>@{description.html}</p>
-	]]></description>
-	<display-name>@{project.name}</display-name>
-	<tlib-version>
-		<!-- Release: @{project.version} -->
-		@{parsedVersion.majorVersion}.@{parsedVersion.minorVersion}.@{parsedVersion.incrementalVersion}
-	</tlib-version>
-	<short-name>core</short-name>
-	<uri>@{project.url}</uri>
-	<tag>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2021-06-03T22:53:21-05:00" -->
-		<description><![CDATA[
-			<p class="semanticcms-tag-reference-summary">
-				The body of this tag represents one page of content.
-			</p>
-			<p>
-				There must be at most one &lt;core:page&gt; tag per JSP file because the path to
-				the page is determined by the servlet requestPath (or most recent <a href="https://oss.aoapps.com/taglib/ao.tld/tag-include">&lt;ao:include&gt;</a>).
-			</p>
-			<p>
-				When this page is directly accessed, the page is rendered with the
-				page content coming from the body of this tag.  The page is captured in <code>BODY</code> mode,
-				the view is resolved, and the page and view are forwarded to the theme to generate the output.
-			</p>
-		]]></description>
-		<name>page</name>
-		<tag-class>com.semanticcms.core.taglib.PageTag</tag-class>
-		<tei-class>com.semanticcms.core.taglib.PageTagTEI</tei-class>
-		<body-content>scriptless</body-content>
-		<attribute>
-			<description><![CDATA[
-				<p>
-,					The domain of the book containing the page.
-					Defaults to the domain of the current JSP file.
-				</p>
-			]]></description>
-			<name>domain</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The book containing the page.
-					Defaults to the book of the current JSP file.
-				</p>
-			]]></description>
-			<name>book</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The page-relative path to the page.
-					Required when book provided.
-					Defaults to the current JSP file.
-				</p>
-			]]></description>
-			<name>path</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p class="semanticcms-tag-reference-summary">
-					The <a href="https://schema.org/dateCreated">dateCreated</a> in <a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a> format.
-				</p>
-				<p>
-					At least <code>YYYY-MM-DD</code> is required,
-					and when time not specified will default to midnight in the current system time zone.
-					A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
-					Any value accepted by Joda Time <a href="@{jodaTimeApidocs}org/joda/time/DateTime.html#DateTime-java.lang.Object-">DateTime</a>
-					is accepted.
-				</p>
-				<p>
-					When dateCreated and datePublished are the same date, prefer
-					datePublished because it seems to have more use overall than created.
-				</p>
-			]]></description>
-			<name>dateCreated</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.Object</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p class="semanticcms-tag-reference-summary">
-					The <a href="https://schema.org/datePublished">datePublished</a> in <a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a> format.
-				</p>
-				<p>
-					At least <code>YYYY-MM-DD</code> is required,
-					and when time not specified will default to midnight in the current system time zone.
-					A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
-					Any value accepted by Joda Time <a href="@{jodaTimeApidocs}org/joda/time/DateTime.html#DateTime-java.lang.Object-">DateTime</a>
-					is accepted.
-				</p>
-				<p>
-					When dateCreated and datePublished are the same date, prefer
-					datePublished because it seems to have more use overall than created.
-				</p>
-			]]></description>
-			<name>datePublished</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.Object</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p class="semanticcms-tag-reference-summary">
-					The <a href="https://schema.org/dateModified">dateModified</a> in <a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a> format.
-				</p>
-				<p>
-					At least <code>YYYY-MM-DD</code> is required,
-					and when time not specified will default to midnight in the current system time zone.
-					A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
-					Any value accepted by Joda Time <a href="@{jodaTimeApidocs}org/joda/time/DateTime.html#DateTime-java.lang.Object-">DateTime</a>
-					is accepted.
-				</p>
-			]]></description>
-			<name>dateModified</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.Object</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p class="semanticcms-tag-reference-summary">
-					The dateReviewed in <a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a> format.
-				</p>
-				<p>
-					At least <code>YYYY-MM-DD</code> is required,
-					and when time not specified will default to midnight in the current system time zone.
-					A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
-					Any value accepted by Joda Time <a href="@{jodaTimeApidocs}org/joda/time/DateTime.html#DateTime-java.lang.Object-">DateTime</a>
-					is accepted.
-				</p>
-				<p>
-					This has no equivalent in <a href="https://schema.org/">https://schema.org/</a>, however
-					we feel it is important to actively review content to ensure its accuracy, even when it
-					has not been modified.
-				</p>
-			]]></description>
-			<name>dateReviewed</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.Object</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					When <code>SGML</code>, forces the content-type to be <code>text/html</code>.
-					When <code>XML</code>, forces the content-type to be <code>application/xhtml+xml</code>.
-					When <code>auto</code> (the default), the following steps are performed to resolve the serialization:
-				</p>
-				<ol>
-					<li>Use the serialization active on the current request.</li>
-					<li>
-						Use the application <a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
-						<code>com.aoapps.encoding.Serialization.default</code>
-						that allows an application to control the selection of HTML versus XHTML.
-					</li>
-					<li>
-						When this context-param is unspecified or <code>auto</code>,
-						determine the serialization based on the client's <code>Accept</code> header.
-					</li>
-				</ol>
-				<p>
-					This should normally be left with the default value of <code>auto</code>.  This is used
-					when the content is known to contain invalid markup that can not be parsed as XML.
-				</p>
-			]]></description>
-			<name>serialization</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The <a href="https://www.w3schools.com/tags/tag_doctype.asp">&lt;!DOCTYPE&gt;</a> to use,
-					must be one of <code>default</code>, <code>HTML5</code>, <code>STRICT</code>, <code>TRANSITIONAL</code>,
-					<code>FRAMESET</code>, or <code>NONE</code>.
-					Defaults to <code>HTML5</code>.  <code>NONE</code> will suppress the output of a doctype.
-				</p>
-				<p>
-					When <code>default</code>, the following steps are performed to resolve the doctype:
-				</p>
-				<ol>
-					<li>Use the doctype active on the current request.</li>
-					<li>
-						Use the application <a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
-						<code>com.aoapps.encoding.Doctype.default</code>
-						that allows an application to control the default doctype.
-					</li>
-					<li>
-						When this context-param is unspecified or <code>default</code>,
-						defaults to <code>HTML5</code>.
-					</li>
-				</ol>
-			]]></description>
-			<name>doctype</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					When <code>true</code>, enables automatic newline (and tab indentation when enabled).
-					When <code>false</code>, disables automatic newline and tab indentation.
-					When <code>auto</code> (the default), the following steps are performed to resolve the autonli setting:
-				</p>
-				<ol>
-					<li>Use the autonli setting active on the current request.</li>
-					<li>
-						Use the application <a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
-						<code>com.aoapps.html.servlet.DocumentEE.autonli</code>
-						that allows an application to control the default autonli setting.
-					</li>
-					<li>
-						When this context-param is unspecified or <code>auto</code>,
-						defaults to <code>false</code>.
-					</li>
-				</ol>
-			]]></description>
-			<name>autonli</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					When <code>true</code>, enables tab indentation.
-					When <code>false</code>, disables tab indentation.
-					When <code>auto</code> (the default), the following steps are performed to resolve the indent setting:
-				</p>
-				<ol>
-					<li>Use the indent setting active on the current request.</li>
-					<li>
-						Use the application <a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
-						<code>com.aoapps.html.servlet.DocumentEE.indent</code>
-						that allows an application to control the default indent setting.
-					</li>
-					<li>
-						When this context-param is unspecified or <code>auto</code>,
-						defaults to <code>false</code>.
-					</li>
-				</ol>
-			]]></description>
-			<name>indent</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The title of the page.
-				</p>
-			]]></description>
-			<name>title</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p class="semanticcms-tag-reference-summary">
-					The optional short title of the page.
-				</p>
-				<p>
-					A short title is used when the context of a page is well established, such as when
-					showing a path to the current location in the site.
-				</p>
-				<p>
-					The short title defaults to the page title.
-				</p>
-			]]></description>
-			<name>shortTitle</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The optional description of the page.
-				</p>
-			]]></description>
-			<name>description</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The optional comma-separated keywords of the page.
-				</p>
-			]]></description>
-			<name>keywords</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p class="semanticcms-tag-reference-summary">
-					Controls whether robots will be allowed to access this page.
-				</p>
-				<p>
-					When not allowed, a page will have <code>&lt;meta name="robots" content="noindex, nofollow" /&gt;</code>
-					added and be excluded from sitemaps.
-					Links to the page will also have <code>rel="nofollow"</code> added.
-				</p>
-				<p>
-					Possible values are:
-				</p>
-				<ul>
-					<li><code>auto</code> - Inherit setting from parent(s) within the book or book settings if have no parents within the book</li>
-					<li><code>true</code> - Robots allowed</li>
-					<li><code>false</code> - Robots not allowed</li>
-				</ul>
-				<p>
-					Defaults to <code>auto</code>.
-				</p>
-			]]></description>
-			<name>allowRobots</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue><!-- TODO: deferred where appropriate -->
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p class="semanticcms-tag-reference-summary">
-					Includes a table of contents at the top of the page.
-				</p>
-				<p>
-					Possible values are:
-				</p>
-				<ul>
-					<li><code>auto</code> - Automatically selected</li>
-					<li><code>true</code> - Always show</li>
-					<li><code>false</code> - Always hide</li>
-				</ul>
-				<p>
-					Defaults to <code>auto</code>.
-				</p>
-			]]></description>
-			<name>toc</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The number of levels to display in the table of contents.
-					Must be between 1 and 5.
-					Defaults to 3.
-				</p>
-			]]></description>
-			<name>tocLevels</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>int</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p class="semanticcms-tag-reference-summary">
-					When <code>true</code>, it is acceptable for the parents to not list this page
-					as a child.  In other words, this page may claim a parent that does
-					not also claim this as a child.
-				</p>
-				<p>
-					Parent-child relationships are never verified to parents from missing books.
-				</p>
-				<p>
-					Defaults to <code>false</code> meaning strict parent-child relationship verification.
-				</p>
-				<p>
-					Use of this can result in this page being orphaned, where this page
-					and its child pages are not included in site traversals, such as for
-					tree views or searches.
-				</p>
-			]]></description>
-			<name>allowParentMismatch</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>boolean</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p class="semanticcms-tag-reference-summary">
-					When <code>true</code>, it is acceptable for the children to not list this page
-					as a parent.  In other words, this page may claim a child that does
-					not also claim this as a parent.
-				</p>
-				<p>
-					Child-parent relationships are never verified to children from missing books.
-				</p>
-				<p>
-					Defaults to <code>false</code> meaning strict child-parent relationship verification.
-				</p>
-				<p>
-					Use of this can result in incomplete determination of the
-					children page's location(s) within the overall site.
-				</p>
-			]]></description>
-			<name>allowChildMismatch</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>boolean</type>
-		</attribute>
-		<dynamic-attributes>true</dynamic-attributes>
-	</tag>
-	<tag>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2016-11-11T16:21:13-06:00" -->
-		<description><![CDATA[
-			<p class="semanticcms-tag-reference-summary">
-				Sets the copyright for the current page.
-			</p>
-			<p>
-				At least one field must be set to a non-null value.
-			</p>
-			<p>
-				Any field not set (or set to <code>null</code>) will be inherited from the parent(s) in the same book.
-				Any field set to <code>""</code> will have no value and not inherit from parents.
-			</p>
-			<p>
-				If there are no parent pages in this same book, uses the fields from the book's copyright.
-			</p>
-			<p>
-				When inheriting a field from multiple parent pages, the field must
-				have exactly the same value in all parents.  Any mismatch in value
-				will result in an exception.
-			</p>
-		]]></description>
-		<name>copyright</name>
-		<tag-class>com.semanticcms.core.taglib.CopyrightTag</tag-class>
-		<body-content>empty</body-content>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The rights holder.
-					<code>""</code> means none and <code>null</code> will inherit.
-				</p>
-			]]></description>
-			<name>rightsHolder</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The rights.
-					<code>""</code> means none and <code>null</code> will inherit.
-				</p>
-			]]></description>
-			<name>rights</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The date copyrighted.
-					<code>""</code> means none and <code>null</code> will inherit.
-				</p>
-			]]></description>
-			<name>dateCopyrighted</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-	</tag>
-	<tag>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2020-11-23T03:04:27-06:00" -->
-		<description><![CDATA[
-			<p class="semanticcms-tag-reference-summary">
-				Adds an author to the current page.
-				It is permissible to have an author in a missing book.
-			</p>
-			<p>
-				When no authors provided, will use the author(s) of any parent
-				page that is within the same book.  If there are no parent pages
-				in this same book, uses the book's authors.
-			</p>
-			<p>
-				When inheriting authorship from multiple parent pages, the authors must
-				be in exact agreement.  This means exactly the same order and all
-				values matching precisely.  Any mismatch in authors will result in
-				an exception.
-			</p>
-		]]></description>
-		<name>author</name>
-		<tag-class>com.semanticcms.core.taglib.AuthorTag</tag-class>
-		<body-content>empty</body-content>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The name of the author, to be used in <code>&lt;meta name="author" content="…" /&gt;</code>.
-					Required when neither href nor page are provided.
-					Also required when page provided and the page is in a different book.
-				</p>
-			]]></description>
-			<name>name</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The href of the author, to be used in <code>&lt;link rel="author" href="…" /&gt;</code>
-					Required when neither name nor page are provided.
-					May not be used when page provided.
-				</p>
-			]]></description>
-			<name>href</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The domain containing the author page.
-					Defaults to the domain of the current JSP file.
-					When domain provided, both book and page attributes must also be provided.
-				</p>
-			]]></description>
-			<name>domain</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The book containing the author page.
-					Defaults to the book of the current JSP file.
-					When book provided, page attribute must also be provided.
-				</p>
-			]]></description>
-			<name>book</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The page-relative path to the author page, to be used in <code>&lt;link rel="author" href="…" /&gt;</code>.
-					Required when neither name nor href are provided.
-					May not be used when href provided.
-				</p>
-			]]></description>
-			<name>page</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-	</tag>
-	<tag>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2017-08-01T16:44:47-05:00" -->
-		<description><![CDATA[
-			<p class="semanticcms-tag-reference-summary">
-				Adds the given page as a parent of the current page.
-				This tag only represents the relationship, so body content is not allowed.
-				It is permissible to have a parent in a missing book.
-			</p>
-			<p>
-				To build the relationship between pages and parents, the page
-				should include &lt;core:parent&gt; tags for each parent page within
-				the body of the <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a> tag.
-			</p>
-			<p>
-				Due to optimizations during page-only capturing, the parent pages must be added directly in
-				the page body, not from within other nested elements.
-			</p>
-			<p>
-				This may not be set on the <code>content.root</code> of any of the books, as the
-				parent(s) of a book varies based on where the book is placed.  The
-				parent(s) of a book are configured in the <code>/WEB-INF/books.xml</code> file.
-				All books require at least one parent except the <code>rootBook</code> which does not allow
-				any parent.  These rules ensure a single root Directed Acyclic Graph (DAG).
-			</p>
-			<p>
-				If no parents are added, an automatic parent is computed as follows:
-			</p>
-			<ol>
-				<li>If this page is the <code>content.root</code> of a book, include all parents configured in <code>/WEB-INF/books.xml</code>.</li>
-				<li>If this page URL ends in <code>/</code>, <code>/index.jspx</code> or <code>/index.jsp</code>,
-					look for JSP page at <code>../index.jspx</code> or <code>../index.jsp</code> then asssume <code>../</code>,
-					error if outside book.
-				</li>
-				<li>Look for page at <code>./index.jspx</code> or <code>./index.jsp</code> then assume <code>./</code>.</li>
-			</ol>
-			<p>
-				Unless <code>allowParentMismatch</code> is enabled on the <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a>,
-				the parent must also consider this page as a child.
-			</p>
-		]]></description>
-		<name>parent</name>
-		<tag-class>com.semanticcms.core.taglib.ParentTag</tag-class>
-		<body-content>empty</body-content>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The domain of the book containing the parent page.
-					Defaults to the domain of the current JSP file.
-				</p>
-			]]></description>
-			<name>domain</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The book containing the parent page.
-					Defaults to the book of the current JSP file.
-				</p>
-			]]></description>
-			<name>book</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The page-relative path to the parent page.
-				</p>
-			]]></description>
-			<name>page</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The optional short title of the page when within the context of this parent.
-					When not provided, the shortTitle of the page itself is used.
-				</p>
-			]]></description>
-			<name>shortTitle</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-	</tag>
-	<tag>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2017-08-01T16:44:47-05:00" -->
-		<description><![CDATA[
-			<p class="semanticcms-tag-reference-summary">
-				Adds the given page as a subpage of the current page.
-				This tag only represents the relationship, so body content is not allowed.
-				It is permissible to have a child in a missing book.
-			</p>
-			<p>
-				To build the relationship between pages and subpages, the page
-				should include &lt;core:child&gt; tags for each child page within
-				the body of the <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a> tag.
-			</p>
-			<p>
-				Due to optimizations during page-only capturing, the child pages must be added directly in
-				the page body, not from within other nested elements.
-			</p>
-			<p>
-				Unless <code>allowChildMismatch</code> is enabled on the <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a>,
-				the child must also consider this page as a parent.
-			</p>
-		]]></description>
-		<name>child</name>
-		<tag-class>com.semanticcms.core.taglib.ChildTag</tag-class>
-		<body-content>empty</body-content>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The domain containing the child page.
-					Defaults to the domain of the current JSP file.
-				</p>
-			]]></description>
-			<name>domain</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The book containing the child page.
-					Defaults to the book of the current JSP file.
-				</p>
-			]]></description>
-			<name>book</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The page-relative path to the child page.
-				</p>
-			]]></description>
-			<name>page</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-	</tag>
-	<tag>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2021-06-16T14:18:10-05:00" -->
-		<description><![CDATA[
-			<p class="semanticcms-tag-reference-summary">
-				Writes a link to a page and optionally an element.
-				If element not provided, then page is required.
-				If page is not provided, links to element within the current page.
-			</p>
-			<p>
-				Any attribute that has no namespace and begins with <code>param.</code> is added to the href as a URL parameter.
-				The parameter name is the part of the attribute name following <code>param.</code>.
-			</p>
-			<p>
-				When a parameter value is <code>null</code> it is not added.
-				If the value is an
-				<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/Iterable.html">Iterable</a>,
-				<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Iterator.html">Iterator</a>,
-				<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Enumeration.html">Enumeration</a>,
-				or array, then each non-null element is coerced to
-				<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/String.html">String</a> as a separate
-				parameter in iteration order.  Otherwise, the value itself is
-				coerced to <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/String.html">String</a>
-				for the parameter value.
-			</p>
-			<p>
-				Nested <a href="@{project.url}semanticcms-core.tld/tag-param">&lt;core:param&gt;</a> or
-				<a href="@{project.url}semanticcms-core.tld/tag-params">&lt;core:params&gt;</a> tags will
-				add parameters after any provided as attributes.
-			</p>
-			<p>
-				If there is no body, writes the target page title or element label.
-			</p>
-		]]></description>
-		<name>link</name>
-		<tag-class>com.semanticcms.core.taglib.LinkTag</tag-class>
-		<body-content>scriptless</body-content>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The CSS class for the link.
-					Defaults to a target-specific value, if any defined for the target element.
-					To avoid the default, pass an empty class: <code>&lt;core:link class="" … /&gt;</code>
-				</p>
-			]]></description>
-			<name>class</name>
-			<required>false</required>
-			<deferred-value>
-				<type>java.lang.Object</type>
-			</deferred-value>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The domain of the book containing the page.
-					Defaults to the domain of the current JSP file.
-				</p>
-			]]></description>
-			<name>domain</name>
-			<required>false</required>
-			<deferred-value>
-				<type>java.lang.String</type>
-			</deferred-value>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The book containing the page.
-					Defaults to the book of the current JSP file.
-				</p>
-			]]></description>
-			<name>book</name>
-			<required>false</required>
-			<deferred-value>
-				<type>java.lang.String</type>
-			</deferred-value>
-		</attribute>
-		<attribute>
-			<!-- TODO: Support missing page when book provided, using the book's root page. -->
-			<description><![CDATA[
-				<p>
-					The page-relative path to the page.
-					If not provided, must be nested in a <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a>
-					tag and assumes the current page.
-					Required when book provided.
-				</p>
-			]]></description>
-			<name>page</name>
-			<required>false</required>
-			<deferred-value>
-				<type>java.lang.String</type>
-			</deferred-value>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p class="semanticcms-tag-reference-summary">
-					The page-unique id of the element to link to.
-				</p>
-				<p>
-					This is used to reference SemanticCMS elements within a page.
-					Conflicts with the <code>anchor</code> attribute.
-				</p>
-				<p>
-					To reference a specific non-SemanticCMS-element target, use the <code>anchor</code>
-					attribute instead.
-				</p>
-				<p>
-					The anchor is automatically prefixed in multi-page views.
-					The anchor is also URL-encoded.
-				</p>
-			]]></description>
-			<name>element</name>
-			<required>false</required>
-			<deferred-value>
-				<type>java.lang.String</type>
-			</deferred-value>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					When <code>false</code>, the default, may not link to generated ids.
-					This is to avoid broken links as it is preferred to set explicit ids on target elements.
-					Set to <code>true</code> to allow linking to generated element ids.
-				</p>
-			]]></description>
-			<name>allowGeneratedElement</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>boolean</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p class="semanticcms-tag-reference-summary">
-					The anchor to link to on the given page.
-				</p>
-				<p>
-					This is used to reference non-SemanticCMS-element targets within a page.
-					Conflicts with the <code>element</code> attribute.
-				</p>
-				<p>
-					To reference a specific SemanticCMS element, use the <code>element</code>
-					attribute instead.
-				</p>
-				<p>
-					The anchor is automatically prefixed in multi-page views.
-					The anchor is also URL-encoded.
-				</p>
-			]]></description>
-			<name>anchor</name>
-			<required>false</required>
-			<deferred-value>
-				<type>java.lang.String</type>
-			</deferred-value>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p class="semanticcms-tag-reference-summary">
-					The view mode to use in the link target.
-				</p>
-				<p>
-					Although view is site defined, some common values might include:
-				</p>
-				<ul>
-					<li><code>null</code>, <code>""</code>, or <code>content</code> (the default and always supported) - Links to the page content</li>
-					<li><code>what-links-here</code></li>
-					<li><code>tree</code></li>
-					<li><code>all</code></li>
-					<li><code>files</code></li>
-				</ul>
-			]]></description>
-			<name>view</name>
-			<required>false</required>
-			<deferred-value>
-				<type>java.lang.String</type>
-			</deferred-value>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					When <code>false</code>, the default, will generate a &lt;a&gt; tag around the entire body.
-					Otherwise, will generate a &lt;span&gt; instead, with a small link added to
-					the end of the body.
-				</p>
-				<p>
-					Use of a small link can be helpful for usability, such as when the body is
-					a piece of information intended for quick copy/paste by the user.
-				</p>
-			]]></description>
-			<name>small</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>boolean</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					When <code>true</code>, generates an absolute URL for the href for the link.
-					Defaults to <code>false</code>.
-				</p>
-			]]></description>
-			<name>absolute</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>boolean</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					When <code>true</code>, will generate a <a href="https://oss.aoapps.com/servlet-util/apidocs/com.aoapps.servlet.util/com/aoapps/servlet/http/Canonical.html">Canonical URL</a>.
-					Canonical URLs should be used where per-user response URL rewriting
-					(such as information added when cookies are disabled) should be avoided.
-					Defaults to <code>false</code>.
-				</p>
-			]]></description>
-			<name>canonical</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>boolean</type>
-		</attribute>
-		<dynamic-attributes>true</dynamic-attributes>
-	</tag>
-	<tag>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2021-06-16T13:20:50-05:00" -->
-		<description><![CDATA[
-			<p>
-				Adds a parameter to its
-				<a href="https://oss.aoapps.com/taglib/apidocs/com.aoapps.taglib/com/aoapps/taglib/ParamsAttribute.html">ParamsAttribute</a>
-				parent tag.
-			</p>
-		]]></description>
-		<name>param</name>
-		<tag-class>com.aoapps.taglib.ParamTag</tag-class>
-		<body-content>scriptless</body-content>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The name of parameter tag.
-				</p>
-			]]></description>
-			<name>name</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.Object</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The value of the parameter.
-					If not provided, the output of the body is used with whitespace trimmed.
-				</p>
-			]]></description>
-			<name>value</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.Object</type>
-			<!-- TODO: Deferred once supported by ao-taglib -->
-		</attribute>
-	</tag>
-	<tag>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2021-10-25T18:37:50-05:00" -->
-		<description><![CDATA[
-			<p>
-				Adds multiple parameters to its
-				<a href="https://oss.aoapps.com/taglib/apidocs/com.aoapps.taglib/com/aoapps/taglib/ParamsAttribute.html">ParamsAttribute</a>
-				parent tag.
-			</p>
-		]]></description>
-		<name>params</name>
-		<tag-class>com.aoapps.taglib.ParamsTag</tag-class>
-		<body-content>scriptless</body-content>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The name of parameter to add.
-				</p>
-				<p>
-					When provided, the values may not contain a
-					<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Map.html">Map</a>
-					or <a href="https://oss.aoapps.com/net-types/apidocs/com.aoapps.net.types/com/aoapps/net/URIParameters.html">URIParameters</a>.
-					When provided, the exclude attribute may not be provided.
-				</p>
-			]]></description>
-			<name>name</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.Object</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					Optionally excludes all elements of a
-					<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Map.html">Map</a>
-					or <a href="https://oss.aoapps.com/net-types/apidocs/com.aoapps.net.types/com/aoapps/net/URIParameters.html">URIParameters</a>
-					that match any of the comma-separated patterns.
-					May not be used in conjunction with the name attribute.
-				</p>
-				<p>
-					Each pattern in the comma-separated list may be in the following format:
-				</p>
-				<table class="ao-grid">
-					<tbody>
-						<tr>
-							<td>exact_name</td>
-							<td>matches the name exactly</td>
-						</tr>
-						<tr>
-							<td>*</td>
-							<td>matches all (clears all parameters)</td>
-						</tr>
-						<tr>
-							<td>*suffix</td>
-							<td>matches the name with "endsWith"</td>
-						</tr>
-						<tr>
-							<td>prefix*</td>
-							<td>matches the name with "beginsWith"</td>
-						</tr>
-					</tbody>
-				</table>
-				<p>
-					Defaults to none excluded.
-				</p>
-			]]></description>
-			<name>exclude</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The values of the parameters.
-				</p>
-				<p>
-					When name is provided, supports
-					<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/Iterable.html">Iterable</a>,
-					<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Iterator.html">Iterator</a>,
-					<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Enumeration.html">Enumeration</a>,
-					or array values.
-				</p>
-				<p>
-					When name is not provided, requires
-					<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Map.html">Map</a>
-					or <a href="https://oss.aoapps.com/net-types/apidocs/com.aoapps.net.types/com/aoapps/net/URIParameters.html">URIParameters</a>,
-					where the parameter name is the map key coerced to <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/String.html">String</a>
-					and the value (or set of values) is the map value.  Each of the entry values may be
-					<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/Iterable.html">Iterable</a>,
-					<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Iterator.html">Iterator</a>,
-					<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Enumeration.html">Enumeration</a>,
-					array, or single value.
-				</p>
-				<p>
-					When obtaining values from a
-					<a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Map.html">Map</a>
-					or <a href="https://oss.aoapps.com/net-types/apidocs/com.aoapps.net.types/com/aoapps/net/URIParameters.html">URIParameters</a>,
-					parameters may be excluded with the "exclude" attribute.
-				</p>
-				<p>
-					Parameters are never added with <code>null</code> values.
-				</p>
-			]]></description>
-			<name>values</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.Object</type>
-			<!-- TODO: Deferred once supported by ao-taglib -->
-		</attribute>
-	</tag>
-	<tag>
-		<!-- datePublished="2017-07-19T12:12:39-05:00" -->
-		<!-- dateModified="2021-06-16T13:20:50-05:00" -->
-		<description><![CDATA[
-			<p>
-				Sets a property of a
-				<a href="https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/com/semanticcms/core/model/Node.html">Node</a>
-				parent tag (either a <a href="https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/com/semanticcms/core/model/Page.html">Page</a>
-				or an <a href="https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/com/semanticcms/core/model/Element.html">Element</a>).
-			</p>
-			<p>
-				See <a href="https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/com/semanticcms/core/model/Node.html#setProperty(java.lang.String,java.lang.Object)">setProperty(String name, Object value)</a>.
-			</p>
-		]]></description>
-		<name>property</name>
-		<tag-class>com.semanticcms.core.taglib.PropertyTag</tag-class>
-		<body-content>scriptless</body-content>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The name of property.
-				</p>
-			]]></description>
-			<name>name</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The value of the property.
-					If not provided, the output of the body is used with whitespace trimmed.
-				</p>
-			]]></description>
-			<name>value</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.Object</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					Target object whose property will be set.
-				</p>
-				<p>
-					If not provided, sets the property on the closest parent <a href="https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/com/semanticcms/core/model/Node.html">Node</a>
-					parent tag (either a <a href="https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/com/semanticcms/core/model/Page.html">Page</a>
-					or an <a href="https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/com/semanticcms/core/model/Element.html">Element</a>).
-				</p>
-				<p>
-					The target must not be frozen, which, in the context of JSP, means only the parent element tags
-					within the current page, and the current page itself, can reliably have properties set.
-					Trying to set properties outside this scope is not advised and will likely be unreliable at best.
-					An exception will be thrown when trying to set a property on a frozen node.
-				</p>
-				<p>
-					In the future, we may add "attributes" to nodes, which would provide for different scopes
-					(application, session, request, page?) and could be changed dynamically.
-				</p>
-			]]></description>
-			<name>target</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>com.semanticcms.core.model.Node</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					Optionally allows an existing property, when set to <code>true</code>.
-					When set to <code>false</code> (the default), and the property already exists,
-					an exception is thrown.
-				</p>
-				<p>
-					A property on a target may not be changed once set.  This includes when it has
-					been set to <code>null</code>.
-				</p>
-			]]></description>
-			<name>allowExisting</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>boolean</type>
-		</attribute>
-	</tag>
-	<!-- TODO: core:properties, that sets multiple properties, accepts a map (or single Map.Entry)? -->
-	<tag>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2020-11-23T03:04:27-06:00" -->
-		<description><![CDATA[
-			<p>
-				Writes a tree of pages, and optionally elements, as &lt;ul&gt; and &lt;li&gt; tags.
-			</p>
-		]]></description>
-		<name>navigationTree</name>
-		<tag-class>com.semanticcms.core.taglib.NavigationTreeTag</tag-class>
-		<body-content>empty</body-content>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The root page of the tree.
-				</p>
-			]]></description>
-			<name>root</name>
-			<required>true</required>
-			<deferred-value>
-				<type>com.semanticcms.core.model.Page</type>
-			</deferred-value>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					May optionally skip the root page, displaying its children only.
-					Defaults to <code>false</code>.
-				</p>
-			]]></description>
-			<name>skipRoot</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>boolean</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					May optionally add <a href="https://developer.yahoo.com/yui/treeview/">yuiConfig</a> data.
-					Defaults to <code>false</code>.
-				</p>
-			]]></description>
-			<name>yuiConfig</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>boolean</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					May optionally include tree nodes for elements within pages.
-					Defaults to <code>false</code>.
-				</p>
-			]]></description>
-			<name>includeElements</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>boolean</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					An optional target frame for links.
-				</p>
-			]]></description>
-			<name>target</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The domain of the book for thisPage.
-					Defaults to the domain of the current JSP file.
-				</p>
-			]]></description>
-			<name>thisDomain</name>
-			<required>false</required>
-			<deferred-value>
-				<type>java.lang.String</type>
-			</deferred-value>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The book for thisPage.
-					Defaults to the book of the current JSP file.
-				</p>
-			]]></description>
-			<name>thisBook</name>
-			<required>false</required>
-			<deferred-value>
-				<type>java.lang.String</type>
-			</deferred-value>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					May optionally mark a specific page (by context-relative path).
-					All page matches are marked with class <code>semanticcms-core-tree-this-page</code>.
-					Only the first match is marked with id <code>semanticcms-core-tree-this-page</code>.
-				</p>
-			]]></description>
-			<name>thisPage</name>
-			<required>false</required>
-			<deferred-value>
-				<type>java.lang.String</type>
-			</deferred-value>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The domain for the book for linksToPage.
-					Defaults to the domain of the current JSP file.
-				</p>
-			]]></description>
-			<name>linksToDomain</name>
-			<required>false</required>
-			<deferred-value>
-				<type>java.lang.String</type>
-			</deferred-value>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The book for linksToPage.
-					Defaults to the book of the current JSP file.
-				</p>
-			]]></description>
-			<name>linksToBook</name>
-			<required>false</required>
-			<deferred-value>
-				<type>java.lang.String</type>
-			</deferred-value>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					May optionally filter for pages that link to the given page (by context-relative path).
-					The parent pages of any page that has a link will also be included.
-					The pages that actually have a link will be marked with class <code>semanticcms-core-links-to-page</code>.
-				</p>
-			]]></description>
-			<name>linksToPage</name>
-			<required>false</required>
-			<deferred-value>
-				<type>java.lang.String</type>
-			</deferred-value>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					May optionally limit the depth of the navigation tree.
-					A skipped root does not count toward the depth.
-					<code>0</code>, the default, means unlimited depth.
-				</p>
-			]]></description>
-			<name>maxDepth</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>int</type>
-		</attribute>
-	</tag>
-	<tag>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2016-11-11T16:21:13-06:00" -->
-		<description><![CDATA[
-			<p>
-				Writes the body of the given node, recursively replacing any nested
-				element markers.  The body is not written during <code>PAGE</code> and <code>META</code> captures.
-			</p>
-		]]></description>
-		<name>writeNodeBody</name>
-		<tag-class>com.semanticcms.core.taglib.WriteNodeBodyTag</tag-class>
-		<body-content>empty</body-content>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The node to write.
-				</p>
-			]]></description>
-			<name>node</name>
-			<required>true</required>
-			<deferred-value>
-				<type>com.semanticcms.core.model.Node</type>
-			</deferred-value>
-		</attribute>
-	</tag>
-	<tag>
-		<!-- datePublished="2016-08-12T03:18:55-05:00" -->
-		<!-- dateModified="2018-06-02T01:11:31-05:00" -->
-		<description><![CDATA[
-			<p>
-				Calls the view for the given page.
-			</p>
-		]]></description>
-		<name>doView</name>
-		<tag-class>com.semanticcms.core.taglib.DoViewTag</tag-class>
-		<body-content>empty</body-content>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The view to call.
-				</p>
-			]]></description>
-			<name>view</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>com.semanticcms.core.renderer.html.View</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The page to provide to the view.
-				</p>
-			]]></description>
-			<name>page</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>com.semanticcms.core.model.Page</type>
-		</attribute>
-	</tag>
-	<tag>
-		<!-- datePublished="2016-10-17T20:33:52-05:00" -->
-		<!-- dateModified="2020-11-23T03:04:27-06:00" -->
-		<description><![CDATA[
-			<p>
-				Calls all registered components for the given view, page, position,
-				and optional order.
-			</p>
-		]]></description>
-		<name>doComponents</name>
-		<tag-class>com.semanticcms.core.taglib.DoComponentsTag</tag-class>
-		<body-content>empty</body-content>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The view that is being rendered.
-				</p>
-			]]></description>
-			<name>view</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>com.semanticcms.core.renderer.html.View</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The page that is being rendered.
-				</p>
-			]]></description>
-			<name>page</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>com.semanticcms.core.model.Page</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The current position being handled.
-				</p>
-			]]></description>
-			<name>position</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>com.semanticcms.core.servlet.ComponentPosition</type>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					When <code>false</code>, the default, will call components in forward order.
-					When <code>true</code>, will call the components in the reverse order.
-				</p>
-			]]></description>
-			<name>reverse</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-			<type>boolean</type>
-		</attribute>
-	</tag>
-	<function>
-		<!-- datePublished="2017-08-01T16:44:47-05:00" -->
-		<!-- dateModified="2017-08-03T10:59:48-05:00" -->
-		<description><![CDATA[
-			<p class="semanticcms-tag-reference-summary">
-				Captures a <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a> in a provided domain and book.
-			</p>
-			<p>
-				The capture is always done with a request method of <code>GET</code>, even when the enclosing request is a different method.
-			</p>
-			<p>
-				Parameter "domain": The domain of the book containing the page.
-			</p>
-			<p>
-				Parameter "book": The name of the book containing the page.
-			</p>
-			<p>
-				Parameter "page": The book-relative path to the page to capture,
-				must begin with a slash <code>/</code>.
-			</p>
-			<p>
-				Parameter "level": Controls the level of detail to capture.  May be one of:
-			</p>
-			<ol>
-				<li><code>page</code> - Fastest: captures page meta data only (including parent and child pages).</li>
-				<li><code>meta</code> - Captures page and content meta data, but no body content.</li>
-				<li><code>body</code> - Captures page and content meta data as well as all body content.</li>
-			</ol>
-			<p>
-				Level may need to be set to <code>page</code> when two pages capture each other (either directly
-				or indirectly).  This may occur when these two pages capture each other for meta data,
-				such as automatic page title added to links.
-			</p>
-		]]></description>
-		<name>capturePageInDomain</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>com.semanticcms.core.model.Page capturePageInDomain(java.lang.String,java.lang.String,java.lang.String,java.lang.String)</function-signature>
-		<example><![CDATA[<code>${core:capturePageInDomain(domain, book, page, level)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2017-08-03T10:59:48-05:00" -->
-		<description><![CDATA[
-			<p class="semanticcms-tag-reference-summary">
-				Captures a <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a> in a provided book
-				within the domain of the current JSP file.
-			</p>
-			<p>
-				The capture is always done with a request method of <code>GET</code>, even when the enclosing request is a different method.
-			</p>
-			<p>
-				Parameter "book": The name of the book containing the page.
-			</p>
-			<p>
-				Parameter "page": The book-relative path to the page to capture,
-				must begin with a slash <code>/</code>.
-			</p>
-			<p>
-				Parameter "level": Controls the level of detail to capture.  May be one of:
-			</p>
-			<ol>
-				<li><code>page</code> - Fastest: captures page meta data only (including parent and child pages).</li>
-				<li><code>meta</code> - Captures page and content meta data, but no body content.</li>
-				<li><code>body</code> - Captures page and content meta data as well as all body content.</li>
-			</ol>
-			<p>
-				Level may need to be set to <code>page</code> when two pages capture each other (either directly
-				or indirectly).  This may occur when these two pages capture each other for meta data,
-				such as automatic page title added to links.
-			</p>
-		]]></description>
-		<name>capturePageInBook</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>com.semanticcms.core.model.Page capturePageInBook(java.lang.String,java.lang.String,java.lang.String)</function-signature>
-		<example><![CDATA[<code>${core:capturePageInBook(book, page, level)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2017-08-23T02:21:47-05:00" -->
-		<description><![CDATA[
-			<p class="semanticcms-tag-reference-summary">
-				Captures a <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a>
-				within the book and domain of the current JSP file.
-			</p>
-			<p>
-				Parameter "page": The page-relative path to the page to capture;
-				book-relative when begins with a slash <code>/</code>.
-			</p>
-			<p>
-				Parameter "path": The page-relative path to the resource
-			</p>
-			<p>
-				Parameter "level": Controls the level of detail to capture.  May be one of:
-			</p>
-			<ol>
-				<li><code>page</code> - Fastest: captures page meta data only (including parent and child pages).</li>
-				<li><code>meta</code> - Captures page and content meta data, but no body content.</li>
-				<li><code>body</code> - Captures page and content meta data as well as all body content.</li>
-			</ol>
-			<p>
-				Level may need to be set to <code>page</code> when two pages capture each other (either directly
-				or indirectly).  This may occur when these two pages capture each other for meta data,
-				such as automatic page title added to links.
-			</p>
-		]]></description>
-		<name>capturePage</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>com.semanticcms.core.model.Page capturePage(java.lang.String,java.lang.String)</function-signature>
-		<example><![CDATA[<code>${core:capturePage(page, level)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2016-11-11T16:21:13-06:00" -->
-		<description><![CDATA[
-			<p>
-				Captures the content root <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a>
-				with the given capture level.
-			</p>
-		]]></description>
-		<name>captureContentRoot</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>com.semanticcms.core.model.Page captureContentRoot(java.lang.String)</function-signature>
-		<example><![CDATA[<code>${core:captureContentRoot(level)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2016-11-11T16:21:13-06:00" -->
-		<description><![CDATA[
-			<p class="semanticcms-tag-reference-summary">
-				Gets the current capture level.
-			</p>
-			<p>
-				Will be one of:
-			</p>
-			<ol>
-				<li><code>null</code> - No capture in progress</li>
-				<li><code>page</code> - Fastest: capturing page meta data only.</li>
-				<li><code>meta</code> - Capturing page and content meta data, but no body content.</li>
-				<li><code>body</code> - Capturing page and content meta data as well as all body content.</li>
-			</ol>
-		]]></description>
-		<name>getCaptureLevel</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.lang.String getCaptureLevel()</function-signature>
-		<example><![CDATA[<code>${core:getCaptureLevel()}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2016-11-11T16:21:13-06:00" -->
-		<description><![CDATA[
-			<p>
-				Get the page index for the given page reference.
-			</p>
-		]]></description>
-		<name>getPageIndex</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>com.semanticcms.core.servlet.PageIndex getPageIndex(com.semanticcms.core.model.PageRef)</function-signature>
-		<example><![CDATA[<code>${core:getPageIndex(pageRef)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2020-05-29T14:33:14-05:00" -->
-		<description><![CDATA[
-			<p class="semanticcms-tag-reference-summary">
-				Flattens a page directed acyclic graph (DAG) into a list in depth-first traversal order.
-				Each page is only added once when first visited.
-			</p>
-			<p>
-				The page DAG starts as a single page with any number of children.
-				Each of the child pages may, in turn, have children.  The result of
-				this transformation is a list of pages in depth-first traversal order.
-			</p>
-			<p>
-				A page may actually be linked into multiple places in the DAG, so strictly
-				speaking this is a single root Directed Acyclic Graph (DAG).
-			</p>
-			<p>
-				Only the first occurance of each page will be in the resulting list.
-			</p>
-			<p>
-				Parameter "level": Controls the level of detail to capture.  May be one of:
-			</p>
-			<ol>
-				<li><code>page</code> - Fastest: captures page meta data only (including parent and child pages).</li>
-				<li><code>meta</code> - Captures page and content meta data, but no body content.</li>
-				<li><code>body</code> - Captures page and content meta data as well as all body content.</li>
-			</ol>
-		]]></description>
-		<name>convertPageDagToList</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.util.List convertPageDagToList(com.semanticcms.core.model.Page,java.lang.String)</function-signature>
-		<!-- functionSignature="java.util.List<com.semanticcms.core.model.Page> convertPageDagToList(com.semanticcms.core.model.Page,java.lang.String)" -->
-		<example><![CDATA[<code>${core:convertPageDagToList(rootPage, level)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2017-08-03T10:59:48-05:00" -->
-		<!-- dateModified="2021-06-16T14:18:10-05:00" -->
-		<description><![CDATA[
-			<p class="semanticcms-tag-reference-summary">
-				Gets the resource for a domain, book, and book-relative path.
-			</p>
-			<p>
-				Parameter "domain": The domain of the book containing the resource.
-			</p>
-			<p>
-				Parameter "book": The name of the book containing the resource.
-			</p>
-			<p>
-				Parameter "path": The book-relative path to the resource,
-				must begin with a slash <code>/</code>.
-			</p>
-			<p>
-				Parameter "require": When <code>true</code>, the resource will be non-null and will exist;
-				a <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/io/FileNotFoundException.html">FileNotFoundException</a>
-				will be thrown if the book is inaccessible, the resource store is unavailable, or the resource
-				does not exist.  When <code>false</code>, the returned resource will be <code>null</code>
-				when the book is inaccessible or the resource store is unavailable, and the
-				returned resource might not exist.
-			</p>
-			<p>
-				When requiring a <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/io/File.html">File</a>, which is less portable,
-				use <a href="https://semanticcms.com/file/taglib/semanticcms-file.tld/function-getFileInDomain">${file:getFileInDomain()}</a>.
-			</p>
-		]]></description>
-		<name>getResourceInDomain</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>com.semanticcms.core.model.Resource getResourceInDomain(java.lang.String,java.lang.String,java.lang.String,boolean)</function-signature>
-		<example><![CDATA[<code>${core:getResourceInDomain(domain, book, path, require)</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2017-08-03T10:59:48-05:00" -->
-		<!-- dateModified="2021-06-16T14:18:10-05:00" -->
-		<description><![CDATA[
-			<p class="semanticcms-tag-reference-summary">
-				Gets the resource for a book and book-relative path in the domain of the current JSP file.
-			</p>
-			<p>
-				Parameter "book": The name of the book containing the resource.
-			</p>
-			<p>
-				Parameter "path": The book-relative path to the resource,
-				must begin with a slash <code>/</code>.
-			</p>
-			<p>
-				Parameter "require": When <code>true</code>, the resource will be non-null and will exist;
-				a <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/io/FileNotFoundException.html">FileNotFoundException</a>
-				will be thrown if the book is inaccessible, the resource store is unavailable, or the resource
-				does not exist.  When <code>false</code>, the returned resource will be <code>null</code>
-				when the book is inaccessible or the resource store is unavailable, and the
-				returned resource might not exist.
-			</p>
-			<p>
-				When requiring a <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/io/File.html">File</a>, which is less portable,
-				use <a href="https://semanticcms.com/file/taglib/semanticcms-file.tld/function-getFileInBook">${file:getFileInBook()}</a>.
-			</p>
-		]]></description>
-		<name>getResourceInBook</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>com.semanticcms.core.model.Resource getResourceInBook(java.lang.String,java.lang.String,boolean)</function-signature>
-		<example><![CDATA[<code>${core:getResourceInBook(book, path, require)</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2017-08-03T10:59:48-05:00" -->
-		<!-- dateModified="2021-06-16T14:18:10-05:00" -->
-		<description><![CDATA[
-			<p class="semanticcms-tag-reference-summary">
-				Gets the resource for a page-relative path in the domain and book of the current JSP file.
-			</p>
-			<p>
-				Parameter "path": The page-relative path to the resource;
-				book-relative when begins with a slash <code>/</code>.
-			</p>
-			<p>
-				Parameter "require": When <code>true</code>, the resource will be non-null and will exist;
-				a <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/io/FileNotFoundException.html">FileNotFoundException</a>
-				will be thrown if the book is inaccessible, the resource store is unavailable, or the resource
-				does not exist.  When <code>false</code>, the returned resource will be <code>null</code>
-				when the book is inaccessible or the resource store is unavailable, and the
-				returned resource might not exist.
-			</p>
-			<p>
-				When requiring a <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/io/File.html">File</a>, which is less portable,
-				use <a href="https://semanticcms.com/file/taglib/semanticcms-file.tld/function-getFile">${file:getFile()}</a>.
-			</p>
-		]]></description>
-		<name>getResource</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>com.semanticcms.core.model.Resource getResource(java.lang.String,boolean)</function-signature>
-		<example><![CDATA[<code>${core:getResource(path, require)</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2016-11-11T16:21:13-06:00" -->
-		<description><![CDATA[
-			<p class="semanticcms-tag-reference-summary">
-				Gets an id for use in the current page.
-			</p>
-			<p>
-				If the page is part of a page index, such as in a combined view,
-				will be <code>page${pageNum}-${id}</code>.
-				Otherwise, the id is unchanged.
-			</p>
-		]]></description>
-		<name>getRefId</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.lang.String getRefId(java.lang.String)</function-signature>
-		<example><![CDATA[<code>${core:getRefId(id)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2016-11-11T16:21:13-06:00" -->
-		<description><![CDATA[
-			<p class="semanticcms-tag-reference-summary">
-				Gets an id for use in referencing the given page.
-			</p>
-			<p>
-				If the page is part of a page index, such as in a combined view,
-				will be <code>page${pageNum}-${id}</code>.
-				Otherwise, the id is unchanged.
-			</p>
-		]]></description>
-		<name>getRefIdInPage</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.lang.String getRefIdInPage(com.semanticcms.core.model.Page,java.lang.String)</function-signature>
-		<example><![CDATA[<code>${core:getRefIdInPage(page, id)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2021-06-16T14:18:10-05:00" -->
-		<description><![CDATA[
-			<p>
-				Calls <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/Math.html#ceil%28double%29">java.lang.Math.ceil(double)</a>,
-				but returns <code>null</code> when argument is <code>null</code>.
-			</p>
-		]]></description>
-		<name>ceil</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.lang.Double ceil(java.lang.Double)</function-signature>
-		<example><![CDATA[<code>${core:ceil(a)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2021-06-16T14:18:10-05:00" -->
-		<description><![CDATA[
-			<p>
-				Calls <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/Math.html#floor%28double%29">java.lang.Math.floor(double)</a>,
-				but returns <code>null</code> when argument is <code>null</code>.
-			</p>
-		]]></description>
-		<name>floor</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.lang.Double floor(java.lang.Double)</function-signature>
-		<example><![CDATA[<code>${core:floor(a)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2020-05-29T14:35:21-05:00" -->
-		<description><![CDATA[
-			<p class="semanticcms-tag-reference-summary">
-				Parses the provided request query string into a
-				<code>Map&lt;String,String&gt;</code>.
-			</p>
-			<p>
-				Maintains the original parameter order.
-				Only uses the first of each value per parameter name, multiple values not supported.
-				Decodes characters in the <a href="https://www.w3.org/TR/html40/appendix/notes.html#non-ascii-chars">recommended <code>UTF-8</code> encoding</a>.
-			</p>
-		]]></description>
-		<name>parseQueryString</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.util.Map parseQueryString(java.lang.String)</function-signature>
-		<!-- functionSignature="java.util.Map<java.lang.String,java.lang.String> parseQueryString(java.lang.String)" -->
-		<example><![CDATA[<code>${core:parseQueryString(pageContext.request.queryString)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2016-11-08T02:37:12-06:00" -->
-		<description><![CDATA[
-			<p>
-				Repeats a string the given number of times.
-			</p>
-		]]></description>
-		<name>repeat</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.lang.String repeat(java.lang.String,int)</function-signature>
-		<example><![CDATA[<code>${core:repeat(value, count)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2017-08-02T20:31:57-05:00" -->
-		<!-- dateModified="2017-08-02T20:31:57-05:00" -->
-		<description><![CDATA[
-			<p>
-				Gets the book published at the provided page path or <code>null</code>
-				if no book published on the path.
-			</p>
-			<p>
-				Please note that the book, although published, still might not be accessible.
-			</p>
-		]]></description>
-		<name>getPublishedBook</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>com.semanticcms.core.repository.Book getPublishedBook(java.lang.String)</function-signature>
-		<example><![CDATA[<code>${core:getPublishedBook(pagePath)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2018-06-02T01:11:31-05:00" -->
-		<description><![CDATA[
-			<p>
-				Encodes arbitrary data into a UTF-8 encoded, then hex-encoded string.
-			</p>
-		]]></description>
-		<name>encodeHexData</name>
-		<function-class>com.semanticcms.core.renderer.html.NavigationTreeRenderer</function-class>
-		<function-signature>java.lang.String encodeHexData(java.lang.String)</function-signature>
-		<example><![CDATA[<code>${core:encodeHexData(data)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2016-11-11T16:21:13-06:00" -->
-		<description><![CDATA[
-			<p>
-				Checks if the current request is part of a static export.
-			</p>
-		]]></description>
-		<name>isExporting</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>boolean isExporting()</function-signature>
-		<example><![CDATA[<code>${core:isExporting()}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2016-11-11T16:21:13-06:00" -->
-		<description><![CDATA[
-			<p class="semanticcms-tag-reference-summary">
-				Finds the copyright for the given page or <code>null</code> if none set.
-			</p>
-			<p>
-				Inherits fields from the parent page(s) within the same book, or uses
-				fields from the book copyright if none set on the page or its parent(s).
-			</p>
-		]]></description>
-		<name>findCopyright</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>com.semanticcms.core.model.Copyright findCopyright(com.semanticcms.core.model.Page)</function-signature>
-		<example><![CDATA[<code>${core:findCopyright(page)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2020-05-29T14:37:58-05:00" -->
-		<description><![CDATA[
-			<p class="semanticcms-tag-reference-summary">
-				Finds the author(s) for the given page.
-			</p>
-			<p>
-				Inherits authors from the parent page(s) within the same book, or uses
-				the book authors if none set on the page or its parent(s).
-			</p>
-		]]></description>
-		<name>findAuthors</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.util.Set findAuthors(com.semanticcms.core.model.Page)</function-signature>
-		<!-- functionSignature="java.util.Set<com.semanticcms.core.model.Author> findAuthors(com.semanticcms.core.model.Page)" -->
-		<example><![CDATA[<code>${core:findAuthors(page)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-09-06T16:13:33-05:00" -->
-		<!-- dateModified="2016-11-11T16:21:13-06:00" -->
-		<description><![CDATA[
-			<p class="semanticcms-tag-reference-summary">
-				Finds the allowRobots setting for the given page.
-			</p>
-			<p>
-				Inherits setting from the parent page(s) within the same book, or uses
-				the book allowRobots if none set on the page or its parent(s).
-			</p>
-		]]></description>
-		<name>findAllowRobots</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>boolean findAllowRobots(com.semanticcms.core.model.Page)</function-signature>
-		<example><![CDATA[<code>${core:findAllowRobots(page)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2016-11-11T16:21:13-06:00" -->
-		<description><![CDATA[
-			<p>
-				Checks if the given page has at least one accessible child page.
-				Ignores child pages in missing books.
-			</p>
-		]]></description>
-		<name>hasChild</name>
-		<function-class>com.semanticcms.core.servlet.PageUtils</function-class>
-		<function-signature>boolean hasChild(com.semanticcms.core.model.Page)</function-signature>
-		<example><![CDATA[<code>${core:hasChild(page)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-07T23:48:25-05:00" -->
-		<!-- dateModified="2016-11-08T02:37:12-06:00" -->
-		<description><![CDATA[
-			<p>
-				Checks if the given page, or optionally any of its child pages, has at least
-				one of the element type given.
-			</p>
-		]]></description>
-		<name>hasElement</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>boolean hasElement(com.semanticcms.core.model.Page,java.lang.String,boolean)</function-signature>
-		<example><![CDATA[<code>${core:hasElement(page, elementType, recursive)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-14T14:01:04-05:00" -->
-		<!-- dateModified="2020-11-26T20:49:30-06:00" -->
-		<description><![CDATA[
-			<p class="semanticcms-tag-reference-summary">
-				Looks for the nearest nested elements of the given class.
-			</p>
-			<p>
-				These elements may be direct descendents or descendents further down the tree,
-				but only the top-most descendents are returned.
-			</p>
-			<p>
-				If the node is a page, its elements are checked, but the elements of its child pages are not.
-			</p>
-		]]></description>
-		<name>findTopLevelElements</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.util.List findTopLevelElements(com.semanticcms.core.model.Node,java.lang.String)</function-signature>
-		<!-- functionSignature="java.util.List<?> findTopLevelElements(com.semanticcms.core.model.Node,java.lang.String)" -->
-		<example><![CDATA[<code>${core:findTopLevelElements(node, elementType)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-14T14:01:04-05:00" -->
-		<!-- dateModified="2020-05-29T14:45:17-05:00" -->
-		<description><![CDATA[
-			<p>
-				Gets all elements in the page (including all child elements) that are of the
-				given type, in the order they were declared in the page.
-			</p>
-		]]></description>
-		<name>filterElements</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.util.List filterElements(com.semanticcms.core.model.Page,java.lang.String)</function-signature>
-		<!-- functionSignature="java.util.List<? extends com.semanticcms.core.model.Element> filterElements(com.semanticcms.core.model.Page,java.lang.String)" -->
-		<example><![CDATA[<code>${core:filterElements(page, elementType)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-18T01:24:55-05:00" -->
-		<!-- dateModified="2018-06-02T01:11:31-05:00" -->
-		<description><![CDATA[
-			<p>
-				Checks if a view is applicable the given request and page.
-			</p>
-		]]></description>
-		<name>isViewApplicable</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>boolean isViewApplicable(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)</function-signature>
-		<example><![CDATA[<code>${core:isViewApplicable(view, page)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-28T15:04:17-05:00" -->
-		<!-- dateModified="2018-06-02T01:11:31-05:00" -->
-		<description><![CDATA[
-			<p>
-				Gets the CSS class to use for the main navigation link to this view.
-			</p>
-		]]></description>
-		<name>getViewLinkCssClass</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.lang.String getViewLinkCssClass(com.semanticcms.core.renderer.html.View)</function-signature>
-		<example><![CDATA[<code>${core:getViewLinkCssClass(view)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-28T17:56:51-05:00" -->
-		<!-- dateModified="2020-05-29T14:47:21-05:00" -->
-		<description><![CDATA[
-			<p>
-				Gets the optional additional parameter to a view link.
-			</p>
-		]]></description>
-		<name>getViewLinkParams</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.util.Map getViewLinkParams(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)</function-signature>
-		<!-- functionSignature="java.util.Map<java.lang.String,java.util.List<java.lang.String>> getViewLinkParams(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)" -->
-		<example><![CDATA[<code>${core:getViewLinkParams(view, page)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-12T01:59:04-05:00" -->
-		<!-- dateModified="2018-06-02T01:11:31-05:00" -->
-		<description><![CDATA[
-			<p>
-				Gets the copyright for the given view and page.
-			</p>
-		]]></description>
-		<name>getViewCopyright</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.lang.String getViewCopyright(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)</function-signature>
-		<example><![CDATA[<code>${core:getViewCopyright(view, page)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-12T01:59:04-05:00" -->
-		<!-- dateModified="2020-05-29T18:27:08-05:00" -->
-		<description><![CDATA[
-			<p>
-				Gets the authors for the given view and page.
-			</p>
-		]]></description>
-		<name>getViewAuthors</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.util.Set getViewAuthors(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)</function-signature>
-		<!-- functionSignature="java.util.Set<com.semanticcms.core.model.Author> getViewAuthors(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)" -->
-		<example><![CDATA[<code>${core:getViewAuthors(view, page)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-15T22:33:52-05:00" -->
-		<!-- dateModified="2018-06-02T01:11:31-05:00" -->
-		<description><![CDATA[
-			<p>
-				Gets the title for the given view and page.
-			</p>
-		]]></description>
-		<name>getViewTitle</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.lang.String getViewTitle(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)</function-signature>
-		<example><![CDATA[<code>${core:getViewTitle(view, page)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-09-11T00:56:38-05:00" -->
-		<!-- dateModified="2021-06-03T22:53:21-05:00" -->
-		<description><![CDATA[
-			<p>
-				Gets an optional set of additional links to include for this view
-				in the order they should be added.
-			</p>
-		]]></description>
-		<name>getViewLinks</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.util.Collection getViewLinks(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)</function-signature>
-		<!-- functionSignature="java.util.Collection<com.aoapps.taglib.Link> getViewLinks(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)" -->
-		<example><![CDATA[<code>${core:getViewLinks(view, page)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-09-06T16:13:33-05:00" -->
-		<!-- dateModified="2018-06-02T01:11:31-05:00" -->
-		<description><![CDATA[
-			<p>
-				Gets the allowRobots for the given view and page.
-			</p>
-		]]></description>
-		<name>getViewAllowRobots</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>boolean getViewAllowRobots(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)</function-signature>
-		<example><![CDATA[<code>${core:getViewAllowRobots(view, page)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-20T22:50:54-05:00" -->
-		<!-- dateModified="2016-11-08T02:37:12-06:00" -->
-		<description><![CDATA[
-			<p>
-				Gets the CSS class that is to be used to link to the given element or <code>null</code>
-				if none registered.
-			</p>
-		]]></description>
-		<name>getLinkCssClass</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.lang.String getLinkCssClass(com.semanticcms.core.model.Element)</function-signature>
-		<example><![CDATA[<code>${core:getLinkCssClass(element)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-08-28T16:31:50-05:00" -->
-		<!-- dateModified="2020-05-29T14:52:13-05:00" -->
-		<description><![CDATA[
-			<p>
-				Merges global and per-view scripts for the provided view.
-			</p>
-		]]></description>
-		<name>mergeGlobalAndViewScripts</name>
-		<function-class>com.semanticcms.core.taglib.Functions</function-class>
-		<function-signature>java.util.Map mergeGlobalAndViewScripts(com.semanticcms.core.renderer.html.View)</function-signature>
-		<!-- function-signature="java.util.Map<java.lang.String,java.lang.String> mergeGlobalAndViewScripts(com.semanticcms.core.renderer.html.View)" -->
-		<example><![CDATA[<code>${core:mergeGlobalAndViewScripts(view)}</code>]]></example>
-	</function>
-	<function>
-		<!-- datePublished="2016-10-18T15:33:03-05:00" -->
-		<!-- dateModified="2016-11-08T02:37:12-06:00" -->
-		<description><![CDATA[
-			<p>
-				Determines the short title for a page and one of its parents.
-			</p>
-		]]></description>
-		<name>getShortTitle</name>
-		<function-class>com.semanticcms.core.servlet.PageUtils</function-class>
-		<function-signature>java.lang.String getShortTitle(com.semanticcms.core.model.PageRef,com.semanticcms.core.model.Page)</function-signature>
-		<example><![CDATA[<code>${core:getShortTitle(parentPageRef,page)}</code>]]></example>
-	</function>
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+  version="2.1">
+  <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+  <!-- dateModified="2016-11-11T16:21:13-06:00" -->
+  <description><![CDATA[
+    <p>@{description.html}</p>
+  ]]></description>
+  <display-name>@{project.name}</display-name>
+  <tlib-version>
+    <!-- Release: @{project.version} -->
+    @{parsedVersion.majorVersion}.@{parsedVersion.minorVersion}.@{parsedVersion.incrementalVersion}
+  </tlib-version>
+  <short-name>core</short-name>
+  <uri>@{project.url}</uri>
+  <tag>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2022-04-19T20:58:39-05:00" -->
+    <description><![CDATA[
+      <p class="semanticcms-tag-reference-summary">
+        The body of this tag represents one page of content.
+      </p>
+      <p>
+        There must be at most one &lt;core:page&gt; tag per JSP file because the path to
+        the page is determined by the servlet requestPath (or most recent <a href="https://oss.aoapps.com/taglib/ao.tld/tag-include">&lt;ao:include&gt;</a>).
+      </p>
+      <p>
+        When this page is directly accessed, the page is rendered with the
+        page content coming from the body of this tag.  The page is captured in <code>BODY</code> mode,
+        the view is resolved, and the page and view are forwarded to the theme to generate the output.
+      </p>
+    ]]></description>
+    <name>page</name>
+    <tag-class>com.semanticcms.core.taglib.PageTag</tag-class>
+    <tei-class>com.semanticcms.core.taglib.PageTagTEI</tei-class>
+    <body-content>scriptless</body-content>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The domain of the book containing the page.
+          Defaults to the domain of the current JSP file.
+        </p>
+      ]]></description>
+      <name>domain</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The book containing the page.
+          Defaults to the book of the current JSP file.
+        </p>
+      ]]></description>
+      <name>book</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The page-relative path to the page.
+          Required when book provided.
+          Defaults to the current JSP file.
+        </p>
+      ]]></description>
+      <name>path</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p class="semanticcms-tag-reference-summary">
+          The <a href="https://schema.org/dateCreated">dateCreated</a> in <a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a> format.
+        </p>
+        <p>
+          At least <code>YYYY-MM-DD</code> is required,
+          and when time not specified will default to midnight in the current system time zone.
+          A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
+          Any value accepted by Joda Time <a href="@{jodaTimeApidocs}org/joda/time/DateTime.html#DateTime-java.lang.Object-">DateTime</a>
+          is accepted.
+        </p>
+        <p>
+          When dateCreated and datePublished are the same date, prefer
+          datePublished because it seems to have more use overall than created.
+        </p>
+      ]]></description>
+      <name>dateCreated</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.Object</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p class="semanticcms-tag-reference-summary">
+          The <a href="https://schema.org/datePublished">datePublished</a> in <a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a> format.
+        </p>
+        <p>
+          At least <code>YYYY-MM-DD</code> is required,
+          and when time not specified will default to midnight in the current system time zone.
+          A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
+          Any value accepted by Joda Time <a href="@{jodaTimeApidocs}org/joda/time/DateTime.html#DateTime-java.lang.Object-">DateTime</a>
+          is accepted.
+        </p>
+        <p>
+          When dateCreated and datePublished are the same date, prefer
+          datePublished because it seems to have more use overall than created.
+        </p>
+      ]]></description>
+      <name>datePublished</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.Object</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p class="semanticcms-tag-reference-summary">
+          The <a href="https://schema.org/dateModified">dateModified</a> in <a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a> format.
+        </p>
+        <p>
+          At least <code>YYYY-MM-DD</code> is required,
+          and when time not specified will default to midnight in the current system time zone.
+          A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
+          Any value accepted by Joda Time <a href="@{jodaTimeApidocs}org/joda/time/DateTime.html#DateTime-java.lang.Object-">DateTime</a>
+          is accepted.
+        </p>
+      ]]></description>
+      <name>dateModified</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.Object</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p class="semanticcms-tag-reference-summary">
+          The dateReviewed in <a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a> format.
+        </p>
+        <p>
+          At least <code>YYYY-MM-DD</code> is required,
+          and when time not specified will default to midnight in the current system time zone.
+          A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
+          Any value accepted by Joda Time <a href="@{jodaTimeApidocs}org/joda/time/DateTime.html#DateTime-java.lang.Object-">DateTime</a>
+          is accepted.
+        </p>
+        <p>
+          This has no equivalent in <a href="https://schema.org/">https://schema.org/</a>, however
+          we feel it is important to actively review content to ensure its accuracy, even when it
+          has not been modified.
+        </p>
+      ]]></description>
+      <name>dateReviewed</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.Object</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          When <code>SGML</code>, forces the content-type to be <code>text/html</code>.
+          When <code>XML</code>, forces the content-type to be <code>application/xhtml+xml</code>.
+          When <code>auto</code> (the default), the following steps are performed to resolve the serialization:
+        </p>
+        <ol>
+          <li>Use the serialization active on the current request.</li>
+          <li>
+            Use the application <a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
+            <code>com.aoapps.encoding.Serialization.default</code>
+            that allows an application to control the selection of HTML versus XHTML.
+          </li>
+          <li>
+            When this context-param is unspecified or <code>auto</code>,
+            determine the serialization based on the client's <code>Accept</code> header.
+          </li>
+        </ol>
+        <p>
+          This should normally be left with the default value of <code>auto</code>.  This is used
+          when the content is known to contain invalid markup that can not be parsed as XML.
+        </p>
+      ]]></description>
+      <name>serialization</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The <a href="https://www.w3schools.com/tags/tag_doctype.asp">&lt;!DOCTYPE&gt;</a> to use,
+          must be one of <code>default</code>, <code>HTML5</code>, <code>STRICT</code>, <code>TRANSITIONAL</code>,
+          <code>FRAMESET</code>, or <code>NONE</code>.
+          Defaults to <code>HTML5</code>.  <code>NONE</code> will suppress the output of a doctype.
+        </p>
+        <p>
+          When <code>default</code>, the following steps are performed to resolve the doctype:
+        </p>
+        <ol>
+          <li>Use the doctype active on the current request.</li>
+          <li>
+            Use the application <a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
+            <code>com.aoapps.encoding.Doctype.default</code>
+            that allows an application to control the default doctype.
+          </li>
+          <li>
+            When this context-param is unspecified or <code>default</code>,
+            defaults to <code>HTML5</code>.
+          </li>
+        </ol>
+      ]]></description>
+      <name>doctype</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          When <code>true</code>, enables automatic newline (and tab indentation when enabled).
+          When <code>false</code>, disables automatic newline and tab indentation.
+          When <code>auto</code> (the default), the following steps are performed to resolve the autonli setting:
+        </p>
+        <ol>
+          <li>Use the autonli setting active on the current request.</li>
+          <li>
+            Use the application <a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
+            <code>com.aoapps.html.servlet.DocumentEE.autonli</code>
+            that allows an application to control the default autonli setting.
+          </li>
+          <li>
+            When this context-param is unspecified or <code>auto</code>,
+            defaults to <code>false</code>.
+          </li>
+        </ol>
+      ]]></description>
+      <name>autonli</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          When <code>true</code>, enables tab indentation.
+          When <code>false</code>, disables tab indentation.
+          When <code>auto</code> (the default), the following steps are performed to resolve the indent setting:
+        </p>
+        <ol>
+          <li>Use the indent setting active on the current request.</li>
+          <li>
+            Use the application <a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
+            <code>com.aoapps.html.servlet.DocumentEE.indent</code>
+            that allows an application to control the default indent setting.
+          </li>
+          <li>
+            When this context-param is unspecified or <code>auto</code>,
+            defaults to <code>false</code>.
+          </li>
+        </ol>
+      ]]></description>
+      <name>indent</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The title of the page.
+        </p>
+      ]]></description>
+      <name>title</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p class="semanticcms-tag-reference-summary">
+          The optional short title of the page.
+        </p>
+        <p>
+          A short title is used when the context of a page is well established, such as when
+          showing a path to the current location in the site.
+        </p>
+        <p>
+          The short title defaults to the page title.
+        </p>
+      ]]></description>
+      <name>shortTitle</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The optional description of the page.
+        </p>
+      ]]></description>
+      <name>description</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The optional comma-separated keywords of the page.
+        </p>
+      ]]></description>
+      <name>keywords</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p class="semanticcms-tag-reference-summary">
+          Controls whether robots will be allowed to access this page.
+        </p>
+        <p>
+          When not allowed, a page will have <code>&lt;meta name="robots" content="noindex, nofollow" /&gt;</code>
+          added and be excluded from sitemaps.
+          Links to the page will also have <code>rel="nofollow"</code> added.
+        </p>
+        <p>
+          Possible values are:
+        </p>
+        <ul>
+          <li><code>auto</code> - Inherit setting from parent(s) within the book or book settings if have no parents within the book</li>
+          <li><code>true</code> - Robots allowed</li>
+          <li><code>false</code> - Robots not allowed</li>
+        </ul>
+        <p>
+          Defaults to <code>auto</code>.
+        </p>
+      ]]></description>
+      <name>allowRobots</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue><!-- TODO: deferred where appropriate -->
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p class="semanticcms-tag-reference-summary">
+          Includes a table of contents at the top of the page.
+        </p>
+        <p>
+          Possible values are:
+        </p>
+        <ul>
+          <li><code>auto</code> - Automatically selected</li>
+          <li><code>true</code> - Always show</li>
+          <li><code>false</code> - Always hide</li>
+        </ul>
+        <p>
+          Defaults to <code>auto</code>.
+        </p>
+      ]]></description>
+      <name>toc</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The number of levels to display in the table of contents.
+          Must be between 1 and 5.
+          Defaults to 3.
+        </p>
+      ]]></description>
+      <name>tocLevels</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>int</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p class="semanticcms-tag-reference-summary">
+          When <code>true</code>, it is acceptable for the parents to not list this page
+          as a child.  In other words, this page may claim a parent that does
+          not also claim this as a child.
+        </p>
+        <p>
+          Parent-child relationships are never verified to parents from missing books.
+        </p>
+        <p>
+          Defaults to <code>false</code> meaning strict parent-child relationship verification.
+        </p>
+        <p>
+          Use of this can result in this page being orphaned, where this page
+          and its child pages are not included in site traversals, such as for
+          tree views or searches.
+        </p>
+      ]]></description>
+      <name>allowParentMismatch</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p class="semanticcms-tag-reference-summary">
+          When <code>true</code>, it is acceptable for the children to not list this page
+          as a parent.  In other words, this page may claim a child that does
+          not also claim this as a parent.
+        </p>
+        <p>
+          Child-parent relationships are never verified to children from missing books.
+        </p>
+        <p>
+          Defaults to <code>false</code> meaning strict child-parent relationship verification.
+        </p>
+        <p>
+          Use of this can result in incomplete determination of the
+          children page's location(s) within the overall site.
+        </p>
+      ]]></description>
+      <name>allowChildMismatch</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>boolean</type>
+    </attribute>
+    <dynamic-attributes>true</dynamic-attributes>
+  </tag>
+  <tag>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2016-11-11T16:21:13-06:00" -->
+    <description><![CDATA[
+      <p class="semanticcms-tag-reference-summary">
+        Sets the copyright for the current page.
+      </p>
+      <p>
+        At least one field must be set to a non-null value.
+      </p>
+      <p>
+        Any field not set (or set to <code>null</code>) will be inherited from the parent(s) in the same book.
+        Any field set to <code>""</code> will have no value and not inherit from parents.
+      </p>
+      <p>
+        If there are no parent pages in this same book, uses the fields from the book's copyright.
+      </p>
+      <p>
+        When inheriting a field from multiple parent pages, the field must
+        have exactly the same value in all parents.  Any mismatch in value
+        will result in an exception.
+      </p>
+    ]]></description>
+    <name>copyright</name>
+    <tag-class>com.semanticcms.core.taglib.CopyrightTag</tag-class>
+    <body-content>empty</body-content>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The rights holder.
+          <code>""</code> means none and <code>null</code> will inherit.
+        </p>
+      ]]></description>
+      <name>rightsHolder</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The rights.
+          <code>""</code> means none and <code>null</code> will inherit.
+        </p>
+      ]]></description>
+      <name>rights</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The date copyrighted.
+          <code>""</code> means none and <code>null</code> will inherit.
+        </p>
+      ]]></description>
+      <name>dateCopyrighted</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+  </tag>
+  <tag>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2020-11-23T03:04:27-06:00" -->
+    <description><![CDATA[
+      <p class="semanticcms-tag-reference-summary">
+        Adds an author to the current page.
+        It is permissible to have an author in a missing book.
+      </p>
+      <p>
+        When no authors provided, will use the author(s) of any parent
+        page that is within the same book.  If there are no parent pages
+        in this same book, uses the book's authors.
+      </p>
+      <p>
+        When inheriting authorship from multiple parent pages, the authors must
+        be in exact agreement.  This means exactly the same order and all
+        values matching precisely.  Any mismatch in authors will result in
+        an exception.
+      </p>
+    ]]></description>
+    <name>author</name>
+    <tag-class>com.semanticcms.core.taglib.AuthorTag</tag-class>
+    <body-content>empty</body-content>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The name of the author, to be used in <code>&lt;meta name="author" content="…" /&gt;</code>.
+          Required when neither href nor page are provided.
+          Also required when page provided and the page is in a different book.
+        </p>
+      ]]></description>
+      <name>name</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The href of the author, to be used in <code>&lt;link rel="author" href="…" /&gt;</code>
+          Required when neither name nor page are provided.
+          May not be used when page provided.
+        </p>
+      ]]></description>
+      <name>href</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The domain containing the author page.
+          Defaults to the domain of the current JSP file.
+          When domain provided, both book and page attributes must also be provided.
+        </p>
+      ]]></description>
+      <name>domain</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The book containing the author page.
+          Defaults to the book of the current JSP file.
+          When book provided, page attribute must also be provided.
+        </p>
+      ]]></description>
+      <name>book</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The page-relative path to the author page, to be used in <code>&lt;link rel="author" href="…" /&gt;</code>.
+          Required when neither name nor href are provided.
+          May not be used when href provided.
+        </p>
+      ]]></description>
+      <name>page</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+  </tag>
+  <tag>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2017-08-01T16:44:47-05:00" -->
+    <description><![CDATA[
+      <p class="semanticcms-tag-reference-summary">
+        Adds the given page as a parent of the current page.
+        This tag only represents the relationship, so body content is not allowed.
+        It is permissible to have a parent in a missing book.
+      </p>
+      <p>
+        To build the relationship between pages and parents, the page
+        should include &lt;core:parent&gt; tags for each parent page within
+        the body of the <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a> tag.
+      </p>
+      <p>
+        Due to optimizations during page-only capturing, the parent pages must be added directly in
+        the page body, not from within other nested elements.
+      </p>
+      <p>
+        This may not be set on the <code>content.root</code> of any of the books, as the
+        parent(s) of a book varies based on where the book is placed.  The
+        parent(s) of a book are configured in the <code>/WEB-INF/books.xml</code> file.
+        All books require at least one parent except the <code>rootBook</code> which does not allow
+        any parent.  These rules ensure a single root Directed Acyclic Graph (DAG).
+      </p>
+      <p>
+        If no parents are added, an automatic parent is computed as follows:
+      </p>
+      <ol>
+        <li>If this page is the <code>content.root</code> of a book, include all parents configured in <code>/WEB-INF/books.xml</code>.</li>
+        <li>If this page URL ends in <code>/</code>, <code>/index.jspx</code> or <code>/index.jsp</code>,
+          look for JSP page at <code>../index.jspx</code> or <code>../index.jsp</code> then asssume <code>../</code>,
+          error if outside book.
+        </li>
+        <li>Look for page at <code>./index.jspx</code> or <code>./index.jsp</code> then assume <code>./</code>.</li>
+      </ol>
+      <p>
+        Unless <code>allowParentMismatch</code> is enabled on the <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a>,
+        the parent must also consider this page as a child.
+      </p>
+    ]]></description>
+    <name>parent</name>
+    <tag-class>com.semanticcms.core.taglib.ParentTag</tag-class>
+    <body-content>empty</body-content>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The domain of the book containing the parent page.
+          Defaults to the domain of the current JSP file.
+        </p>
+      ]]></description>
+      <name>domain</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The book containing the parent page.
+          Defaults to the book of the current JSP file.
+        </p>
+      ]]></description>
+      <name>book</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The page-relative path to the parent page.
+        </p>
+      ]]></description>
+      <name>page</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The optional short title of the page when within the context of this parent.
+          When not provided, the shortTitle of the page itself is used.
+        </p>
+      ]]></description>
+      <name>shortTitle</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+  </tag>
+  <tag>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2017-08-01T16:44:47-05:00" -->
+    <description><![CDATA[
+      <p class="semanticcms-tag-reference-summary">
+        Adds the given page as a subpage of the current page.
+        This tag only represents the relationship, so body content is not allowed.
+        It is permissible to have a child in a missing book.
+      </p>
+      <p>
+        To build the relationship between pages and subpages, the page
+        should include &lt;core:child&gt; tags for each child page within
+        the body of the <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a> tag.
+      </p>
+      <p>
+        Due to optimizations during page-only capturing, the child pages must be added directly in
+        the page body, not from within other nested elements.
+      </p>
+      <p>
+        Unless <code>allowChildMismatch</code> is enabled on the <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a>,
+        the child must also consider this page as a parent.
+      </p>
+    ]]></description>
+    <name>child</name>
+    <tag-class>com.semanticcms.core.taglib.ChildTag</tag-class>
+    <body-content>empty</body-content>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The domain containing the child page.
+          Defaults to the domain of the current JSP file.
+        </p>
+      ]]></description>
+      <name>domain</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The book containing the child page.
+          Defaults to the book of the current JSP file.
+        </p>
+      ]]></description>
+      <name>book</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The page-relative path to the child page.
+        </p>
+      ]]></description>
+      <name>page</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+  </tag>
+  <tag>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2021-06-16T14:18:10-05:00" -->
+    <description><![CDATA[
+      <p class="semanticcms-tag-reference-summary">
+        Writes a link to a page and optionally an element.
+        If element not provided, then page is required.
+        If page is not provided, links to element within the current page.
+      </p>
+      <p>
+        Any attribute that has no namespace and begins with <code>param.</code> is added to the href as a URL parameter.
+        The parameter name is the part of the attribute name following <code>param.</code>.
+      </p>
+      <p>
+        When a parameter value is <code>null</code> it is not added.
+        If the value is an
+        <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/Iterable.html">Iterable</a>,
+        <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Iterator.html">Iterator</a>,
+        <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Enumeration.html">Enumeration</a>,
+        or array, then each non-null element is coerced to
+        <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/String.html">String</a> as a separate
+        parameter in iteration order.  Otherwise, the value itself is
+        coerced to <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/String.html">String</a>
+        for the parameter value.
+      </p>
+      <p>
+        Nested <a href="@{project.url}semanticcms-core.tld/tag-param">&lt;core:param&gt;</a> or
+        <a href="@{project.url}semanticcms-core.tld/tag-params">&lt;core:params&gt;</a> tags will
+        add parameters after any provided as attributes.
+      </p>
+      <p>
+        If there is no body, writes the target page title or element label.
+      </p>
+    ]]></description>
+    <name>link</name>
+    <tag-class>com.semanticcms.core.taglib.LinkTag</tag-class>
+    <body-content>scriptless</body-content>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The CSS class for the link.
+          Defaults to a target-specific value, if any defined for the target element.
+          To avoid the default, pass an empty class: <code>&lt;core:link class="" … /&gt;</code>
+        </p>
+      ]]></description>
+      <name>class</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.Object</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The domain of the book containing the page.
+          Defaults to the domain of the current JSP file.
+        </p>
+      ]]></description>
+      <name>domain</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The book containing the page.
+          Defaults to the book of the current JSP file.
+        </p>
+      ]]></description>
+      <name>book</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <!-- TODO: Support missing page when book provided, using the book's root page. -->
+      <description><![CDATA[
+        <p>
+          The page-relative path to the page.
+          If not provided, must be nested in a <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a>
+          tag and assumes the current page.
+          Required when book provided.
+        </p>
+      ]]></description>
+      <name>page</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p class="semanticcms-tag-reference-summary">
+          The page-unique id of the element to link to.
+        </p>
+        <p>
+          This is used to reference SemanticCMS elements within a page.
+          Conflicts with the <code>anchor</code> attribute.
+        </p>
+        <p>
+          To reference a specific non-SemanticCMS-element target, use the <code>anchor</code>
+          attribute instead.
+        </p>
+        <p>
+          The anchor is automatically prefixed in multi-page views.
+          The anchor is also URL-encoded.
+        </p>
+      ]]></description>
+      <name>element</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          When <code>false</code>, the default, may not link to generated ids.
+          This is to avoid broken links as it is preferred to set explicit ids on target elements.
+          Set to <code>true</code> to allow linking to generated element ids.
+        </p>
+      ]]></description>
+      <name>allowGeneratedElement</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p class="semanticcms-tag-reference-summary">
+          The anchor to link to on the given page.
+        </p>
+        <p>
+          This is used to reference non-SemanticCMS-element targets within a page.
+          Conflicts with the <code>element</code> attribute.
+        </p>
+        <p>
+          To reference a specific SemanticCMS element, use the <code>element</code>
+          attribute instead.
+        </p>
+        <p>
+          The anchor is automatically prefixed in multi-page views.
+          The anchor is also URL-encoded.
+        </p>
+      ]]></description>
+      <name>anchor</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p class="semanticcms-tag-reference-summary">
+          The view mode to use in the link target.
+        </p>
+        <p>
+          Although view is site defined, some common values might include:
+        </p>
+        <ul>
+          <li><code>null</code>, <code>""</code>, or <code>content</code> (the default and always supported) - Links to the page content</li>
+          <li><code>what-links-here</code></li>
+          <li><code>tree</code></li>
+          <li><code>all</code></li>
+          <li><code>files</code></li>
+        </ul>
+      ]]></description>
+      <name>view</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          When <code>false</code>, the default, will generate a &lt;a&gt; tag around the entire body.
+          Otherwise, will generate a &lt;span&gt; instead, with a small link added to
+          the end of the body.
+        </p>
+        <p>
+          Use of a small link can be helpful for usability, such as when the body is
+          a piece of information intended for quick copy/paste by the user.
+        </p>
+      ]]></description>
+      <name>small</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          When <code>true</code>, generates an absolute URL for the href for the link.
+          Defaults to <code>false</code>.
+        </p>
+      ]]></description>
+      <name>absolute</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          When <code>true</code>, will generate a <a href="https://oss.aoapps.com/servlet-util/apidocs/com.aoapps.servlet.util/com/aoapps/servlet/http/Canonical.html">Canonical URL</a>.
+          Canonical URLs should be used where per-user response URL rewriting
+          (such as information added when cookies are disabled) should be avoided.
+          Defaults to <code>false</code>.
+        </p>
+      ]]></description>
+      <name>canonical</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>boolean</type>
+    </attribute>
+    <dynamic-attributes>true</dynamic-attributes>
+  </tag>
+  <tag>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2021-06-16T13:20:50-05:00" -->
+    <description><![CDATA[
+      <p>
+        Adds a parameter to its
+        <a href="https://oss.aoapps.com/taglib/apidocs/com.aoapps.taglib/com/aoapps/taglib/ParamsAttribute.html">ParamsAttribute</a>
+        parent tag.
+      </p>
+    ]]></description>
+    <name>param</name>
+    <tag-class>com.aoapps.taglib.ParamTag</tag-class>
+    <body-content>scriptless</body-content>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The name of parameter tag.
+        </p>
+      ]]></description>
+      <name>name</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.Object</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The value of the parameter.
+          If not provided, the output of the body is used with whitespace trimmed.
+        </p>
+      ]]></description>
+      <name>value</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.Object</type>
+      <!-- TODO: Deferred once supported by ao-taglib -->
+    </attribute>
+  </tag>
+  <tag>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2021-10-25T18:37:50-05:00" -->
+    <description><![CDATA[
+      <p>
+        Adds multiple parameters to its
+        <a href="https://oss.aoapps.com/taglib/apidocs/com.aoapps.taglib/com/aoapps/taglib/ParamsAttribute.html">ParamsAttribute</a>
+        parent tag.
+      </p>
+    ]]></description>
+    <name>params</name>
+    <tag-class>com.aoapps.taglib.ParamsTag</tag-class>
+    <body-content>scriptless</body-content>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The name of parameter to add.
+        </p>
+        <p>
+          When provided, the values may not contain a
+          <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Map.html">Map</a>
+          or <a href="https://oss.aoapps.com/net-types/apidocs/com.aoapps.net.types/com/aoapps/net/URIParameters.html">URIParameters</a>.
+          When provided, the exclude attribute may not be provided.
+        </p>
+      ]]></description>
+      <name>name</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.Object</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          Optionally excludes all elements of a
+          <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Map.html">Map</a>
+          or <a href="https://oss.aoapps.com/net-types/apidocs/com.aoapps.net.types/com/aoapps/net/URIParameters.html">URIParameters</a>
+          that match any of the comma-separated patterns.
+          May not be used in conjunction with the name attribute.
+        </p>
+        <p>
+          Each pattern in the comma-separated list may be in the following format:
+        </p>
+        <table class="ao-grid">
+          <tbody>
+            <tr>
+              <td>exact_name</td>
+              <td>matches the name exactly</td>
+            </tr>
+            <tr>
+              <td>*</td>
+              <td>matches all (clears all parameters)</td>
+            </tr>
+            <tr>
+              <td>*suffix</td>
+              <td>matches the name with "endsWith"</td>
+            </tr>
+            <tr>
+              <td>prefix*</td>
+              <td>matches the name with "beginsWith"</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Defaults to none excluded.
+        </p>
+      ]]></description>
+      <name>exclude</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The values of the parameters.
+        </p>
+        <p>
+          When name is provided, supports
+          <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/Iterable.html">Iterable</a>,
+          <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Iterator.html">Iterator</a>,
+          <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Enumeration.html">Enumeration</a>,
+          or array values.
+        </p>
+        <p>
+          When name is not provided, requires
+          <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Map.html">Map</a>
+          or <a href="https://oss.aoapps.com/net-types/apidocs/com.aoapps.net.types/com/aoapps/net/URIParameters.html">URIParameters</a>,
+          where the parameter name is the map key coerced to <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/String.html">String</a>
+          and the value (or set of values) is the map value.  Each of the entry values may be
+          <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/Iterable.html">Iterable</a>,
+          <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Iterator.html">Iterator</a>,
+          <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Enumeration.html">Enumeration</a>,
+          array, or single value.
+        </p>
+        <p>
+          When obtaining values from a
+          <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Map.html">Map</a>
+          or <a href="https://oss.aoapps.com/net-types/apidocs/com.aoapps.net.types/com/aoapps/net/URIParameters.html">URIParameters</a>,
+          parameters may be excluded with the "exclude" attribute.
+        </p>
+        <p>
+          Parameters are never added with <code>null</code> values.
+        </p>
+      ]]></description>
+      <name>values</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.Object</type>
+      <!-- TODO: Deferred once supported by ao-taglib -->
+    </attribute>
+  </tag>
+  <tag>
+    <!-- datePublished="2017-07-19T12:12:39-05:00" -->
+    <!-- dateModified="2021-06-16T13:20:50-05:00" -->
+    <description><![CDATA[
+      <p>
+        Sets a property of a
+        <a href="https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/com/semanticcms/core/model/Node.html">Node</a>
+        parent tag (either a <a href="https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/com/semanticcms/core/model/Page.html">Page</a>
+        or an <a href="https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/com/semanticcms/core/model/Element.html">Element</a>).
+      </p>
+      <p>
+        See <a href="https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/com/semanticcms/core/model/Node.html#setProperty(java.lang.String,java.lang.Object)">setProperty(String name, Object value)</a>.
+      </p>
+    ]]></description>
+    <name>property</name>
+    <tag-class>com.semanticcms.core.taglib.PropertyTag</tag-class>
+    <body-content>scriptless</body-content>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The name of property.
+        </p>
+      ]]></description>
+      <name>name</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The value of the property.
+          If not provided, the output of the body is used with whitespace trimmed.
+        </p>
+      ]]></description>
+      <name>value</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.Object</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          Target object whose property will be set.
+        </p>
+        <p>
+          If not provided, sets the property on the closest parent <a href="https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/com/semanticcms/core/model/Node.html">Node</a>
+          parent tag (either a <a href="https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/com/semanticcms/core/model/Page.html">Page</a>
+          or an <a href="https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/com/semanticcms/core/model/Element.html">Element</a>).
+        </p>
+        <p>
+          The target must not be frozen, which, in the context of JSP, means only the parent element tags
+          within the current page, and the current page itself, can reliably have properties set.
+          Trying to set properties outside this scope is not advised and will likely be unreliable at best.
+          An exception will be thrown when trying to set a property on a frozen node.
+        </p>
+        <p>
+          In the future, we may add "attributes" to nodes, which would provide for different scopes
+          (application, session, request, page?) and could be changed dynamically.
+        </p>
+      ]]></description>
+      <name>target</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>com.semanticcms.core.model.Node</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          Optionally allows an existing property, when set to <code>true</code>.
+          When set to <code>false</code> (the default), and the property already exists,
+          an exception is thrown.
+        </p>
+        <p>
+          A property on a target may not be changed once set.  This includes when it has
+          been set to <code>null</code>.
+        </p>
+      ]]></description>
+      <name>allowExisting</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>boolean</type>
+    </attribute>
+  </tag>
+  <!-- TODO: core:properties, that sets multiple properties, accepts a map (or single Map.Entry)? -->
+  <tag>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2020-11-23T03:04:27-06:00" -->
+    <description><![CDATA[
+      <p>
+        Writes a tree of pages, and optionally elements, as &lt;ul&gt; and &lt;li&gt; tags.
+      </p>
+    ]]></description>
+    <name>navigationTree</name>
+    <tag-class>com.semanticcms.core.taglib.NavigationTreeTag</tag-class>
+    <body-content>empty</body-content>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The root page of the tree.
+        </p>
+      ]]></description>
+      <name>root</name>
+      <required>true</required>
+      <deferred-value>
+        <type>com.semanticcms.core.model.Page</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          May optionally skip the root page, displaying its children only.
+          Defaults to <code>false</code>.
+        </p>
+      ]]></description>
+      <name>skipRoot</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          May optionally add <a href="https://developer.yahoo.com/yui/treeview/">yuiConfig</a> data.
+          Defaults to <code>false</code>.
+        </p>
+      ]]></description>
+      <name>yuiConfig</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          May optionally include tree nodes for elements within pages.
+          Defaults to <code>false</code>.
+        </p>
+      ]]></description>
+      <name>includeElements</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>boolean</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          An optional target frame for links.
+        </p>
+      ]]></description>
+      <name>target</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>java.lang.String</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The domain of the book for thisPage.
+          Defaults to the domain of the current JSP file.
+        </p>
+      ]]></description>
+      <name>thisDomain</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The book for thisPage.
+          Defaults to the book of the current JSP file.
+        </p>
+      ]]></description>
+      <name>thisBook</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          May optionally mark a specific page (by context-relative path).
+          All page matches are marked with class <code>semanticcms-core-tree-this-page</code>.
+          Only the first match is marked with id <code>semanticcms-core-tree-this-page</code>.
+        </p>
+      ]]></description>
+      <name>thisPage</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The domain for the book for linksToPage.
+          Defaults to the domain of the current JSP file.
+        </p>
+      ]]></description>
+      <name>linksToDomain</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The book for linksToPage.
+          Defaults to the book of the current JSP file.
+        </p>
+      ]]></description>
+      <name>linksToBook</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          May optionally filter for pages that link to the given page (by context-relative path).
+          The parent pages of any page that has a link will also be included.
+          The pages that actually have a link will be marked with class <code>semanticcms-core-links-to-page</code>.
+        </p>
+      ]]></description>
+      <name>linksToPage</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          May optionally limit the depth of the navigation tree.
+          A skipped root does not count toward the depth.
+          <code>0</code>, the default, means unlimited depth.
+        </p>
+      ]]></description>
+      <name>maxDepth</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>int</type>
+    </attribute>
+  </tag>
+  <tag>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2016-11-11T16:21:13-06:00" -->
+    <description><![CDATA[
+      <p>
+        Writes the body of the given node, recursively replacing any nested
+        element markers.  The body is not written during <code>PAGE</code> and <code>META</code> captures.
+      </p>
+    ]]></description>
+    <name>writeNodeBody</name>
+    <tag-class>com.semanticcms.core.taglib.WriteNodeBodyTag</tag-class>
+    <body-content>empty</body-content>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The node to write.
+        </p>
+      ]]></description>
+      <name>node</name>
+      <required>true</required>
+      <deferred-value>
+        <type>com.semanticcms.core.model.Node</type>
+      </deferred-value>
+    </attribute>
+  </tag>
+  <tag>
+    <!-- datePublished="2016-08-12T03:18:55-05:00" -->
+    <!-- dateModified="2018-06-02T01:11:31-05:00" -->
+    <description><![CDATA[
+      <p>
+        Calls the view for the given page.
+      </p>
+    ]]></description>
+    <name>doView</name>
+    <tag-class>com.semanticcms.core.taglib.DoViewTag</tag-class>
+    <body-content>empty</body-content>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The view to call.
+        </p>
+      ]]></description>
+      <name>view</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>com.semanticcms.core.renderer.html.View</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The page to provide to the view.
+        </p>
+      ]]></description>
+      <name>page</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>com.semanticcms.core.model.Page</type>
+    </attribute>
+  </tag>
+  <tag>
+    <!-- datePublished="2016-10-17T20:33:52-05:00" -->
+    <!-- dateModified="2020-11-23T03:04:27-06:00" -->
+    <description><![CDATA[
+      <p>
+        Calls all registered components for the given view, page, position,
+        and optional order.
+      </p>
+    ]]></description>
+    <name>doComponents</name>
+    <tag-class>com.semanticcms.core.taglib.DoComponentsTag</tag-class>
+    <body-content>empty</body-content>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The view that is being rendered.
+        </p>
+      ]]></description>
+      <name>view</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>com.semanticcms.core.renderer.html.View</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The page that is being rendered.
+        </p>
+      ]]></description>
+      <name>page</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>com.semanticcms.core.model.Page</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The current position being handled.
+        </p>
+      ]]></description>
+      <name>position</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>com.semanticcms.core.servlet.ComponentPosition</type>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          When <code>false</code>, the default, will call components in forward order.
+          When <code>true</code>, will call the components in the reverse order.
+        </p>
+      ]]></description>
+      <name>reverse</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+      <type>boolean</type>
+    </attribute>
+  </tag>
+  <function>
+    <!-- datePublished="2017-08-01T16:44:47-05:00" -->
+    <!-- dateModified="2017-08-03T10:59:48-05:00" -->
+    <description><![CDATA[
+      <p class="semanticcms-tag-reference-summary">
+        Captures a <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a> in a provided domain and book.
+      </p>
+      <p>
+        The capture is always done with a request method of <code>GET</code>, even when the enclosing request is a different method.
+      </p>
+      <p>
+        Parameter "domain": The domain of the book containing the page.
+      </p>
+      <p>
+        Parameter "book": The name of the book containing the page.
+      </p>
+      <p>
+        Parameter "page": The book-relative path to the page to capture,
+        must begin with a slash <code>/</code>.
+      </p>
+      <p>
+        Parameter "level": Controls the level of detail to capture.  May be one of:
+      </p>
+      <ol>
+        <li><code>page</code> - Fastest: captures page meta data only (including parent and child pages).</li>
+        <li><code>meta</code> - Captures page and content meta data, but no body content.</li>
+        <li><code>body</code> - Captures page and content meta data as well as all body content.</li>
+      </ol>
+      <p>
+        Level may need to be set to <code>page</code> when two pages capture each other (either directly
+        or indirectly).  This may occur when these two pages capture each other for meta data,
+        such as automatic page title added to links.
+      </p>
+    ]]></description>
+    <name>capturePageInDomain</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>com.semanticcms.core.model.Page capturePageInDomain(java.lang.String,java.lang.String,java.lang.String,java.lang.String)</function-signature>
+    <example><![CDATA[<code>${core:capturePageInDomain(domain, book, page, level)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2017-08-03T10:59:48-05:00" -->
+    <description><![CDATA[
+      <p class="semanticcms-tag-reference-summary">
+        Captures a <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a> in a provided book
+        within the domain of the current JSP file.
+      </p>
+      <p>
+        The capture is always done with a request method of <code>GET</code>, even when the enclosing request is a different method.
+      </p>
+      <p>
+        Parameter "book": The name of the book containing the page.
+      </p>
+      <p>
+        Parameter "page": The book-relative path to the page to capture,
+        must begin with a slash <code>/</code>.
+      </p>
+      <p>
+        Parameter "level": Controls the level of detail to capture.  May be one of:
+      </p>
+      <ol>
+        <li><code>page</code> - Fastest: captures page meta data only (including parent and child pages).</li>
+        <li><code>meta</code> - Captures page and content meta data, but no body content.</li>
+        <li><code>body</code> - Captures page and content meta data as well as all body content.</li>
+      </ol>
+      <p>
+        Level may need to be set to <code>page</code> when two pages capture each other (either directly
+        or indirectly).  This may occur when these two pages capture each other for meta data,
+        such as automatic page title added to links.
+      </p>
+    ]]></description>
+    <name>capturePageInBook</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>com.semanticcms.core.model.Page capturePageInBook(java.lang.String,java.lang.String,java.lang.String)</function-signature>
+    <example><![CDATA[<code>${core:capturePageInBook(book, page, level)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2017-08-23T02:21:47-05:00" -->
+    <description><![CDATA[
+      <p class="semanticcms-tag-reference-summary">
+        Captures a <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a>
+        within the book and domain of the current JSP file.
+      </p>
+      <p>
+        Parameter "page": The page-relative path to the page to capture;
+        book-relative when begins with a slash <code>/</code>.
+      </p>
+      <p>
+        Parameter "path": The page-relative path to the resource
+      </p>
+      <p>
+        Parameter "level": Controls the level of detail to capture.  May be one of:
+      </p>
+      <ol>
+        <li><code>page</code> - Fastest: captures page meta data only (including parent and child pages).</li>
+        <li><code>meta</code> - Captures page and content meta data, but no body content.</li>
+        <li><code>body</code> - Captures page and content meta data as well as all body content.</li>
+      </ol>
+      <p>
+        Level may need to be set to <code>page</code> when two pages capture each other (either directly
+        or indirectly).  This may occur when these two pages capture each other for meta data,
+        such as automatic page title added to links.
+      </p>
+    ]]></description>
+    <name>capturePage</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>com.semanticcms.core.model.Page capturePage(java.lang.String,java.lang.String)</function-signature>
+    <example><![CDATA[<code>${core:capturePage(page, level)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2016-11-11T16:21:13-06:00" -->
+    <description><![CDATA[
+      <p>
+        Captures the content root <a href="@{project.url}semanticcms-core.tld/tag-page">&lt;core:page&gt;</a>
+        with the given capture level.
+      </p>
+    ]]></description>
+    <name>captureContentRoot</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>com.semanticcms.core.model.Page captureContentRoot(java.lang.String)</function-signature>
+    <example><![CDATA[<code>${core:captureContentRoot(level)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2016-11-11T16:21:13-06:00" -->
+    <description><![CDATA[
+      <p class="semanticcms-tag-reference-summary">
+        Gets the current capture level.
+      </p>
+      <p>
+        Will be one of:
+      </p>
+      <ol>
+        <li><code>null</code> - No capture in progress</li>
+        <li><code>page</code> - Fastest: capturing page meta data only.</li>
+        <li><code>meta</code> - Capturing page and content meta data, but no body content.</li>
+        <li><code>body</code> - Capturing page and content meta data as well as all body content.</li>
+      </ol>
+    ]]></description>
+    <name>getCaptureLevel</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>java.lang.String getCaptureLevel()</function-signature>
+    <example><![CDATA[<code>${core:getCaptureLevel()}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2016-11-11T16:21:13-06:00" -->
+    <description><![CDATA[
+      <p>
+        Get the page index for the given page reference.
+      </p>
+    ]]></description>
+    <name>getPageIndex</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>com.semanticcms.core.servlet.PageIndex getPageIndex(com.semanticcms.core.model.PageRef)</function-signature>
+    <example><![CDATA[<code>${core:getPageIndex(pageRef)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2020-05-29T14:33:14-05:00" -->
+    <description><![CDATA[
+      <p class="semanticcms-tag-reference-summary">
+        Flattens a page directed acyclic graph (DAG) into a list in depth-first traversal order.
+        Each page is only added once when first visited.
+      </p>
+      <p>
+        The page DAG starts as a single page with any number of children.
+        Each of the child pages may, in turn, have children.  The result of
+        this transformation is a list of pages in depth-first traversal order.
+      </p>
+      <p>
+        A page may actually be linked into multiple places in the DAG, so strictly
+        speaking this is a single root Directed Acyclic Graph (DAG).
+      </p>
+      <p>
+        Only the first occurance of each page will be in the resulting list.
+      </p>
+      <p>
+        Parameter "level": Controls the level of detail to capture.  May be one of:
+      </p>
+      <ol>
+        <li><code>page</code> - Fastest: captures page meta data only (including parent and child pages).</li>
+        <li><code>meta</code> - Captures page and content meta data, but no body content.</li>
+        <li><code>body</code> - Captures page and content meta data as well as all body content.</li>
+      </ol>
+    ]]></description>
+    <name>convertPageDagToList</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>java.util.List convertPageDagToList(com.semanticcms.core.model.Page,java.lang.String)</function-signature>
+    <!-- functionSignature="java.util.List<com.semanticcms.core.model.Page> convertPageDagToList(com.semanticcms.core.model.Page,java.lang.String)" -->
+    <example><![CDATA[<code>${core:convertPageDagToList(rootPage, level)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2017-08-03T10:59:48-05:00" -->
+    <!-- dateModified="2021-06-16T14:18:10-05:00" -->
+    <description><![CDATA[
+      <p class="semanticcms-tag-reference-summary">
+        Gets the resource for a domain, book, and book-relative path.
+      </p>
+      <p>
+        Parameter "domain": The domain of the book containing the resource.
+      </p>
+      <p>
+        Parameter "book": The name of the book containing the resource.
+      </p>
+      <p>
+        Parameter "path": The book-relative path to the resource,
+        must begin with a slash <code>/</code>.
+      </p>
+      <p>
+        Parameter "require": When <code>true</code>, the resource will be non-null and will exist;
+        a <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/io/FileNotFoundException.html">FileNotFoundException</a>
+        will be thrown if the book is inaccessible, the resource store is unavailable, or the resource
+        does not exist.  When <code>false</code>, the returned resource will be <code>null</code>
+        when the book is inaccessible or the resource store is unavailable, and the
+        returned resource might not exist.
+      </p>
+      <p>
+        When requiring a <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/io/File.html">File</a>, which is less portable,
+        use <a href="https://semanticcms.com/file/taglib/semanticcms-file.tld/function-getFileInDomain">${file:getFileInDomain()}</a>.
+      </p>
+    ]]></description>
+    <name>getResourceInDomain</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>com.semanticcms.core.model.Resource getResourceInDomain(java.lang.String,java.lang.String,java.lang.String,boolean)</function-signature>
+    <example><![CDATA[<code>${core:getResourceInDomain(domain, book, path, require)</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2017-08-03T10:59:48-05:00" -->
+    <!-- dateModified="2021-06-16T14:18:10-05:00" -->
+    <description><![CDATA[
+      <p class="semanticcms-tag-reference-summary">
+        Gets the resource for a book and book-relative path in the domain of the current JSP file.
+      </p>
+      <p>
+        Parameter "book": The name of the book containing the resource.
+      </p>
+      <p>
+        Parameter "path": The book-relative path to the resource,
+        must begin with a slash <code>/</code>.
+      </p>
+      <p>
+        Parameter "require": When <code>true</code>, the resource will be non-null and will exist;
+        a <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/io/FileNotFoundException.html">FileNotFoundException</a>
+        will be thrown if the book is inaccessible, the resource store is unavailable, or the resource
+        does not exist.  When <code>false</code>, the returned resource will be <code>null</code>
+        when the book is inaccessible or the resource store is unavailable, and the
+        returned resource might not exist.
+      </p>
+      <p>
+        When requiring a <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/io/File.html">File</a>, which is less portable,
+        use <a href="https://semanticcms.com/file/taglib/semanticcms-file.tld/function-getFileInBook">${file:getFileInBook()}</a>.
+      </p>
+    ]]></description>
+    <name>getResourceInBook</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>com.semanticcms.core.model.Resource getResourceInBook(java.lang.String,java.lang.String,boolean)</function-signature>
+    <example><![CDATA[<code>${core:getResourceInBook(book, path, require)</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2017-08-03T10:59:48-05:00" -->
+    <!-- dateModified="2021-06-16T14:18:10-05:00" -->
+    <description><![CDATA[
+      <p class="semanticcms-tag-reference-summary">
+        Gets the resource for a page-relative path in the domain and book of the current JSP file.
+      </p>
+      <p>
+        Parameter "path": The page-relative path to the resource;
+        book-relative when begins with a slash <code>/</code>.
+      </p>
+      <p>
+        Parameter "require": When <code>true</code>, the resource will be non-null and will exist;
+        a <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/io/FileNotFoundException.html">FileNotFoundException</a>
+        will be thrown if the book is inaccessible, the resource store is unavailable, or the resource
+        does not exist.  When <code>false</code>, the returned resource will be <code>null</code>
+        when the book is inaccessible or the resource store is unavailable, and the
+        returned resource might not exist.
+      </p>
+      <p>
+        When requiring a <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/io/File.html">File</a>, which is less portable,
+        use <a href="https://semanticcms.com/file/taglib/semanticcms-file.tld/function-getFile">${file:getFile()}</a>.
+      </p>
+    ]]></description>
+    <name>getResource</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>com.semanticcms.core.model.Resource getResource(java.lang.String,boolean)</function-signature>
+    <example><![CDATA[<code>${core:getResource(path, require)</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2016-11-11T16:21:13-06:00" -->
+    <description><![CDATA[
+      <p class="semanticcms-tag-reference-summary">
+        Gets an id for use in the current page.
+      </p>
+      <p>
+        If the page is part of a page index, such as in a combined view,
+        will be <code>page${pageNum}-${id}</code>.
+        Otherwise, the id is unchanged.
+      </p>
+    ]]></description>
+    <name>getRefId</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>java.lang.String getRefId(java.lang.String)</function-signature>
+    <example><![CDATA[<code>${core:getRefId(id)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2016-11-11T16:21:13-06:00" -->
+    <description><![CDATA[
+      <p class="semanticcms-tag-reference-summary">
+        Gets an id for use in referencing the given page.
+      </p>
+      <p>
+        If the page is part of a page index, such as in a combined view,
+        will be <code>page${pageNum}-${id}</code>.
+        Otherwise, the id is unchanged.
+      </p>
+    ]]></description>
+    <name>getRefIdInPage</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>java.lang.String getRefIdInPage(com.semanticcms.core.model.Page,java.lang.String)</function-signature>
+    <example><![CDATA[<code>${core:getRefIdInPage(page, id)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2021-06-16T14:18:10-05:00" -->
+    <description><![CDATA[
+      <p>
+        Calls <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/Math.html#ceil%28double%29">java.lang.Math.ceil(double)</a>,
+        but returns <code>null</code> when argument is <code>null</code>.
+      </p>
+    ]]></description>
+    <name>ceil</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>java.lang.Double ceil(java.lang.Double)</function-signature>
+    <example><![CDATA[<code>${core:ceil(a)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2021-06-16T14:18:10-05:00" -->
+    <description><![CDATA[
+      <p>
+        Calls <a rel="nofollow" href="@{javadoc.link.javase}java.base/java/lang/Math.html#floor%28double%29">java.lang.Math.floor(double)</a>,
+        but returns <code>null</code> when argument is <code>null</code>.
+      </p>
+    ]]></description>
+    <name>floor</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>java.lang.Double floor(java.lang.Double)</function-signature>
+    <example><![CDATA[<code>${core:floor(a)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2020-05-29T14:35:21-05:00" -->
+    <description><![CDATA[
+      <p class="semanticcms-tag-reference-summary">
+        Parses the provided request query string into a
+        <code>Map&lt;String,String&gt;</code>.
+      </p>
+      <p>
+        Maintains the original parameter order.
+        Only uses the first of each value per parameter name, multiple values not supported.
+        Decodes characters in the <a href="https://www.w3.org/TR/html40/appendix/notes.html#non-ascii-chars">recommended <code>UTF-8</code> encoding</a>.
+      </p>
+    ]]></description>
+    <name>parseQueryString</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>java.util.Map parseQueryString(java.lang.String)</function-signature>
+    <!-- functionSignature="java.util.Map<java.lang.String,java.lang.String> parseQueryString(java.lang.String)" -->
+    <example><![CDATA[<code>${core:parseQueryString(pageContext.request.queryString)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2016-11-08T02:37:12-06:00" -->
+    <description><![CDATA[
+      <p>
+        Repeats a string the given number of times.
+      </p>
+    ]]></description>
+    <name>repeat</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>java.lang.String repeat(java.lang.String,int)</function-signature>
+    <example><![CDATA[<code>${core:repeat(value, count)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2017-08-02T20:31:57-05:00" -->
+    <!-- dateModified="2017-08-02T20:31:57-05:00" -->
+    <description><![CDATA[
+      <p>
+        Gets the book published at the provided page path or <code>null</code>
+        if no book published on the path.
+      </p>
+      <p>
+        Please note that the book, although published, still might not be accessible.
+      </p>
+    ]]></description>
+    <name>getPublishedBook</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>com.semanticcms.core.repository.Book getPublishedBook(java.lang.String)</function-signature>
+    <example><![CDATA[<code>${core:getPublishedBook(pagePath)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2018-06-02T01:11:31-05:00" -->
+    <description><![CDATA[
+      <p>
+        Encodes arbitrary data into a UTF-8 encoded, then hex-encoded string.
+      </p>
+    ]]></description>
+    <name>encodeHexData</name>
+    <function-class>com.semanticcms.core.renderer.html.NavigationTreeRenderer</function-class>
+    <function-signature>java.lang.String encodeHexData(java.lang.String)</function-signature>
+    <example><![CDATA[<code>${core:encodeHexData(data)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2016-11-11T16:21:13-06:00" -->
+    <description><![CDATA[
+      <p>
+        Checks if the current request is part of a static export.
+      </p>
+    ]]></description>
+    <name>isExporting</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>boolean isExporting()</function-signature>
+    <example><![CDATA[<code>${core:isExporting()}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2016-11-11T16:21:13-06:00" -->
+    <description><![CDATA[
+      <p class="semanticcms-tag-reference-summary">
+        Finds the copyright for the given page or <code>null</code> if none set.
+      </p>
+      <p>
+        Inherits fields from the parent page(s) within the same book, or uses
+        fields from the book copyright if none set on the page or its parent(s).
+      </p>
+    ]]></description>
+    <name>findCopyright</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>com.semanticcms.core.model.Copyright findCopyright(com.semanticcms.core.model.Page)</function-signature>
+    <example><![CDATA[<code>${core:findCopyright(page)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2020-05-29T14:37:58-05:00" -->
+    <description><![CDATA[
+      <p class="semanticcms-tag-reference-summary">
+        Finds the author(s) for the given page.
+      </p>
+      <p>
+        Inherits authors from the parent page(s) within the same book, or uses
+        the book authors if none set on the page or its parent(s).
+      </p>
+    ]]></description>
+    <name>findAuthors</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>java.util.Set findAuthors(com.semanticcms.core.model.Page)</function-signature>
+    <!-- functionSignature="java.util.Set<com.semanticcms.core.model.Author> findAuthors(com.semanticcms.core.model.Page)" -->
+    <example><![CDATA[<code>${core:findAuthors(page)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-09-06T16:13:33-05:00" -->
+    <!-- dateModified="2016-11-11T16:21:13-06:00" -->
+    <description><![CDATA[
+      <p class="semanticcms-tag-reference-summary">
+        Finds the allowRobots setting for the given page.
+      </p>
+      <p>
+        Inherits setting from the parent page(s) within the same book, or uses
+        the book allowRobots if none set on the page or its parent(s).
+      </p>
+    ]]></description>
+    <name>findAllowRobots</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>boolean findAllowRobots(com.semanticcms.core.model.Page)</function-signature>
+    <example><![CDATA[<code>${core:findAllowRobots(page)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2016-11-11T16:21:13-06:00" -->
+    <description><![CDATA[
+      <p>
+        Checks if the given page has at least one accessible child page.
+        Ignores child pages in missing books.
+      </p>
+    ]]></description>
+    <name>hasChild</name>
+    <function-class>com.semanticcms.core.servlet.PageUtils</function-class>
+    <function-signature>boolean hasChild(com.semanticcms.core.model.Page)</function-signature>
+    <example><![CDATA[<code>${core:hasChild(page)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-07T23:48:25-05:00" -->
+    <!-- dateModified="2016-11-08T02:37:12-06:00" -->
+    <description><![CDATA[
+      <p>
+        Checks if the given page, or optionally any of its child pages, has at least
+        one of the element type given.
+      </p>
+    ]]></description>
+    <name>hasElement</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>boolean hasElement(com.semanticcms.core.model.Page,java.lang.String,boolean)</function-signature>
+    <example><![CDATA[<code>${core:hasElement(page, elementType, recursive)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-14T14:01:04-05:00" -->
+    <!-- dateModified="2020-11-26T20:49:30-06:00" -->
+    <description><![CDATA[
+      <p class="semanticcms-tag-reference-summary">
+        Looks for the nearest nested elements of the given class.
+      </p>
+      <p>
+        These elements may be direct descendents or descendents further down the tree,
+        but only the top-most descendents are returned.
+      </p>
+      <p>
+        If the node is a page, its elements are checked, but the elements of its child pages are not.
+      </p>
+    ]]></description>
+    <name>findTopLevelElements</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>java.util.List findTopLevelElements(com.semanticcms.core.model.Node,java.lang.String)</function-signature>
+    <!-- functionSignature="java.util.List<?> findTopLevelElements(com.semanticcms.core.model.Node,java.lang.String)" -->
+    <example><![CDATA[<code>${core:findTopLevelElements(node, elementType)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-14T14:01:04-05:00" -->
+    <!-- dateModified="2020-05-29T14:45:17-05:00" -->
+    <description><![CDATA[
+      <p>
+        Gets all elements in the page (including all child elements) that are of the
+        given type, in the order they were declared in the page.
+      </p>
+    ]]></description>
+    <name>filterElements</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>java.util.List filterElements(com.semanticcms.core.model.Page,java.lang.String)</function-signature>
+    <!-- functionSignature="java.util.List<? extends com.semanticcms.core.model.Element> filterElements(com.semanticcms.core.model.Page,java.lang.String)" -->
+    <example><![CDATA[<code>${core:filterElements(page, elementType)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-18T01:24:55-05:00" -->
+    <!-- dateModified="2018-06-02T01:11:31-05:00" -->
+    <description><![CDATA[
+      <p>
+        Checks if a view is applicable the given request and page.
+      </p>
+    ]]></description>
+    <name>isViewApplicable</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>boolean isViewApplicable(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)</function-signature>
+    <example><![CDATA[<code>${core:isViewApplicable(view, page)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-28T15:04:17-05:00" -->
+    <!-- dateModified="2018-06-02T01:11:31-05:00" -->
+    <description><![CDATA[
+      <p>
+        Gets the CSS class to use for the main navigation link to this view.
+      </p>
+    ]]></description>
+    <name>getViewLinkCssClass</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>java.lang.String getViewLinkCssClass(com.semanticcms.core.renderer.html.View)</function-signature>
+    <example><![CDATA[<code>${core:getViewLinkCssClass(view)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-28T17:56:51-05:00" -->
+    <!-- dateModified="2020-05-29T14:47:21-05:00" -->
+    <description><![CDATA[
+      <p>
+        Gets the optional additional parameter to a view link.
+      </p>
+    ]]></description>
+    <name>getViewLinkParams</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>java.util.Map getViewLinkParams(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)</function-signature>
+    <!-- functionSignature="java.util.Map<java.lang.String,java.util.List<java.lang.String>> getViewLinkParams(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)" -->
+    <example><![CDATA[<code>${core:getViewLinkParams(view, page)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-12T01:59:04-05:00" -->
+    <!-- dateModified="2018-06-02T01:11:31-05:00" -->
+    <description><![CDATA[
+      <p>
+        Gets the copyright for the given view and page.
+      </p>
+    ]]></description>
+    <name>getViewCopyright</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>java.lang.String getViewCopyright(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)</function-signature>
+    <example><![CDATA[<code>${core:getViewCopyright(view, page)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-12T01:59:04-05:00" -->
+    <!-- dateModified="2020-05-29T18:27:08-05:00" -->
+    <description><![CDATA[
+      <p>
+        Gets the authors for the given view and page.
+      </p>
+    ]]></description>
+    <name>getViewAuthors</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>java.util.Set getViewAuthors(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)</function-signature>
+    <!-- functionSignature="java.util.Set<com.semanticcms.core.model.Author> getViewAuthors(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)" -->
+    <example><![CDATA[<code>${core:getViewAuthors(view, page)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-15T22:33:52-05:00" -->
+    <!-- dateModified="2018-06-02T01:11:31-05:00" -->
+    <description><![CDATA[
+      <p>
+        Gets the title for the given view and page.
+      </p>
+    ]]></description>
+    <name>getViewTitle</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>java.lang.String getViewTitle(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)</function-signature>
+    <example><![CDATA[<code>${core:getViewTitle(view, page)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-09-11T00:56:38-05:00" -->
+    <!-- dateModified="2021-06-03T22:53:21-05:00" -->
+    <description><![CDATA[
+      <p>
+        Gets an optional set of additional links to include for this view
+        in the order they should be added.
+      </p>
+    ]]></description>
+    <name>getViewLinks</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>java.util.Collection getViewLinks(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)</function-signature>
+    <!-- functionSignature="java.util.Collection<com.aoapps.taglib.Link> getViewLinks(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)" -->
+    <example><![CDATA[<code>${core:getViewLinks(view, page)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-09-06T16:13:33-05:00" -->
+    <!-- dateModified="2018-06-02T01:11:31-05:00" -->
+    <description><![CDATA[
+      <p>
+        Gets the allowRobots for the given view and page.
+      </p>
+    ]]></description>
+    <name>getViewAllowRobots</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>boolean getViewAllowRobots(com.semanticcms.core.renderer.html.View,com.semanticcms.core.model.Page)</function-signature>
+    <example><![CDATA[<code>${core:getViewAllowRobots(view, page)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-20T22:50:54-05:00" -->
+    <!-- dateModified="2016-11-08T02:37:12-06:00" -->
+    <description><![CDATA[
+      <p>
+        Gets the CSS class that is to be used to link to the given element or <code>null</code>
+        if none registered.
+      </p>
+    ]]></description>
+    <name>getLinkCssClass</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>java.lang.String getLinkCssClass(com.semanticcms.core.model.Element)</function-signature>
+    <example><![CDATA[<code>${core:getLinkCssClass(element)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-08-28T16:31:50-05:00" -->
+    <!-- dateModified="2020-05-29T14:52:13-05:00" -->
+    <description><![CDATA[
+      <p>
+        Merges global and per-view scripts for the provided view.
+      </p>
+    ]]></description>
+    <name>mergeGlobalAndViewScripts</name>
+    <function-class>com.semanticcms.core.taglib.Functions</function-class>
+    <function-signature>java.util.Map mergeGlobalAndViewScripts(com.semanticcms.core.renderer.html.View)</function-signature>
+    <!-- function-signature="java.util.Map<java.lang.String,java.lang.String> mergeGlobalAndViewScripts(com.semanticcms.core.renderer.html.View)" -->
+    <example><![CDATA[<code>${core:mergeGlobalAndViewScripts(view)}</code>]]></example>
+  </function>
+  <function>
+    <!-- datePublished="2016-10-18T15:33:03-05:00" -->
+    <!-- dateModified="2016-11-08T02:37:12-06:00" -->
+    <description><![CDATA[
+      <p>
+        Determines the short title for a page and one of its parents.
+      </p>
+    ]]></description>
+    <name>getShortTitle</name>
+    <function-class>com.semanticcms.core.servlet.PageUtils</function-class>
+    <function-signature>java.lang.String getShortTitle(com.semanticcms.core.model.PageRef,com.semanticcms.core.model.Page)</function-signature>
+    <example><![CDATA[<code>${core:getShortTitle(parentPageRef,page)}</code>]]></example>
+  </function>
 </taglib>

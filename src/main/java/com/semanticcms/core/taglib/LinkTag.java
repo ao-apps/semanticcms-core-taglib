@@ -54,176 +54,182 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 // TODO: Is now an ElementTag
 public class LinkTag
-	extends SimpleTagSupport
-	implements
-		DynamicAttributes,
-		//ClassAttribute,
-		ParamsAttribute
+  extends SimpleTagSupport
+  implements
+    DynamicAttributes,
+    //ClassAttribute,
+    ParamsAttribute
 {
 
-	private MutableURIParameters params;
-	private ValueExpression clazz;
-	private ValueExpression domain;
-	private ValueExpression book;
-	private ValueExpression page;
-	private ValueExpression element;
-	private boolean allowGeneratedElement;
-	private ValueExpression anchor;
-	private ValueExpression view;
-	private boolean small;
-	private boolean absolute;
-	private boolean canonical;
+  private MutableURIParameters params;
+  private ValueExpression clazz;
+  private ValueExpression domain;
+  private ValueExpression book;
+  private ValueExpression page;
+  private ValueExpression element;
+  private boolean allowGeneratedElement;
+  private ValueExpression anchor;
+  private ValueExpression view;
+  private boolean small;
+  private boolean absolute;
+  private boolean canonical;
 
-	@Override
-	public void addParam(String name, Object value) {
-		if(params == null) params = new URIParametersMap();
-		params.add(name, value);
-	}
+  @Override
+  public void addParam(String name, Object value) {
+    if (params == null) {
+      params = new URIParametersMap();
+    }
+    params.add(name, value);
+  }
 
-	public ValueExpression getClazz() {
-		return clazz;
-	}
+  public ValueExpression getClazz() {
+    return clazz;
+  }
 
-	public void setClazz(ValueExpression clazz) {
-		this.clazz = clazz;
-	}
+  public void setClazz(ValueExpression clazz) {
+    this.clazz = clazz;
+  }
 
-	public void setDomain(ValueExpression domain) {
-		this.domain = domain;
-	}
+  public void setDomain(ValueExpression domain) {
+    this.domain = domain;
+  }
 
-	public void setBook(ValueExpression book) {
-		this.book = book;
-	}
+  public void setBook(ValueExpression book) {
+    this.book = book;
+  }
 
-	public void setPage(ValueExpression page) {
-		this.page = page;
-	}
+  public void setPage(ValueExpression page) {
+    this.page = page;
+  }
 
-	public void setElement(ValueExpression element) {
-		this.element = element;
-	}
+  public void setElement(ValueExpression element) {
+    this.element = element;
+  }
 
-	public void setAllowGeneratedElement(boolean allowGeneratedElement) {
-		this.allowGeneratedElement = allowGeneratedElement;
-	}
+  public void setAllowGeneratedElement(boolean allowGeneratedElement) {
+    this.allowGeneratedElement = allowGeneratedElement;
+  }
 
-	public void setAnchor(ValueExpression anchor) {
-		this.anchor = anchor;
-	}
+  public void setAnchor(ValueExpression anchor) {
+    this.anchor = anchor;
+  }
 
-	public void setView(ValueExpression view) {
-		this.view = view;
-	}
+  public void setView(ValueExpression view) {
+    this.view = view;
+  }
 
-	public void setSmall(boolean small) {
-		this.small = small;
-	}
+  public void setSmall(boolean small) {
+    this.small = small;
+  }
 
-	public void setAbsolute(boolean absolute) {
-		this.absolute = absolute;
-	}
+  public void setAbsolute(boolean absolute) {
+    this.absolute = absolute;
+  }
 
-	public void setCanonical(boolean canonical) {
-		this.canonical = canonical;
-	}
+  public void setCanonical(boolean canonical) {
+    this.canonical = canonical;
+  }
 
-	/**
-	 * Adds a {@linkplain DynamicAttributes dynamic attribute}.
-	 *
-	 * @return  {@code true} when added, or {@code false} when attribute not expected and has not been added.
-	 *
-	 * @see  ParamUtils#addDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object, java.util.List, com.aoapps.taglib.ParamsAttribute)
-	 * @see  #setDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object)
-	 */
-	protected boolean addDynamicAttribute(String uri, String localName, Object value, List<String> expectedPatterns) throws JspTagException {
-		return ParamUtils.addDynamicAttribute(uri, localName, value, expectedPatterns, this);
-	}
+  /**
+   * Adds a {@linkplain DynamicAttributes dynamic attribute}.
+   *
+   * @return  {@code true} when added, or {@code false} when attribute not expected and has not been added.
+   *
+   * @see  ParamUtils#addDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object, java.util.List, com.aoapps.taglib.ParamsAttribute)
+   * @see  #setDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object)
+   */
+  protected boolean addDynamicAttribute(String uri, String localName, Object value, List<String> expectedPatterns) throws JspTagException {
+    return ParamUtils.addDynamicAttribute(uri, localName, value, expectedPatterns, this);
+  }
 
-	/**
-	 * Sets a {@linkplain DynamicAttributes dynamic attribute}.
-	 *
-	 * @deprecated  You should probably be implementing in {@link #addDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object, java.util.List)}
-	 *
-	 * @see  #addDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object, java.util.List)
-	 */
-	@Deprecated(forRemoval = false)
-	@Override
-	public void setDynamicAttribute(String uri, String localName, Object value) throws JspException {
-		List<String> expectedPatterns = new ArrayList<>();
-		if(!addDynamicAttribute(uri, localName, value, expectedPatterns)) {
-			throw AttributeUtils.newDynamicAttributeFailedException(uri, localName, value, expectedPatterns);
-		}
-	}
+  /**
+   * Sets a {@linkplain DynamicAttributes dynamic attribute}.
+   *
+   * @deprecated  You should probably be implementing in {@link #addDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object, java.util.List)}
+   *
+   * @see  #addDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object, java.util.List)
+   */
+  @Deprecated(forRemoval = false)
+  @Override
+  public void setDynamicAttribute(String uri, String localName, Object value) throws JspException {
+    List<String> expectedPatterns = new ArrayList<>();
+    if (!addDynamicAttribute(uri, localName, value, expectedPatterns)) {
+      throw AttributeUtils.newDynamicAttributeFailedException(uri, localName, value, expectedPatterns);
+    }
+  }
 
-	@Override
-	@SuppressWarnings("TooBroadCatch") // Should not be necessary, NetBeans bug?
-	public void doTag() throws JspException, IOException {
-		try {
-			final PageContext pageContext = (PageContext)getJspContext();
-			final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
+  @Override
+  @SuppressWarnings("TooBroadCatch") // Should not be necessary, NetBeans bug?
+  public void doTag() throws JspException, IOException {
+    try {
+      final PageContext pageContext = (PageContext)getJspContext();
+      final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 
-			// Get the current capture state
-			final CaptureLevel captureLevel = CurrentCaptureLevel.getCaptureLevel(request);
-			if(captureLevel.compareTo(CaptureLevel.META) >= 0) {
-				// Capture the body first for any nested parameter tags
-				final BufferResult capturedBody;
-				if(captureLevel == CaptureLevel.BODY) {
-					JspFragment body = getJspBody();
-					if(body != null) {
-						BufferWriter captureOut = EncodingBufferedTag.newBufferWriter(request);
-						try {
-							body.invoke(captureOut);
-						} finally {
-							captureOut.close();
-						}
-						capturedBody = captureOut.getResult().trim();
-					} else {
-						capturedBody = null;
-					}
-				} else {
-					// Invoke body for any meta data, but discard any output
-					JspFragment body = getJspBody();
-					if(body != null) body.invoke(NullWriter.getInstance());
-					capturedBody = null;
-				}
-				final JspWriter out = pageContext.getOut();
-				ServletContext servletContext = pageContext.getServletContext();
-				HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
-				LinkRenderer.writeLinkImpl(servletContext,
-					pageContext.getELContext(),
-					request,
-					response,
-					new DocumentEE(
-						servletContext,
-						request,
-						response,
-						out,
-						false, // Do not add extra newlines to JSP
-						false  // Do not add extra indentation to JSP
-					),
-					domain,
-					book,
-					page,
-					element,
-					allowGeneratedElement,
-					anchor,
-					view,
-					small,
-					params,
-					absolute,
-					canonical,
-					clazz,
-					capturedBody == null || capturedBody.getLength() == 0
-						? null
-						: discard -> {
-							if(discard) throw new AssertionError("Conditions that lead to discard should have caused no capturedBody above");
-							capturedBody.writeTo(out);
-						}
-				);
-			}
-		} catch(ServletException e) {
-			throw new JspTagException(e);
-		}
-	}
+      // Get the current capture state
+      final CaptureLevel captureLevel = CurrentCaptureLevel.getCaptureLevel(request);
+      if (captureLevel.compareTo(CaptureLevel.META) >= 0) {
+        // Capture the body first for any nested parameter tags
+        final BufferResult capturedBody;
+        if (captureLevel == CaptureLevel.BODY) {
+          JspFragment body = getJspBody();
+          if (body != null) {
+            BufferWriter captureOut = EncodingBufferedTag.newBufferWriter(request);
+            try {
+              body.invoke(captureOut);
+            } finally {
+              captureOut.close();
+            }
+            capturedBody = captureOut.getResult().trim();
+          } else {
+            capturedBody = null;
+          }
+        } else {
+          // Invoke body for any meta data, but discard any output
+          JspFragment body = getJspBody();
+          if (body != null) {
+            body.invoke(NullWriter.getInstance());
+          }
+          capturedBody = null;
+        }
+        final JspWriter out = pageContext.getOut();
+        ServletContext servletContext = pageContext.getServletContext();
+        HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
+        LinkRenderer.writeLinkImpl(servletContext,
+          pageContext.getELContext(),
+          request,
+          response,
+          new DocumentEE(
+            servletContext,
+            request,
+            response,
+            out,
+            false, // Do not add extra newlines to JSP
+            false  // Do not add extra indentation to JSP
+          ),
+          domain,
+          book,
+          page,
+          element,
+          allowGeneratedElement,
+          anchor,
+          view,
+          small,
+          params,
+          absolute,
+          canonical,
+          clazz,
+          capturedBody == null || capturedBody.getLength() == 0
+            ? null
+            : discard -> {
+              if (discard) {
+                throw new AssertionError("Conditions that lead to discard should have caused no capturedBody above");
+              }
+              capturedBody.writeTo(out);
+            }
+        );
+      }
+    } catch (ServletException e) {
+      throw new JspTagException(e);
+    }
+  }
 }

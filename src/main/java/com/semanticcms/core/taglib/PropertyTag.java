@@ -39,67 +39,71 @@ import javax.servlet.jsp.JspTagException;
 import javax.servlet.jsp.PageContext;
 
 public class PropertyTag
-	extends EncodingBufferedTag
-	implements
-		NameAttribute,
-		ValueAttribute
+  extends EncodingBufferedTag
+  implements
+    NameAttribute,
+    ValueAttribute
 {
 
-	private String name;
-	private Object value;
-	private boolean valueSet = false;
-	private Node target;
-	private boolean allowExisting = false;
+  private String name;
+  private Object value;
+  private boolean valueSet = false;
+  private Node target;
+  private boolean allowExisting = false;
 
-	@Override
-	public MediaType getContentType() {
-		return MediaType.TEXT;
-	}
+  @Override
+  public MediaType getContentType() {
+    return MediaType.TEXT;
+  }
 
-	@Override
-	public MediaType getOutputType() {
-		return null;
-	}
+  @Override
+  public MediaType getOutputType() {
+    return null;
+  }
 
-	@Override
-	public void setName(String name) {
-		this.name = name;
-	}
+  @Override
+  public void setName(String name) {
+    this.name = name;
+  }
 
-	@Override
-	public void setValue(Object value) {
-		this.value = value;
-		this.valueSet = true;
-	}
+  @Override
+  public void setValue(Object value) {
+    this.value = value;
+    this.valueSet = true;
+  }
 
-	public void setTarget(Node target) {
-		this.target = target;
-	}
+  public void setTarget(Node target) {
+    this.target = target;
+  }
 
-	public void setAllowExisting(boolean allowExisting) {
-		this.allowExisting = allowExisting;
-	}
+  public void setAllowExisting(boolean allowExisting) {
+    this.allowExisting = allowExisting;
+  }
 
-	@Override
-	protected void doTag(BufferResult capturedBody, Writer out) throws JspException, IOException {
-		if(name == null) throw new AttributeRequiredException("name");
-		Node resolvedTarget;
-		if(target != null) {
-			resolvedTarget = target;
-		} else {
-			resolvedTarget = CurrentNode.getCurrentNode(((PageContext)getJspContext()).getRequest());
-			if(resolvedTarget == null) throw new JspTagException("Unable to find parent node for property target");
-		}
-		boolean propertySet = resolvedTarget.setProperty(
-			name,
-			valueSet ? value : capturedBody.trim()
-		);
-		if(!propertySet && !allowExisting) {
-			throw new LocalizedJspTagException(
-				Resources.PACKAGE_RESOURCES,
-				"error.duplicateDynamicElementProperty",
-				name
-			);
-		}
-	}
+  @Override
+  protected void doTag(BufferResult capturedBody, Writer out) throws JspException, IOException {
+    if (name == null) {
+      throw new AttributeRequiredException("name");
+    }
+    Node resolvedTarget;
+    if (target != null) {
+      resolvedTarget = target;
+    } else {
+      resolvedTarget = CurrentNode.getCurrentNode(((PageContext)getJspContext()).getRequest());
+      if (resolvedTarget == null) {
+        throw new JspTagException("Unable to find parent node for property target");
+      }
+    }
+    boolean propertySet = resolvedTarget.setProperty(
+      name,
+      valueSet ? value : capturedBody.trim()
+    );
+    if (!propertySet && !allowExisting) {
+      throw new LocalizedJspTagException(
+        Resources.PACKAGE_RESOURCES,
+        "error.duplicateDynamicElementProperty",
+        name
+      );
+    }
+  }
 }

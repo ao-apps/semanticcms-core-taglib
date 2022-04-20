@@ -38,87 +38,87 @@ import javax.servlet.jsp.tagext.ValidationMessage;
  */
 public class PageTagTEI extends TagExtraInfo {
 
-	@Override
-	public ValidationMessage[] validate(TagData data) {
-		List<ValidationMessage> messages = new ArrayList<>();
-		Object serializationAttr = data.getAttribute("serialization");
-		if(
-			serializationAttr != null
-			&& serializationAttr != TagData.REQUEST_TIME_VALUE
-		) {
-			String serialization = ((String)serializationAttr).trim(); // TODO: normalizeSerialization
-			if(!serialization.isEmpty() && !"auto".equalsIgnoreCase(serialization)) {
-				try {
-					Serialization.valueOf(serialization.toUpperCase(Locale.ROOT));
-				} catch(IllegalArgumentException e) {
-					messages.add(
-						new ValidationMessage(
-							data.getId(),
-							HtmlTag.RESOURCES.getMessage("serialization.invalid", serialization)
-						)
-					);
-				}
-			}
-		}
-		Object doctypeAttr = data.getAttribute("doctype");
-		if(
-			doctypeAttr != null
-			&& doctypeAttr != TagData.REQUEST_TIME_VALUE
-		) {
-			String doctype = ((String)doctypeAttr).trim(); // TODO: normalizeDoctype
-			if(!doctype.isEmpty() && !"default".equalsIgnoreCase(doctype)) {
-				try {
-					Doctype.valueOf(doctype.toUpperCase(Locale.ROOT));
-				} catch(IllegalArgumentException e) {
-					messages.add(
-						new ValidationMessage(
-							data.getId(),
-							HtmlTag.RESOURCES.getMessage("doctype.invalid", doctype)
-						)
-					);
-				}
-			}
-		}
-		Object autonliAttr = data.getAttribute("autonli");
-		if(
-			autonliAttr != null
-			&& autonliAttr != TagData.REQUEST_TIME_VALUE
-		) {
-			String autonli = ((String)autonliAttr).trim(); // TODO: normalizeAutonli
-			if(
-				!autonli.isEmpty()
-				&& !"auto".equalsIgnoreCase(autonli)
-				&& !"true".equalsIgnoreCase(autonli)
-				&& !"false".equalsIgnoreCase(autonli)
-			) {
-				messages.add(
-					new ValidationMessage(
-						data.getId(),
-						HtmlTag.RESOURCES.getMessage("autonli.invalid", autonli)
-					)
-				);
-			}
-		}
-		Object indentAttr = data.getAttribute("indent");
-		if(
-			indentAttr != null
-			&& indentAttr != TagData.REQUEST_TIME_VALUE
-		) {
-			String indent = ((String)indentAttr).trim(); // TODO: normalizeIndent
-			if(
-				!indent.isEmpty()
-				&& !"auto".equalsIgnoreCase(indent)
-				&& !"true".equalsIgnoreCase(indent)
-				&& !"false".equalsIgnoreCase(indent)
-			) {
-				messages.add(
-					new ValidationMessage(
-						data.getId(),
-						HtmlTag.RESOURCES.getMessage("indent.invalid", indent)
-					)
-				);
-			}
-		}
-		return messages.isEmpty() ? null : messages.toArray(new ValidationMessage[messages.size()]);
-	}
+  @Override
+  public ValidationMessage[] validate(TagData data) {
+    List<ValidationMessage> messages = new ArrayList<>();
+    Object serializationAttr = data.getAttribute("serialization");
+    if (
+      serializationAttr != null
+      && serializationAttr != TagData.REQUEST_TIME_VALUE
+    ) {
+      String serialization = ((String)serializationAttr).trim(); // TODO: normalizeSerialization
+      if (!serialization.isEmpty() && !"auto".equalsIgnoreCase(serialization)) {
+        try {
+          Serialization.valueOf(serialization.toUpperCase(Locale.ROOT));
+        } catch (IllegalArgumentException e) {
+          messages.add(
+            new ValidationMessage(
+              data.getId(),
+              HtmlTag.RESOURCES.getMessage("serialization.invalid", serialization)
+            )
+          );
+        }
+      }
+    }
+    Object doctypeAttr = data.getAttribute("doctype");
+    if (
+      doctypeAttr != null
+      && doctypeAttr != TagData.REQUEST_TIME_VALUE
+    ) {
+      String doctype = ((String)doctypeAttr).trim(); // TODO: normalizeDoctype
+      if (!doctype.isEmpty() && !"default".equalsIgnoreCase(doctype)) {
+        try {
+          Doctype.valueOf(doctype.toUpperCase(Locale.ROOT));
+        } catch (IllegalArgumentException e) {
+          messages.add(
+            new ValidationMessage(
+              data.getId(),
+              HtmlTag.RESOURCES.getMessage("doctype.invalid", doctype)
+            )
+          );
+        }
+      }
+    }
+    Object autonliAttr = data.getAttribute("autonli");
+    if (
+      autonliAttr != null
+      && autonliAttr != TagData.REQUEST_TIME_VALUE
+    ) {
+      String autonli = ((String)autonliAttr).trim(); // TODO: normalizeAutonli
+      if (
+        !autonli.isEmpty()
+        && !"auto".equalsIgnoreCase(autonli)
+        && !"true".equalsIgnoreCase(autonli)
+        && !"false".equalsIgnoreCase(autonli)
+      ) {
+        messages.add(
+          new ValidationMessage(
+            data.getId(),
+            HtmlTag.RESOURCES.getMessage("autonli.invalid", autonli)
+          )
+        );
+      }
+    }
+    Object indentAttr = data.getAttribute("indent");
+    if (
+      indentAttr != null
+      && indentAttr != TagData.REQUEST_TIME_VALUE
+    ) {
+      String indent = ((String)indentAttr).trim(); // TODO: normalizeIndent
+      if (
+        !indent.isEmpty()
+        && !"auto".equalsIgnoreCase(indent)
+        && !"true".equalsIgnoreCase(indent)
+        && !"false".equalsIgnoreCase(indent)
+      ) {
+        messages.add(
+          new ValidationMessage(
+            data.getId(),
+            HtmlTag.RESOURCES.getMessage("indent.invalid", indent)
+          )
+        );
+      }
+    }
+    return messages.isEmpty() ? null : messages.toArray(new ValidationMessage[messages.size()]);
+  }
 }

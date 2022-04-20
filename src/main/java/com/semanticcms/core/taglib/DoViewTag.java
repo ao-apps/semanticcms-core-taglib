@@ -42,54 +42,56 @@ import org.apache.commons.lang3.NotImplementedException;
 
 public class DoViewTag extends SimpleTagSupport {
 
-	private View view;
-	public void setView(View view) {
-		this.view = view;
-	}
+  private View view;
+  public void setView(View view) {
+    this.view = view;
+  }
 
-	private Page page;
-	public void setPage(Page page) {
-		this.page = page;
-	}
+  private Page page;
+  public void setPage(Page page) {
+    this.page = page;
+  }
 
-	@Override
-	public void doTag() throws JspException, IOException {
-		try {
-			final PageContext pageContext = (PageContext)getJspContext();
-			final PrintWriter out = new PrintWriter(pageContext.getOut()) {
-				@Override
-				public void flush() {
-					// Avoid "Illegal to flush within a custom tag" from BodyContentImpl
-				}
-			};
-			ServletContext servletContext = pageContext.getServletContext();
-			HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
-			HttpServletResponse response = new HttpServletResponseWrapper((HttpServletResponse)pageContext.getResponse()) {
-				@Override
-				public PrintWriter getWriter() {
-					return out;
-				}
-				@Override
-				public ServletOutputStream getOutputStream() {
-					throw new NotImplementedException("getOutputStream not expected");
-				}
-			};
-			view.doView(servletContext,
-				request,
-				response,
-				new DocumentEE(
-					servletContext,
-					request,
-					response,
-					out,
-					false, // Do not add extra newlines to JSP
-					false  // Do not add extra indentation to JSP
-				),
-				page
-			);
-			if(out.checkError()) throw new IOException("Error on doView PrintWriter");
-		} catch(ServletException e) {
-			throw new JspTagException(e);
-		}
-	}
+  @Override
+  public void doTag() throws JspException, IOException {
+    try {
+      final PageContext pageContext = (PageContext)getJspContext();
+      final PrintWriter out = new PrintWriter(pageContext.getOut()) {
+        @Override
+        public void flush() {
+          // Avoid "Illegal to flush within a custom tag" from BodyContentImpl
+        }
+      };
+      ServletContext servletContext = pageContext.getServletContext();
+      HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
+      HttpServletResponse response = new HttpServletResponseWrapper((HttpServletResponse)pageContext.getResponse()) {
+        @Override
+        public PrintWriter getWriter() {
+          return out;
+        }
+        @Override
+        public ServletOutputStream getOutputStream() {
+          throw new NotImplementedException("getOutputStream not expected");
+        }
+      };
+      view.doView(servletContext,
+        request,
+        response,
+        new DocumentEE(
+          servletContext,
+          request,
+          response,
+          out,
+          false, // Do not add extra newlines to JSP
+          false  // Do not add extra indentation to JSP
+        ),
+        page
+      );
+      if (out.checkError()) {
+        throw new IOException("Error on doView PrintWriter");
+      }
+    } catch (ServletException e) {
+      throw new JspTagException(e);
+    }
+  }
 }

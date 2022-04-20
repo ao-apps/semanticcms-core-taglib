@@ -31,44 +31,44 @@ import java.beans.SimpleBeanInfo;
 
 public class LinkTagBeanInfo extends SimpleBeanInfo {
 
-	private static final PropertyDescriptor[] properties;
-	static {
-		try {
-			properties = new PropertyDescriptor[] {
-				new PropertyDescriptor("class",                 LinkTag.class, "getClazz", "setClazz"),
-				new PropertyDescriptor("domain",                LinkTag.class, null,       "setDomain"),
-				new PropertyDescriptor("book",                  LinkTag.class, null,       "setBook"),
-				new PropertyDescriptor("page",                  LinkTag.class, null,       "setPage"),
-				new PropertyDescriptor("element",               LinkTag.class, null,       "setElement"),
-				new PropertyDescriptor("allowGeneratedElement", LinkTag.class, null,       "setAllowGeneratedElement"),
-				new PropertyDescriptor("anchor",                LinkTag.class, null,       "setAnchor"),
-				new PropertyDescriptor("view",                  LinkTag.class, null,       "setView"),
-				new PropertyDescriptor("small",                 LinkTag.class, null,       "setSmall"),
-				new PropertyDescriptor("absolute",              LinkTag.class, null,       "setAbsolute"),
-				new PropertyDescriptor("canonical",             LinkTag.class, null,       "setCanonical")
-			};
-		} catch(IntrospectionException err) {
-			throw new ExceptionInInitializerError(err);
-		}
-	}
+  private static final PropertyDescriptor[] properties;
+  static {
+    try {
+      properties = new PropertyDescriptor[] {
+        new PropertyDescriptor("class",                 LinkTag.class, "getClazz", "setClazz"),
+        new PropertyDescriptor("domain",                LinkTag.class, null,       "setDomain"),
+        new PropertyDescriptor("book",                  LinkTag.class, null,       "setBook"),
+        new PropertyDescriptor("page",                  LinkTag.class, null,       "setPage"),
+        new PropertyDescriptor("element",               LinkTag.class, null,       "setElement"),
+        new PropertyDescriptor("allowGeneratedElement", LinkTag.class, null,       "setAllowGeneratedElement"),
+        new PropertyDescriptor("anchor",                LinkTag.class, null,       "setAnchor"),
+        new PropertyDescriptor("view",                  LinkTag.class, null,       "setView"),
+        new PropertyDescriptor("small",                 LinkTag.class, null,       "setSmall"),
+        new PropertyDescriptor("absolute",              LinkTag.class, null,       "setAbsolute"),
+        new PropertyDescriptor("canonical",             LinkTag.class, null,       "setCanonical")
+      };
+    } catch (IntrospectionException err) {
+      throw new ExceptionInInitializerError(err);
+    }
+  }
 
-	@Override
-	@SuppressWarnings("ReturnOfCollectionOrArrayField") // Not copying array for performance
-	public PropertyDescriptor[] getPropertyDescriptors () {
-		return properties;
-	}
+  @Override
+  @SuppressWarnings("ReturnOfCollectionOrArrayField") // Not copying array for performance
+  public PropertyDescriptor[] getPropertyDescriptors () {
+    return properties;
+  }
 
-	/**
-	 * Include base class.
-	 */
-	@Override
-	public BeanInfo[] getAdditionalBeanInfo() {
-		try {
-			return new BeanInfo[] {
-				Introspector.getBeanInfo(LinkTag.class.getSuperclass())
-			};
-		} catch(IntrospectionException err) {
-			throw new AssertionError(err);
-		}
-	}
+  /**
+   * Include base class.
+   */
+  @Override
+  public BeanInfo[] getAdditionalBeanInfo() {
+    try {
+      return new BeanInfo[] {
+        Introspector.getBeanInfo(LinkTag.class.getSuperclass())
+      };
+    } catch (IntrospectionException err) {
+      throw new AssertionError(err);
+    }
+  }
 }

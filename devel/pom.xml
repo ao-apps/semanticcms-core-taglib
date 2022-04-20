@@ -22,144 +22,144 @@ You should have received a copy of the GNU Lesser General Public License
 along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>com.semanticcms</groupId><artifactId>semanticcms-parent</artifactId><version>2.0.0-SNAPSHOT</version>
-		<relativePath>../../../parent/pom.xml</relativePath>
-	</parent>
+  <parent>
+    <groupId>com.semanticcms</groupId><artifactId>semanticcms-parent</artifactId><version>2.0.0-SNAPSHOT</version>
+    <relativePath>../../../parent/pom.xml</relativePath>
+  </parent>
 
-	<groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib-devel</artifactId><version>2.0.0-SNAPSHOT</version>
-	<packaging>bundle</packaging>
+  <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib-devel</artifactId><version>2.0.0-SNAPSHOT</version>
+  <packaging>bundle</packaging>
 
-	<properties>
-		<module.name>com.semanticcms.core.taglib.devel</module.name>
-	</properties>
+  <properties>
+    <module.name>com.semanticcms.core.taglib.devel</module.name>
+  </properties>
 
-	<name>SemanticCMS Core Taglib² Devel</name>
-	<url>https://semanticcms.com/core/taglib/</url>
-	<description>Development-only components of SemanticCMS Core Taglib².</description>
-	<inceptionYear>2020</inceptionYear>
+  <name>SemanticCMS Core Taglib² Devel</name>
+  <url>https://semanticcms.com/core/taglib/</url>
+  <description>Development-only components of SemanticCMS Core Taglib².</description>
+  <inceptionYear>2020</inceptionYear>
 
-	<licenses>
-		<license>
-			<name>GNU General Lesser Public License (LGPL) version 3.0</name>
-			<url>https://www.gnu.org/licenses/lgpl-3.0.txt</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
+  <licenses>
+    <license>
+      <name>GNU General Lesser Public License (LGPL) version 3.0</name>
+      <url>https://www.gnu.org/licenses/lgpl-3.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
 
-	<organization>
-		<name>AO Industries, Inc.</name>
-		<url>https://aoindustries.com/</url>
-	</organization>
+  <organization>
+    <name>AO Industries, Inc.</name>
+    <url>https://aoindustries.com/</url>
+  </organization>
 
-	<developers>
-		<developer>
-			<name>AO Industries, Inc.</name>
-			<email>support@aoindustries.com</email>
-			<url>https://aoindustries.com/</url>
-			<organization>AO Industries, Inc.</organization>
-			<organizationUrl>https://aoindustries.com/</organizationUrl>
-		</developer>
-	</developers>
+  <developers>
+    <developer>
+      <name>AO Industries, Inc.</name>
+      <email>support@aoindustries.com</email>
+      <url>https://aoindustries.com/</url>
+      <organization>AO Industries, Inc.</organization>
+      <organizationUrl>https://aoindustries.com/</organizationUrl>
+    </developer>
+  </developers>
 
-	<scm>
-		<connection>scm:git:git://github.com/ao-apps/semanticcms-core-taglib.git</connection>
-		<developerConnection>scm:git:git@github.com:ao-apps/semanticcms-core-taglib.git</developerConnection>
-		<url>https://github.com/ao-apps/semanticcms-core-taglib</url>
-		<tag>HEAD</tag>
-	</scm>
+  <scm>
+    <connection>scm:git:git://github.com/ao-apps/semanticcms-core-taglib.git</connection>
+    <developerConnection>scm:git:git@github.com:ao-apps/semanticcms-core-taglib.git</developerConnection>
+    <url>https://github.com/ao-apps/semanticcms-core-taglib</url>
+    <tag>HEAD</tag>
+  </scm>
 
-	<issueManagement>
-		<system>GitHub Issues</system>
-		<url>https://github.com/ao-apps/semanticcms-core-taglib/issues</url>
-	</issueManagement>
+  <issueManagement>
+    <system>GitHub Issues</system>
+    <url>https://github.com/ao-apps/semanticcms-core-taglib/issues</url>
+  </issueManagement>
 
-	<ciManagement>
-		<system>Jenkins</system>
-		<url>https://jenkins.aoindustries.com/job/ao/job/semanticcms/job/core/job/taglib-devel/</url>
-	</ciManagement>
-	<!-- Only one allowed in POM:
-	<ciManagement>
-		<system>GitHub Actions</system>
-		<url>https://github.com/ao-apps/semanticcms-core-taglib/actions</url>
-	</ciManagement>
-	-->
+  <ciManagement>
+    <system>Jenkins</system>
+    <url>https://jenkins.aoindustries.com/job/ao/job/semanticcms/job/core/job/taglib-devel/</url>
+  </ciManagement>
+  <!-- Only one allowed in POM:
+  <ciManagement>
+    <system>GitHub Actions</system>
+    <url>https://github.com/ao-apps/semanticcms-core-taglib/actions</url>
+  </ciManagement>
+  -->
 
-	<repositories>
-		<!-- Repository required here, too, so can find parent -->
-		<repository>
-			<id>sonatype-nexus-snapshots</id>
-			<name>Sonatype Nexus Snapshots</name>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<checksumPolicy>fail</checksumPolicy>
-			</snapshots>
-		</repository>
-	</repositories>
+  <repositories>
+    <!-- Repository required here, too, so can find parent -->
+    <repository>
+      <id>sonatype-nexus-snapshots</id>
+      <name>Sonatype Nexus Snapshots</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <checksumPolicy>fail</checksumPolicy>
+      </snapshots>
+    </repository>
+  </repositories>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId><artifactId>maven-enforcer-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>require-development-profile</id><goals><goal>enforce</goal></goals>
-						<configuration>
-							<rules>
-								<requireActiveProfile>
-									<message>"*-devel" projects require "development" profile to only run locally</message>
-									<profiles>development</profiles>
-								</requireActiveProfile>
-							</rules>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId><artifactId>maven-checkstyle-plugin</artifactId>
-				<configuration>
-					<!-- TODO: Clean-up Checkstyle -->
-					<failOnViolation>false</failOnViolation>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId><artifactId>maven-enforcer-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>require-development-profile</id><goals><goal>enforce</goal></goals>
+            <configuration>
+              <rules>
+                <requireActiveProfile>
+                  <message>"*-devel" projects require "development" profile to only run locally</message>
+                  <profiles>development</profiles>
+                </requireActiveProfile>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId><artifactId>maven-checkstyle-plugin</artifactId>
+        <configuration>
+          <!-- TODO: Clean-up Checkstyle -->
+          <failOnViolation>false</failOnViolation>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
-	<dependencyManagement>
-		<dependencies>
-			<!-- Direct -->
-			<dependency>
-				<groupId>com.aoapps</groupId><artifactId>ao-hodgepodge</artifactId><version>5.1.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
-			</dependency>
-			<dependency>
-				<groupId>com.google.code.findbugs</groupId><artifactId>jsr305</artifactId><version>3.0.2</version>
-			</dependency>
-			<!-- Transitive -->
-			<dependency>
-				<groupId>com.aoapps</groupId><artifactId>ao-collections</artifactId><version>3.0.0${POST-SNAPSHOT}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.aoapps</groupId><artifactId>ao-lang</artifactId><version>5.2.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
-			</dependency>
-			<dependency>
-				<groupId>com.aoapps</groupId><artifactId>ao-tempfiles</artifactId><version>3.0.0${POST-SNAPSHOT}</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+  <dependencyManagement>
+    <dependencies>
+      <!-- Direct -->
+      <dependency>
+        <groupId>com.aoapps</groupId><artifactId>ao-hodgepodge</artifactId><version>5.1.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.code.findbugs</groupId><artifactId>jsr305</artifactId><version>3.0.2</version>
+      </dependency>
+      <!-- Transitive -->
+      <dependency>
+        <groupId>com.aoapps</groupId><artifactId>ao-collections</artifactId><version>3.0.0${POST-SNAPSHOT}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.aoapps</groupId><artifactId>ao-lang</artifactId><version>5.2.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+      </dependency>
+      <dependency>
+        <groupId>com.aoapps</groupId><artifactId>ao-tempfiles</artifactId><version>3.0.0${POST-SNAPSHOT}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
-	<dependencies>
-		<!-- Direct -->
-		<dependency>
-			<groupId>com.aoapps</groupId><artifactId>ao-hodgepodge</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.google.code.findbugs</groupId><artifactId>jsr305</artifactId>
-			<optional>true</optional>
-		</dependency>
-	</dependencies>
+  <dependencies>
+    <!-- Direct -->
+    <dependency>
+      <groupId>com.aoapps</groupId><artifactId>ao-hodgepodge</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.findbugs</groupId><artifactId>jsr305</artifactId>
+      <optional>true</optional>
+    </dependency>
+  </dependencies>
 </project>

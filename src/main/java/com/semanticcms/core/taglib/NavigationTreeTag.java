@@ -38,106 +38,106 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 public class NavigationTreeTag extends SimpleTagSupport {
 
-	private ValueExpression root;
-	public void setRoot(ValueExpression root) {
-		this.root = root;
-	}
+  private ValueExpression root;
+  public void setRoot(ValueExpression root) {
+    this.root = root;
+  }
 
-	private boolean skipRoot;
-	public void setSkipRoot(boolean skipRoot) {
-		this.skipRoot = skipRoot;
-	}
+  private boolean skipRoot;
+  public void setSkipRoot(boolean skipRoot) {
+    this.skipRoot = skipRoot;
+  }
 
-	private boolean yuiConfig;
-	public void setYuiConfig(boolean yuiConfig) {
-		this.yuiConfig = yuiConfig;
-	}
+  private boolean yuiConfig;
+  public void setYuiConfig(boolean yuiConfig) {
+    this.yuiConfig = yuiConfig;
+  }
 
-	private boolean includeElements;
-	public void setIncludeElements(boolean includeElements) {
-		this.includeElements = includeElements;
-	}
+  private boolean includeElements;
+  public void setIncludeElements(boolean includeElements) {
+    this.includeElements = includeElements;
+  }
 
-	private String target;
-	public void setTarget(String target) {
-		this.target = target;
-	}
+  private String target;
+  public void setTarget(String target) {
+    this.target = target;
+  }
 
-	private ValueExpression thisDomain;
-	public void setThisDomain(ValueExpression thisDomain) {
-		this.thisDomain = thisDomain;
-	}
+  private ValueExpression thisDomain;
+  public void setThisDomain(ValueExpression thisDomain) {
+    this.thisDomain = thisDomain;
+  }
 
-	private ValueExpression thisBook;
-	public void setThisBook(ValueExpression thisBook) {
-		this.thisBook = thisBook;
-	}
+  private ValueExpression thisBook;
+  public void setThisBook(ValueExpression thisBook) {
+    this.thisBook = thisBook;
+  }
 
-	private ValueExpression thisPage;
-	public void setThisPage(ValueExpression thisPage) {
-		this.thisPage = thisPage;
-	}
+  private ValueExpression thisPage;
+  public void setThisPage(ValueExpression thisPage) {
+    this.thisPage = thisPage;
+  }
 
-	private ValueExpression linksToDomain;
-	public void setLinksToDomain(ValueExpression linksToDomain) {
-		this.linksToDomain = linksToDomain;
-	}
+  private ValueExpression linksToDomain;
+  public void setLinksToDomain(ValueExpression linksToDomain) {
+    this.linksToDomain = linksToDomain;
+  }
 
-	private ValueExpression linksToBook;
-	public void setLinksToBook(ValueExpression linksToBook) {
-		this.linksToBook = linksToBook;
-	}
+  private ValueExpression linksToBook;
+  public void setLinksToBook(ValueExpression linksToBook) {
+    this.linksToBook = linksToBook;
+  }
 
-	private ValueExpression linksToPage;
-	public void setLinksToPage(ValueExpression linksToPage) {
-		this.linksToPage = linksToPage;
-	}
+  private ValueExpression linksToPage;
+  public void setLinksToPage(ValueExpression linksToPage) {
+    this.linksToPage = linksToPage;
+  }
 
-	private int maxDepth;
-	public void setMaxDepth(int maxDepth) {
-		this.maxDepth = maxDepth;
-	}
+  private int maxDepth;
+  public void setMaxDepth(int maxDepth) {
+    this.maxDepth = maxDepth;
+  }
 
-	/**
-	 * Creates the nested &lt;ul&gt; and &lt;li&gt; tags used by TreeView.
-	 * The first level is expanded.
-	 *
-	 * <a href="http://developer.yahoo.com/yui/treeview/#start">http://developer.yahoo.com/yui/treeview/#start</a>
-	 */
-	@Override
-	public void doTag() throws JspException, IOException {
-		try {
-			final PageContext pageContext = (PageContext)getJspContext();
-			ServletContext servletContext = pageContext.getServletContext();
-			HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
-			HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
-			NavigationTreeRenderer.writeNavigationTree(servletContext,
-				pageContext.getELContext(),
-				request,
-				response,
-				new DocumentEE(
-					servletContext,
-					request,
-					response,
-					pageContext.getOut(),
-					false, // Do not add extra newlines to JSP
-					false  // Do not add extra indentation to JSP
-				),
-				root,
-				skipRoot,
-				yuiConfig,
-				includeElements,
-				target,
-				thisDomain,
-				thisBook,
-				thisPage,
-				linksToDomain,
-				linksToBook,
-				linksToPage,
-				maxDepth
-			);
-		} catch(ServletException e) {
-			throw new JspTagException(e);
-		}
-	}
+  /**
+   * Creates the nested &lt;ul&gt; and &lt;li&gt; tags used by TreeView.
+   * The first level is expanded.
+   *
+   * <a href="http://developer.yahoo.com/yui/treeview/#start">http://developer.yahoo.com/yui/treeview/#start</a>
+   */
+  @Override
+  public void doTag() throws JspException, IOException {
+    try {
+      final PageContext pageContext = (PageContext)getJspContext();
+      ServletContext servletContext = pageContext.getServletContext();
+      HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
+      HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
+      NavigationTreeRenderer.writeNavigationTree(servletContext,
+        pageContext.getELContext(),
+        request,
+        response,
+        new DocumentEE(
+          servletContext,
+          request,
+          response,
+          pageContext.getOut(),
+          false, // Do not add extra newlines to JSP
+          false  // Do not add extra indentation to JSP
+        ),
+        root,
+        skipRoot,
+        yuiConfig,
+        includeElements,
+        target,
+        thisDomain,
+        thisBook,
+        thisPage,
+        linksToDomain,
+        linksToBook,
+        linksToPage,
+        maxDepth
+      );
+    } catch (ServletException e) {
+      throw new JspTagException(e);
+    }
+  }
 }

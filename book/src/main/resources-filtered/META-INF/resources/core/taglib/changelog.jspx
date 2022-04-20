@@ -22,542 +22,542 @@ You should have received a copy of the GNU Lesser General Public License
 along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>.
 -->
 <jsp:root
-	xmlns:ao="https://oss.aoapps.com/taglib/"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:changelog="https://semanticcms.com/changelog/taglib/"
-	xmlns:core="https://semanticcms.com/core/taglib/"
-	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
-	xmlns:jsp="http://java.sun.com/JSP/Page"
-	version="2.1"
+  xmlns:ao="https://oss.aoapps.com/taglib/"
+  xmlns:c="http://java.sun.com/jsp/jstl/core"
+  xmlns:changelog="https://semanticcms.com/changelog/taglib/"
+  xmlns:core="https://semanticcms.com/core/taglib/"
+  xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+  xmlns:jsp="http://java.sun.com/JSP/Page"
+  version="2.1"
 >
-	<jsp:directive.page language="java" pageEncoding="UTF-8" />
-	<jsp:directive.page session="false" />
-	<core:page
-		title="@{documented.name} Changelog"
-		shortTitle="Changelog"
-		tocLevels="1"
-		datePublished="2016-10-30T20:28:28-05:00"
-		dateModified="2022-02-15T21:37:30-06:00"
-	>
-		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
-			<changelog:release
-				projectName="@{documented.name}"
-				version="@{project.version}"
-				groupId="@{project.groupId}"
-				artifactId="@{documented.artifactId}"
-				repository="@{nexusUrl}content/repositories/snapshots/"
-				scmUrl="@{project.scm.url}"
-			>
-				<ul>
-					<li>Added <core:link book="/core/model" page="/" /> domain support:
-						<ol>
-							<li>New optional attribute <code>domain</code> that defaults to the domain of the current page on:
-								<ol type="a">
-									<li><core:link page="semanticcms-core.tld/tag-author" /></li>
-									<li><core:link page="semanticcms-core.tld/tag-child" /></li>
-									<li><core:link page="semanticcms-core.tld/tag-link" /></li>
-									<li><core:link page="semanticcms-core.tld/tag-page" /></li>
-									<li><core:link page="semanticcms-core.tld/tag-parent" /></li>
-								</ol>
-							</li>
-							<li>
-								New optional attributes <code>thisDomain</code> and <code>linksToDomain</code> that default
-								to the domain of the current page on
-								<core:link page="semanticcms-core.tld/tag-navigationTree" />.
-							</li>
-							<li>New <ao:a rel="nofollow" href="https://docs.oracle.com/cd/E19226-01/820-7627/gjddd/">Expression Language</ao:a> function:
-								<ol type="a">
-									<li><core:link page="semanticcms-core.tld/function-capturePageInDomain" /></li>
-									<li><core:link page="semanticcms-core.tld/function-getFileInDomain" /></li>
-									<li><core:link page="semanticcms-core.tld/function-getExeFileInDomain" /></li>
-								</ol>
-							</li>
-						</ol>
-					</li>
-					<li>Added <core:link book="/core/pages" page="/" /> support:
-						<ol>
-							<li>Removed the <code>\${core:getBook()}</code> function.</li>
-							<li>
-								Added the <core:link page="semanticcms-core.tld/function-getPublishedBook" /> function.
-								This function only returns published books, returns <code>null</code> instead
-								of throwing an exception when a book not found, and may return inaccessible books.
-							</li>
-						</ol>
-					</li>
-					<li>Added <core:link book="/core/resources" page="/" /> support:
-						<ol>
-							<li>
-								Moved the <code>\${core:getFileInBook()}</code> function to
-								<core:link book="/file/taglib" page="semanticcms-file.tld/function-getFileInBook" />.
-							</li>
-							<li>
-								Moved the <code>\${core:getFile()}</code> function to
-								<core:link book="/file/taglib" page="semanticcms-file.tld/function-getFile" />.
-							</li>
-							<li>
-								Moved the <code>\${core:getExeFileInBook()}</code> function to
-								<core:link book="/file/taglib" page="semanticcms-file.tld/function-getExeFileInBook" />.
-							</li>
-							<li>
-								Moved the <code>\${core:getExeFile()}</code> function to
-								<core:link book="/file/taglib" page="semanticcms-file.tld/function-getExeFile" />.
-							</li>
-							<li>New <ao:a rel="nofollow" href="https://docs.oracle.com/cd/E19226-01/820-7627/gjddd/">Expression Language</ao:a> functions:
-								<ol type="a">
-									<li><core:link page="semanticcms-core.tld/function-getResourceInDomain" /></li>
-									<li><core:link page="semanticcms-core.tld/function-getResourceInBook" /></li>
-									<li><core:link page="semanticcms-core.tld/function-getResource" /></li>
-								</ol>
-							</li>
-						</ol>
-					</li>
-					<li>
-						No longer using <code>HideJspExtensionFilter</code> because <core:link book="/" page="/" /> 2
-						references pages by abstract path instead of implementation page.
-					</li>
-				</ul>
-			</changelog:release>
-		</c:if>
+  <jsp:directive.page language="java" pageEncoding="UTF-8" />
+  <jsp:directive.page session="false" />
+  <core:page
+    title="@{documented.name} Changelog"
+    shortTitle="Changelog"
+    tocLevels="1"
+    datePublished="2016-10-30T20:28:28-05:00"
+    dateModified="2022-02-15T21:37:30-06:00"
+  >
+    <c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
+      <changelog:release
+        projectName="@{documented.name}"
+        version="@{project.version}"
+        groupId="@{project.groupId}"
+        artifactId="@{documented.artifactId}"
+        repository="@{nexusUrl}content/repositories/snapshots/"
+        scmUrl="@{project.scm.url}"
+      >
+        <ul>
+          <li>Added <core:link book="/core/model" page="/" /> domain support:
+            <ol>
+              <li>New optional attribute <code>domain</code> that defaults to the domain of the current page on:
+                <ol type="a">
+                  <li><core:link page="semanticcms-core.tld/tag-author" /></li>
+                  <li><core:link page="semanticcms-core.tld/tag-child" /></li>
+                  <li><core:link page="semanticcms-core.tld/tag-link" /></li>
+                  <li><core:link page="semanticcms-core.tld/tag-page" /></li>
+                  <li><core:link page="semanticcms-core.tld/tag-parent" /></li>
+                </ol>
+              </li>
+              <li>
+                New optional attributes <code>thisDomain</code> and <code>linksToDomain</code> that default
+                to the domain of the current page on
+                <core:link page="semanticcms-core.tld/tag-navigationTree" />.
+              </li>
+              <li>New <ao:a rel="nofollow" href="https://docs.oracle.com/cd/E19226-01/820-7627/gjddd/">Expression Language</ao:a> function:
+                <ol type="a">
+                  <li><core:link page="semanticcms-core.tld/function-capturePageInDomain" /></li>
+                  <li><core:link page="semanticcms-core.tld/function-getFileInDomain" /></li>
+                  <li><core:link page="semanticcms-core.tld/function-getExeFileInDomain" /></li>
+                </ol>
+              </li>
+            </ol>
+          </li>
+          <li>Added <core:link book="/core/pages" page="/" /> support:
+            <ol>
+              <li>Removed the <code>\${core:getBook()}</code> function.</li>
+              <li>
+                Added the <core:link page="semanticcms-core.tld/function-getPublishedBook" /> function.
+                This function only returns published books, returns <code>null</code> instead
+                of throwing an exception when a book not found, and may return inaccessible books.
+              </li>
+            </ol>
+          </li>
+          <li>Added <core:link book="/core/resources" page="/" /> support:
+            <ol>
+              <li>
+                Moved the <code>\${core:getFileInBook()}</code> function to
+                <core:link book="/file/taglib" page="semanticcms-file.tld/function-getFileInBook" />.
+              </li>
+              <li>
+                Moved the <code>\${core:getFile()}</code> function to
+                <core:link book="/file/taglib" page="semanticcms-file.tld/function-getFile" />.
+              </li>
+              <li>
+                Moved the <code>\${core:getExeFileInBook()}</code> function to
+                <core:link book="/file/taglib" page="semanticcms-file.tld/function-getExeFileInBook" />.
+              </li>
+              <li>
+                Moved the <code>\${core:getExeFile()}</code> function to
+                <core:link book="/file/taglib" page="semanticcms-file.tld/function-getExeFile" />.
+              </li>
+              <li>New <ao:a rel="nofollow" href="https://docs.oracle.com/cd/E19226-01/820-7627/gjddd/">Expression Language</ao:a> functions:
+                <ol type="a">
+                  <li><core:link page="semanticcms-core.tld/function-getResourceInDomain" /></li>
+                  <li><core:link page="semanticcms-core.tld/function-getResourceInBook" /></li>
+                  <li><core:link page="semanticcms-core.tld/function-getResource" /></li>
+                </ol>
+              </li>
+            </ol>
+          </li>
+          <li>
+            No longer using <code>HideJspExtensionFilter</code> because <core:link book="/" page="/" /> 2
+            references pages by abstract path instead of implementation page.
+          </li>
+        </ul>
+      </changelog:release>
+    </c:if>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.15.2"
-			datePublished="2022-02-15T21:37:30-06:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>
-					No longer hiding <code>*.jspx</code> or <code>*.jsp</code> extensions for resources within
-					<code>/WEB-INF/*</code>.  This is to help interoperability with frameworks that hide their JSP
-					pages from direct access.
-				</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.15.2"
+      datePublished="2022-02-15T21:37:30-06:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>
+          No longer hiding <code>*.jspx</code> or <code>*.jsp</code> extensions for resources within
+          <code>/WEB-INF/*</code>.  This is to help interoperability with frameworks that hide their JSP
+          pages from direct access.
+        </li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.15.1"
-			datePublished="2021-10-15T23:38:30-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Updated dependencies.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.15.1"
+      datePublished="2021-10-15T23:38:30-05:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Updated dependencies.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.15.0"
-			datePublished="2021-07-06T07:27:07-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Updated to <ao:a rel="nofollow" href="https://www.oracle.com/java/technologies/javaee/javaeetechnologies.html#javaee7">Java™ EE 7 Web Profile</ao:a> (Servlet 3.1, JSP 2.3, EL 3.0, and JSTL 1.2).</li>
-				<li>Minimum Java version changed from 1.8 to 11.</li>
-				<li>
-					Now supports Java 9+ modules.  Due to still having filename-based automatic module dependencies,
-					*-SNAPSHOT versions include <code>module-info.class</code> while releases include the
-					<code>Automatic-Module-Name</code> manifest entry.  To minimize the difference between these
-					modes, <code>module-info.java</code> does not perform any transitive requires.
-				</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.15.0"
+      datePublished="2021-07-06T07:27:07-05:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Updated to <ao:a rel="nofollow" href="https://www.oracle.com/java/technologies/javaee/javaeetechnologies.html#javaee7">Java™ EE 7 Web Profile</ao:a> (Servlet 3.1, JSP 2.3, EL 3.0, and JSTL 1.2).</li>
+        <li>Minimum Java version changed from 1.8 to 11.</li>
+        <li>
+          Now supports Java 9+ modules.  Due to still having filename-based automatic module dependencies,
+          *-SNAPSHOT versions include <code>module-info.class</code> while releases include the
+          <code>Automatic-Module-Name</code> manifest entry.  To minimize the difference between these
+          modes, <code>module-info.java</code> does not perform any transitive requires.
+        </li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.14.2"
-			datePublished="2021-03-18T05:20:36-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Updated dependencies.</li>
-				<li>Implemented automatic newline and tab indentation.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.14.2"
+      datePublished="2021-03-18T05:20:36-05:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Updated dependencies.</li>
+        <li>Implemented automatic newline and tab indentation.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.14.1"
-			datePublished="2020-12-13T02:24:39-06:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Updated dependencies.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.14.1"
+      datePublished="2020-12-13T02:24:39-06:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Updated dependencies.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.14.0"
-			datePublished="2020-12-07T21:28:02-06:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>
-					Split development-only classes into a new sub-project in <code>devel/</code>.  This
-					sub-project is used only for development and is never deployed to artifact repositories.
-				</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.14.0"
+      datePublished="2020-12-07T21:28:02-06:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>
+          Split development-only classes into a new sub-project in <code>devel/</code>.  This
+          sub-project is used only for development and is never deployed to artifact repositories.
+        </li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.13.1"
-			datePublished="2020-11-27T15:14:26-06:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Updated dependencies.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.13.1"
+      datePublished="2020-11-27T15:14:26-06:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Updated dependencies.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.13.0"
-			datePublished="2020-11-25T03:56:35-06:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Added generics to TLD types and signatures.</li>
-				<li>Updated dependencies.</li>
-				<li>
-					Allowing all attributes to have runtime expressions with <code><![CDATA[&lt;rtexprvalue&gt;true&lt;/rtexprvalue&gt;]]></code>.
-					There is no compelling reason to disable the runtime expressions, and disabling them can hinder developer options.
-				</li>
-				<li><code><core:link page="semanticcms-core.tld/tag-page" /></code>:
-					<code>allowRobots</code> and <code>toc</code> now parse null or
-					empty strings as "auto".
-				</li>
-				<li>
-					Cleaned-up use of <code>JspTagException</code> versus <code>JspException</code>.  Generally,
-					methods declare <code>throws JspException</code> while actually throwing instances of
-					<code>JspTagException</code>.  The exception to this is private implementation methods that
-					both declare and throw <code>JspTagException</code>.
-				</li>
-				<li>Attribute setters now throw <code>IllegalArgumentException</code> instead of <code>JspTagException</code>.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.13.0"
+      datePublished="2020-11-25T03:56:35-06:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Added generics to TLD types and signatures.</li>
+        <li>Updated dependencies.</li>
+        <li>
+          Allowing all attributes to have runtime expressions with <code><![CDATA[&lt;rtexprvalue&gt;true&lt;/rtexprvalue&gt;]]></code>.
+          There is no compelling reason to disable the runtime expressions, and disabling them can hinder developer options.
+        </li>
+        <li><code><core:link page="semanticcms-core.tld/tag-page" /></code>:
+          <code>allowRobots</code> and <code>toc</code> now parse null or
+          empty strings as "auto".
+        </li>
+        <li>
+          Cleaned-up use of <code>JspTagException</code> versus <code>JspException</code>.  Generally,
+          methods declare <code>throws JspException</code> while actually throwing instances of
+          <code>JspTagException</code>.  The exception to this is private implementation methods that
+          both declare and throw <code>JspTagException</code>.
+        </li>
+        <li>Attribute setters now throw <code>IllegalArgumentException</code> instead of <code>JspTagException</code>.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.12.0"
-			datePublished="2020-03-27T14:34:36-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Minimum Java version changed from 1.7 to 1.8.</li>
-				<li>
-					Reduced use of property substitutions in <code>pom.xml</code>.
-					This is to help 3rd-party parsers that fail to perform full Maven-compatible substitutions.
-				</li>
-				<li>Enabled <code>HideJspExtensionFilter</code> on <code>ERROR</code> dispatcher, too.</li>
-				<li>Now supports page attributes for <code>serialization</code> (default "auto") and <code>doctype</code> (default "HTML5").</li>
-				<li>Using <ao:a href="https://oss.aoapps.com/fluent-html/">AO Fluent HTML</ao:a> for HTML generation.</li>
-				<li>Optimized ServletContext attribute initialization and concurrency.</li>
-				<li>Updated dependencies.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.12.0"
+      datePublished="2020-03-27T14:34:36-05:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Minimum Java version changed from 1.7 to 1.8.</li>
+        <li>
+          Reduced use of property substitutions in <code>pom.xml</code>.
+          This is to help 3rd-party parsers that fail to perform full Maven-compatible substitutions.
+        </li>
+        <li>Enabled <code>HideJspExtensionFilter</code> on <code>ERROR</code> dispatcher, too.</li>
+        <li>Now supports page attributes for <code>serialization</code> (default "auto") and <code>doctype</code> (default "HTML5").</li>
+        <li>Using <ao:a href="https://oss.aoapps.com/fluent-html/">AO Fluent HTML</ao:a> for HTML generation.</li>
+        <li>Optimized ServletContext attribute initialization and concurrency.</li>
+        <li>Updated dependencies.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.11.0"
-			datePublished="2019-10-11T17:49:30-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Element IDs may now contain the full range of <ao:a href="https://www.w3.org/TR/REC-xml/#id">valid XML identifiers</ao:a>.</li>
-				<li>
-					<code><core:link page="semanticcms-core.tld/function-encodeUrlParam" /></code> is deprecated - please use
-					<code><ao:a href="https://oss.aoapps.com/taglib/ao.tld/function-encodeURIComponent">\${ao:encodeURIComponent()}</ao:a></code> instead.
-				</li>
-				<li>
-					<code><core:link page="semanticcms-core.tld/function-parseQueryString" /></code> now always decodes in
-					<ao:a href="https://www.w3.org/TR/html40/appendix/notes.html#non-ascii-chars">recommended <code>UTF-8</code> encoding</ao:a>.
-					Previously, would use <ao:a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletRequest.html#getCharacterEncoding%28%29">request encoding</ao:a>
-					or <code>ISO-8859-1</code> if none set.
-				</li>
-				<li>Added absolute URL and <ao:a href="https://oss.aoapps.com/servlet-util/apidocs/com.aoapps.servlet.util/com/aoapps/servlet/http/Canonical.html">Canonical URL</ao:a> support.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.11.0"
+      datePublished="2019-10-11T17:49:30-05:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Element IDs may now contain the full range of <ao:a href="https://www.w3.org/TR/REC-xml/#id">valid XML identifiers</ao:a>.</li>
+        <li>
+          <code><core:link page="semanticcms-core.tld/function-encodeUrlParam" /></code> is deprecated - please use
+          <code><ao:a href="https://oss.aoapps.com/taglib/ao.tld/function-encodeURIComponent">\${ao:encodeURIComponent()}</ao:a></code> instead.
+        </li>
+        <li>
+          <code><core:link page="semanticcms-core.tld/function-parseQueryString" /></code> now always decodes in
+          <ao:a href="https://www.w3.org/TR/html40/appendix/notes.html#non-ascii-chars">recommended <code>UTF-8</code> encoding</ao:a>.
+          Previously, would use <ao:a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletRequest.html#getCharacterEncoding%28%29">request encoding</ao:a>
+          or <code>ISO-8859-1</code> if none set.
+        </li>
+        <li>Added absolute URL and <ao:a href="https://oss.aoapps.com/servlet-util/apidocs/com.aoapps.servlet.util/com/aoapps/servlet/http/Canonical.html">Canonical URL</ao:a> support.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.10.1"
-			datePublished="2019-06-19T10:23:10-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Using managed dependencies:
-					<ol>
-						<li>This project uses managed dependencies.</li>
-						<li>This project's managed dependencies may also be imported by other projects.</li>
-					</ol>
-				</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.10.1"
+      datePublished="2019-06-19T10:23:10-05:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Using managed dependencies:
+          <ol>
+            <li>This project uses managed dependencies.</li>
+            <li>This project's managed dependencies may also be imported by other projects.</li>
+          </ol>
+        </li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.10.0"
-			datePublished="2019-04-19T06:05:20-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Minimum Java version changed from 1.6 to 1.7.</li>
-				<li>
-					Fixed bug in <code><core:link page="semanticcms-core.tld/tag-page" /></code>
-					that threw <code><ao:a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletException.html">ServletException</ao:a></code>
-					when page not in a book, even when <code>book</code> and <code>path</code> attributes are provided.
-				</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.10.0"
+      datePublished="2019-04-19T06:05:20-05:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Minimum Java version changed from 1.6 to 1.7.</li>
+        <li>
+          Fixed bug in <code><core:link page="semanticcms-core.tld/tag-page" /></code>
+          that threw <code><ao:a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletException.html">ServletException</ao:a></code>
+          when page not in a book, even when <code>book</code> and <code>path</code> attributes are provided.
+        </li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.9.0"
-			datePublished="2017-07-19T23:22:39-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Nodes, including both pages and elements, now have properties:
-					<ol>
-						<li>Properties may be set via dynamic attributes <code>property.name="value"</code> on any page or element.</li>
-						<li>
-							Properties are now automatically loaded from any .properties file matching the JSP or JSPX
-							filename without *.jsp or *.jspx.  For example, a page named <code>index.jspx</code> would have
-							its properties automatically loaded from the <code>index.properties</code> file.
-						</li>
-						<li>Any duplicate properties will result in an exception.</li>
-						<li>Properties may also be set with the new <core:link page="semanticcms-core.tld/tag-property" /> tag.</li>
-					</ol>
-				</li>
-				<li>Updated dependencies.</li>
-				<li>May now specify <code>anchor</code> to link to non-SemanticCMS-element targets.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.9.0"
+      datePublished="2017-07-19T23:22:39-05:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Nodes, including both pages and elements, now have properties:
+          <ol>
+            <li>Properties may be set via dynamic attributes <code>property.name="value"</code> on any page or element.</li>
+            <li>
+              Properties are now automatically loaded from any .properties file matching the JSP or JSPX
+              filename without *.jsp or *.jspx.  For example, a page named <code>index.jspx</code> would have
+              its properties automatically loaded from the <code>index.properties</code> file.
+            </li>
+            <li>Any duplicate properties will result in an exception.</li>
+            <li>Properties may also be set with the new <core:link page="semanticcms-core.tld/tag-property" /> tag.</li>
+          </ol>
+        </li>
+        <li>Updated dependencies.</li>
+        <li>May now specify <code>anchor</code> to link to non-SemanticCMS-element targets.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.8.1"
-			datePublished="2016-11-15T17:56:09-06:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>New <ao:a href="https://oss.aoapps.com/parent/">AO OSS Parent</ao:a> POM to simplify <code>pom.xml</code> files.</li>
-				<li>Added support for dateCreated, datePublished, dateModified, and dateReviewed.</li>
-				<li>Project documentation moved to per-project book in <core:link book="/" page="/" /> format.</li>
-				<li>Added changelog as top-level project link.</li>
-				<li>
-					Taglib tlib-version is now set automatically during build.
-					Unfortunately, we cannot include "-SNAPSHOT" on snapshot builds due to the requirement of "Dewey decimal"
-					for taglib versions.  The unambiguous full version is annotated via comment.
-				</li>
-				<li>core:parent and core:child tags now accept expressions for book and page attributes.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.8.1"
+      datePublished="2016-11-15T17:56:09-06:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>New <ao:a href="https://oss.aoapps.com/parent/">AO OSS Parent</ao:a> POM to simplify <code>pom.xml</code> files.</li>
+        <li>Added support for dateCreated, datePublished, dateModified, and dateReviewed.</li>
+        <li>Project documentation moved to per-project book in <core:link book="/" page="/" /> format.</li>
+        <li>Added changelog as top-level project link.</li>
+        <li>
+          Taglib tlib-version is now set automatically during build.
+          Unfortunately, we cannot include "-SNAPSHOT" on snapshot builds due to the requirement of "Dewey decimal"
+          for taglib versions.  The unambiguous full version is annotated via comment.
+        </li>
+        <li>core:parent and core:child tags now accept expressions for book and page attributes.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.8.0"
-			datePublished="2016-10-20T18:23:00-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Improved Javadoc formatting.</li>
-				<li>Improved README formatting.</li>
-				<li>Added component registry.</li>
-				<li>shortTitle may now be specified on a per-parent basis,
-					for when the shortTitle only makes sense within the context of that specific parent.
-					This is useful for navigation items such as breadcrumbs or trees.</li>
-				<li>Ordering less specified in the API contract, but implementation will be more consistent.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.8.0"
+      datePublished="2016-10-20T18:23:00-05:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Improved Javadoc formatting.</li>
+        <li>Improved README formatting.</li>
+        <li>Added component registry.</li>
+        <li>shortTitle may now be specified on a per-parent basis,
+          for when the shortTitle only makes sense within the context of that specific parent.
+          This is useful for navigation items such as breadcrumbs or trees.</li>
+        <li>Ordering less specified in the API contract, but implementation will be more consistent.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.7.1"
-			datePublished="2016-10-11T13:58:00-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>display-name defined in web-fragment.xml was causing "The display name was defined in multiple fragments with different value"</li>
-				<li>Automatic content root redirect changed from 302 to stronger 301 for SEO purposes.</li>
-				<li>Using latest releases of dependencies.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.7.1"
+      datePublished="2016-10-11T13:58:00-05:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>display-name defined in web-fragment.xml was causing "The display name was defined in multiple fragments with different value"</li>
+        <li>Automatic content root redirect changed from 302 to stronger 301 for SEO purposes.</li>
+        <li>Using latest releases of dependencies.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.7.0"
-			datePublished="2016-10-04T20:55:00-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Improved Javadoc formatting.</li>
-				<li>Set rtexprvalue to false where seems reasonable to do so.</li>
-				<li>Removed unnecessary and unused attribute getters.</li>
-				<li>Link class is now a deferred expression and only evaluated on body captures.</li>
-				<li>Core taglib now supports deferred expressions.</li>
-				<li>Avoiding calling writeTo when capturing.</li>
-				<li>Each lock object now a small empty class to help identify lock contention.
-					<p>
-						The lock contention profiler in NetBeans is just showing "java.lang.Object" all over, and can't seem to
-						get from the lock object id to the actual object in the heap dump using OQL (id not found).
-					</p>
-				</li>
-				<li>Trim on includes is just unnecessary filter invocation.</li>
-				<li>Only writing element marker when needed now.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.7.0"
+      datePublished="2016-10-04T20:55:00-05:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Improved Javadoc formatting.</li>
+        <li>Set rtexprvalue to false where seems reasonable to do so.</li>
+        <li>Removed unnecessary and unused attribute getters.</li>
+        <li>Link class is now a deferred expression and only evaluated on body captures.</li>
+        <li>Core taglib now supports deferred expressions.</li>
+        <li>Avoiding calling writeTo when capturing.</li>
+        <li>Each lock object now a small empty class to help identify lock contention.
+          <p>
+            The lock contention profiler in NetBeans is just showing "java.lang.Object" all over, and can't seem to
+            get from the lock object id to the actual object in the heap dump using OQL (id not found).
+          </p>
+        </li>
+        <li>Trim on includes is just unnecessary filter invocation.</li>
+        <li>Only writing element marker when needed now.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.6"
-			datePublished="2016-09-11T15:42:00-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Use dependencyManagement instead of dependency for junit.</li>
-				<li>Created parent pom for all SemanticCMS components.</li>
-				<li>Now supporting per-page allowRobots setting.</li>
-				<li>Handling expression language converting nulls to empty strings.</li>
-				<li>Views now provide general purpose links, not just specifically CSS links.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.6"
+      datePublished="2016-09-11T15:42:00-05:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Use dependencyManagement instead of dependency for junit.</li>
+        <li>Created parent pom for all SemanticCMS components.</li>
+        <li>Now supporting per-page allowRobots setting.</li>
+        <li>Handling expression language converting nulls to empty strings.</li>
+        <li>Views now provide general purpose links, not just specifically CSS links.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.5"
-			datePublished="2016-09-03T09:53:00-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Improved Maven configuration for Java EE 6 dependencies.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.5"
+      datePublished="2016-09-03T09:53:00-05:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Improved Maven configuration for Java EE 6 dependencies.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.4"
-			datePublished="2016-08-28T20:36:00-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Making use of web-fragment.xml to remove common configuration from per-app web.xml.</li>
-				<li>Moved automatic Git to separate packages.</li>
-				<li>More view control over links to view.</li>
-				<li>Added global and per-view script registry.</li>
-				<li>Views may now use parameters.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.4"
+      datePublished="2016-08-28T20:36:00-05:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Making use of web-fragment.xml to remove common configuration from per-app web.xml.</li>
+        <li>Moved automatic Git to separate packages.</li>
+        <li>More view control over links to view.</li>
+        <li>Added global and per-view script registry.</li>
+        <li>Views may now use parameters.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.3"
-			datePublished="2016-08-21T17:03:00-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Hyperlinks now optional on links.</li>
-				<li>Allowing "small" link instead of eliminating hyperlink altogether.</li>
-				<li>Moved styles to separate package.</li>
-				<li>Created parent pom for all SemanticCMS components.</li>
-				<li>Requires latest version of aocode-public.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.3"
+      datePublished="2016-08-21T17:03:00-05:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Hyperlinks now optional on links.</li>
+        <li>Allowing "small" link instead of eliminating hyperlink altogether.</li>
+        <li>Moved styles to separate package.</li>
+        <li>Created parent pom for all SemanticCMS components.</li>
+        <li>Requires latest version of aocode-public.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.2"
-			datePublished="2016-08-19T14:44:00-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Now generating missing ids when first accesssed, not at the end of
-					the page. This fixes bug where IDs were missing from elements.</li>
-				<li>To avoid easily making broken links, may no longer link to generated element ids.</li>
-				<li>Application-scope variables combined into single "semanticCMS" variable.</li>
-				<li>Require latest ao-servlet-filter dependency.</li>
-				<li>Now supporting *.jspx files.</li>
-				<li>Defined how themes and views interact.</li>
-				<li>Headings moved to own projects and renamed to "Section".</li>
-				<li>Now passing arguments through includes.</li>
-				<li>Pulled files out of core and made files be elements.</li>
-				<li>Using auto temp file wrapper in all places.</li>
-				<li>Added default redirect to content root.</li>
-				<li>Views can now hide themselves when not relevant to a given page.</li>
-				<li>Pulled openFile out of core.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.2"
+      datePublished="2016-08-19T14:44:00-05:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Now generating missing ids when first accesssed, not at the end of
+          the page. This fixes bug where IDs were missing from elements.</li>
+        <li>To avoid easily making broken links, may no longer link to generated element ids.</li>
+        <li>Application-scope variables combined into single "semanticCMS" variable.</li>
+        <li>Require latest ao-servlet-filter dependency.</li>
+        <li>Now supporting *.jspx files.</li>
+        <li>Defined how themes and views interact.</li>
+        <li>Headings moved to own projects and renamed to "Section".</li>
+        <li>Now passing arguments through includes.</li>
+        <li>Pulled files out of core and made files be elements.</li>
+        <li>Using auto temp file wrapper in all places.</li>
+        <li>Added default redirect to content root.</li>
+        <li>Views can now hide themselves when not relevant to a given page.</li>
+        <li>Pulled openFile out of core.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.1"
-			datePublished="2016-08-09T23:19:00-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Renamed project from ao-web-page-taglib to semanticcms-core-taglib.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.1"
+      datePublished="2016-08-09T23:19:00-05:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Renamed project from ao-web-page-taglib to semanticcms-core-taglib.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.0"
-			datePublished="2016-08-07T23:49:00-05:00"
-			groupId="com.aoindustries"
-			artifactId="ao-web-page-taglib"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Project moved to GitHub and Maven.</li>
-			</ul>
-		</changelog:release>
-	</core:page>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.0"
+      datePublished="2016-08-07T23:49:00-05:00"
+      groupId="com.aoindustries"
+      artifactId="ao-web-page-taglib"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Project moved to GitHub and Maven.</li>
+      </ul>
+    </changelog:release>
+  </core:page>
 </jsp:root>

@@ -41,77 +41,87 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 public class AuthorTag extends SimpleTagSupport {
 
-	public static final String TAG_NAME = "<core:author>";
+  public static final String TAG_NAME = "<core:author>";
 
-	private String name;
-	public void setName(String name) {
-		this.name = Strings.nullIfEmpty(name);
-	}
+  private String name;
+  public void setName(String name) {
+    this.name = Strings.nullIfEmpty(name);
+  }
 
-	private String href;
-	public void setHref(String href) {
-		this.href = Strings.nullIfEmpty(href);
-	}
+  private String href;
+  public void setHref(String href) {
+    this.href = Strings.nullIfEmpty(href);
+  }
 
-	private DomainName domain;
-	public void setDomain(String domain) throws ValidationException {
-		this.domain = DomainName.valueOf(Strings.nullIfEmpty(domain));
-	}
+  private DomainName domain;
+  public void setDomain(String domain) throws ValidationException {
+    this.domain = DomainName.valueOf(Strings.nullIfEmpty(domain));
+  }
 
-	private Path book;
-	public void setBook(String book) throws ValidationException {
-		this.book = Path.valueOf(Strings.nullIfEmpty(book));
-	}
+  private Path book;
+  public void setBook(String book) throws ValidationException {
+    this.book = Path.valueOf(Strings.nullIfEmpty(book));
+  }
 
-	private Path page;
-	public void setPage(String page) throws ValidationException {
-		this.page = Path.valueOf(Strings.nullIfEmpty(page));
-	}
+  private Path page;
+  public void setPage(String page) throws ValidationException {
+    this.page = Path.valueOf(Strings.nullIfEmpty(page));
+  }
 
-	@Override
-	public void doTag() throws JspException, IOException {
-		final PageContext pageContext = (PageContext)getJspContext();
-		final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
+  @Override
+  public void doTag() throws JspException, IOException {
+    final PageContext pageContext = (PageContext)getJspContext();
+    final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 
-		final Node currentNode = CurrentNode.getCurrentNode(request);
-		if(!(currentNode instanceof Page)) throw new JspTagException(TAG_NAME + " tag must be nested directly inside a " + PageTag.TAG_NAME + " tag.");
-		final Page currentPage = (Page)currentNode;
+    final Node currentNode = CurrentNode.getCurrentNode(request);
+    if (!(currentNode instanceof Page)) {
+      throw new JspTagException(TAG_NAME + " tag must be nested directly inside a " + PageTag.TAG_NAME + " tag.");
+    }
+    final Page currentPage = (Page)currentNode;
 
-		PageRef currentPageRef = null;
+    PageRef currentPageRef = null;
 
-		// When domain provided, both book and page attributes must also be provided.
-		if(domain != null) {
-			if(book == null) throw new JspTagException("When domain provided, both book and page attributes must also be provided.");
-		}
-		// When book provided, page attribute must also be provided.
-		if(book != null) {
-			if(page == null) throw new JspTagException("When book provided, page attribute must also be provided.");
-		}
-		if(page != null) {
-			// Default to this domain if nothing set
-			if(domain == null) {
-				currentPageRef = currentPage.getPageRef();
-				domain = currentPageRef.getBookRef().getDomain();
-			}
-			// Default to this book if nothing set
-			if(book == null) {
-				if(currentPageRef == null) currentPageRef = currentPage.getPageRef();
-				book = currentPageRef.getBookRef().getPath();
-			}
-		}
-		// Name required when referencing an author outside this book
-		if(name == null && book != null) {
-			if(currentPageRef == null) currentPageRef = currentPage.getPageRef();
-			assert domain != null;
-			if(
-				!domain.equals(currentPageRef.getBookRef().getDomain())
-				|| !book.equals(currentPageRef.getBookRef().getPath())
-			) {
-				throw new IllegalStateException("Author name required when author is in a different book: " + page);
-			}
-		}
-		currentPage.addAuthor(
-			new Author(name, href, domain, book, page)
-		);
-	}
+    // When domain provided, both book and page attributes must also be provided.
+    if (domain != null) {
+      if (book == null) {
+        throw new JspTagException("When domain provided, both book and page attributes must also be provided.");
+      }
+    }
+    // When book provided, page attribute must also be provided.
+    if (book != null) {
+      if (page == null) {
+        throw new JspTagException("When book provided, page attribute must also be provided.");
+      }
+    }
+    if (page != null) {
+      // Default to this domain if nothing set
+      if (domain == null) {
+        currentPageRef = currentPage.getPageRef();
+        domain = currentPageRef.getBookRef().getDomain();
+      }
+      // Default to this book if nothing set
+      if (book == null) {
+        if (currentPageRef == null) {
+          currentPageRef = currentPage.getPageRef();
+        }
+        book = currentPageRef.getBookRef().getPath();
+      }
+    }
+    // Name required when referencing an author outside this book
+    if (name == null && book != null) {
+      if (currentPageRef == null) {
+        currentPageRef = currentPage.getPageRef();
+      }
+      assert domain != null;
+      if (
+        !domain.equals(currentPageRef.getBookRef().getDomain())
+        || !book.equals(currentPageRef.getBookRef().getPath())
+      ) {
+        throw new IllegalStateException("Author name required when author is in a different book: " + page);
+      }
+    }
+    currentPage.addAuthor(
+      new Author(name, href, domain, book, page)
+    );
+  }
 }
