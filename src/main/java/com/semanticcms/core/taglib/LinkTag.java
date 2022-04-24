@@ -52,8 +52,8 @@ import javax.servlet.jsp.tagext.JspFragment;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 
 public class LinkTag
-  extends SimpleTagSupport
-  implements
+    extends SimpleTagSupport
+    implements
     DynamicAttributes,
     //ClassAttribute,
     ParamsAttribute
@@ -155,8 +155,8 @@ public class LinkTag
   @SuppressWarnings("TooBroadCatch") // Should not be necessary, NetBeans bug?
   public void doTag() throws JspException, IOException {
     try {
-      final PageContext pageContext = (PageContext)getJspContext();
-      final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
+      final PageContext pageContext = (PageContext) getJspContext();
+      final HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
 
       // Get the current capture state
       final CaptureLevel captureLevel = CaptureLevel.getCaptureLevel(request);
@@ -186,33 +186,33 @@ public class LinkTag
         }
         final JspWriter out = pageContext.getOut();
         ServletContext servletContext = pageContext.getServletContext();
-        HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
+        HttpServletResponse response = (HttpServletResponse) pageContext.getResponse();
         LinkImpl.writeLinkImpl(servletContext,
-          pageContext.getELContext(),
-          request,
-          response,
-          new DocumentEE(
-            servletContext,
+            pageContext.getELContext(),
             request,
             response,
-            out,
-            false, // Do not add extra newlines to JSP
-            false  // Do not add extra indentation to JSP
-          ),
-          book,
-          page,
-          element,
-          allowGeneratedElement,
-          anchor,
-          view,
-          small,
-          params,
-          absolute,
-          canonical,
-          clazz,
-          capturedBody == null || capturedBody.getLength() == 0
-            ? null
-            : discard -> {
+            new DocumentEE(
+                servletContext,
+                request,
+                response,
+                out,
+                false, // Do not add extra newlines to JSP
+                false  // Do not add extra indentation to JSP
+            ),
+            book,
+            page,
+            element,
+            allowGeneratedElement,
+            anchor,
+            view,
+            small,
+            params,
+            absolute,
+            canonical,
+            clazz,
+            capturedBody == null || capturedBody.getLength() == 0
+                ? null
+                : discard -> {
               if (discard) {
                 throw new AssertionError("Conditions that lead to discard should have caused no capturedBody above");
               }

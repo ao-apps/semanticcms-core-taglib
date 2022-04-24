@@ -43,11 +43,13 @@ import org.apache.commons.lang3.NotImplementedException;
 public class DoViewTag extends SimpleTagSupport {
 
   private View view;
+
   public void setView(View view) {
     this.view = view;
   }
 
   private Page page;
+
   public void setPage(Page page) {
     this.page = page;
   }
@@ -55,7 +57,7 @@ public class DoViewTag extends SimpleTagSupport {
   @Override
   public void doTag() throws JspException, IOException {
     try {
-      final PageContext pageContext = (PageContext)getJspContext();
+      final PageContext pageContext = (PageContext) getJspContext();
       final PrintWriter out = new PrintWriter(pageContext.getOut()) {
         @Override
         public void flush() {
@@ -63,8 +65,8 @@ public class DoViewTag extends SimpleTagSupport {
         }
       };
       ServletContext servletContext = pageContext.getServletContext();
-      HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
-      HttpServletResponse response = new HttpServletResponseWrapper((HttpServletResponse)pageContext.getResponse()) {
+      HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
+      HttpServletResponse response = new HttpServletResponseWrapper((HttpServletResponse) pageContext.getResponse()) {
         @Override
         public PrintWriter getWriter() {
           return out;
@@ -75,17 +77,17 @@ public class DoViewTag extends SimpleTagSupport {
         }
       };
       view.doView(servletContext,
-        request,
-        response,
-        new DocumentEE(
-          servletContext,
           request,
           response,
-          out,
-          false, // Do not add extra newlines to JSP
-          false  // Do not add extra indentation to JSP
-        ),
-        page
+          new DocumentEE(
+              servletContext,
+              request,
+              response,
+              out,
+              false, // Do not add extra newlines to JSP
+              false  // Do not add extra indentation to JSP
+          ),
+          page
       );
       if (out.checkError()) {
         throw new IOException("Error on doView PrintWriter");

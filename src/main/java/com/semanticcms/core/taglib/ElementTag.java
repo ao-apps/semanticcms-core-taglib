@@ -65,6 +65,7 @@ public abstract class ElementTag<E extends Element> extends SimpleTagSupport imp
   private E element;
 
   private ValueExpression id;
+
   public void setId(ValueExpression id) {
     this.id = id;
   }
@@ -78,16 +79,16 @@ public abstract class ElementTag<E extends Element> extends SimpleTagSupport imp
    */
   protected boolean addDynamicAttribute(String uri, String localName, Object value, List<String> expectedPatterns) throws JspTagException {
     if (
-      uri == null
-      && localName.startsWith(PROPERTY_ATTRIBUTE_PREFIX)
+        uri == null
+            && localName.startsWith(PROPERTY_ATTRIBUTE_PREFIX)
     ) {
       if (value != null) {
         String propertyName = localName.substring(PROPERTY_ATTRIBUTE_PREFIX.length());
         if (!element.setProperty(propertyName, value)) {
           throw new LocalizedJspTagException(
-            Resources.PACKAGE_RESOURCES,
-            "error.duplicateDynamicElementProperty",
-            localName
+              Resources.PACKAGE_RESOURCES,
+              "error.duplicateDynamicElementProperty",
+              localName
           );
         }
       }
@@ -122,7 +123,7 @@ public abstract class ElementTag<E extends Element> extends SimpleTagSupport imp
   @Override
   @SuppressWarnings({"UseSpecificCatch", "TooBroadCatch"})
   public void doTag() throws JspException, IOException {
-    final PageContext pageContext = (PageContext)getJspContext();
+    final PageContext pageContext = (PageContext) getJspContext();
     final ServletRequest request = pageContext.getRequest();
 
     // Get the current capture state
@@ -222,7 +223,7 @@ public abstract class ElementTag<E extends Element> extends SimpleTagSupport imp
     JspFragment body = getJspBody();
     if (body != null) {
       if (captureLevel == CaptureLevel.BODY) {
-        final PageContext pageContext = (PageContext)getJspContext();
+        final PageContext pageContext = (PageContext) getJspContext();
         // Invoke tag body, capturing output
         BufferWriter capturedOut = EncodingBufferedTag.newBufferWriter(pageContext.getRequest());
         try {

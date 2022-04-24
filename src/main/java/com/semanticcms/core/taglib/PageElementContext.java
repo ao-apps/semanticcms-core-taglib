@@ -35,9 +35,9 @@ public class PageElementContext extends ServletElementContext {
 
   public PageElementContext(PageContext pageContext) {
     super(
-      pageContext.getServletContext(),
-      (HttpServletRequest)pageContext.getRequest(),
-      (HttpServletResponse)pageContext.getResponse()
+        pageContext.getServletContext(),
+        (HttpServletRequest) pageContext.getRequest(),
+        (HttpServletResponse) pageContext.getResponse()
     );
   }
 }

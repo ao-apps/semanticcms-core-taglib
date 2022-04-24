@@ -70,20 +70,20 @@ public final class Functions {
 
   public static Page capturePageInBook(String book, String page, String level) throws ServletException, IOException {
     PageRef pageRef = PageRefResolver.getPageRef(
-      getServletContext(),
-      getRequest(),
-      book,
-      page
+        getServletContext(),
+        getRequest(),
+        book,
+        page
     );
     if (pageRef.getBook() == null) {
       throw new IllegalArgumentException("Book not found: " + pageRef.getBookName());
     }
     return CapturePage.capturePage(
-      getServletContext(),
-      getRequest(),
-      getResponse(),
-      pageRef,
-      CaptureLevel.valueOf(level.toUpperCase(Locale.ROOT))
+        getServletContext(),
+        getRequest(),
+        getResponse(),
+        pageRef,
+        CaptureLevel.valueOf(level.toUpperCase(Locale.ROOT))
     );
   }
 
@@ -94,30 +94,30 @@ public final class Functions {
   public static Page captureContentRoot(String level) throws ServletException, IOException {
     ServletContext servletContext = getServletContext();
     return CapturePage.capturePage(
-      servletContext,
-      getRequest(),
-      getResponse(),
-      SemanticCMS.getInstance(servletContext).getRootBook().getContentRoot(),
-      CaptureLevel.valueOf(level.toUpperCase(Locale.ROOT))
+        servletContext,
+        getRequest(),
+        getResponse(),
+        SemanticCMS.getInstance(servletContext).getRootBook().getContentRoot(),
+        CaptureLevel.valueOf(level.toUpperCase(Locale.ROOT))
     );
   }
 
   public static PageIndex getPageIndex(PageRef pageRef) throws ServletException, IOException {
     return PageIndex.getPageIndex(
-      getServletContext(),
-      getRequest(),
-      getResponse(),
-      pageRef
+        getServletContext(),
+        getRequest(),
+        getResponse(),
+        pageRef
     );
   }
 
   public static List<Page> convertPageDagToList(Page rootPage, String level) throws ServletException, IOException {
     return PageDags.convertPageDagToList(
-      getServletContext(),
-      getRequest(),
-      getResponse(),
-      rootPage,
-      CaptureLevel.valueOf(level.toUpperCase(Locale.ROOT))
+        getServletContext(),
+        getRequest(),
+        getResponse(),
+        rootPage,
+        CaptureLevel.valueOf(level.toUpperCase(Locale.ROOT))
     );
   }
 
@@ -138,10 +138,10 @@ public final class Functions {
 
   public static File getFileInBook(String book, String path, boolean requireFile) throws ServletException, IOException {
     PageRef pageRef = PageRefResolver.getPageRef(
-      getServletContext(),
-      getRequest(),
-      book,
-      path
+        getServletContext(),
+        getRequest(),
+        book,
+        path
     );
     if (pageRef.getBook() == null) {
       throw new IllegalArgumentException("Book not found: " + pageRef.getBookName());
@@ -156,8 +156,8 @@ public final class Functions {
   public static File getExeFileInBook(String book, String path) throws ServletException, IOException {
     File file = getFileInBook(book, path, false);
     if (
-      !file.canExecute()
-      && !file.setExecutable(true)
+        !file.canExecute()
+            && !file.setExecutable(true)
     ) {
       throw new IOException("Unable to set executable flag: " + file.getPath());
     }
@@ -178,17 +178,17 @@ public final class Functions {
 
   public static String getRefId(String id) throws ServletException {
     return PageIndex.getRefId(
-      getServletContext(),
-      getRequest(),
-      id
+        getServletContext(),
+        getRequest(),
+        id
     );
   }
 
   public static String getRefIdInPage(Page page, String id) {
     return PageIndex.getRefIdInPage(
-      getRequest(),
-      page,
-      id
+        getRequest(),
+        page,
+        id
     );
   }
 
@@ -257,39 +257,39 @@ public final class Functions {
 
   public static Copyright findCopyright(Page page) throws ServletException, IOException {
     return CopyrightUtils.findCopyright(
-      getServletContext(),
-      getRequest(),
-      getResponse(),
-      page
+        getServletContext(),
+        getRequest(),
+        getResponse(),
+        page
     );
   }
 
   public static Set<Author> findAuthors(Page page) throws ServletException, IOException {
     return AuthorUtils.findAuthors(
-      getServletContext(),
-      getRequest(),
-      getResponse(),
-      page
+        getServletContext(),
+        getRequest(),
+        getResponse(),
+        page
     );
   }
 
   public static boolean findAllowRobots(Page page) throws ServletException, IOException {
     return PageUtils.findAllowRobots(
-      getServletContext(),
-      getRequest(),
-      getResponse(),
-      page
+        getServletContext(),
+        getRequest(),
+        getResponse(),
+        page
     );
   }
 
   public static boolean hasElement(Page page, String elementType, boolean recursive) throws ServletException, IOException, ClassNotFoundException {
     return PageUtils.hasElement(
-      getServletContext(),
-      getRequest(),
-      getResponse(),
-      page,
-      Class.forName(elementType).asSubclass(Element.class),
-      recursive
+        getServletContext(),
+        getRequest(),
+        getResponse(),
+        page,
+        Class.forName(elementType).asSubclass(Element.class),
+        recursive
     );
   }
 
@@ -299,60 +299,60 @@ public final class Functions {
 
   public static List<? extends Element> filterElements(Page page, String elementType) throws ClassNotFoundException {
     return page.filterElements(
-      Class.forName(elementType).asSubclass(Element.class)
+        Class.forName(elementType).asSubclass(Element.class)
     );
   }
 
   public static boolean isViewApplicable(View view, Page page) throws ServletException, IOException {
     return view.isApplicable(
-      getServletContext(),
-      getRequest(),
-      getResponse(),
-      page
+        getServletContext(),
+        getRequest(),
+        getResponse(),
+        page
     );
   }
 
   public static String getViewLinkCssClass(View view) {
     return view.getLinkCssClass(
-      getServletContext(),
-      getRequest(),
-      getResponse()
+        getServletContext(),
+        getRequest(),
+        getResponse()
     );
   }
 
   public static Map<String, List<String>> getViewLinkParams(View view, Page page) {
     return view.getLinkParams(
-      getServletContext(),
-      getRequest(),
-      getResponse(),
-      page
+        getServletContext(),
+        getRequest(),
+        getResponse(),
+        page
     );
   }
 
   public static Copyright getViewCopyright(View view, Page page) throws ServletException, IOException {
     return view.getCopyright(
-      getServletContext(),
-      getRequest(),
-      getResponse(),
-      page
+        getServletContext(),
+        getRequest(),
+        getResponse(),
+        page
     );
   }
 
   public static Set<Author> getViewAuthors(View view, Page page) throws ServletException, IOException {
     return view.getAuthors(
-      getServletContext(),
-      getRequest(),
-      getResponse(),
-      page
+        getServletContext(),
+        getRequest(),
+        getResponse(),
+        page
     );
   }
 
   public static String getViewTitle(View view, Page page) {
     return view.getTitle(
-      getServletContext(),
-      getRequest(),
-      getResponse(),
-      page
+        getServletContext(),
+        getRequest(),
+        getResponse(),
+        page
     );
   }
 
@@ -361,19 +361,19 @@ public final class Functions {
       return Collections.emptyList();
     }
     return view.getLinks(
-      getServletContext(),
-      getRequest(),
-      getResponse(),
-      page
+        getServletContext(),
+        getRequest(),
+        getResponse(),
+        page
     );
   }
 
   public static boolean getViewAllowRobots(View view, Page page) throws ServletException, IOException {
     return view.getAllowRobots(
-      getServletContext(),
-      getRequest(),
-      getResponse(),
-      page
+        getServletContext(),
+        getRequest(),
+        getResponse(),
+        page
     );
   }
 
@@ -404,10 +404,10 @@ public final class Functions {
         assert merged.containsKey(name);
         if (!src.equals(existingSrc)) {
           throw new IllegalStateException(
-            "Script already registered but with a different src:"
-            + " name=" + name
-            + " src=" + src
-            + " existingSrc=" + existingSrc
+              "Script already registered but with a different src:"
+                  + " name=" + name
+                  + " src=" + src
+                  + " existingSrc=" + existingSrc
           );
         }
       } else {

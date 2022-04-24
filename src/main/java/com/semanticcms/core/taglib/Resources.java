@@ -38,5 +38,5 @@ final class Resources {
   }
 
   static final com.aoapps.lang.i18n.Resources PACKAGE_RESOURCES =
-    com.aoapps.lang.i18n.Resources.getResources(ResourceBundle::getBundle, Resources.class.getPackage());
+      com.aoapps.lang.i18n.Resources.getResources(ResourceBundle::getBundle, Resources.class.getPackage());
 }

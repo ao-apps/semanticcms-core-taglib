@@ -29,21 +29,21 @@ public class SemanticCmsCoreTldInitializer extends TagReferenceInitializer {
 
   public SemanticCmsCoreTldInitializer() {
     super(
-      Maven.properties.getProperty("documented.name") + " Reference",
-      "Taglib Reference",
-      "/core/taglib",
-      "/semanticcms-core.tld",
-      true,
-      Maven.properties.getProperty("documented.javadoc.link.javase"),
-      Maven.properties.getProperty("documented.javadoc.link.javaee"),
-      // Self
-      "com.semanticcms.core.taglib", Maven.properties.getProperty("project.url") + "apidocs/com.semanticcms.core.taglib/",
-      // Dependencies
-      "com.aoapps.net", "https://oss.aoapps.com/net-types/apidocs/com.aoapps.net.types/",
-      "com.aoapps.taglib", "https://oss.aoapps.com/taglib/apidocs/com.aoapps.taglib/",
-      "com.semanticcms.core.model", "https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/",
-      "com.semanticcms.core.servlet", "https://semanticcms.com/core/servlet/apidocs/com.semanticcms.core.servlet/",
-      "com.semanticcms.core.servlet.impl", "https://semanticcms.com/core/servlet/apidocs/com.semanticcms.core.servlet/"
+        Maven.properties.getProperty("documented.name") + " Reference",
+        "Taglib Reference",
+        "/core/taglib",
+        "/semanticcms-core.tld",
+        true,
+        Maven.properties.getProperty("documented.javadoc.link.javase"),
+        Maven.properties.getProperty("documented.javadoc.link.javaee"),
+        // Self
+        "com.semanticcms.core.taglib", Maven.properties.getProperty("project.url") + "apidocs/com.semanticcms.core.taglib/",
+        // Dependencies
+        "com.aoapps.net", "https://oss.aoapps.com/net-types/apidocs/com.aoapps.net.types/",
+        "com.aoapps.taglib", "https://oss.aoapps.com/taglib/apidocs/com.aoapps.taglib/",
+        "com.semanticcms.core.model", "https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/",
+        "com.semanticcms.core.servlet", "https://semanticcms.com/core/servlet/apidocs/com.semanticcms.core.servlet/",
+        "com.semanticcms.core.servlet.impl", "https://semanticcms.com/core/servlet/apidocs/com.semanticcms.core.servlet/"
     );
   }
 }

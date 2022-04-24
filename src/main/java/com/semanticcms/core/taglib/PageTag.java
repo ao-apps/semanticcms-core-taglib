@@ -94,36 +94,43 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
   private static final long PROPERTIES_CACHE_LAST_MODIFIED_RECHECK_INTERVAL = 1000;
 
   private String book;
+
   public void setBook(String book) {
     this.book = nullIfEmpty(book);
   }
 
   private String path;
+
   public void setPath(String path) {
     this.path = nullIfEmpty(path);
   }
 
   private Object dateCreated;
+
   public void setDateCreated(Object dateCreated) {
     this.dateCreated = dateCreated;
   }
 
   private Object datePublished;
+
   public void setDatePublished(Object datePublished) {
     this.datePublished = datePublished;
   }
 
   private Object dateModified;
+
   public void setDateModified(Object dateModified) {
     this.dateModified = dateModified;
   }
 
   private Object dateReviewed;
+
   public void setDateReviewed(Object dateReviewed) {
     this.dateReviewed = dateReviewed;
   }
 
   private Serialization serialization;
+
   public void setSerialization(String serialization) {
     if (serialization == null) {
       this.serialization = null;
@@ -134,6 +141,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
   }
 
   private Doctype doctype = Doctype.DEFAULT;
+
   public void setDoctype(String doctype) {
     if (doctype == null) {
       this.doctype = null;
@@ -144,6 +152,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
   }
 
   private Boolean autonli;
+
   public void setAutonli(String autonli) {
     if (autonli == null) {
       this.autonli = null;
@@ -162,6 +171,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
   }
 
   private Boolean indent;
+
   public void setIndent(String indent) {
     if (indent == null) {
       this.indent = null;
@@ -180,32 +190,37 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
   }
 
   private String title;
+
   public void setTitle(String title) {
     this.title = title;
   }
 
   private String shortTitle;
+
   public void setShortTitle(String shortTitle) {
     this.shortTitle = shortTitle;
   }
 
   private String description;
+
   public void setDescription(String description) {
     this.description = description;
   }
 
   private String keywords;
+
   public void setKeywords(String keywords) {
     this.keywords = keywords;
   }
 
   private Boolean allowRobots;
+
   public void setAllowRobots(String allowRobots) {
     // Not using Boolean.valueOf to be more specific in parsing, "blarg" is not same as "false".
     if (
-      allowRobots == null
-      || (allowRobots = allowRobots.trim()).isEmpty()
-      || "auto".equalsIgnoreCase(allowRobots)
+        allowRobots == null
+            || (allowRobots = allowRobots.trim()).isEmpty()
+            || "auto".equalsIgnoreCase(allowRobots)
     ) {
       this.allowRobots = null;
     } else if ("true".equalsIgnoreCase(allowRobots)) {
@@ -219,12 +234,13 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
   }
 
   private Boolean toc;
+
   public void setToc(String toc) {
     // Not using Boolean.valueOf to be more specific in parsing, "blarg" is not same as "false".
     if (
-      toc == null
-      || (toc = toc.trim()).isEmpty()
-      || "auto".equalsIgnoreCase(toc)
+        toc == null
+            || (toc = toc.trim()).isEmpty()
+            || "auto".equalsIgnoreCase(toc)
     ) {
       this.toc = null;
     } else if ("true".equalsIgnoreCase(toc)) {
@@ -237,16 +253,19 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
   }
 
   private int tocLevels = Page.DEFAULT_TOC_LEVELS;
+
   public void setTocLevels(int tocLevels) {
     this.tocLevels = tocLevels;
   }
 
   private boolean allowParentMismatch;
+
   public void setAllowParentMismatch(boolean allowParentMismatch) {
     this.allowParentMismatch = allowParentMismatch;
   }
 
   private boolean allowChildMismatch;
+
   public void setAllowChildMismatch(boolean allowChildMismatch) {
     this.allowChildMismatch = allowChildMismatch;
   }
@@ -262,8 +281,8 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
    */
   protected boolean addDynamicAttribute(String uri, String localName, Object value, List<String> expectedPatterns) throws JspTagException {
     if (
-      uri == null
-      && localName.startsWith(PROPERTY_ATTRIBUTE_PREFIX)
+        uri == null
+            && localName.startsWith(PROPERTY_ATTRIBUTE_PREFIX)
     ) {
       if (value != null) {
         String propertyName = localName.substring(PROPERTY_ATTRIBUTE_PREFIX.length());
@@ -271,9 +290,9 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
           properties = new LinkedHashMap<>();
         } else if (properties.containsKey(propertyName)) {
           throw new LocalizedJspTagException(
-            Resources.PACKAGE_RESOURCES,
-            "error.duplicateDynamicPageProperty",
-            localName
+              Resources.PACKAGE_RESOURCES,
+              "error.duplicateDynamicPageProperty",
+              localName
           );
         }
         properties.put(propertyName, value);
@@ -308,7 +327,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
      * The application scoped attribute holding the properties cache.
      */
     private static final ScopeEE.Application.Attribute<ConcurrentMap<URL, Entry>> APPLICATION_ATTRIBUTE =
-      ScopeEE.APPLICATION.attribute(PropertiesCache.class.getName());
+        ScopeEE.APPLICATION.attribute(PropertiesCache.class.getName());
 
     private static class Entry {
 
@@ -317,9 +336,9 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
       private final Map<String, String> properties;
 
       private Entry(
-        long lastModified,
-        long cachedTime,
-        Map<String, String> properties
+          long lastModified,
+          long cachedTime,
+          Map<String, String> properties
       ) {
         this.lastModified = lastModified;
         this.cachedTime = cachedTime;
@@ -345,9 +364,9 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
   @Override
   public void doTag() throws JspException, IOException {
     try {
-      PageContext pageContext = (PageContext)getJspContext();
+      PageContext pageContext = (PageContext) getJspContext();
       ServletContext servletContext = pageContext.getServletContext();
-      final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
+      final HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
 
       // Resolve pageRef, if book or path set
       final PageRef jspSrc;
@@ -370,16 +389,16 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
       if (pagePath.endsWith(".jspx")) {
         int basePathLen = pagePath.length() - 5;
         if (
-          basePathLen > 0
-          && pagePath.charAt(basePathLen - 1) != '/'
+            basePathLen > 0
+                && pagePath.charAt(basePathLen - 1) != '/'
         ) {
           propertiesPath = pagePath.substring(0, basePathLen) + ".properties";
         }
       } else if (pagePath.endsWith(".jsp")) {
         int basePathLen = pagePath.length() - 4;
         if (
-          basePathLen > 0
-          && pagePath.charAt(basePathLen - 1) != '/'
+            basePathLen > 0
+                && pagePath.charAt(basePathLen - 1) != '/'
         ) {
           propertiesPath = pagePath.substring(0, basePathLen) + ".properties";
         }
@@ -387,7 +406,7 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
       if (propertiesPath != null) {
         // TODO: Try real path first for more direct file-based I/O - benchmark if is any faster
         URL url = ServletContextCache.getInstance(servletContext).getResource(
-          pageRef.setPath(propertiesPath).getServletPath()
+            pageRef.setPath(propertiesPath).getServletPath()
         );
         if (url != null) {
           // if (DEBUG) {
@@ -409,9 +428,9 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
                   if (cacheEntry.lastModified == 0) {
                     // Using expiration time since last modified was unknown
                     if (
-                      currentTime < (cacheEntry.cachedTime + PROPERTIES_CACHE_UNKNOWN_MODIFIED_CACHE_DURATION)
-                      // Time set to the past
-                      && currentTime > (cacheEntry.cachedTime - PROPERTIES_CACHE_UNKNOWN_MODIFIED_CACHE_DURATION)
+                        currentTime < (cacheEntry.cachedTime + PROPERTIES_CACHE_UNKNOWN_MODIFIED_CACHE_DURATION)
+                            // Time set to the past
+                            && currentTime > (cacheEntry.cachedTime - PROPERTIES_CACHE_UNKNOWN_MODIFIED_CACHE_DURATION)
                     ) {
                       //if (DEBUG) {
                       //  System.out.println("PageTag: doTag: Still in unknown last modified");
@@ -425,9 +444,9 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
                   } else {
                     // Only check last modified from URL at defined interval
                     if (
-                      currentTime < (cacheEntry.cachedTime + PROPERTIES_CACHE_LAST_MODIFIED_RECHECK_INTERVAL)
-                      // Time set to the past
-                      && currentTime > (cacheEntry.cachedTime - PROPERTIES_CACHE_LAST_MODIFIED_RECHECK_INTERVAL)
+                        currentTime < (cacheEntry.cachedTime + PROPERTIES_CACHE_LAST_MODIFIED_RECHECK_INTERVAL)
+                            // Time set to the past
+                            && currentTime > (cacheEntry.cachedTime - PROPERTIES_CACHE_LAST_MODIFIED_RECHECK_INTERVAL)
                     ) {
                       //if (DEBUG) {
                       //  System.out.println("PageTag: doTag: Still in known last modified");
@@ -450,8 +469,8 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
                         propsFromFile = cacheEntry.properties;
                         // Refresh in cache
                         propertiesCache.put(
-                          url,
-                          new PropertiesCache.Entry(urlLastModified, currentTime, propsFromFile)
+                            url,
+                            new PropertiesCache.Entry(urlLastModified, currentTime, propsFromFile)
                         );
                       }
                     }
@@ -496,8 +515,8 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
                   }
                   String propertyName = propertyNames.iterator().next();
                   propsFromFile = Collections.singletonMap(
-                    propertyName,
-                    props.getProperty(propertyName)
+                      propertyName,
+                      props.getProperty(propertyName)
                   );
                 } else {
                   if (logger.isLoggable(Level.FINER)) {
@@ -506,16 +525,16 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
                   Map<String, String> newMap = AoCollections.newLinkedHashMap(size); // linked map for maximum iteration performance
                   for (String propertyName : propertyNames) {
                     newMap.put(
-                      propertyName,
-                      props.getProperty(propertyName)
+                        propertyName,
+                        props.getProperty(propertyName)
                     );
                   }
                   propsFromFile = Collections.unmodifiableMap(newMap);
                 }
                 // Store in cache
                 propertiesCache.put(
-                  url,
-                  new PropertiesCache.Entry(urlLastModified, currentTime, propsFromFile)
+                    url,
+                    new PropertiesCache.Entry(urlLastModified, currentTime, propsFromFile)
                 );
               }
             } finally {
@@ -537,10 +556,10 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
               String propertyName = entry.getKey();
               if (properties.containsKey(propertyName)) {
                 throw new LocalizedJspTagException(
-                  Resources.PACKAGE_RESOURCES,
-                  "error.duplicatePropertiesFileProperty",
-                  propertyName,
-                  url
+                    Resources.PACKAGE_RESOURCES,
+                    "error.duplicatePropertiesFileProperty",
+                    propertyName,
+                    url
                 );
               }
               properties.put(propertyName, entry.getValue());
@@ -551,31 +570,31 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
 
       final JspFragment body = getJspBody();
       PageImpl.doPageImpl(
-        servletContext,
-        request,
-        (HttpServletResponse)pageContext.getResponse(),
-        pageRef,
-        PageUtils.toDateTime(dateCreated),
-        PageUtils.toDateTime(datePublished),
-        PageUtils.toDateTime(dateModified),
-        PageUtils.toDateTime(dateReviewed),
-        serialization,
-        doctype,
-        autonli,
-        indent,
-        title,
-        shortTitle,
-        description,
-        keywords,
-        allowRobots,
-        toc,
-        tocLevels,
-        allowParentMismatch,
-        allowChildMismatch,
-        properties,
-        body == null
-          ? null
-          : (discard, page) -> {
+          servletContext,
+          request,
+          (HttpServletResponse) pageContext.getResponse(),
+          pageRef,
+          PageUtils.toDateTime(dateCreated),
+          PageUtils.toDateTime(datePublished),
+          PageUtils.toDateTime(dateModified),
+          PageUtils.toDateTime(dateReviewed),
+          serialization,
+          doctype,
+          autonli,
+          indent,
+          title,
+          shortTitle,
+          description,
+          keywords,
+          allowRobots,
+          toc,
+          tocLevels,
+          allowParentMismatch,
+          allowChildMismatch,
+          properties,
+          body == null
+              ? null
+              : (discard, page) -> {
             // JSP pages are their own source when using default pageRef
             if (jspSrc != null && jspSrc.equals(page.getPageRef())) {
               page.setSrc(jspSrc);

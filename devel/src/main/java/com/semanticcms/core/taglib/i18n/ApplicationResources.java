@@ -35,9 +35,9 @@ import javax.annotation.concurrent.ThreadSafe;
 public final class ApplicationResources extends EditableResourceBundle {
 
   static final EditableResourceBundleSet bundleSet = new EditableResourceBundleSet(
-    ApplicationResources.class,
-    Locale.ROOT,
-    Locale.JAPANESE
+      ApplicationResources.class,
+      Locale.ROOT,
+      Locale.JAPANESE
   );
 
   static File getSourceFile(String filename) {
@@ -45,9 +45,9 @@ public final class ApplicationResources extends EditableResourceBundle {
       return new File(System.getProperty("user.home") + "/maven2/ao/semanticcms-1.x/core/taglib/src/main/resources/com/semanticcms/core/taglib/i18n", filename);
     } catch (SecurityException e) {
       Logger.getLogger(ApplicationResources.class.getName()).log(
-        Level.WARNING,
-        "Unable to locate source file: " + filename,
-        e
+          Level.WARNING,
+          "Unable to locate source file: " + filename,
+          e
       );
       return null;
     }
