@@ -39,8 +39,8 @@ import javax.servlet.jsp.JspTagException;
 import javax.servlet.jsp.PageContext;
 
 public class PropertyTag
-  extends EncodingBufferedTag
-  implements
+    extends EncodingBufferedTag
+    implements
     NameAttribute,
     ValueAttribute
 {
@@ -89,20 +89,20 @@ public class PropertyTag
     if (target != null) {
       resolvedTarget = target;
     } else {
-      resolvedTarget = CurrentNode.getCurrentNode(((PageContext)getJspContext()).getRequest());
+      resolvedTarget = CurrentNode.getCurrentNode(((PageContext) getJspContext()).getRequest());
       if (resolvedTarget == null) {
         throw new JspTagException("Unable to find parent node for property target");
       }
     }
     boolean propertySet = resolvedTarget.setProperty(
-      name,
-      valueSet ? value : capturedBody.trim()
+        name,
+        valueSet ? value : capturedBody.trim()
     );
     if (!propertySet && !allowExisting) {
       throw new LocalizedJspTagException(
-        Resources.PACKAGE_RESOURCES,
-        "error.duplicateDynamicElementProperty",
-        name
+          Resources.PACKAGE_RESOURCES,
+          "error.duplicateDynamicElementProperty",
+          name
       );
     }
   }

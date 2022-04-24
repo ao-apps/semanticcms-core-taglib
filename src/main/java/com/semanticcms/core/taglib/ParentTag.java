@@ -45,48 +45,52 @@ public class ParentTag extends SimpleTagSupport {
   public static final String TAG_NAME = "<core:parent>";
 
   private DomainName domain;
+
   public void setDomain(String domain) throws ValidationException {
     this.domain = DomainName.valueOf(Strings.nullIfEmpty(domain));
   }
 
   private Path book;
+
   public void setBook(String book) throws ValidationException {
     this.book = Path.valueOf(Strings.nullIfEmpty(book));
   }
 
   private String page;
+
   public void setPage(String page) {
     this.page = page;
   }
 
   private String shortTitle;
+
   public void setShortTitle(String shortTitle) {
     this.shortTitle = Strings.nullIfEmpty(shortTitle);
   }
 
   @Override
   public void doTag() throws JspException, IOException {
-    final PageContext pageContext = (PageContext)getJspContext();
-    final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
+    final PageContext pageContext = (PageContext) getJspContext();
+    final HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
 
     final Node currentNode = CurrentNode.getCurrentNode(request);
     if (!(currentNode instanceof Page)) {
       throw new JspTagException(TAG_NAME + " tag must be nested directly inside a " + PageTag.TAG_NAME + " tag.");
     }
-    final Page currentPage = (Page)currentNode;
+    final Page currentPage = (Page) currentNode;
 
     try {
       currentPage.addParentRef(
-        new ParentRef(
-          PageRefResolver.getPageRef(
-            pageContext.getServletContext(),
-            request,
-            domain,
-            book,
-            page
-          ),
-          shortTitle
-        )
+          new ParentRef(
+              PageRefResolver.getPageRef(
+                  pageContext.getServletContext(),
+                  request,
+                  domain,
+                  book,
+                  page
+              ),
+              shortTitle
+          )
       );
     } catch (ServletException e) {
       throw new JspTagException(e);

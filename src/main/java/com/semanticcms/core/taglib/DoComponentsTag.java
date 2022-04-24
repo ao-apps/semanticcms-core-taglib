@@ -41,21 +41,25 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 public class DoComponentsTag extends SimpleTagSupport {
 
   private View view;
+
   public void setView(View view) {
     this.view = view;
   }
 
   private Page page;
+
   public void setPage(Page page) {
     this.page = page;
   }
 
   private ComponentPosition position;
+
   public void setPosition(ComponentPosition position) {
     this.position = position;
   }
 
   private boolean reverse;
+
   public void setReverse(boolean reverse) {
     this.reverse = reverse;
   }
@@ -63,25 +67,25 @@ public class DoComponentsTag extends SimpleTagSupport {
   @Override
   public void doTag() throws JspException, IOException {
     try {
-      final PageContext pageContext = (PageContext)getJspContext();
+      final PageContext pageContext = (PageContext) getJspContext();
       ServletContext servletContext = pageContext.getServletContext();
-      HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
-      HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
+      HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
+      HttpServletResponse response = (HttpServletResponse) pageContext.getResponse();
       ComponentUtils.doComponents(servletContext,
-        request,
-        response,
-        new DocumentEE(
-          servletContext,
           request,
           response,
-          pageContext.getOut(),
-          false, // Do not add extra newlines to JSP
-          false  // Do not add extra indentation to JSP
-        ),
-        view,
-        page,
-        position,
-        reverse
+          new DocumentEE(
+              servletContext,
+              request,
+              response,
+              pageContext.getOut(),
+              false, // Do not add extra newlines to JSP
+              false  // Do not add extra indentation to JSP
+          ),
+          view,
+          page,
+          position,
+          reverse
       );
     } catch (ServletException e) {
       throw new JspTagException(e);

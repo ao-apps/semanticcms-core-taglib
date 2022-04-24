@@ -37,13 +37,14 @@ import javax.servlet.jsp.tagext.SimpleTagSupport;
 public class WriteNodeBodyTag extends SimpleTagSupport {
 
   private ValueExpression node;
+
   public void setNode(ValueExpression node) {
     this.node = node;
   }
 
   @Override
   public void doTag() throws JspException, IOException {
-    PageContext pageContext = (PageContext)getJspContext();
+    PageContext pageContext = (PageContext) getJspContext();
     // Get the current capture state
     final CaptureLevel captureLevel = CurrentCaptureLevel.getCaptureLevel(pageContext.getRequest());
     if (captureLevel == CaptureLevel.BODY) {
@@ -52,11 +53,11 @@ public class WriteNodeBodyTag extends SimpleTagSupport {
       // Buffering made it slower, only about half throughput:
       // BufferedWriter out = new BufferedWriter(pageContext.getOut());
       nodeObj.getBody().writeTo(
-        new NodeBodyWriter(
-          nodeObj,
-          pageContext.getOut(),
-          new PageElementContext(pageContext)
-        )
+          new NodeBodyWriter(
+              nodeObj,
+              pageContext.getOut(),
+              new PageElementContext(pageContext)
+          )
       );
       //out.flush();
     }
