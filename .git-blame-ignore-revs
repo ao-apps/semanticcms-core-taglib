@@ -34,3 +34,6 @@ af509f8557d854a635a615ba1502d8d934955339
 
 # Converted remaining four-space indents to our standard tab indent.
 ad0e382ae7a95a394360b4ceec757f6c10ac7225
+
+# Performed automatic source code clean-up with rewrite-maven-plugin
+e7023c6fd954bef3b285e3a91bb0a043ee252492
