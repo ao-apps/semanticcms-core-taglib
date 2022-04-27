@@ -47,9 +47,9 @@ public class PropertyTag
 
   private String name;
   private Object value;
-  private boolean valueSet = false;
+  private boolean valueSet;
   private Node target;
-  private boolean allowExisting = false;
+  private boolean allowExisting;
 
   @Override
   public MediaType getContentType() {
