@@ -33,6 +33,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Performs redirects for conversion to modular apidocs.
+ */
 @WebServlet("/core/taglib/apidocs/com/*")
 public class ModularApidocsRedirect extends HttpServlet {
 

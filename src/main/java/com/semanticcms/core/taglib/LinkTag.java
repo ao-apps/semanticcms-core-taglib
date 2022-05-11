@@ -56,8 +56,7 @@ public class LinkTag
     implements
     DynamicAttributes,
     //ClassAttribute,
-    ParamsAttribute
-{
+    ParamsAttribute {
 
   private MutableURIParameters params;
   private ValueExpression clazz;

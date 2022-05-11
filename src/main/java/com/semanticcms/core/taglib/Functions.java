@@ -23,13 +23,14 @@
 
 package com.semanticcms.core.taglib;
 
+import static com.aoapps.servlet.filter.FunctionContext.getRequest;
+import static com.aoapps.servlet.filter.FunctionContext.getResponse;
+import static com.aoapps.servlet.filter.FunctionContext.getServletContext;
+
 import com.aoapps.collections.AoCollections;
 import com.aoapps.lang.Strings;
 import com.aoapps.net.URIDecoder;
 import com.aoapps.net.URIEncoder;
-import static com.aoapps.servlet.filter.FunctionContext.getRequest;
-import static com.aoapps.servlet.filter.FunctionContext.getResponse;
-import static com.aoapps.servlet.filter.FunctionContext.getServletContext;
 import com.aoapps.taglib.Link;
 import com.semanticcms.core.model.Author;
 import com.semanticcms.core.model.Book;
@@ -61,6 +62,9 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * Tag library function implementations.
+ */
 public final class Functions {
 
   /** Make no instances. */
@@ -122,8 +126,7 @@ public final class Functions {
   }
 
   /**
-   * Gets the current capture level or <code>null</code> if not currently
-   * capturing
+   * Gets the current capture level or <code>null</code> if not currently capturing.
    *
    * @see  CaptureLevel
    */
@@ -209,7 +212,8 @@ public final class Functions {
     Map<String, String> params = AoCollections.newLinkedHashMap(pairs.size());
     for (String pair : pairs) {
       int equalPos = pair.indexOf('=');
-      String name, value;
+      String name;
+      String value;
       if (equalPos == -1) {
         name = URIDecoder.decodeURIComponent(pair);
         value = "";

@@ -71,6 +71,7 @@ public class DoViewTag extends SimpleTagSupport {
         public PrintWriter getWriter() {
           return out;
         }
+
         @Override
         public ServletOutputStream getOutputStream() {
           throw new NotImplementedException("getOutputStream not expected");
