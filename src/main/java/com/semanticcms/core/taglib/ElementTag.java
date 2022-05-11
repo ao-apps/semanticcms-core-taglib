@@ -23,13 +23,15 @@
 
 package com.semanticcms.core.taglib;
 
+import static com.aoapps.lang.Strings.nullIfEmpty;
+import static com.aoapps.taglib.AttributeUtils.resolveValue;
+import static com.semanticcms.core.taglib.PageTag.PROPERTY_ATTRIBUTE_PREFIX;
+
 import com.aoapps.encoding.taglib.EncodingBufferedTag;
 import com.aoapps.io.buffer.BufferWriter;
-import static com.aoapps.lang.Strings.nullIfEmpty;
 import com.aoapps.lang.io.NullWriter;
 import com.aoapps.servlet.jsp.LocalizedJspTagException;
 import com.aoapps.taglib.AttributeUtils;
-import static com.aoapps.taglib.AttributeUtils.resolveValue;
 import com.semanticcms.core.model.Element;
 import com.semanticcms.core.model.ElementWriter;
 import com.semanticcms.core.model.Node;
@@ -39,7 +41,6 @@ import com.semanticcms.core.pages.CaptureLevel;
 import com.semanticcms.core.pages.local.CurrentCaptureLevel;
 import com.semanticcms.core.pages.local.CurrentNode;
 import com.semanticcms.core.pages.local.CurrentPage;
-import static com.semanticcms.core.taglib.PageTag.PROPERTY_ATTRIBUTE_PREFIX;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
-Copyright (C) 2014, 2016, 2017, 2020, 2021, 2022  AO Industries, Inc.
+Copyright (C) 2022  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -21,20 +21,19 @@ GNU Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public License
 along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>.
 -->
+<!DOCTYPE suppressions PUBLIC
+  "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN"
+  "https://checkstyle.org/dtds/suppressions_1_2.dtd">
 
-<!--
-If the application does not provide its own /index.jspx, this will redirect to
-the site's content root.
--->
-<!-- TODO: This redirect assumes the rootBook is published locally -->
-<ao:redirect
-  xmlns:ao="https://oss.aoapps.com/taglib/"
-  xmlns:jsp="http://java.sun.com/JSP/Page"
-  statusCode="301"
-  href="${applicationScope.semanticCms.rootBook.contentRoot.bookRef.prefix}${applicationScope.semanticCms.rootBook.contentRoot.path}"
->
-  <jsp:directive.page language="java" pageEncoding="UTF-8" />
-  <jsp:directive.page session="false" />
-  <!-- Include all request parameters -->
-  <ao:params values="${paramValues}" />
-</ao:redirect>
+<suppressions>
+
+  <!--
+    Java-based ResourceBundle - language and optional country
+    Default from https://checkstyle.org/apidocs/com/puppycrawl/tools/checkstyle/checks/naming/TypeNameCheck.html#DEFAULT_PATTERN : ^[A-Z][a-zA-Z0-9]*$
+  -->
+  <suppress
+    checks="TypeName"
+    message="'[A-Z][a-zA-Z0-9]*_[a-z][a-z](_[A-Z][A-Z])?'"
+  />
+
+</suppressions>

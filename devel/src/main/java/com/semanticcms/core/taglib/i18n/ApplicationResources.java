@@ -31,6 +31,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.concurrent.ThreadSafe;
 
+/**
+ * Development-only editable resource bundle.
+ */
 @ThreadSafe
 public final class ApplicationResources extends EditableResourceBundle {
 
@@ -53,6 +56,9 @@ public final class ApplicationResources extends EditableResourceBundle {
     }
   }
 
+  /**
+   * Loads the editable resource bundle.
+   */
   public ApplicationResources() {
     super(Locale.ROOT, bundleSet, getSourceFile("ApplicationResources.properties"));
   }

@@ -42,8 +42,7 @@ public class PropertyTag
     extends EncodingBufferedTag
     implements
     NameAttribute,
-    ValueAttribute
-{
+    ValueAttribute {
 
   private String name;
   private Object value;
