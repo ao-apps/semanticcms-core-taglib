@@ -234,7 +234,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
         <groupId>com.semanticcms</groupId><artifactId>semanticcms-section-taglib</artifactId><version>1.9.1${POST-SNAPSHOT}</version>
       </dependency>
       <dependency>
-        <groupId>com.semanticcms</groupId><artifactId>semanticcms-tag-reference</artifactId><version>1.9.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+        <groupId>com.semanticcms</groupId><artifactId>semanticcms-tag-reference</artifactId><version>1.9.0${POST-SNAPSHOT}</version>
       </dependency>
       <!-- javaee-web-api-bom: <groupId>org.apache.taglibs</groupId><artifactId>taglibs-standard-spec</artifactId> -->
       <!-- Transitive -->
