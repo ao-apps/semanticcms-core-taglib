@@ -49,7 +49,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
     <commons-lang3.version>3.12.0</commons-lang3.version>
   </properties>
 
-  <name>SemanticCMS Core Taglib²</name>
+  <name>SemanticCMS Core Taglib</name>
   <url>https://semanticcms.com/core/taglib/</url>
   <description>Java API for modeling web page content and relationships in a JSP environment.</description>
   <inceptionYear>2013</inceptionYear>

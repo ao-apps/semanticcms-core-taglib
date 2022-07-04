@@ -36,9 +36,9 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
     <module.name>com.semanticcms.core.taglib.devel</module.name>
   </properties>
 
-  <name>SemanticCMS Core Taglib² Devel</name>
+  <name>SemanticCMS Core Taglib Devel</name>
   <url>https://semanticcms.com/core/taglib/</url>
-  <description>Development-only components of SemanticCMS Core Taglib².</description>
+  <description>Development-only components of SemanticCMS Core Taglib.</description>
   <inceptionYear>2020</inceptionYear>
 
   <licenses>
