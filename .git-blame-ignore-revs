@@ -9,37 +9,34 @@
 # $ git config blame.ignoreRevsFile .git-blame-ignore-revs
 
 # Significant manual code formatting clean-up…
+98333052d3440562f5960a37cd9f785c779a7f97
 a39bd54ec7cca71f2251788028c937eded56ee70
 
 # Tab indent
+a63c9957fc51308349bcdcf6a41218aef1c33d37
 7ca09f27da8a056dd2491b2a8ba3f4454faf6f63
-
-# Converted remaining four-space indents to our standard tab indent.
-5b0ec3e95584a0f750bac5e7c1ec2ac8e53b1734
-
-# Converted remaining four-space indents to our standard tab indent.
-45b58f58436400d9d6e1babe7fa12164363b5efb
-
-# Converted remaining four-space indents to our standard tab indent.
-dc345e3661c52301fc0836f1cc716fe55b7fa863
-
-# Tab indent
+af509f8557d854a635a615ba1502d8d934955339
 79c3a4d91bd9fbb0c717fbee4f585ce0416fbe07
 
 # Converted remaining four-space indents to our standard tab indent.
+3851acdd8a701849426f495b844be6c98cf48d02
+5b0ec3e95584a0f750bac5e7c1ec2ac8e53b1734
+c7f56469157c91477fe3d67ed1584df1c40224f0
+45b58f58436400d9d6e1babe7fa12164363b5efb
+c53a53bf785afb906b1960b2fde29dfc03266e69
+dc345e3661c52301fc0836f1cc716fe55b7fa863
 5e9e0040260f2c655f63174d2a897a19be3a9a67
-
-# Converted remaining four-space indents to our standard tab indent.
 82ce67b301b6a392464829c9c87fa256637dbced
-
-# Converted remaining four-space indents to our standard tab indent.
 ad0e382ae7a95a394360b4ceec757f6c10ac7225
 
 # Performed automatic source code clean-up with rewrite-maven-plugin
+e7023c6fd954bef3b285e3a91bb0a043ee252492
 67360564be879b4cc2e86e01268f45354f5b142a
 
 # Performed automatic clean-up with org.openrewrite.java.cleanup.Cleanup
+d55af3ee4d3b51afbe3b4cdd48b32760c77374a3
 8192d3a75bbe9cbf5adf6295379422ac56eb0a82
 
 # Performed manual checkstyle clean-up
+4be7ccd0a79773e1dbf8f4ac59b713b7529f68ab
 c53107bf4084d0e4d1ba993a904b39c4a28dcdb8
