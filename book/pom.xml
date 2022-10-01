@@ -302,7 +302,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
       </dependency>
       <!-- javaee-web-api-bom: <groupId>javax.el</groupId><artifactId>javax.el-api</artifactId> -->
       <dependency>
-        <groupId>joda-time</groupId><artifactId>joda-time</artifactId><version>2.11.1</version>
+        <groupId>joda-time</groupId><artifactId>joda-time</artifactId><version>2.11.2</version>
       </dependency>
       <dependency>
         <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-controller</artifactId><version>2.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
