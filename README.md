@@ -1,8 +1,8 @@
 # [<img src="ao-logo.png" alt="AO Logo" width="35" height="40">](https://github.com/ao-apps) [SemanticCMS](https://github.com/ao-apps/semanticcms) / [Core](https://github.com/ao-apps/semanticcms-core) / [Taglib](https://github.com/ao-apps/semanticcms-core-taglib)
 
-[![project: current stable](https://semanticcms.com/ao-badges/project-current-stable.svg)](https://aoindustries.com/life-cycle#project-current-stable)
-[![management: production](https://semanticcms.com/ao-badges/management-production.svg)](https://aoindustries.com/life-cycle#management-production)
-[![packaging: active](https://semanticcms.com/ao-badges/packaging-active.svg)](https://aoindustries.com/life-cycle#packaging-active)  
+[![project: alpha](https://semanticcms.com/ao-badges/project-current-stable.svg)](https://aoindustries.com/life-cycle#project-current-stable)
+[![management: preview](https://semanticcms.com/ao-badges/management-production.svg)](https://aoindustries.com/life-cycle#management-production)
+[![packaging: developmental](https://semanticcms.com/ao-badges/packaging-active.svg)](https://aoindustries.com/life-cycle#packaging-active)  
 [![java: &gt;= 11](https://semanticcms.com/ao-badges/java-11.svg)](https://docs.oracle.com/en/java/javase/11/docs/api/)
 [![java ee: &gt;= 7](https://semanticcms.com/ao-badges/javaee-7.svg)](https://docs.oracle.com/javaee/7/api/)
 [![semantic versioning: 2.0.0](https://semanticcms.com/ao-badges/semver-2.0.0.svg)](http://semver.org/spec/v2.0.0.html)
