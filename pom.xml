@@ -119,8 +119,6 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
           <usedDependencies>
             <!-- JSP Only -->
             <dependency>org.apache.taglibs:taglibs-standard-spec</dependency>
-            <!-- Runtime Direct -->
-            <dependency>org.apache.taglibs:taglibs-standard-impl</dependency>
           </usedDependencies>
         </configuration>
       </plugin>
@@ -440,9 +438,9 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
       </dependency>
       <!-- Runtime Direct -->
       <!-- javaee-web-api-bom: <groupId>org.apache.taglibs</groupId><artifactId>taglibs-standard-impl</artifactId> -->
-      <!-- BOM -->
+      <!-- Imports -->
       <dependency>
-        <groupId>com.aoapps</groupId><artifactId>javaee-web-api-bom</artifactId><version>7.0.1${POST-SNAPSHOT}</version>
+        <groupId>com.aoapps</groupId><artifactId>javaee-web-api-bom</artifactId><version>7.0.1-POST-SNAPSHOT</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -512,6 +510,12 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
     <dependency>
       <groupId>org.apache.taglibs</groupId><artifactId>taglibs-standard-impl</artifactId>
       <scope>runtime</scope>
+    </dependency>
+    <!-- Imports (Reactor build order only) -->
+    <dependency>
+      <groupId>com.aoapps</groupId><artifactId>javaee-web-api-bom</artifactId><version>7.0.1-POST-SNAPSHOT</version>
+      <type>pom</type>
+      <exclusions><exclusion><artifactId>*</artifactId><groupId>*</groupId></exclusion></exclusions>
     </dependency>
   </dependencies>
 </project>
