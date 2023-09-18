@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -241,6 +241,9 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
       this.allowRobots = false;
     } else {
       // Matches ao-tld-parser:XmlHelper.java
+      // Matches semanticcms-changelog-taglib:ReleaseTag.java
+      // Matches semanticcms-core-taglib:PageTag.java
+      // Matches semanticcms-news-taglib:NewsTag.java
       throw new IllegalArgumentException("Unexpected value for allowRobots, expect one of \"auto\", \"true\", or \"false\": " + allowRobots);
     }
   }
