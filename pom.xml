@@ -40,6 +40,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
 / <a target="${javadoc.target}" href="https://semanticcms.com/core/">Core</a>
 / <a target="${javadoc.target}" href="${project.url}">Taglib</a>]]></javadoc.breadcrumbs>
     <javadoc.taglibReference><![CDATA[<li><a target="${javadoc.target}" href="${project.url}semanticcms-core.tld/">Taglib Reference</a></li>]]></javadoc.taglibReference>
+
     <jodaTimeApidocs>https://www.joda.org/joda-time/apidocs/</jodaTimeApidocs>
     <!-- TODO: Implement tests -->
     <sonar.coverage.exclusions>**.*</sonar.coverage.exclusions>
