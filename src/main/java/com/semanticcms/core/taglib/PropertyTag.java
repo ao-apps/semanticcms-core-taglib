@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2017, 2020, 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2017, 2020, 2021, 2022, 2023  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -25,7 +25,9 @@ package com.semanticcms.core.taglib;
 
 import com.aoapps.encoding.MediaType;
 import com.aoapps.encoding.taglib.EncodingBufferedTag;
+import com.aoapps.html.any.attributes.text.Name;
 import com.aoapps.io.buffer.BufferResult;
+import com.aoapps.lang.Coercion;
 import com.aoapps.servlet.jsp.LocalizedJspTagException;
 import com.aoapps.taglib.AttributeRequiredException;
 import com.aoapps.taglib.NameAttribute;
@@ -61,8 +63,8 @@ public class PropertyTag
   }
 
   @Override
-  public void setName(String name) {
-    this.name = name;
+  public void setName(Object name) throws IOException {
+    this.name = Coercion.toString(Name.name.normalize(name));
   }
 
   @Override

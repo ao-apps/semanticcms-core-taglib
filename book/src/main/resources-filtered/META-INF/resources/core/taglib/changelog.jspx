@@ -37,7 +37,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
     shortTitle="Changelog"
     tocLevels="1"
     datePublished="2016-10-30T20:28:28-05:00"
-    dateModified="2022-02-15T21:37:30-06:00"
+    dateModified="2023-10-02T12:28:06Z"
   >
     <c:set var="latestRelease" value="1.15.2" />
     <c:if test="${
@@ -52,7 +52,14 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
         artifactId="@{documented.artifactId}"
         repository="@{nexusUrl}content/repositories/snapshots/"
         scmUrl="@{project.scm.url}"
-      />
+      >
+        <ul>
+          <li>
+            <code>PropertyTag.name</code> attribute is now
+            <code>java.lang.Object</code> instead of <code>java.lang.String</code>.
+          </li>
+        </ul>
+      </changelog:release>
     </c:if>
 
     <changelog:release
