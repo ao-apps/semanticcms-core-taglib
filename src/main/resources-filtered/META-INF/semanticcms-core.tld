@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
-Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022  AO Industries, Inc.
+Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -1128,7 +1128,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
   </tag>
   <tag>
     <!-- datePublished="2017-07-19T12:12:39-05:00" -->
-    <!-- dateModified="2021-06-16T13:20:50-05:00" -->
+    <!-- dateModified="2023-10-02T12:28:06Z" -->
     <description><![CDATA[
       <p>
         Sets a property of a
@@ -1152,7 +1152,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
       <name>name</name>
       <required>true</required>
       <rtexprvalue>true</rtexprvalue>
-      <type>java.lang.String</type>
+      <type>java.lang.Object</type>
     </attribute>
     <attribute>
       <description><![CDATA[
