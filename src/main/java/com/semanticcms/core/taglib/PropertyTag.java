@@ -64,7 +64,8 @@ public class PropertyTag
 
   @Override
   public void setName(Object name) throws IOException {
-    this.name = Coercion.toString(Name.name.normalize(name));
+    name = Name.name.normalize(name);
+    this.name = (name == null) ? null : Coercion.toString(name);
   }
 
   @Override
