@@ -210,7 +210,7 @@ public abstract class ElementTag<E extends Element> extends SimpleTagSupport imp
    * Typically, deferred expressions will be evaluated here.
    * Overriding methods must call this implementation.
    */
-  protected void evaluateAttributes(E element, ELContext elContext) throws JspTagException, IOException {
+  protected void evaluateAttributes(E element, ELContext elContext) throws JspTagException {
     String idStr = nullIfEmpty(resolveValue(id, String.class, elContext));
     if (idStr != null) {
       element.setId(idStr);
