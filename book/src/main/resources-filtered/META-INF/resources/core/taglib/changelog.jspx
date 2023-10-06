@@ -37,7 +37,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
     shortTitle="Changelog"
     tocLevels="1"
     datePublished="2016-10-30T20:28:28-05:00"
-    dateModified="2023-10-02T12:28:06Z"
+    dateModified="2023-10-06T04:22:56Z"
   >
     <c:set var="latestRelease" value="1.15.2" />
     <c:if test="${
@@ -124,6 +124,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
             <code>PropertyTag.name</code> attribute is now
             <code>java.lang.Object</code> instead of <code>java.lang.String</code>.
           </li>
+          <li><code>ElementTag.evaluateAttributes(…)</code> no longer throws <code>IOException</code>.</li>
         </ul>
       </changelog:release>
     </c:if>
