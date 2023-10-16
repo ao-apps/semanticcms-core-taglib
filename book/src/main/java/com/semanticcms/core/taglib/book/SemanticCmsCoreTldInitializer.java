@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2016, 2017, 2019, 2020, 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2016, 2017, 2019, 2020, 2021, 2022, 2023  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -29,6 +29,7 @@ import com.aoapps.net.Path;
 import com.semanticcms.core.model.BookRef;
 import com.semanticcms.core.model.ResourceRef;
 import com.semanticcms.tagreference.TagReferenceInitializer;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import javax.servlet.ServletContainerInitializer;
 
 /**
@@ -39,6 +40,7 @@ public class SemanticCmsCoreTldInitializer extends TagReferenceInitializer {
   /**
    * Parses the TLD file.
    */
+  @SuppressFBWarnings("CT_CONSTRUCTOR_THROW")
   public SemanticCmsCoreTldInitializer() throws ValidationException {
     super(
         Maven.properties.getProperty("documented.name") + " Reference",
