@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023  AO Industries, Inc.
+ * Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2025  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -472,139 +472,139 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
           //   System.out.println("PageTag: doTag: Got properties URL: " + url);
           // }
           Map<String, String> propsFromFile;
-            {
-              final ConcurrentMap<URL, PropertiesCache.Entry> propertiesCache = PropertiesCache.getInstance(servletContext);
-              final long currentTime = System.currentTimeMillis();
-              URLConnection urlConn = null;
-              boolean urlClosed = false;
-              try {
-                long urlLastModified = 0;
-                propsFromFile = null;
-                  // Check cache first
-                  {
-                    PropertiesCache.Entry cacheEntry = propertiesCache.get(url);
-                    if (cacheEntry != null) {
-                      if (cacheEntry.lastModified == 0) {
-                        // Using expiration time since last modified was unknown
-                        if (
-                            currentTime < (cacheEntry.cachedTime + PROPERTIES_CACHE_UNKNOWN_MODIFIED_CACHE_DURATION)
-                                // Time set to the past
-                                && currentTime > (cacheEntry.cachedTime - PROPERTIES_CACHE_UNKNOWN_MODIFIED_CACHE_DURATION)
-                        ) {
-                          //if (DEBUG) {
-                          //  System.out.println("PageTag: doTag: Still in unknown last modified");
-                          //}
-                          propsFromFile = cacheEntry.properties;
-                        } else {
-                          if (logger.isLoggable(Level.FINE)) {
-                            logger.fine("PageTag: doTag: Time expired for cache entry with unknown last modified: currentTime = " + currentTime + ", cacheEntry.cachedTime = " + cacheEntry.cachedTime);
-                          }
-                        }
-                      } else {
-                        // Only check last modified from URL at defined interval
-                        if (
-                            currentTime < (cacheEntry.cachedTime + PROPERTIES_CACHE_LAST_MODIFIED_RECHECK_INTERVAL)
-                                // Time set to the past
-                                && currentTime > (cacheEntry.cachedTime - PROPERTIES_CACHE_LAST_MODIFIED_RECHECK_INTERVAL)
-                        ) {
-                          //if (DEBUG) {
-                          //  System.out.println("PageTag: doTag: Still in known last modified");
-                          //}
-                          propsFromFile = cacheEntry.properties;
-                        } else {
-                          if (logger.isLoggable(Level.FINE)) {
-                            logger.fine("PageTag: doTag: Time expired for cache entry with known last modified: currentTime = " + currentTime + ", cacheEntry.cachedTime = " + cacheEntry.cachedTime);
-                          }
-                          if (urlConn == null) {
-                            urlConn = url.openConnection();
-                            // TODO: Use ServletContextCache.getLastModified?
-                            urlLastModified = urlConn.getLastModified();
-                            if (logger.isLoggable(Level.FINE)) {
-                              logger.fine("PageTag: doTag: Got last modified 1: " + urlLastModified);
-                            }
-                          }
-                          // Use properties when last modified matches
-                          if (urlLastModified != 0 && cacheEntry.lastModified == urlLastModified) {
-                            propsFromFile = cacheEntry.properties;
-                            // Refresh in cache
-                            propertiesCache.put(
-                                url,
-                                new PropertiesCache.Entry(urlLastModified, currentTime, propsFromFile)
-                            );
-                          }
-                        }
-                      }
+          {
+            final ConcurrentMap<URL, PropertiesCache.Entry> propertiesCache = PropertiesCache.getInstance(servletContext);
+            final long currentTime = System.currentTimeMillis();
+            URLConnection urlConn = null;
+            boolean urlClosed = false;
+            try {
+              long urlLastModified = 0;
+              propsFromFile = null;
+              // Check cache first
+              {
+                PropertiesCache.Entry cacheEntry = propertiesCache.get(url);
+                if (cacheEntry != null) {
+                  if (cacheEntry.lastModified == 0) {
+                    // Using expiration time since last modified was unknown
+                    if (
+                        currentTime < (cacheEntry.cachedTime + PROPERTIES_CACHE_UNKNOWN_MODIFIED_CACHE_DURATION)
+                            // Time set to the past
+                            && currentTime > (cacheEntry.cachedTime - PROPERTIES_CACHE_UNKNOWN_MODIFIED_CACHE_DURATION)
+                    ) {
+                      //if (DEBUG) {
+                      //  System.out.println("PageTag: doTag: Still in unknown last modified");
+                      //}
+                      propsFromFile = cacheEntry.properties;
                     } else {
-                      if (logger.isLoggable(Level.FINER)) {
-                        logger.finer("PageTag: doTag: URL not found in cache: " + url);
-                      }
-                    }
-                  }
-                if (propsFromFile == null) {
-                  // Load properties
-                  if (urlConn == null) {
-                    urlConn = url.openConnection();
-                    // TODO: Use ServletContextCache.getLastModified?
-                    urlLastModified = urlConn.getLastModified();
-                    if (logger.isLoggable(Level.FINE)) {
-                      logger.fine("PageTag: doTag: Got last modified 2: " + urlLastModified);
-                    }
-                  }
-                  Properties props = new Properties();
-                    {
                       if (logger.isLoggable(Level.FINE)) {
-                        logger.fine("PageTag: doTag: Loading properties from URL: " + url);
-                      }
-                      try (InputStream in = urlConn.getInputStream()) {
-                        props.load(in);
-                      } finally {
-                        urlClosed = true;
+                        logger.fine("PageTag: doTag: Time expired for cache entry with unknown last modified: currentTime = " + currentTime + ", cacheEntry.cachedTime = " + cacheEntry.cachedTime);
                       }
                     }
-                  Set<String> propertyNames = props.stringPropertyNames();
-                  int size = propertyNames.size();
-                  if (size == 0) {
-                    if (logger.isLoggable(Level.FINER)) {
-                      logger.finer("PageTag: doTag: Got " + size + " properties, using empty map");
+                  } else {
+                    // Only check last modified from URL at defined interval
+                    if (
+                        currentTime < (cacheEntry.cachedTime + PROPERTIES_CACHE_LAST_MODIFIED_RECHECK_INTERVAL)
+                            // Time set to the past
+                            && currentTime > (cacheEntry.cachedTime - PROPERTIES_CACHE_LAST_MODIFIED_RECHECK_INTERVAL)
+                    ) {
+                      //if (DEBUG) {
+                      //  System.out.println("PageTag: doTag: Still in known last modified");
+                      //}
+                      propsFromFile = cacheEntry.properties;
+                    } else {
+                      if (logger.isLoggable(Level.FINE)) {
+                        logger.fine("PageTag: doTag: Time expired for cache entry with known last modified: currentTime = " + currentTime + ", cacheEntry.cachedTime = " + cacheEntry.cachedTime);
+                      }
+                      if (urlConn == null) {
+                        urlConn = url.openConnection();
+                        // TODO: Use ServletContextCache.getLastModified?
+                        urlLastModified = urlConn.getLastModified();
+                        if (logger.isLoggable(Level.FINE)) {
+                          logger.fine("PageTag: doTag: Got last modified 1: " + urlLastModified);
+                        }
+                      }
+                      // Use properties when last modified matches
+                      if (urlLastModified != 0 && cacheEntry.lastModified == urlLastModified) {
+                        propsFromFile = cacheEntry.properties;
+                        // Refresh in cache
+                        propertiesCache.put(
+                            url,
+                            new PropertiesCache.Entry(urlLastModified, currentTime, propsFromFile)
+                        );
+                      }
                     }
-                    propsFromFile = Collections.emptyMap();
-                  } else if (size == 1) {
-                    if (logger.isLoggable(Level.FINER)) {
-                      logger.finer("PageTag: doTag: Got " + size + " property, using singleton map");
-                    }
-                    String propertyName = propertyNames.iterator().next();
-                    propsFromFile = Collections.singletonMap(
+                  }
+                } else {
+                  if (logger.isLoggable(Level.FINER)) {
+                    logger.finer("PageTag: doTag: URL not found in cache: " + url);
+                  }
+                }
+              }
+              if (propsFromFile == null) {
+                // Load properties
+                if (urlConn == null) {
+                  urlConn = url.openConnection();
+                  // TODO: Use ServletContextCache.getLastModified?
+                  urlLastModified = urlConn.getLastModified();
+                  if (logger.isLoggable(Level.FINE)) {
+                    logger.fine("PageTag: doTag: Got last modified 2: " + urlLastModified);
+                  }
+                }
+                Properties props = new Properties();
+                {
+                  if (logger.isLoggable(Level.FINE)) {
+                    logger.fine("PageTag: doTag: Loading properties from URL: " + url);
+                  }
+                  try (InputStream in = urlConn.getInputStream()) {
+                    props.load(in);
+                  } finally {
+                    urlClosed = true;
+                  }
+                }
+                Set<String> propertyNames = props.stringPropertyNames();
+                int size = propertyNames.size();
+                if (size == 0) {
+                  if (logger.isLoggable(Level.FINER)) {
+                    logger.finer("PageTag: doTag: Got " + size + " properties, using empty map");
+                  }
+                  propsFromFile = Collections.emptyMap();
+                } else if (size == 1) {
+                  if (logger.isLoggable(Level.FINER)) {
+                    logger.finer("PageTag: doTag: Got " + size + " property, using singleton map");
+                  }
+                  String propertyName = propertyNames.iterator().next();
+                  propsFromFile = Collections.singletonMap(
+                      propertyName,
+                      props.getProperty(propertyName)
+                  );
+                } else {
+                  if (logger.isLoggable(Level.FINER)) {
+                    logger.finer("PageTag: doTag: Got " + size + " properties, using unmodifiable wrapped linked hash map");
+                  }
+                  Map<String, String> newMap = AoCollections.newLinkedHashMap(size); // linked map for maximum iteration performance
+                  for (String propertyName : propertyNames) {
+                    newMap.put(
                         propertyName,
                         props.getProperty(propertyName)
                     );
-                  } else {
-                    if (logger.isLoggable(Level.FINER)) {
-                      logger.finer("PageTag: doTag: Got " + size + " properties, using unmodifiable wrapped linked hash map");
-                    }
-                    Map<String, String> newMap = AoCollections.newLinkedHashMap(size); // linked map for maximum iteration performance
-                    for (String propertyName : propertyNames) {
-                      newMap.put(
-                          propertyName,
-                          props.getProperty(propertyName)
-                      );
-                    }
-                    propsFromFile = Collections.unmodifiableMap(newMap);
                   }
-                  // Store in cache
-                  propertiesCache.put(
-                      url,
-                      new PropertiesCache.Entry(urlLastModified, currentTime, propsFromFile)
-                  );
+                  propsFromFile = Collections.unmodifiableMap(newMap);
                 }
-              } finally {
-                if (urlConn != null && !urlClosed) {
-                  if (logger.isLoggable(Level.FINER)) {
-                    logger.finer("PageTag: doTag: Closing connection");
-                  }
-                  urlConn.getInputStream().close();
+                // Store in cache
+                propertiesCache.put(
+                    url,
+                    new PropertiesCache.Entry(urlLastModified, currentTime, propsFromFile)
+                );
+              }
+            } finally {
+              if (urlConn != null && !urlClosed) {
+                if (logger.isLoggable(Level.FINER)) {
+                  logger.finer("PageTag: doTag: Closing connection");
                 }
+                urlConn.getInputStream().close();
               }
             }
+          }
           // Apply the loaded properties, not replacing any set on the page via dynamic attributes
           int numPropsFromFile = propsFromFile.size();
           if (numPropsFromFile > 0) {
