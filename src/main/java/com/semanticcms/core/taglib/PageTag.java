@@ -491,9 +491,9 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
                             // Time set to the past
                             && currentTime > (cacheEntry.cachedTime - PROPERTIES_CACHE_UNKNOWN_MODIFIED_CACHE_DURATION)
                     ) {
-                      //if (DEBUG) {
-                      //  System.out.println("PageTag: doTag: Still in unknown last modified");
-                      //}
+                      // if (DEBUG) {
+                      //   System.out.println("PageTag: doTag: Still in unknown last modified");
+                      // }
                       propsFromFile = cacheEntry.properties;
                     } else {
                       if (logger.isLoggable(Level.FINE)) {
@@ -507,9 +507,9 @@ public class PageTag extends SimpleTagSupport implements DynamicAttributes {
                             // Time set to the past
                             && currentTime > (cacheEntry.cachedTime - PROPERTIES_CACHE_LAST_MODIFIED_RECHECK_INTERVAL)
                     ) {
-                      //if (DEBUG) {
-                      //  System.out.println("PageTag: doTag: Still in known last modified");
-                      //}
+                      // if (DEBUG) {
+                      //   System.out.println("PageTag: doTag: Still in known last modified");
+                      // }
                       propsFromFile = cacheEntry.properties;
                     } else {
                       if (logger.isLoggable(Level.FINE)) {

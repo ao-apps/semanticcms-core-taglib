@@ -57,7 +57,7 @@ public class LinkTag
     extends SimpleTagSupport
     implements
     DynamicAttributes,
-    //ClassAttribute,
+    // ClassAttribute,
     ParamsAttribute {
 
   private MutableURIParameters params;
