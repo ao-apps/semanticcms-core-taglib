@@ -8,14 +8,14 @@
 [![semantic versioning: 2.0.0](https://semanticcms.com/ao-badges/semver-2.0.0.svg)](https://semver.org/spec/v2.0.0.html)
 [![license: LGPL v3](https://semanticcms.com/ao-badges/license-lgpl-3.0.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 
-[![Build](https://github.com/ao-apps/semanticcms-core-taglib/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/ao-apps/semanticcms-core-taglib/actions?query=workflow%3ABuild)
+[![Build](https://github.com/ao-apps/semanticcms-core-taglib/actions/workflows/build.yml/badge.svg?branch=alpha)](https://github.com/ao-apps/semanticcms-core-taglib/actions?query=workflow%3ABuild)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.semanticcms/semanticcms-core-taglib/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.semanticcms/semanticcms-core-taglib)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.semanticcms%3Asemanticcms-core-taglib&metric=alert_status)](https://sonarcloud.io/dashboard?branch=master&id=com.semanticcms%3Asemanticcms-core-taglib)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.semanticcms%3Asemanticcms-core-taglib&metric=ncloc)](https://sonarcloud.io/component_measures?branch=master&id=com.semanticcms%3Asemanticcms-core-taglib&metric=ncloc)  
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.semanticcms%3Asemanticcms-core-taglib&metric=reliability_rating)](https://sonarcloud.io/component_measures?branch=master&id=com.semanticcms%3Asemanticcms-core-taglib&metric=Reliability)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.semanticcms%3Asemanticcms-core-taglib&metric=security_rating)](https://sonarcloud.io/component_measures?branch=master&id=com.semanticcms%3Asemanticcms-core-taglib&metric=Security)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.semanticcms%3Asemanticcms-core-taglib&metric=sqale_rating)](https://sonarcloud.io/component_measures?branch=master&id=com.semanticcms%3Asemanticcms-core-taglib&metric=Maintainability)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?branch=master&project=com.semanticcms%3Asemanticcms-core-taglib&metric=coverage)](https://sonarcloud.io/component_measures?branch=master&id=com.semanticcms%3Asemanticcms-core-taglib&metric=Coverage)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?branch=alpha&project=com.semanticcms%3Asemanticcms-core-taglib&metric=alert_status)](https://sonarcloud.io/dashboard?branch=alpha&id=com.semanticcms%3Asemanticcms-core-taglib)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?branch=alpha&project=com.semanticcms%3Asemanticcms-core-taglib&metric=ncloc)](https://sonarcloud.io/component_measures?branch=alpha&id=com.semanticcms%3Asemanticcms-core-taglib&metric=ncloc)  
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?branch=alpha&project=com.semanticcms%3Asemanticcms-core-taglib&metric=reliability_rating)](https://sonarcloud.io/component_measures?branch=alpha&id=com.semanticcms%3Asemanticcms-core-taglib&metric=Reliability)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?branch=alpha&project=com.semanticcms%3Asemanticcms-core-taglib&metric=security_rating)](https://sonarcloud.io/component_measures?branch=alpha&id=com.semanticcms%3Asemanticcms-core-taglib&metric=Security)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?branch=alpha&project=com.semanticcms%3Asemanticcms-core-taglib&metric=sqale_rating)](https://sonarcloud.io/component_measures?branch=alpha&id=com.semanticcms%3Asemanticcms-core-taglib&metric=Maintainability)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?branch=alpha&project=com.semanticcms%3Asemanticcms-core-taglib&metric=coverage)](https://sonarcloud.io/component_measures?branch=alpha&id=com.semanticcms%3Asemanticcms-core-taglib&metric=Coverage)
 
 Java API for modeling web page content and relationships in a JSP environment.
 
