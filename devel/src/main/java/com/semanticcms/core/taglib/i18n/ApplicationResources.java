@@ -1,6 +1,6 @@
 /*
  * semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
- * Copyright (C) 2017, 2019, 2020, 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2017, 2019, 2020, 2021, 2022, 2025  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -45,7 +45,7 @@ public final class ApplicationResources extends EditableResourceBundle {
 
   static File getSourceFile(String filename) {
     try {
-      return new File(System.getProperty("user.home") + "/maven2/ao/semanticcms-1.x/core/taglib/src/main/resources/com/semanticcms/core/taglib/i18n", filename);
+      return new File(System.getProperty("user.home") + "/maven2/ao/semanticcms-2.x/core/taglib/src/main/resources/com/semanticcms/core/taglib/i18n", filename);
     } catch (SecurityException e) {
       Logger.getLogger(ApplicationResources.class.getName()).log(
           Level.WARNING,

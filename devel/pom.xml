@@ -25,11 +25,11 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.semanticcms</groupId><artifactId>semanticcms-parent</artifactId><version>1.21.0-SNAPSHOT</version>
+    <groupId>com.semanticcms</groupId><artifactId>semanticcms-parent</artifactId><version>2.0.0-SNAPSHOT</version>
     <relativePath>../../../parent/pom.xml</relativePath>
   </parent>
 
-  <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib-devel</artifactId><version>1.16.0-POST-SNAPSHOT</version>
+  <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib-devel</artifactId><version>2.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <properties>
@@ -38,7 +38,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
     <subproject.subpath>devel/</subproject.subpath>
     <module.name>com.semanticcms.core.taglib.devel</module.name>
     <!-- SonarQube -->
-    <sonar.projectKey>${project.groupId}:${project.artifactId}:1.x</sonar.projectKey>
+    <sonar.projectKey>${project.groupId}:${project.artifactId}:2.x</sonar.projectKey>
   </properties>
 
   <name>SemanticCMS Core Taglib Devel</name>
@@ -83,7 +83,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
 
   <ciManagement>
     <system>Jenkins</system>
-    <url>https://jenkins.aoindustries.com/job/ao/job/semanticcms-1.x/job/core/job/taglib-devel/</url>
+    <url>https://jenkins.aoindustries.com/job/ao/job/semanticcms-2.x/job/core/job/taglib-devel/</url>
   </ciManagement>
   <!-- Only one allowed in POM:
   <ciManagement>
