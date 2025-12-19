@@ -238,7 +238,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
     <dependencies>
       <!-- Direct -->
       <dependency>
-        <groupId>com.aoapps</groupId><artifactId>ao-badges</artifactId><version>1.12.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+        <groupId>com.aoapps</groupId><artifactId>ao-badges</artifactId><version>3.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
       </dependency>
       <dependency>
         <groupId>com.aoapps</groupId><artifactId>ao-lang</artifactId><version>5.7.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>

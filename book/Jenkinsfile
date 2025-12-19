@@ -31,7 +31,7 @@ def upstreamProjects = [
   'taglib', // <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib</artifactId>
 
   // Direct
-  '../../oss/badges-1.x', // <groupId>com.aoapps</groupId><artifactId>ao-badges</artifactId>
+  '../../oss/badges', // <groupId>com.aoapps</groupId><artifactId>ao-badges</artifactId>
   '../../oss/lang', // <groupId>com.aoapps</groupId><artifactId>ao-lang</artifactId>
   '../../oss/net-types', // <groupId>com.aoapps</groupId><artifactId>ao-net-types</artifactId>
   '../../oss/servlet-util-javaee', // <groupId>com.aoapps</groupId><artifactId>ao-servlet-util</artifactId>
