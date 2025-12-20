@@ -34,8 +34,8 @@ def upstreamProjects = [
   '../../oss/badges', // <groupId>com.aoapps</groupId><artifactId>ao-badges</artifactId>
   '../../oss/lang', // <groupId>com.aoapps</groupId><artifactId>ao-lang</artifactId>
   '../../oss/net-types', // <groupId>com.aoapps</groupId><artifactId>ao-net-types</artifactId>
-  '../../oss/servlet-util-javaee', // <groupId>com.aoapps</groupId><artifactId>ao-servlet-util</artifactId>
-  '../../oss/taglib-javaee', // <groupId>com.aoapps</groupId><artifactId>ao-taglib</artifactId>
+  '../../oss/servlet-util', // <groupId>com.aoapps</groupId><artifactId>ao-servlet-util</artifactId>
+  '../../oss/taglib', // <groupId>com.aoapps</groupId><artifactId>ao-taglib</artifactId>
   // No Jenkins: <groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId>
   // No Jenkins: <groupId>javax.servlet.jsp</groupId><artifactId>javax.servlet.jsp-api</artifactId>
   '../changelog-taglib', // <groupId>com.semanticcms</groupId><artifactId>semanticcms-changelog-taglib</artifactId>
@@ -48,7 +48,7 @@ def upstreamProjects = [
 
   // Runtime Direct
   '../../oss/mime-mappings', // <groupId>com.aoapps</groupId><artifactId>ao-mime-mappings</artifactId>
-  '../../oss/style-javaee', // <groupId>com.aoapps</groupId><artifactId>ao-style</artifactId>
+  '../../oss/style', // <groupId>com.aoapps</groupId><artifactId>ao-style</artifactId>
   'pages-jspx', // <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-pages-jspx</artifactId>
   // No Jenkins: <groupId>org.apache.taglibs</groupId><artifactId>taglibs-standard-impl</artifactId>
 
