@@ -43,7 +43,6 @@ def upstreamProjects = [
   // No Jenkins: <groupId>javax.el</groupId><artifactId>javax.el-api</artifactId>
   // No Jenkins: <groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId>
   // No Jenkins: <groupId>javax.servlet.jsp</groupId><artifactId>javax.servlet.jsp-api</artifactId>
-  // No Jenkins: <groupId>joda-time</groupId><artifactId>joda-time</artifactId>
   'model', // <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-model</artifactId>
   'servlet', // <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-servlet</artifactId>
   // No Jenkins: <groupId>org.apache.taglibs</groupId><artifactId>taglibs-standard-spec</artifactId>
