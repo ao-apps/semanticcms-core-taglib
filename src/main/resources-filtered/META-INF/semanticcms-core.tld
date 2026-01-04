@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
-Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2025  AO Industries, Inc.
+Copyright (C) 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2025, 2026  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -21,10 +21,11 @@ GNU Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public License
 along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>.
 -->
-<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+<taglib xmlns="https://jakarta.ee/xml/ns/jakartaee"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
-  version="2.1">
+  xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                      https://jakarta.ee/xml/ns/jakartaee/web-jsptaglibrary_3_1.xsd"
+  version="3.1">
   <!-- datePublished="2016-08-07T23:48:25-05:00" -->
   <!-- dateModified="2016-11-11T16:21:13-06:00" -->
   <description><![CDATA[
@@ -170,7 +171,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
         <ol>
           <li>Use the serialization active on the current request.</li>
           <li>
-            Use the application <a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
+            Use the application <a rel="nofollow" href="@{javadoc.link.javaee}jakarta/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
             <code>com.aoapps.encoding.Serialization.default</code>
             that allows an application to control the selection of HTML versus XHTML.
           </li>
@@ -203,7 +204,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
         <ol>
           <li>Use the doctype active on the current request.</li>
           <li>
-            Use the application <a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
+            Use the application <a rel="nofollow" href="@{javadoc.link.javaee}jakarta/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
             <code>com.aoapps.encoding.Doctype.default</code>
             that allows an application to control the default doctype.
           </li>
@@ -228,7 +229,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
         <ol>
           <li>Use the autonli setting active on the current request.</li>
           <li>
-            Use the application <a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
+            Use the application <a rel="nofollow" href="@{javadoc.link.javaee}jakarta/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
             <code>com.aoapps.html.servlet.DocumentEE.autonli</code>
             that allows an application to control the default autonli setting.
           </li>
@@ -253,7 +254,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
         <ol>
           <li>Use the indent setting active on the current request.</li>
           <li>
-            Use the application <a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
+            Use the application <a rel="nofollow" href="@{javadoc.link.javaee}jakarta/servlet/ServletContext.html#getInitParameter(java.lang.String)">context-param</a>
             <code>com.aoapps.html.servlet.DocumentEE.indent</code>
             that allows an application to control the default indent setting.
           </li>

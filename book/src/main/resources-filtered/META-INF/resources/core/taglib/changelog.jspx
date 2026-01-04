@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 semanticcms-core-taglib - Java API for modeling web page content and relationships in a JSP environment.
-Copyright (C) 2016, 2017, 2019, 2020, 2021, 2022, 2023, 2024, 2025  AO Industries, Inc.
+Copyright (C) 2016, 2017, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -23,10 +23,10 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
 -->
 <jsp:root
   xmlns:ao="https://oss.aoapps.com/taglib/"
-  xmlns:c="http://java.sun.com/jsp/jstl/core"
+  xmlns:c="jakarta.tags.core"
   xmlns:changelog="https://semanticcms.com/changelog/taglib/"
   xmlns:core="https://semanticcms.com/core/taglib/"
-  xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+  xmlns:fn="jakarta.tags.functions"
   xmlns:jsp="http://java.sun.com/JSP/Page"
   version="2.1"
 >
@@ -37,7 +37,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
     shortTitle="Changelog"
     tocLevels="1"
     datePublished="2016-10-30T20:28:28-05:00"
-    dateModified="2025-12-26T03:55:26Z"
+    dateModified="2025-12-30T13:42:11Z"
   >
     <c:set var="latestRelease" value="1.16.0" />
     <c:if test="${
@@ -54,6 +54,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
       >
         <ul>
           <li>Minimum Java version changed from 11 to 17.</li>
+          <li>Updated to <ao:a href="https://jakarta.ee/specifications/webprofile/10/">Jakarta EE Web Profile 10</ao:a> (Servlet 6.0, JSP 3.1, EL 5.0, and JSTL 3.0).</li>
         </ul>
       </changelog:release>
     </c:if>
@@ -249,7 +250,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
         <li>
           <code><core:link page="semanticcms-core.tld/function-parseQueryString" /></code> now always decodes in
           <ao:a href="https://www.w3.org/TR/html40/appendix/notes.html#non-ascii-chars">recommended <code>UTF-8</code> encoding</ao:a>.
-          Previously, would use <ao:a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletRequest.html#getCharacterEncoding%28%29">request encoding</ao:a>
+          Previously, would use <ao:a rel="nofollow" href="@{javadoc.link.javaee.7}javax/servlet/ServletRequest.html#getCharacterEncoding%28%29">request encoding</ao:a>
           or <code>ISO-8859-1</code> if none set.
         </li>
         <li>Added absolute URL and <ao:a href="https://oss.aoapps.com/servlet-util/apidocs/com.aoapps.servlet.util/com/aoapps/servlet/http/Canonical.html">Canonical URL</ao:a> support.</li>
@@ -286,7 +287,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
         <li>Minimum Java version changed from 1.6 to 1.7.</li>
         <li>
           Fixed bug in <code><core:link page="semanticcms-core.tld/tag-page" /></code>
-          that threw <code><ao:a rel="nofollow" href="@{javadoc.link.javaee}javax/servlet/ServletException.html">ServletException</ao:a></code>
+          that threw <code><ao:a rel="nofollow" href="@{javadoc.link.javaee.7}javax/servlet/ServletException.html">ServletException</ao:a></code>
           when page not in a book, even when <code>book</code> and <code>path</code> attributes are provided.
         </li>
       </ul>
