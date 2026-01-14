@@ -122,6 +122,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
         <configuration>
           <usedDependencies>
             <!-- JSP Only -->
+            <dependency>com.aoapps:ao-badges</dependency>
             <dependency>com.aoapps:ao-taglib</dependency>
             <dependency>jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api</dependency>
             <dependency>com.semanticcms:semanticcms-changelog-taglib</dependency>
@@ -130,11 +131,6 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
             <!-- Direct -->
             <dependency>jakarta.servlet.jsp:jakarta.servlet.jsp-api</dependency>
           </usedDependencies>
-          <ignoredDependencies>
-            <!-- No "module-info.java" in some release builds -->
-            <dependency>com.aoapps:ao-badges</dependency>
-            <dependency>com.aoapps:ao-web-resources-registry</dependency>
-          </ignoredDependencies>
         </configuration>
         <executions>
           <!-- Add a copy of the taglib files from dependencies -->
