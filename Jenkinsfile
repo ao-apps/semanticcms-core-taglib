@@ -82,6 +82,7 @@ pipeline {
     // Only allowed to copy build artifacts from self
     // See https://plugins.jenkins.io/copyartifact/
     copyArtifactPermission("/${JOB_NAME}")
+    buildDiscarder(buildDiscarder)
   }
   parameters {
     string(
@@ -118,14 +119,6 @@ pipeline {
     cron(cron)
   }
   stages {
-    stage('Setup') {
-      steps {
-        script {
-          // Additional setup that cannot be done in options inside declarative pipeline
-          ao.setupBuildDiscarder()
-        }
-      }
-    }
     stage('Check Ready') {
       when {
         expression {
