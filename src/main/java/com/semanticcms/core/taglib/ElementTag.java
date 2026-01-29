@@ -77,7 +77,7 @@ public abstract class ElementTag<E extends Element> extends SimpleTagSupport imp
    *
    * @return  {@code true} when added, or {@code false} when attribute not expected and has not been added.
    *
-   * @see  #setDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object)
+   * @see  ElementTag#setDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object)
    */
   protected boolean addDynamicAttribute(String uri, String localName, Object value, List<String> expectedPatterns) throws JspTagException {
     if (
@@ -104,9 +104,9 @@ public abstract class ElementTag<E extends Element> extends SimpleTagSupport imp
   /**
    * Sets a {@linkplain DynamicAttributes dynamic attribute}.
    *
-   * @deprecated  You should probably be implementing in {@link #addDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object, java.util.List)}
+   * @deprecated  You should probably be implementing in {@link ElementTag#addDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object, java.util.List)}
    *
-   * @see  #addDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object, java.util.List)
+   * @see  ElementTag#addDynamicAttribute(java.lang.String, java.lang.String, java.lang.Object, java.util.List)
    */
   @Deprecated(forRemoval = false)
   @Override
@@ -120,7 +120,7 @@ public abstract class ElementTag<E extends Element> extends SimpleTagSupport imp
   /**
    * Adds this element to the current page, if part of a page.
    * Sets this element as the current element.
-   * Then, if not capturing or capturing META or higher, calls {@link #doBody}
+   * Then, if not capturing or capturing META or higher, calls {@link ElementTag#doBody}
    */
   @Override
   @SuppressWarnings({"UseSpecificCatch", "TooBroadCatch"})
@@ -193,7 +193,7 @@ public abstract class ElementTag<E extends Element> extends SimpleTagSupport imp
   /**
    * Gets the element, only available after created.
    *
-   * @see  #createElement()
+   * @see  ElementTag#createElement()
    *
    * @throws  IllegalStateException  if element not yet created
    */
