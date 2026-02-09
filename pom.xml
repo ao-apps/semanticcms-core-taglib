@@ -29,7 +29,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
     <relativePath>../../parent/pom.xml</relativePath>
   </parent>
 
-  <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib</artifactId><version>2.0.0-POST-SNAPSHOT</version>
+  <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib</artifactId><version>2.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <properties>
@@ -328,7 +328,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
         <groupId>com.aoapps</groupId><artifactId>ao-servlet-filter</artifactId><version>4.0.0${POST-SNAPSHOT}</version>
       </dependency>
       <dependency>
-        <groupId>com.aoapps</groupId><artifactId>ao-servlet-util</artifactId><version>6.0.0${POST-SNAPSHOT}</version>
+        <groupId>com.aoapps</groupId><artifactId>ao-servlet-util</artifactId><version>6.0.1-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
       </dependency>
       <dependency>
         <groupId>com.aoapps</groupId><artifactId>ao-taglib</artifactId><version>10.0.0${POST-SNAPSHOT}</version>
@@ -377,8 +377,6 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
       <dependency>
         <groupId>com.aoapps</groupId><artifactId>ao-web-resources-servlet</artifactId><version>0.7.0${POST-SNAPSHOT}</version>
       </dependency>
-      <!-- Runtime Direct -->
-      <!-- jakartaee-web-profile-bom: <groupId>org.glassfish.web</groupId><artifactId>jakarta.servlet.jsp.jstl</artifactId> -->
       <!-- Imports -->
       <dependency>
         <groupId>com.aoapps</groupId><artifactId>jakartaee-web-profile-bom</artifactId><version>10.0.0${POST-SNAPSHOT}</version>
@@ -443,11 +441,6 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
     </dependency>
     <dependency>
       <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-servlet</artifactId>
-    </dependency>
-    <!-- Runtime Direct -->
-    <dependency>
-      <groupId>org.glassfish.web</groupId><artifactId>jakarta.servlet.jsp.jstl</artifactId>
-      <scope>runtime</scope>
     </dependency>
   </dependencies>
 </project>

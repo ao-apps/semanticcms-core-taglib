@@ -37,7 +37,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
     shortTitle="Changelog"
     tocLevels="1"
     datePublished="2016-10-30T20:28:28-05:00"
-    dateModified="2026-02-01T00:17:47Z"
+    dateModified="2026-02-08T18:07:56Z"
   >
     <c:set var="latestRelease" value="2.0.0" />
     <c:if test="${
@@ -51,7 +51,14 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
         groupId="@{project.groupId}"
         artifactId="@{documented.artifactId}"
         scmUrl="@{project.scm.url}"
-      />
+      >
+        <ul>
+          <li>
+            Removed <code>org.glassfish.web:jakarta.servlet.jsp.jstl</code> from runtime dependencies.  JSTL
+            implementation should only be decided by the webapp and/or container.
+          </li>
+        </ul>
+      </changelog:release>
     </c:if>
 
     <changelog:release

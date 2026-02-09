@@ -29,7 +29,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
     <relativePath>../../../parent/pom.xml</relativePath>
   </parent>
 
-  <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib-book</artifactId><version>2.0.0-POST-SNAPSHOT</version>
+  <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib-book</artifactId><version>2.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <properties>
@@ -141,7 +141,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
             <configuration>
               <artifactItems>
                 <artifactItem>
-                  <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib</artifactId><version>2.0.0${POST-SNAPSHOT}</version>
+                  <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib</artifactId><version>2.0.1-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
                   <type>jar</type>
                   <includes>META-INF/semanticcms-core.tld</includes>
                 </artifactItem>
@@ -151,7 +151,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
         </executions>
         <dependencies>
           <dependency>
-            <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib</artifactId><version>2.0.0${POST-SNAPSHOT}</version>
+            <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib</artifactId><version>2.0.1-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
             <type>jar</type>
             <exclusions><exclusion><groupId>*</groupId><artifactId>*</artifactId></exclusion></exclusions>
           </dependency>
@@ -184,7 +184,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
     <dependencies>
       <!-- Direct -->
       <dependency>
-        <groupId>com.aoapps</groupId><artifactId>ao-badges</artifactId><version>2.0.0${POST-SNAPSHOT}</version>
+        <groupId>com.aoapps</groupId><artifactId>ao-badges</artifactId><version>2.0.1-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
       </dependency>
       <dependency>
         <groupId>com.aoapps</groupId><artifactId>ao-lang</artifactId><version>5.7.0${POST-SNAPSHOT}</version>
@@ -193,7 +193,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
         <groupId>com.aoapps</groupId><artifactId>ao-net-types</artifactId><version>3.0.0${POST-SNAPSHOT}</version>
       </dependency>
       <dependency>
-        <groupId>com.aoapps</groupId><artifactId>ao-servlet-util</artifactId><version>6.0.0${POST-SNAPSHOT}</version>
+        <groupId>com.aoapps</groupId><artifactId>ao-servlet-util</artifactId><version>6.0.1-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
       </dependency>
       <dependency>
         <groupId>com.aoapps</groupId><artifactId>ao-taglib</artifactId><version>10.0.0${POST-SNAPSHOT}</version>
@@ -205,7 +205,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
         <groupId>com.semanticcms</groupId><artifactId>semanticcms-changelog-taglib</artifactId><version>2.0.0${POST-SNAPSHOT}</version>
       </dependency>
       <dependency>
-        <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib</artifactId><version>2.0.0${POST-SNAPSHOT}</version>
+        <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib</artifactId><version>2.0.1-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
       </dependency>
       <dependency>
         <groupId>com.semanticcms</groupId><artifactId>semanticcms-section-taglib</artifactId><version>2.0.1-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
@@ -288,7 +288,7 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
         <groupId>com.semanticcms</groupId><artifactId>semanticcms-section-model</artifactId><version>2.0.0${POST-SNAPSHOT}</version>
       </dependency>
       <dependency>
-        <groupId>com.semanticcms</groupId><artifactId>semanticcms-section-servlet</artifactId><version>2.0.0${POST-SNAPSHOT}</version>
+        <groupId>com.semanticcms</groupId><artifactId>semanticcms-section-servlet</artifactId><version>2.0.1-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
       </dependency>
       <!-- Runtime Direct -->
       <dependency>
@@ -297,7 +297,6 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
       <dependency>
         <groupId>com.aoapps</groupId><artifactId>ao-style</artifactId><version>3.0.0${POST-SNAPSHOT}</version>
       </dependency>
-      <!-- jakartaee-web-profile-bom: <groupId>org.glassfish.web</groupId><artifactId>jakarta.servlet.jsp.jstl</artifactId> -->
       <!-- Runtime Transitive -->
       <dependency>
         <groupId>com.aoapps</groupId><artifactId>ao-javadoc-offline</artifactId><version>3.5.0${POST-SNAPSHOT}</version>
@@ -358,10 +357,6 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
     <dependency>
       <!-- Styles used in semanticcms-core.tld -->
       <groupId>com.aoapps</groupId><artifactId>ao-style</artifactId>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.glassfish.web</groupId><artifactId>jakarta.servlet.jsp.jstl</artifactId>
       <scope>runtime</scope>
     </dependency>
   </dependencies>
