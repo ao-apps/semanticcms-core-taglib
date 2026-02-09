@@ -37,9 +37,9 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
     shortTitle="Changelog"
     tocLevels="1"
     datePublished="2016-10-30T20:28:28-05:00"
-    dateModified="2026-02-08T18:07:56Z"
+    dateModified="2026-02-09T17:27:10Z"
   >
-    <c:set var="latestRelease" value="2.0.0" />
+    <c:set var="latestRelease" value="2.0.1" />
     <c:if test="${
       fn:endsWith('@{project.version}', '-SNAPSHOT')
       and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')
@@ -53,10 +53,6 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
         scmUrl="@{project.scm.url}"
       >
         <ul>
-          <li>
-            Removed <code>org.glassfish.web:jakarta.servlet.jsp.jstl</code> from runtime dependencies.  JSTL
-            implementation should only be decided by the webapp and/or container.
-          </li>
           <li>Added <core:link book="/core/model" page="/" /> domain support:
             <ol>
               <li>New optional attribute <code>domain</code> that defaults to the domain of the current page on:
@@ -126,6 +122,22 @@ along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>
         </ul>
       </changelog:release>
     </c:if>
+
+    <changelog:release
+      projectName="@{documented.name}"
+      version="2.0.1"
+      datePublished="2026-02-09T17:27:10Z"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>
+          Removed <code>org.glassfish.web:jakarta.servlet.jsp.jstl</code> from runtime dependencies.  JSTL
+          implementation should only be decided by the webapp and/or container.
+        </li>
+      </ul>
+    </changelog:release>
 
     <changelog:release
       projectName="@{documented.name}"
