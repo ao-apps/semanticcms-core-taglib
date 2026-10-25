@@ -21,8 +21,6 @@
  * along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>.
  */
 module com.semanticcms.core.taglib.book {
-  exports com.semanticcms.core.taglib.book;
-  provides jakarta.servlet.ServletContainerInitializer with com.semanticcms.core.taglib.book.SemanticCmsCoreTldInitializer;
   // Direct
   requires com.aoapps.badges; // <groupId>com.aoapps</groupId><artifactId>ao-badges</artifactId>
   requires com.aoapps.lang; // <groupId>com.aoapps</groupId><artifactId>ao-lang</artifactId>
@@ -36,4 +34,8 @@ module com.semanticcms.core.taglib.book {
   requires com.semanticcms.core.taglib; // <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib</artifactId>
   requires com.semanticcms.section.taglib; // <groupId>com.semanticcms</groupId><artifactId>semanticcms-section-taglib</artifactId>
   requires com.semanticcms.tagreference; // <groupId>com.semanticcms</groupId><artifactId>semanticcms-tag-reference</artifactId>
+
+  exports com.semanticcms.core.taglib.book;
+
+  provides jakarta.servlet.ServletContainerInitializer with com.semanticcms.core.taglib.book.SemanticCmsCoreTldInitializer;
 }

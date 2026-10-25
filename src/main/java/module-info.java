@@ -21,7 +21,6 @@
  * along with semanticcms-core-taglib.  If not, see <https://www.gnu.org/licenses/>.
  */
 module com.semanticcms.core.taglib {
-  exports com.semanticcms.core.taglib;
   // Direct
   requires com.aoapps.collections; // <groupId>com.aoapps</groupId><artifactId>ao-collections</artifactId>
   requires com.aoapps.encoding; // <groupId>com.aoapps</groupId><artifactId>ao-encoding</artifactId>
@@ -44,4 +43,6 @@ module com.semanticcms.core.taglib {
   // Java SE
   requires java.desktop;
   requires java.logging;
+
+  exports com.semanticcms.core.taglib;
 }
