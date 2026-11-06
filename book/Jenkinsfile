@@ -307,6 +307,18 @@ pipeline {
         }
       }
     }
+    stage('Audit Release Branch') {
+      when {
+        expression {
+          ao.continueCurrentBuild() && ao.auditReleaseBranchWhen()
+        }
+      }
+      steps {
+        script {
+          ao.auditReleaseBranch()
+        }
+      }
+    }
   }
   post {
     failure {
