@@ -55,6 +55,11 @@ binding.setVariable('upstreamProjects', [
 binding.setVariable('buildJdks', ['17', '21', '25', '27']) // Changes must be copied to matrix axes!
 binding.setVariable('testJdks', ['17', '21', '25', '27']) // Changes must be copied to matrix axes!
 
+// All projects that use this library declare and update versions for all transitive dependencies.
+// While the latest *-SNAPSHOT of this library will have up-to-date dependencies,
+// this project will not be re-released solely for updated dependency versions.
+binding.setVariable('scmAdditionalAuditBranches', [])
+
 /******************************************************************************************
  *                                                                                        *
  * Everything below this line is identical for all projects, except the copied matrix     *
